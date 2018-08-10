@@ -1,0 +1,211 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using SIS.Items.Weapons;
+
+namespace SIS.Characters.Sis
+{
+	public class IKAiming : MonoBehaviour
+	{
+		Animator anim;
+		Sis owner;
+
+		float handWeight;
+		float lookWeight;
+		float bodyWeight;
+
+		Transform rhTarget;
+		public Transform shoulder;
+		public Transform aimPivot;
+		Vector3 lookDir;
+		Weapon curWeapon;
+		RecoilHandler recoilHandler;
+
+		public void Init(Sis sis)
+		{
+			owner = sis;
+			anim = owner.anim;
+
+			if (shoulder == null)
+				shoulder = anim.GetBoneTransform(HumanBodyBones.RightShoulder);
+
+			CreateAimPivot();
+			CreateRightHandTarget();
+			//Setup Aim Position
+			owner.movementValues.aimPosition = owner.mTransform.position + transform.forward * 15;
+			owner.movementValues.aimPosition.y += 1.4f;
+		}
+
+		
+		//Update pivot and right hand
+		private void OnAnimatorMove()
+		{
+			lookDir = CaculateLookDirection();
+			HandlePivot();
+		}
+
+		#region Right Hand Target is on Weapon
+		//Creates empty object for right hand target
+		void CreateRightHandTarget()
+		{
+			rhTarget = new GameObject().transform;
+			rhTarget.name = "Right Hand Target";
+			rhTarget.parent = aimPivot;
+		}
+		//Sets right hand target ontop of weapon
+		//Activate method whenever you change weapons
+		public void UpdateWeaponAiming(Weapon w)
+		{
+			curWeapon = w;
+			if (w == null)
+				return;
+			//Update so right hand is holding weapon
+			rhTarget.localPosition = w.holdingPosition.value;
+			rhTarget.localEulerAngles = w.holdingEulers.value;
+
+			//Store local transform for recoil
+			basePosition = rhTarget.localPosition;
+			baseRotation = rhTarget.localEulerAngles;
+		}
+		#endregion
+
+		#region Pivot towards Look Direction
+		//Creates Aiming Pivot
+		void CreateAimPivot()
+		{
+			aimPivot = new GameObject().transform;
+			aimPivot.name = "Aim Pivot";
+			aimPivot.parent = owner.transform;
+		}
+
+		//Handles Transform
+		void HandlePivot()
+		{
+			HandlePivotPosition();
+			HandlePivotRotation();
+		}
+
+		//Pivot around shoulder
+		void HandlePivotPosition()
+		{
+			aimPivot.position = shoulder.position;
+		}
+
+		//Rotate towards aiming target
+		void HandlePivotRotation()
+		{
+			float speed = 15;
+			Vector3 targetDir = lookDir;
+			if (targetDir == Vector3.zero)
+				targetDir = aimPivot.forward;
+			Quaternion tr = Quaternion.LookRotation(targetDir);
+			aimPivot.rotation = Quaternion.Slerp(aimPivot.rotation, tr, owner.delta * speed);
+		}
+
+		//Calculates the direction to aim towards
+		private Vector3 CaculateLookDirection()
+		{
+			return owner.movementValues.aimPosition - owner.mTransform.position;
+		}
+		#endregion
+
+		//Uses Mecanim's IK feature to look at aimPosition
+		private void OnAnimatorIK()
+		{
+			HandleWeights();
+
+			anim.SetLookAtWeight(lookWeight, bodyWeight, 1, 1, 1);
+			anim.SetLookAtPosition(owner.movementValues.aimPosition);
+
+			UpdateIK(AvatarIKGoal.RightHand, rhTarget, handWeight);
+		}
+
+		//Tunes IK weights based on a number of factors
+		void HandleWeights()
+		{
+			//targets to lerp to
+			float targetLookWeight = 1;
+			float targetHandWeight = 0;
+
+			//Intensity if aiming down sights
+			if (owner.isAiming) {
+				targetHandWeight = 1;
+				bodyWeight = 0.4f;
+			}
+			else
+				bodyWeight = 0.3f;
+
+			//Constraints on IK for looking at sharp angles
+			float angle = Vector3.Angle(owner.mTransform.forward, lookDir);
+			if (angle > 76)
+				targetLookWeight = 0;
+
+			if (angle > 60)
+				targetHandWeight = 0;
+
+			//Smoothly Change Weights
+			lookWeight = Mathf.Lerp(lookWeight, targetLookWeight, owner.delta);
+			handWeight = Mathf.Lerp(handWeight, targetHandWeight, 9 * owner.delta);
+		}
+		#region Recoil
+		//Start the recoil process
+		public void StartRecoil()
+		{
+			recoilHandler.StartRecoil(1/3);
+		}
+
+		//Tick the recoil and update offset positions
+		public void HandleRecoil()
+		{
+			recoilHandler.Tick(curWeapon, owner.delta);
+			rhTarget.localPosition = basePosition + recoilHandler.OffsetPosition;
+			rhTarget.localEulerAngles = baseRotation + recoilHandler.OffsetRotation;
+		}
+		#endregion
+
+		//Helper Functions
+		private void UpdateIK(AvatarIKGoal goal, Transform t, float w)
+		{
+			anim.SetIKPositionWeight(goal, w);
+			anim.SetIKRotationWeight(goal, w);
+			anim.SetIKPosition(goal, t.position);
+			anim.SetIKRotation(goal, t.rotation);
+		}
+
+
+		#region Recoil
+		float recoilTimer;
+		Vector3 offsetPosition;
+		Vector3 offsetRotation;
+		Vector3 basePosition;
+		Vector3 baseRotation;
+		bool isRecoiling;
+
+		public void RecoilAnim()
+		{
+			if (!isRecoiling)
+			{
+				isRecoiling = true;
+				recoilTimer = 0;
+				offsetPosition = Vector3.zero;
+			}
+		}
+
+		public void Recoil()
+		{
+			recoilTimer += owner.delta * 3;
+			if (recoilTimer > 1)
+			{
+				recoilTimer = 1;
+				isRecoiling = false;
+			}
+
+			offsetPosition = Vector3.forward * curWeapon.recoilZ.Evaluate(recoilTimer);
+			offsetRotation = Vector3.right * 90 * -curWeapon.recoilY.Evaluate(recoilTimer);
+			rhTarget.localPosition = basePosition + offsetPosition;
+			rhTarget.localEulerAngles = baseRotation + offsetRotation;
+		}
+		#endregion
+	}
+}
