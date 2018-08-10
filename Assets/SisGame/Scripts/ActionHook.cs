@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SIS
+namespace SIS.Actions
 {
     public class ActionHook : MonoBehaviour
     {

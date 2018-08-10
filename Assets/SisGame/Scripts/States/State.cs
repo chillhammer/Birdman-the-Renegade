@@ -1,20 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SIS.Characters;
 
 namespace SIS.States
 {
     [CreateAssetMenu]
-    public class State<M> : ScriptableObject where M : StateMachine
+    public class State<C> : ScriptableObject where C : Character
     {
-    	public StateActions<M>[] onFixed;
-        public StateActions<M>[] onUpdate;
-        public StateActions<M>[] onEnter;
-        public StateActions<M>[] onExit;
+    	public StateActions<C>[] onFixed;
+        public StateActions<C>[] onUpdate;
+        public StateActions<C>[] onEnter;
+        public StateActions<C>[] onExit;
 
         public int idCount;
 		[SerializeField]
-        public List<Transition> transitions = new List<Transition>();
+        public List<Transition<M>> transitions = new List<Transition<M>>();
 
 		#region Enter State
 		public void OnEnter(M owner)
@@ -44,20 +45,20 @@ namespace SIS.States
 		#endregion
 
 		//Helper Functions
-		public void CheckTransitions(M states)
+		public void CheckTransitions(M owner)
         {
             for (int i = 0; i < transitions.Count; i++)
             {
                 if (transitions[i].disable)
                     continue;
 
-                if(transitions[i].condition.CheckCondition(states))
+                if(transitions[i].condition.CheckCondition(owner))
                 {
                     if (transitions[i].targetState != null)
                     {
-                        states.currentState = transitions[i].targetState;
-                        OnExit(states);
-                        states.currentState.OnEnter(states);
+						owner.currentState = transitions[i].targetState;
+                        OnExit(owner);
+						owner.currentState.OnEnter(owner);
                     }
                     return;
                 }

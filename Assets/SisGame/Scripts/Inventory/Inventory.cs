@@ -15,9 +15,7 @@ namespace SIS.Items
 		{
 			int magazineAmount = currentWeapon.magazineBullets;
 
-			//magazineAmount > maxCarrying
-
-			currentWeapon.currentBullets = magazineAmount;
+			currentWeapon.runtime.currentBullets = magazineAmount;
 		}
 	}
 }

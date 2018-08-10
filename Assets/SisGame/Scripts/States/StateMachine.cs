@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SIS.Characters;
 
 namespace SIS.States
 {
 	[DisallowMultipleComponent]
-    public abstract class StateMachine : MonoBehaviour
+    public abstract class StateMachine<C> : MonoBehaviour where C : Character
     {
-        
-        public State<StateMachine> currentState;
+        public State<c> currentState;
 
 
         [HideInInspector]
@@ -20,7 +20,7 @@ namespace SIS.States
 		[HideInInspector]
 		public Animator anim;
 
-		public StateActions<StateMachine> initActionBatch;
+		public StateActions<C> initActionBatch;
 
         protected void Start()
         {
@@ -29,6 +29,8 @@ namespace SIS.States
 			anim = GetComponentInChildren<Animator>();
 
 			initActionBatch.Execute(this);
+
+			
 			
         }
 

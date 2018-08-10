@@ -2,7 +2,7 @@
 using SIS.States;
 using SIS.Items.Weapons;
 
-//Allows for 
+//Allows for things to be hit
 namespace SIS
 {
 	//General

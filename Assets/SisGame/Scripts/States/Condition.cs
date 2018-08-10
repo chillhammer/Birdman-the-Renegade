@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using SIS.Characters;
 
 namespace SIS.States
 {
-    public abstract class Condition<M> : ScriptableObject where M : StateMachine
+    public abstract class Condition<C	> : ScriptableObject where C : Character
     {
 		public string description;
 
-        public abstract bool CheckCondition(M owner);
+        public abstract bool CheckCondition(C owner);
 
     }
 }

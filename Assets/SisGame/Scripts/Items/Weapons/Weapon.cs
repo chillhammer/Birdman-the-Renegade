@@ -7,7 +7,6 @@ namespace SIS.Items.Weapons
 	[CreateAssetMenu(menuName = "Items/Weapon")]
 	public class Weapon : Item
 	{
-		public int currentBullets = 30;
 		public int magazineBullets = 30;
 		public float fireRate = 0.2f;
 
@@ -33,12 +32,18 @@ namespace SIS.Items.Weapons
 				runtime.weaponFX = runtime.modelInstance.AddComponent<WeaponFX>();
 			}
 			runtime.weaponFX.Init();
+
+			runtime.lastFired = 0;
+			runtime.currentBullets = magazineBullets;
 		}
 
+		//InGame Settings
 		public class RuntimeWeapon
 		{
 			public GameObject modelInstance;
 			public WeaponFX weaponFX;
+			public float lastFired;
+			public int currentBullets;
 		}
 	}
 }

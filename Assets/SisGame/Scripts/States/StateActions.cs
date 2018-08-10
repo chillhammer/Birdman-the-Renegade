@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SIS.Characters;
 
 namespace SIS.States
 {
-    public abstract class StateActions<M> : ScriptableObject where M : StateMachine
+    public abstract class StateActions<C> : ScriptableObject where C : Character
     {
-        public abstract void Execute(M owner);
+        public abstract void Execute(C owner);
     }
 }
