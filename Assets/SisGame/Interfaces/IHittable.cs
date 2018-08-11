@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using SIS.States;
+using SIS.Characters;
 using SIS.Items.Weapons;
 
 //Allows for things to be hit
@@ -8,12 +8,12 @@ namespace SIS
 	//General
 	interface IHittable
 	{
-		void OnHit(StateMachine shooter, Weapon weapon, Vector3 dir, Vector3 pos);
+		void OnHit(Character shooter, Weapon weapon, Vector3 dir, Vector3 pos);
 	}
 
 	//Generic
-	interface IHittable<M> where M : StateMachine
+	interface IHittable<C> where C : Character
 	{
-		void OnHit(M shooter, Weapon weapon, Vector3 dir, Vector3 pos);
+		void OnHit(C shooter, Weapon weapon, Vector3 dir, Vector3 pos);
 	}
 }

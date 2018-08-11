@@ -5,9 +5,31 @@ using SIS.Items;
 
 namespace SIS.Characters.Sis
 {
-	public class Sis : StateMachine
+	public class Sis : Character
 	{
+		#region StateMachine Setup
+		private StateMachine<Sis> stateMachine = new StateMachine<Sis>();
+		public float delta { get { return stateMachine.delta; } }
+		private new void Start()
+		{
+			base.Start();
+			stateMachine.Init();
+
+		}
+		//Run State Machine Logic
+		private void FixedUpdate()
+		{
+			stateMachine.FixedTick();
+		}
+		private void Update()
+		{
+			stateMachine.Tick();
+		}
+
+		#endregion
+
 		public float health;
+		//Serializable Properties
 		public MovementValues movementValues;
 		public Inventory inventory;
 
@@ -41,16 +63,20 @@ namespace SIS.Characters.Sis
 		}
 		#endregion
 
-		[HideInInspector]
-		public LayerMask ignoreLayers;
+		//Complex Components
 		[HideInInspector]
 		public IKAiming aiming;
 
-		private new void Start()
+		protected override void SetupComponents()
 		{
-			base.Start();
+		}
 
-			ignoreLayers = ~(1 << 10 | 1 << 9 | 1 << 8 | 1 << 3); //ignore player
+		//Public Functions
+		public void PlayAnimation(string targetAnim)
+		{
+			anim.CrossFade(targetAnim, 0.2f);
 		}
 	}
+	[CreateAssetMenu(menuName = "Characters/Sis/Sis State")]
+	public class SisState : State<Sis> { }
 }

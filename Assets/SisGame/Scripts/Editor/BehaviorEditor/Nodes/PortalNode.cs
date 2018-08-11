@@ -2,28 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using SIS.Characters;
+using SIS.States;
 
-
-namespace SA.BehaviorEditor
+namespace SIS.BehaviorEditor
 {
 	[CreateAssetMenu(menuName = "Editor/Nodes/Portal Node")]
-	public class PortalNode : DrawNode
+	public class PortalNode<C> : DrawNode<C> where C : Character
 	{
 
-		public override void DrawCurve(BaseNode b)
+		public override void DrawCurve(BaseNode<C> b)
 		{
 
 		}
 
-		public override void DrawWindow(BaseNode b)
+		public override void DrawWindow(BaseNode<C> b)
 		{
-			b.stateRef.currentState = (State)EditorGUILayout.ObjectField(b.stateRef.currentState, typeof(State), false);
+			b.stateRef.currentState = (State<C>)EditorGUILayout.ObjectField(b.stateRef.currentState, typeof(State<C>), false);
 			b.isAssigned = b.stateRef.currentState != null;
 
 			if (b.stateRef.previousState != b.stateRef.currentState)
 			{
 				b.stateRef.previousState = b.stateRef.currentState;
-				BehaviorEditor.forceSetDirty = true;
+				BehaviorEditor<C>.forceSetDirty = true;
 			}
 		}
 	}

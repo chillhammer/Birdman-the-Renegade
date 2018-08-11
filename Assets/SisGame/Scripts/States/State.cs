@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SIS.Characters;
+using System;
 
 namespace SIS.States
 {
@@ -13,24 +14,27 @@ namespace SIS.States
         public StateActions<C>[] onEnter;
         public StateActions<C>[] onExit;
 
+		public StateMachine<C> stateMachine;
+
         public int idCount;
+
 		[SerializeField]
-        public List<Transition<M>> transitions = new List<Transition<M>>();
+        public List<Transition<C>> transitions = new List<Transition<C>>();
 
 		#region Enter State
-		public void OnEnter(M owner)
+		public void OnEnter(C owner)
         {
             ExecuteActions(owner, onEnter);
         }
 		#endregion
 
 		#region Update State
-		public void FixedTick(M owner)
+		public void FixedTick(C owner)
 		{
 			ExecuteActions(owner, onFixed);
 		}
 
-        public void Tick(M owner)
+        public void Tick(C owner)
         {
             ExecuteActions(owner, onUpdate);
             CheckTransitions(owner);
@@ -38,14 +42,14 @@ namespace SIS.States
 		#endregion
 
 		#region Exit State
-		public void OnExit(M states)
+		public void OnExit(C owner)
         {
-            ExecuteActions(states, onExit);
+            ExecuteActions(owner, onExit);
         }
 		#endregion
 
 		//Helper Functions
-		public void CheckTransitions(M owner)
+		public void CheckTransitions(C owner)
         {
             for (int i = 0; i < transitions.Count; i++)
             {
@@ -56,16 +60,16 @@ namespace SIS.States
                 {
                     if (transitions[i].targetState != null)
                     {
-						owner.currentState = transitions[i].targetState;
+						stateMachine.currentState = transitions[i].targetState;
                         OnExit(owner);
-						owner.currentState.OnEnter(owner);
+						stateMachine.currentState.OnEnter(owner);
                     }
                     return;
                 }
             }
         }
         
-        public void ExecuteActions(M owner, StateActions<M>[] actions)
+        public void ExecuteActions(C owner, StateActions<C>[] actions)
         {
             for (int i = 0; i < actions.Length; i++)
             {
@@ -74,16 +78,16 @@ namespace SIS.States
             }
         }
 
-        public Transition AddTransition()
+        public Transition<C> AddTransition()
         {
-            Transition retVal = new Transition();
+            Transition<C> retVal = new Transition<C>();
             transitions.Add(retVal);
             retVal.id = idCount;
             idCount++;
             return retVal;
         }
 
-        public Transition GetTransition(int id)
+        public Transition<C> GetTransition(int id)
         {
             for (int i = 0; i < transitions.Count; i++)
             {
@@ -96,7 +100,7 @@ namespace SIS.States
 
 		public void RemoveTransition(int id)
 		{
-			Transition t = GetTransition(id);
+			Transition<C> t = GetTransition(id);
 			if (t != null)
 				transitions.Remove(t);
 		}

@@ -1,18 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SIS.Characters;
 
 namespace SIS.States.Actions
 {
 	//Decided action based on bool
 	[CreateAssetMenu(menuName = "Actions/State Actions/Switcher")]
-	public class StateActionSwitcher<M> : StateActions<M> where M : StateMachine
+	public class StateActionSwitcher<C> : StateActions<C> where C : Character
 	{
 		public SO.BoolVariable targetBool;
-		public StateActions<M> onFalseAction;
-		public StateActions<M> onTrueAction;
+		public StateActions<C> onFalseAction;
+		public StateActions<C> onTrueAction;
 
-		public override void Execute(M owner)
+		public override void Execute(C owner)
 		{
 			if (targetBool.value)
 			{

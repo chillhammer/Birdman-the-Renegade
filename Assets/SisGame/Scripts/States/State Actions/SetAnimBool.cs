@@ -1,16 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SIS.Characters;
 
 namespace SIS.States.Actions
 {
 	[CreateAssetMenu(menuName = "Actions/State Actions/Set Animation Bool")]
-	public class SetAnimBool : StateActions<StateMachine>
+	public class SetAnimBool<C> : StateActions<C> where C : Character
 	{
 		public string targetBool;
 		public bool status;
 
-		public override void Execute(StateMachine owner)
+		public override void Execute(C owner)
 		{
 			if (owner.anim == null)
 			{

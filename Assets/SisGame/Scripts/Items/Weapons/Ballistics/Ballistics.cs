@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using SIS.States;
+using SIS.Characters;
 
 namespace SIS.Items.Weapons
 {
@@ -7,6 +7,6 @@ namespace SIS.Items.Weapons
 	{
 		public LayerMask ignoreLayers;
 
-		public abstract void Execute(StateMachine owner, Weapon weapon, Vector3 intendedDirection);
+		public abstract void Execute(Character owner, Weapon weapon, Vector3 intendedDirection);
 	}
 }

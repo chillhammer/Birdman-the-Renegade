@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SIS.Characters;
 
 namespace SIS.States.Actions
 {
 	[CreateAssetMenu(menuName = "States/State Actions/State Action Composite")]
-	public class StateActionComposite<M> : StateActions<M> where M : StateMachine
+	public class StateActionComposite<C> : StateActions<C> where C : Character
 	{
-		public StateActions<M>[] actions;
+		public StateActions<C>[] actions;
 
-		public override void Execute(M owner)
+		public override void Execute(C owner)
 		{
 			if (actions == null)
 				return;

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using SIS.States;
+using SIS.Characters;
 
 namespace SIS.Items.Weapons
 {
@@ -9,7 +9,7 @@ namespace SIS.Items.Weapons
 	[CreateAssetMenu(menuName = "Items/Ballistics/Ray")]
 	public class RayBallistics : Ballistics
 	{
-		public override void Execute(StateMachine owner, Weapon weapon, Vector3 intendedDirection)
+		public override void Execute(Character owner, Weapon weapon, Vector3 intendedDirection)
 		{
 			Vector3 origin = weapon.runtime.modelInstance.transform.position;
 			Vector3 dir = intendedDirection;

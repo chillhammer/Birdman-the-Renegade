@@ -4,8 +4,9 @@ using UnityEngine;
 using SA;
 using UnityEditor;
 using UnityEditorInternal;
+using SIS.States;
 
-namespace SA.CustomUI
+namespace SIS.CustomUI
 {
 	[CustomEditor(typeof(State))]
 	public class StateGUI : Editor

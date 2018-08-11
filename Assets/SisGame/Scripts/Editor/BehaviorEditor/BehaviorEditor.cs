@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using SIS.Characters;
 
-namespace SA.BehaviorEditor
+namespace SIS.BehaviorEditor
 {
-    public class BehaviorEditor : EditorWindow
+    public class BehaviorEditor<C> : EditorWindow where C : Character
     {
 
         #region Variables

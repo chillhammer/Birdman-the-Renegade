@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using SIS.Characters;
+using SIS.States;
 
-namespace SA.BehaviorEditor
+namespace SIS.BehaviorEditor
 {
     [System.Serializable]
-    public class BaseNode 
+    public class BaseNode<C> where C : Character
     {
         public int id;
-        public DrawNode drawNode;
+        public DrawNode<C> drawNode;
         public Rect windowRect;
         public string windowTitle;
         public int enterNode;
@@ -28,9 +30,9 @@ namespace SA.BehaviorEditor
         public bool previousCollapse;
 
         [SerializeField]
-        public StateNodeReferences stateRef;
+        public StateNodeReferences<C> stateRef;
         [SerializeField]
-        public TransitionNodeReferences transRef;
+        public TransitionNodeReferences<C> transRef;
 
         public void DrawWindow()
         {
@@ -51,12 +53,12 @@ namespace SA.BehaviorEditor
     }
 
     [System.Serializable]
-    public class StateNodeReferences
+    public class StateNodeReferences<C> where C : Character
     { 
     //    [HideInInspector]
-        public State currentState;
+        public State<C> currentState;
         [HideInInspector]
-        public State previousState;
+        public State<C> previousState;
 		public SerializedObject serializedState;
 	    public ReorderableList onFixedList;
 		public ReorderableList onUpdateList;
@@ -65,10 +67,10 @@ namespace SA.BehaviorEditor
 	}
 
 	[System.Serializable]
-    public class TransitionNodeReferences
+    public class TransitionNodeReferences<C> where C : Character
     {
         [HideInInspector]
-        public Condition previousCondition;
+        public Condition<C> previousCondition;
         public int transitionId;
     }
 }

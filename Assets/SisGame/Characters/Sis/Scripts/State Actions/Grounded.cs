@@ -10,6 +10,7 @@ namespace SIS.Characters.Sis
 	public class StayGrounded : StateActions<Sis>
 	{
 		public float snapRange = 0.7f; //Up to dist away to snap to ground
+		public LayerMask ignoreLayers;
 		public override void Execute(Sis owner)
 		{
 			Vector3 origin = owner.mTransform.position;
@@ -17,7 +18,7 @@ namespace SIS.Characters.Sis
 			Vector3 dir = -Vector3.up;
 			float dist = snapRange * 2; //Checks After origin has been pushed up
 			RaycastHit hit;
-			if (Physics.Raycast(origin, dir, out hit, dist, owner.ignoreLayers))
+			if (Physics.Raycast(origin, dir, out hit, dist, ~ignoreLayers))
 			{
 				Vector3 targetPosition = hit.point;
 				targetPosition.x = owner.mTransform.position.x;

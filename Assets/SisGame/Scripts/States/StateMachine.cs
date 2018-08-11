@@ -5,56 +5,37 @@ using SIS.Characters;
 
 namespace SIS.States
 {
-	[DisallowMultipleComponent]
-    public abstract class StateMachine<C> : MonoBehaviour where C : Character
+    public class StateMachine<C> where C : Character
     {
-        public State<c> currentState;
 
-
-        [HideInInspector]
-        public float delta;
-        [HideInInspector]
-        public Transform mTransform;
-		[HideInInspector]
-		public Rigidbody rigid;
-		[HideInInspector]
-		public Animator anim;
+        public State<C> currentState;
+		public C owner;
 
 		public StateActions<C> initActionBatch;
+		public float delta;
 
-        protected void Start()
-        {
-            mTransform = this.transform;
-			rigid = GetComponent<Rigidbody>();
-			anim = GetComponentInChildren<Animator>();
+		public void Init()
+		{
+			initActionBatch.Execute(owner);
+		}
 
-			initActionBatch.Execute(this);
-
-			
-			
-        }
-
-		private void FixedUpdate()
+		//Run Logic for Current State
+		public void FixedTick()
 		{
 			delta = Time.fixedDeltaTime;
 			if (currentState != null)
 			{
-				currentState.FixedTick(this);
+				currentState.FixedTick(owner);
 			}
 		}
 
-		private void Update()
-        {
+		public void Tick()
+		{
 			delta = Time.deltaTime;
 			if (currentState != null)
-            {
-                currentState.Tick(this);
-            }
-        }
-
-		public void PlayAnimation(string targetAnim)
-		{
-			anim.CrossFade(targetAnim, 0.2f);
+			{
+				currentState.Tick(owner);
+			}
 		}
     }
 }
