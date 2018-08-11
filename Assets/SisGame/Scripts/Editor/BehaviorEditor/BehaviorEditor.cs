@@ -8,7 +8,7 @@ using SIS.Characters;
 
 namespace SIS.BehaviorEditor
 {
-    public class BehaviorEditor<C> : EditorWindow where C : Character
+    public abstract class BehaviorEditor<C> : EditorWindow where C : Character
     {
 
         #region Variables
@@ -77,15 +77,17 @@ namespace SIS.BehaviorEditor
 				return;
 			}
 
+			/*
 			if (Selection.activeTransform != null)
 			{
-				currentStateManager = Selection.activeTransform.GetComponentInChildren<StateMachine<C>>();
+				currentStateManager = Selection.activeTransform.GetComponentInChildren<C>();
 				if (prevStateManager != currentStateManager)
 				{
 					prevStateManager = currentStateManager;
 					Repaint();
 				}
 			}
+			*/
 
 			Event e = Event.current;
             mousePosition = e.mousePosition;
@@ -160,7 +162,6 @@ namespace SIS.BehaviorEditor
 
 					if (b.drawNode is StateNode<C>)
 					{
-						Debug.Log("drawing state node");
 						if (currentStateManager != null && b.stateRef.currentState == currentStateManager.currentState)
 						{
 							b.windowRect = GUI.Window(i, b.windowRect,
@@ -361,9 +362,6 @@ namespace SIS.BehaviorEditor
             {
                 case UserActions.addState:
                     settings.AddNodeOnGraph(settings.stateNode, 200, 100, "State", mousePosition);
-					Debug.Log("Added State Node");
-					Debug.Log("Settings Type is " + settings.GetType().Name);
-					Debug.Log("Type of State Node from Settings: " + settings.stateNode.GetType().Name);
                     break;
 				case UserActions.makePortal:
 					settings.AddNodeOnGraph(settings.portalNode, 100, 80, "Portal", mousePosition);

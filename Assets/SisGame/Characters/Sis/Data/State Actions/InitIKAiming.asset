@@ -8,7 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: SisBehaviorGraph
-  m_EditorClassIdentifier: Assembly-CSharp-Editor:SIS.Characters.Sis:SisBehaviorGraph
-  idCount: 65
+  m_Script: {fileID: 11500000, guid: 9083cf7844a469846ac0da385fe8f65c, type: 3}
+  m_Name: InitIKAiming
+  m_EditorClassIdentifier: 

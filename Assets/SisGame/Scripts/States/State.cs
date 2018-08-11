@@ -6,7 +6,7 @@ using System;
 
 namespace SIS.States
 {
-    [CreateAssetMenu]
+    //[CreateAssetMenu]
     public class State<C> : ScriptableObject where C : Character
     {
     	public StateActions<C>[] onFixed;
@@ -72,6 +72,7 @@ namespace SIS.States
         
         public void ExecuteActions(C owner, StateActions<C>[] actions)
         {
+			
             for (int i = 0; i < actions.Length; i++)
             {
                 if (actions[i] != null)

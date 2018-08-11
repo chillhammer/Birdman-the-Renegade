@@ -10,12 +10,16 @@ namespace SIS.Characters.Sis
 	public class Sis : Character
 	{
 		#region StateMachine Setup
-		private StateMachine<Sis> stateMachine = new StateMachine<Sis>();
 		public float delta { get { return stateMachine.delta; } }
+		[SerializeField] private SisState startingState;
+		[SerializeField] private SisStateActions initActionsBatch;
+
+		public StateMachine<Sis> stateMachine;
+
 		private new void Start()
 		{
 			base.Start();
-			stateMachine.Init();
+			stateMachine = new StateMachine<Sis>(this, startingState, initActionsBatch);
 
 		}
 		//Run State Machine Logic

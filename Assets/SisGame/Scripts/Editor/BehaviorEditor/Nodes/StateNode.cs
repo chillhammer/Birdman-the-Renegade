@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
-using SA;
-using System;
-using System.IO;
 using SIS.Characters;
 using SIS.States;
 

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using SO;
+﻿using UnityEngine;
 
-namespace SA
+namespace SO
 {
     public class AssignTransform : MonoBehaviour
     {

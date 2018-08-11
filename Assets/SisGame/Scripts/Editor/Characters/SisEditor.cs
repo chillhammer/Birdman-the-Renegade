@@ -17,7 +17,6 @@ namespace SIS.Characters.Sis
 
 		protected override void OnEnable()
 		{
-			Debug.Log("Attempting to find Settings");
 			SisEditorSettings editorSettings = Resources.Load("SisEditorSettings") as SisEditorSettings;
 			editorSettings.SetParentNodes();
 			settings = editorSettings;

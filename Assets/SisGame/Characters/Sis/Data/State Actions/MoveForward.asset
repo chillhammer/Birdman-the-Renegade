@@ -8,7 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: SisBehaviorGraph
-  m_EditorClassIdentifier: Assembly-CSharp-Editor:SIS.Characters.Sis:SisBehaviorGraph
-  idCount: 65
+  m_Script: {fileID: 11500000, guid: 4333022e343d5684181519fbeab44878, type: 3}
+  m_Name: MoveForward
+  m_EditorClassIdentifier: 
+  movementSpeed: 4
+  movementDrag: 4
+  crouchSpeed: 2

@@ -6,7 +6,7 @@ using SIS.Characters;
 namespace SIS.States.Actions
 {
 	//Decided action based on bool
-	[CreateAssetMenu(menuName = "Actions/State Actions/Switcher")]
+	//[CreateAssetMenu(menuName = "Actions/State Actions/Switcher")]
 	public class StateActionSwitcher<C> : StateActions<C> where C : Character
 	{
 		public SO.BoolVariable targetBool;

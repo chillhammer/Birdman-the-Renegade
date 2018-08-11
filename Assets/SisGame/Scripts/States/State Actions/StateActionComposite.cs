@@ -5,7 +5,7 @@ using SIS.Characters;
 
 namespace SIS.States.Actions
 {
-	[CreateAssetMenu(menuName = "States/State Actions/State Action Composite")]
+	//[CreateAssetMenu(menuName = "States/State Actions/State Action Composite")]
 	public class StateActionComposite<C> : StateActions<C> where C : Character
 	{
 		public StateActions<C>[] actions;

@@ -21,6 +21,5 @@ namespace SIS.Managers
 			}
 		}
 
-		//CharacterStateManager
 	}
 }

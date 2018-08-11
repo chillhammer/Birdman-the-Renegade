@@ -22,7 +22,7 @@ namespace SIS.Actions.Input
 
 		public SO.TransformVariable cameraTransform;
 		public SO.TransformVariable pivotTransform;
-		public SO.SisVariable playerState;
+		public Characters.Sis.SisVariable playerState;
 
 
 		public override void Execute()

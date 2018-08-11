@@ -5,7 +5,7 @@ using SIS.Characters;
 
 namespace SIS.States.Actions
 {
-	[CreateAssetMenu(menuName = "Actions/State Actions/Set Animation Bool")]
+	//[CreateAssetMenu(menuName = "Actions/State Actions/Set Animation Bool")]
 	public class SetAnimBool<C> : StateActions<C> where C : Character
 	{
 		public string targetBool;
