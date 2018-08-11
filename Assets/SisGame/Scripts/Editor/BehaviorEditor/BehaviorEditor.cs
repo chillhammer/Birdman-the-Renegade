@@ -158,11 +158,6 @@ namespace SIS.BehaviorEditor
                 {
 					BaseNode<C> b = settings.currentGraph.windows[i];
 
-					Debug.Log(b.GetType().Name);
-
-					if (b.drawNode is Characters.Sis.SisStateNode)
-						Debug.Log("drawing SIS state node");
-
 					if (b.drawNode is StateNode<C>)
 					{
 						Debug.Log("drawing state node");
@@ -367,7 +362,8 @@ namespace SIS.BehaviorEditor
                 case UserActions.addState:
                     settings.AddNodeOnGraph(settings.stateNode, 200, 100, "State", mousePosition);
 					Debug.Log("Added State Node");
-					Debug.Log("Type of State Node from Settings: " + settings.stateNode);
+					Debug.Log("Settings Type is " + settings.GetType().Name);
+					Debug.Log("Type of State Node from Settings: " + settings.stateNode.GetType().Name);
                     break;
 				case UserActions.makePortal:
 					settings.AddNodeOnGraph(settings.portalNode, 100, 80, "Portal", mousePosition);
