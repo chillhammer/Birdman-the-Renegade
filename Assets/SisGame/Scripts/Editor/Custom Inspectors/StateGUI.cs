@@ -5,22 +5,23 @@ using SA;
 using UnityEditor;
 using UnityEditorInternal;
 using SIS.States;
+using SIS.Characters;
 
 namespace SIS.CustomUI
 {
-	[CustomEditor(typeof(State))]
-	public class StateGUI : Editor
+	//[CustomEditor(typeof(State<C>))]
+	public class StateGUI<C> : Editor where C : Character
 	{
-		SerializedObject serializedState;
-		ReorderableList onFixedList;
-		ReorderableList onUpdateList;
-		ReorderableList onEnterList;
-		ReorderableList onExitList;
-		ReorderableList Transitions;
+		protected SerializedObject serializedState;
+		protected ReorderableList onFixedList;
+		protected ReorderableList onUpdateList;
+		protected ReorderableList onEnterList;
+		protected ReorderableList onExitList;
+		protected ReorderableList Transitions;
 
-		bool showDefaultGUI = false;
-		bool showActions = true;
-		bool showTransitions = true;
+		protected bool showDefaultGUI = false;
+		protected bool showActions = true;
+		protected bool showTransitions = true;
 
 		private void OnEnable()
 		{
@@ -66,9 +67,9 @@ namespace SIS.CustomUI
 			serializedState.ApplyModifiedProperties();
 		}
 
-		void SetupReordableLists()
+		protected void SetupReordableLists()
 		{
-			State curState = (State)target;
+			State<C> curState = (State<C>)target;
 			serializedState = new SerializedObject(curState);
 			onFixedList = new ReorderableList(serializedState,serializedState.FindProperty("onFixed"), true, true, true, true);
 			onUpdateList = new ReorderableList(serializedState,serializedState.FindProperty("onUpdate"), true, true, true, true);
@@ -83,7 +84,7 @@ namespace SIS.CustomUI
 			HandleTransitionReordable(Transitions, "Condition --> New State");
 		}
 
-		void HandleReordableList(ReorderableList list, string targetName)
+		protected void HandleReordableList(ReorderableList list, string targetName)
 		{
 			list.drawHeaderCallback = (Rect rect) =>
 			{
@@ -97,7 +98,7 @@ namespace SIS.CustomUI
 			};
 		}
 
-		void HandleTransitionReordable(ReorderableList list, string targetName)
+		protected void HandleTransitionReordable(ReorderableList list, string targetName)
 		{
 			list.drawHeaderCallback = (Rect rect) =>
 			{

@@ -6,7 +6,7 @@ using SIS.States;
 namespace SIS.Characters.Sis
 {
 	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/Check Aiming")]
-	public class CheckAiming : Condition<Sis>
+	public class CheckAiming : SisCondition
 	{
 		public bool reversed;
 

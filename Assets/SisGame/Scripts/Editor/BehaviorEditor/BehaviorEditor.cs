@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using SIS.States;
 using SIS.Characters;
+
 
 namespace SIS.BehaviorEditor
 {
@@ -12,44 +14,46 @@ namespace SIS.BehaviorEditor
         #region Variables
         Vector3 mousePosition;
         bool clickedOnWindow;
-        BaseNode selectedNode;
+        protected BaseNode<C> selectedNode;
 
-        public static EditorSettings settings;
+        public static EditorSettings<C> settings;
         int transitFromId;
         Rect mouseRect = new Rect(0, 0, 1, 1);
-        Rect all = new Rect(-5, -5, 10000, 10000);
-        GUIStyle style;
-		GUIStyle activeStyle;
+        protected Rect all = new Rect(-5, -5, 10000, 10000);
+        protected GUIStyle style;
+		protected GUIStyle activeStyle;
 		Vector2 scrollPos;
-		static BehaviorEditor editor;
-		public static StateManager currentStateManager;
+		protected static BehaviorEditor<C> editor;
+		public static StateMachine<C> currentStateManager;
 		public static bool forceSetDirty;
-		static StateManager prevStateManager;
-		static State previousState;
+		static StateMachine<C> prevStateManager;
+		protected static State<C> previousState;
 
 
 		public enum UserActions
         {
             addState,addTransitionNode,deleteNode,commentNode,makeTransition,makePortal
         }
-        #endregion
+		#endregion
 
-        #region Init
-        [MenuItem("Behavior Editor/Editor")]
+		#region Init
+		//[MenuItem("Behavior Editor/Editor")]
+		/*
         static void ShowEditor()
         {
-            editor = EditorWindow.GetWindow<BehaviorEditor>();
+            editor = EditorWindow.GetWindow<BehaviorEditor<C>>();
             editor.minSize = new Vector2(800, 600);
-        
         }
+		*/
 
-        private void OnEnable()
-        {
-            settings = Resources.Load("EditorSettings") as EditorSettings;
-            style = settings.skin.GetStyle("window");
+		protected virtual void OnEnable()
+		{
+			//Debug.Log("Settings is of type: " + settings.GetType().Name);
+			settings = Resources.Load("EditorSettings") as EditorSettings<C>;
+			style = settings.skin.GetStyle("window");
 			activeStyle = settings.activeSkin.GetStyle("window");
-
 		}
+
 		#endregion
 
 		private void Update()
@@ -67,9 +71,15 @@ namespace SIS.BehaviorEditor
 		#region GUI Methods
 		private void OnGUI()
         {
+			if (settings == null)
+			{
+				Debug.Log("Settings is null in OnGui");
+				return;
+			}
+
 			if (Selection.activeTransform != null)
 			{
-				currentStateManager = Selection.activeTransform.GetComponentInChildren<StateManager>();
+				currentStateManager = Selection.activeTransform.GetComponentInChildren<StateMachine<C>>();
 				if (prevStateManager != currentStateManager)
 				{
 					prevStateManager = currentStateManager;
@@ -94,8 +104,11 @@ namespace SIS.BehaviorEditor
 
 			if (GUI.changed)
 			{
-				settings.currentGraph.DeleteWindowsThatNeedTo();
-				Repaint();
+				if (settings.currentGraph != null)
+				{
+					settings.currentGraph.DeleteWindowsThatNeedTo();
+					Repaint();
+				}
 			}
 
             if(settings.makeTransition)
@@ -115,7 +128,7 @@ namespace SIS.BehaviorEditor
 
 				for (int i = 0; i < settings.currentGraph.windows.Count; i++)
 				{
-					BaseNode n = settings.currentGraph.windows[i];
+					BaseNode<C> n = settings.currentGraph.windows[i];
 					if(n.stateRef.currentState != null)
 						EditorUtility.SetDirty(n.stateRef.currentState);
 			
@@ -125,28 +138,34 @@ namespace SIS.BehaviorEditor
 			
 		}
 
-		void DrawWindows()
+		protected virtual void DrawWindows()
         {
 			GUILayout.BeginArea(all, style);
 		
 			BeginWindows();
             EditorGUILayout.LabelField(" ", GUILayout.Width(100));
             EditorGUILayout.LabelField("Assign Graph:", GUILayout.Width(100));
-            settings.currentGraph = (BehaviorGraph)EditorGUILayout.ObjectField(settings.currentGraph, typeof(BehaviorGraph), false, GUILayout.Width(200));
+            settings.currentGraph = (BehaviorGraph<C>)EditorGUILayout.ObjectField(settings.currentGraph, typeof(BehaviorGraph<C>), false, GUILayout.Width(200));
 
 			if (settings.currentGraph != null)
             {
-                foreach (BaseNode n in settings.currentGraph.windows)
+                foreach (BaseNode<C> n in settings.currentGraph.windows)
                 {
                     n.DrawCurve();
                 }
 
                 for (int i = 0; i < settings.currentGraph.windows.Count; i++)
                 {
-					BaseNode b = settings.currentGraph.windows[i];
+					BaseNode<C> b = settings.currentGraph.windows[i];
 
-					if (b.drawNode is StateNode)
+					Debug.Log(b.GetType().Name);
+
+					if (b.drawNode is Characters.Sis.SisStateNode)
+						Debug.Log("drawing SIS state node");
+
+					if (b.drawNode is StateNode<C>)
 					{
+						Debug.Log("drawing state node");
 						if (currentStateManager != null && b.stateRef.currentState == currentStateManager.currentState)
 						{
 							b.windowRect = GUI.Window(i, b.windowRect,
@@ -172,7 +191,7 @@ namespace SIS.BehaviorEditor
 
 		}
 
-		void DrawNodeWindow(int id)
+		protected void DrawNodeWindow(int id)
         {
             settings.currentGraph.windows[id].DrawWindow();
             GUI.DragWindow();
@@ -180,6 +199,11 @@ namespace SIS.BehaviorEditor
 
         void UserInput(Event e)
         {
+			if (settings == null)
+			{
+				Debug.Log("Settings is null on UserInput");
+				return;
+			}
             if (settings.currentGraph == null)
                 return;
 
@@ -248,15 +272,15 @@ namespace SIS.BehaviorEditor
 
             if(clickedOnWindow)
             {
-                if(selectedNode.drawNode is StateNode || selectedNode.drawNode is PortalNode)
+                if(selectedNode.drawNode is StateNode<C> || selectedNode.drawNode is PortalNode<C>)
                 {
                     if(selectedNode.id != transitFromId)
                     {
-                        BaseNode transNode = settings.currentGraph.GetNodeWithIndex(transitFromId);
+                        BaseNode<C> transNode = settings.currentGraph.GetNodeWithIndex(transitFromId);
                         transNode.targetNode = selectedNode.id;
 
-                        BaseNode enterNode = BehaviorEditor.settings.currentGraph.GetNodeWithIndex(transNode.enterNode);
-                        Transition transition = enterNode.stateRef.currentState.GetTransition(transNode.transRef.transitionId);
+                        BaseNode<C> enterNode = BehaviorEditor<C>.settings.currentGraph.GetNodeWithIndex(transNode.enterNode);
+                        Transition<C> transition = enterNode.stateRef.currentState.GetTransition(transNode.transRef.transitionId);
 
 						transition.targetState = selectedNode.stateRef.currentState;
                     }
@@ -288,7 +312,7 @@ namespace SIS.BehaviorEditor
         void ModifyNode(Event e)
         {
             GenericMenu menu = new GenericMenu();
-            if (selectedNode.drawNode is StateNode)
+            if (selectedNode.drawNode is StateNode<C>)
             {
                 if (selectedNode.stateRef.currentState != null)
                 {
@@ -304,13 +328,13 @@ namespace SIS.BehaviorEditor
                 menu.AddItem(new GUIContent("Delete"), false, ContextCallback, UserActions.deleteNode);
             }
 
-			if (selectedNode.drawNode is PortalNode)
+			if (selectedNode.drawNode is PortalNode<C>)
 			{
 				menu.AddSeparator("");
 				menu.AddItem(new GUIContent("Delete"), false, ContextCallback, UserActions.deleteNode);
 			}
 
-			if (selectedNode.drawNode is TransitionNode)
+			if (selectedNode.drawNode is TransitionNode<C>)
             {
                 if (selectedNode.isDuplicate || !selectedNode.isAssigned)
                 {
@@ -326,7 +350,7 @@ namespace SIS.BehaviorEditor
                 menu.AddItem(new GUIContent("Delete"), false, ContextCallback, UserActions.deleteNode);
             }
 
-            if (selectedNode.drawNode is CommentNode)
+            if (selectedNode.drawNode is CommentNode<C>)
             {
                 menu.AddSeparator("");
                 menu.AddItem(new GUIContent("Delete"), false, ContextCallback, UserActions.deleteNode);
@@ -341,7 +365,9 @@ namespace SIS.BehaviorEditor
             switch (a)
             {
                 case UserActions.addState:
-                    settings.AddNodeOnGraph(settings.stateNode, 200, 100, "State", mousePosition);                
+                    settings.AddNodeOnGraph(settings.stateNode, 200, 100, "State", mousePosition);
+					Debug.Log("Added State Node");
+					Debug.Log("Type of State Node from Settings: " + settings.stateNode);
                     break;
 				case UserActions.makePortal:
 					settings.AddNodeOnGraph(settings.portalNode, 100, 80, "Portal", mousePosition);
@@ -351,15 +377,15 @@ namespace SIS.BehaviorEditor
 
 					break;           
                 case UserActions.commentNode:
-                    BaseNode commentNode = settings.AddNodeOnGraph(settings.commentNode, 200, 100, "Comment", mousePosition);
+                    BaseNode<C> commentNode = settings.AddNodeOnGraph(settings.commentNode, 200, 100, "Comment", mousePosition);
                     commentNode.comment = "This is a comment";           
                     break;
                 default:
                     break;
                 case UserActions.deleteNode:
-					if (selectedNode.drawNode is TransitionNode)
+					if (selectedNode.drawNode is TransitionNode<C>)
 					{
-						BaseNode enterNode = settings.currentGraph.GetNodeWithIndex(selectedNode.enterNode);
+						BaseNode<C> enterNode = settings.currentGraph.GetNodeWithIndex(selectedNode.enterNode);
 						enterNode.stateRef.currentState.RemoveTransition(selectedNode.transRef.transitionId);
 					}
 
@@ -375,18 +401,18 @@ namespace SIS.BehaviorEditor
         
 		}
 
-		public static BaseNode AddTransitionNode(BaseNode enterNode, Vector3 pos)
+		public static BaseNode<C> AddTransitionNode(BaseNode<C> enterNode, Vector3 pos)
 		{
-			BaseNode transNode = settings.AddNodeOnGraph(settings.transitionNode, 200, 100, "Condition", pos);
+			BaseNode<C> transNode = settings.AddNodeOnGraph(settings.transitionNode, 200, 100, "Condition", pos);
 			transNode.enterNode = enterNode.id;
-			Transition t = settings.stateNode.AddTransition(enterNode);
+			Transition<C> t = settings.stateNode.AddTransition(enterNode);
 			transNode.transRef.transitionId = t.id;
 			return transNode;
 		}
 
-		public static BaseNode AddTransitionNodeFromTransition(Transition transition, BaseNode enterNode, Vector3 pos)
+		public static BaseNode<C> AddTransitionNodeFromTransition(Transition<C> transition, BaseNode<C> enterNode, Vector3 pos)
 		{
-			BaseNode transNode = settings.AddNodeOnGraph(settings.transitionNode, 200, 100, "Condition", pos);
+			BaseNode<C> transNode = settings.AddNodeOnGraph(settings.transitionNode, 200, 100, "Condition", pos);
 			transNode.enterNode = enterNode.id;
 			transNode.transRef.transitionId = transition.id;
 			return transNode;
@@ -416,7 +442,7 @@ namespace SIS.BehaviorEditor
             Handles.DrawBezier(startPos, endPos, startTan, endTan, curveColor, null, 3);
         }
 
-        public static void ClearWindowsFromList(List<BaseNode>l)
+        public static void ClearWindowsFromList(List<BaseNode<C>> l)
         {
             for (int i = 0; i < l.Count; i++)
             {

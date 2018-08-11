@@ -7,7 +7,7 @@ namespace SIS.Characters.Sis
 {
 	//Set Anim Float for Move Amount
 	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/Movement Animations")] 
-	public class MovementAnimations : StateActions<Sis>
+	public class MovementAnimations : SisStateActions
 	{
 		public string floatName;
 		public override void Execute(Sis owner)

@@ -7,7 +7,7 @@ namespace SIS.Characters.Sis
 {
 	//Stick to ground within range
 	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/StayGrounded")]
-	public class StayGrounded : StateActions<Sis>
+	public class StayGrounded : SisStateActions
 	{
 		public float snapRange = 0.7f; //Up to dist away to snap to ground
 		public LayerMask ignoreLayers;

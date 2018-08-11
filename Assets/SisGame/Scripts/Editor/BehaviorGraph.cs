@@ -1,21 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SIS.States;
+using SIS.Characters;
 
-
-namespace SA.BehaviorEditor
+public class abc { }
+namespace SIS.BehaviorEditor
 {
-    [CreateAssetMenu]
-    public class BehaviorGraph : ScriptableObject
+    //[CreateAssetMenu]
+    public class BehaviorGraph<C> : ScriptableObject where C : Character
     {
 	[SerializeField]
-        public List<BaseNode> windows = new List<BaseNode>();
+        public List<BaseNode<C>> windows = new List<BaseNode<C>>();
 	[SerializeField]
         public int idCount;
         List<int> indexToDelete = new List<int>();
 
         #region Checkers
-        public BaseNode GetNodeWithIndex(int index)
+        public BaseNode<C> GetNodeWithIndex(int index)
         {
             for (int i = 0; i < windows.Count; i++)
             {
@@ -30,7 +32,7 @@ namespace SA.BehaviorEditor
         {
             for (int i = 0; i < indexToDelete.Count; i++)
             {
-                BaseNode b = GetNodeWithIndex(indexToDelete[i]);
+                BaseNode<C> b = GetNodeWithIndex(indexToDelete[i]);
                 if(b != null)
                     windows.Remove(b);
             }
@@ -44,7 +46,7 @@ namespace SA.BehaviorEditor
 				indexToDelete.Add(index);
         }
 
-        public bool IsStateDuplicate(BaseNode b)
+        public bool IsStateDuplicate(BaseNode<C> b)
         {
             for (int i = 0; i < windows.Count; i++)
             {
@@ -59,9 +61,9 @@ namespace SA.BehaviorEditor
             return false;
         }
 
-        public bool IsTransitionDuplicate(BaseNode b)
+        public bool IsTransitionDuplicate(BaseNode<C> b)
         {
-            BaseNode enter = GetNodeWithIndex(b.enterNode);
+            BaseNode<C> enter = GetNodeWithIndex(b.enterNode);
             if (enter == null)
             {
                 Debug.Log("false");
@@ -69,7 +71,7 @@ namespace SA.BehaviorEditor
             }
             for (int i = 0; i < enter.stateRef.currentState.transitions.Count; i++)
             {
-                Transition t = enter.stateRef.currentState.transitions[i];
+                Transition<C> t = enter.stateRef.currentState.transitions[i];
                 if (t.condition == b.transRef.previousCondition && b.transRef.transitionId != t.id)
                 {
                     return true;

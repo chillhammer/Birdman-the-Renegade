@@ -8,7 +8,7 @@ namespace SIS.Characters.Sis
 {
 	// Rotate to move direction so you run in that direction. For non-aiming state
 	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/Rotate On Move Direction")]
-	public class RotateOnMoveDirection : StateActions<Sis>
+	public class RotateOnMoveDirection : SisStateActions
 	{
 		public float speed = 8;
 

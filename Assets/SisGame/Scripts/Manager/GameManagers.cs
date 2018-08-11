@@ -6,6 +6,7 @@ namespace SIS.Managers
 {
 	public static class GameManagers
 	{
+		//Allows for scriptable object resources to be used
 		static ResourcesManager resourceManager;
 		public static ResourcesManager ResourceManager
 		{
@@ -19,5 +20,7 @@ namespace SIS.Managers
 				return resourceManager;
 			}
 		}
+
+		//CharacterStateManager
 	}
 }

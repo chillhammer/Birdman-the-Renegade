@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: EditorSettings
+  m_EditorClassIdentifier: Assembly-CSharp-Editor:SIS.Characters.Sis:SisEditorSettings
+  makeTransition: 0
+  skin: {fileID: 11400000, guid: b750db4a2b680974ebfaab962eef1721, type: 2}
+  activeSkin: {fileID: 11400000, guid: 17716144abfbf0c47ae04e814fa9ad54, type: 2}
+  currentGraph: {fileID: 11400000, guid: 9de867dcd7610ee4a999bad87415663f, type: 2}
+  stateNode: {fileID: 11400000, guid: 52c39d9a0aee21547bfac984cdd2e530, type: 2}
+  portalNode: {fileID: 11400000, guid: 830026c216ea4324c9b1b070ec491aa2, type: 2}
+  transitionNode: {fileID: 11400000, guid: 325b43d676ae4ac47976bd799e7549e7, type: 2}
+  commentNode: {fileID: 11400000, guid: a2c1f13d712177642b1f192fa9f92012, type: 2}

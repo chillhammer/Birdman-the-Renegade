@@ -7,7 +7,7 @@ using SIS.States;
 
 namespace SIS.BehaviorEditor
 {
-	[CreateAssetMenu(menuName = "Editor/Nodes/Portal Node")]
+	//[CreateAssetMenu(menuName = "Editor/Nodes/Portal Node")]
 	public class PortalNode<C> : DrawNode<C> where C : Character
 	{
 

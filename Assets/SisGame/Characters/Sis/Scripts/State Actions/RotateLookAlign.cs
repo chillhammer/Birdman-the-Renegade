@@ -8,7 +8,7 @@ namespace SIS.Characters.Sis
 {
 	// Rotate to align with look direction
 	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/Rotate Align with Look Direction")]
-	public class RotateLookAlign : StateActions<Sis>
+	public class RotateLookAlign : SisStateActions
 	{
 		public float speed = 8;
 

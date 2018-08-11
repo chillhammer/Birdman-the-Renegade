@@ -7,7 +7,7 @@ namespace SIS.Characters.Sis
 {
 	//Move based on input move direction
 	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/Movement Aiming")]
-	public class MovementAiming : StateActions<Sis>
+	public class MovementAiming : SisStateActions
 	{
 		public float movementSpeed = 2;
 		public float movementDrag = 4;

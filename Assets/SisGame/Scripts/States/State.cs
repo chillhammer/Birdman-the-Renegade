@@ -14,6 +14,7 @@ namespace SIS.States
         public StateActions<C>[] onEnter;
         public StateActions<C>[] onExit;
 
+		[HideInInspector]
 		public StateMachine<C> stateMachine;
 
         public int idCount;
@@ -78,7 +79,7 @@ namespace SIS.States
             }
         }
 
-        public Transition<C> AddTransition()
+        public virtual Transition<C> AddTransition()
         {
             Transition<C> retVal = new Transition<C>();
             transitions.Add(retVal);
@@ -87,7 +88,7 @@ namespace SIS.States
             return retVal;
         }
 
-        public Transition<C> GetTransition(int id)
+        public virtual Transition<C> GetTransition(int id)
         {
             for (int i = 0; i < transitions.Count; i++)
             {
@@ -98,7 +99,7 @@ namespace SIS.States
             return null;
         }
 
-		public void RemoveTransition(int id)
+		public virtual void RemoveTransition(int id)
 		{
 			Transition<C> t = GetTransition(id);
 			if (t != null)

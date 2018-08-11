@@ -7,7 +7,7 @@ namespace SIS.Characters.Sis
 {
 	//This action creates the IKAiming Component
 	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/Init Actions/Init IK Aiming")]
-	public class InitIKAiming : StateActions<Sis>
+	public class InitIKAiming : SisStateActions
 	{
 		public override void Execute(Sis owner)
 		{

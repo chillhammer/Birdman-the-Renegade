@@ -6,7 +6,7 @@ namespace SIS.Characters.Sis
 {
 	//If Reloading, Reload
 	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/Handle Reloading")]
-	public class HandleReloading : StateActions<Sis>
+	public class HandleReloading : SisStateActions
 	{
 		public override void Execute(Sis owner)
 		{

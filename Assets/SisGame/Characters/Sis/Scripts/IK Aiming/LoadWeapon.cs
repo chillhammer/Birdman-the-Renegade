@@ -10,7 +10,7 @@ namespace SIS.Characters.Sis
 {
 	//Action that sets up weapon from inventory
 	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/Load Weapon")]
-	public class LoadWeapon : StateActions<Sis>
+	public class LoadWeapon : SisStateActions
 	{
 
 		public override void Execute(Sis owner)

@@ -8,7 +8,7 @@ namespace SIS.Characters.Sis
 {
 	//If Shooting, Shoot
 	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/Handle Shooting")]
-	public class HandleShooting : StateActions<Sis>
+	public class HandleShooting : SisStateActions
 	{
 		public override void Execute(Sis owner)
 		{

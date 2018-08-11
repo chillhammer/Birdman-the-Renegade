@@ -6,14 +6,17 @@ using UnityEditorInternal;
 using SA;
 using System;
 using System.IO;
+using SIS.Characters;
+using SIS.States;
 
-namespace SA.BehaviorEditor
+namespace SIS.BehaviorEditor
 {
-    [CreateAssetMenu(menuName = "Editor/Nodes/State Node")]
-    public class StateNode : DrawNode
+    //[CreateAssetMenu(menuName = "Editor/Nodes/State Node")]
+    public class StateNode<C> : DrawNode<C> where C : Character
     {
-        public override void DrawWindow(BaseNode b)
+        public override void DrawWindow(BaseNode<C> b)
         {
+			
             if(b.stateRef.currentState == null)
             {
                 EditorGUILayout.LabelField("Add state to modify:");
@@ -32,7 +35,7 @@ namespace SA.BehaviorEditor
                 b.collapse = EditorGUILayout.Toggle(" ", b.collapse);
             }
 
-            b.stateRef.currentState = (State)EditorGUILayout.ObjectField(b.stateRef.currentState, typeof(State), false);
+            b.stateRef.currentState = (State<C>)EditorGUILayout.ObjectField(b.stateRef.currentState, typeof(State<C>), false);
 
             if(b.previousCollapse != b.collapse)
             {
@@ -42,7 +45,7 @@ namespace SA.BehaviorEditor
             if(b.stateRef.previousState != b.stateRef.currentState)
             {
                 //b.serializedState = null;
-                b.isDuplicate = BehaviorEditor.settings.currentGraph.IsStateDuplicate(b);
+                b.isDuplicate = BehaviorEditor<C>.settings.currentGraph.IsStateDuplicate(b);
 				b.stateRef.previousState = b.stateRef.currentState;
 
 				if (!b.isDuplicate)
@@ -56,10 +59,10 @@ namespace SA.BehaviorEditor
 					for (int i = 0; i < b.stateRef.currentState.transitions.Count; i++)
 					{
 						pos.y += i * 100;
-						BehaviorEditor.AddTransitionNodeFromTransition(b.stateRef.currentState.transitions[i], b, pos);
+						BehaviorEditor<C>.AddTransitionNodeFromTransition(b.stateRef.currentState.transitions[i], b, pos);
 					}
 
-					BehaviorEditor.forceSetDirty = true;
+					BehaviorEditor<C>.forceSetDirty = true;
 				}
 				
 			}
@@ -115,7 +118,7 @@ namespace SA.BehaviorEditor
             }
 		}
 
-		void SetupReordableLists(BaseNode b)
+		void SetupReordableLists(BaseNode<C> b)
 		{
 
 			b.stateRef.serializedState = new SerializedObject(b.stateRef.currentState);
@@ -144,12 +147,12 @@ namespace SA.BehaviorEditor
              };
         }
 
-        public override void DrawCurve(BaseNode b)
+        public override void DrawCurve(BaseNode<C> b)
         {
 
         }
 
-        public Transition AddTransition(BaseNode b)
+        public Transition<C> AddTransition(BaseNode<C> b)
         {
             return b.stateRef.currentState.AddTransition();
         }

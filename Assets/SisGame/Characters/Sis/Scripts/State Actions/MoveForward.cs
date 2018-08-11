@@ -7,7 +7,7 @@ namespace SIS.Characters.Sis
 {
 	//Handles Movement based on object transform direction
 	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/Move Forward")]
-	public class MoveForward : StateActions<Sis>
+	public class MoveForward : SisStateActions
 	{
 		public float movementSpeed = 2;
 		public float movementDrag = 4;
