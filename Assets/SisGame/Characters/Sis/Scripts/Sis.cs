@@ -83,24 +83,4 @@ namespace SIS.Characters.Sis
 			anim.CrossFade(targetAnim, 0.2f);
 		}
 	}
-	[CreateAssetMenu(menuName = "Characters/Sis/Sis State")]
-	public class SisState : State<Sis>
-	{
-		public new SisStateActions[] onFixed;
-		public new SisStateActions[] onUpdate;
-		public new SisStateActions[] onEnter;
-		public new SisStateActions[] onExit;
-
-		[SerializeField]
-		public new List<SisTransition> transitions = new List<SisTransition>();
-	}
-
-	//Allows to be shown in GUI since Unity is anti-generics in the inspector
-	public abstract class SisStateActions : StateActions<Sis> { }
-	public abstract class SisCondition : Condition<Sis> { }
-	[System.Serializable]
-	public class SisTransition : Transition<Sis> {
-		public new SisCondition condition;
-		public new SisState targetState;
-	}
 }

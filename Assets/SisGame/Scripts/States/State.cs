@@ -7,7 +7,7 @@ using System;
 namespace SIS.States
 {
     //[CreateAssetMenu]
-    public class State<C> : ScriptableObject where C : Character
+    public abstract class State<C> : ScriptableObject where C : Character
     {
     	public StateActions<C>[] onFixed;
         public StateActions<C>[] onUpdate;
@@ -22,6 +22,14 @@ namespace SIS.States
 		[SerializeField]
         public List<Transition<C>> transitions = new List<Transition<C>>();
 
+		//Polymorphism
+		protected abstract void SetParentActions();
+		private void Awake()
+		{
+			SetParentActions();
+		}
+
+
 		#region Enter State
 		public void OnEnter(C owner)
         {
@@ -35,7 +43,7 @@ namespace SIS.States
 			ExecuteActions(owner, onFixed);
 		}
 
-        public void Tick(C owner)
+        public virtual void Tick(C owner)
         {
             ExecuteActions(owner, onUpdate);
             CheckTransitions(owner);
@@ -72,7 +80,7 @@ namespace SIS.States
         
         public void ExecuteActions(C owner, StateActions<C>[] actions)
         {
-			
+			if (actions == null) return;
             for (int i = 0; i < actions.Length; i++)
             {
                 if (actions[i] != null)

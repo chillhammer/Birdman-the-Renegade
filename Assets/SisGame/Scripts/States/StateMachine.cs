@@ -17,6 +17,7 @@ namespace SIS.States
 		private StateMachine() {}
 		public StateMachine(C owner, State<C> startingState, StateActions<C> initActionBatch)
 		{
+			this.owner = owner;
 			currentState = startingState;
 			if (initActionBatch != null)
 			{

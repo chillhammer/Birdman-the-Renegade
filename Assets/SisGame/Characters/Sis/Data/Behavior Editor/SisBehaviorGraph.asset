@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: SisBehaviorGraph
   m_EditorClassIdentifier: Assembly-CSharp-Editor:SIS.Characters.Sis:SisBehaviorGraph
-  idCount: 65
+  idCount: 5

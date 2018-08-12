@@ -69,6 +69,7 @@ namespace SIS.CustomUI
 		protected void SetupReordableLists()
 		{
 			State<C> curState = (State<C>)target;
+			//Characters.Sis.SisState curState = (Characters.Sis.SisState)target;
 			serializedState = new SerializedObject(curState);
 			onFixedList = new ReorderableList(serializedState,serializedState.FindProperty("onFixed"), true, true, true, true);
 			onUpdateList = new ReorderableList(serializedState,serializedState.FindProperty("onUpdate"), true, true, true, true);
