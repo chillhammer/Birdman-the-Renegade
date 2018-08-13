@@ -7,11 +7,12 @@ namespace SIS.States.Actions
 {
 	//Decided action based on bool
 	//[CreateAssetMenu(menuName = "Actions/State Actions/Switcher")]
-	public class StateActionSwitcher<C> : StateActions<C> where C : Character
+	public class StateActionSwitcher<C, SA> : StateActions<C> where C : Character 
+															  where SA : StateActions<C>
 	{
 		public SO.BoolVariable targetBool;
-		public StateActions<C> onFalseAction;
-		public StateActions<C> onTrueAction;
+		public SA onFalseAction;
+		public SA onTrueAction;
 
 		public override void Execute(C owner)
 		{

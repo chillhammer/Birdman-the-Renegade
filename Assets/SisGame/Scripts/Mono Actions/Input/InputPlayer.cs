@@ -43,8 +43,8 @@ namespace SIS.Actions.Input
 				playerState.value.movementValues.vertical = vertical.value;
 				playerState.value.movementValues.moveAmount = moveAmount;
 				playerState.value.movementValues.moveDirection = moveDirection;
-				/*
 				playerState.value.isAiming = aimingButton.isPressed;
+				/*
 				playerState.value.isShooting = shootButton.isPressed;
 				//Crouch
 				if (crouchButton.isPressed)

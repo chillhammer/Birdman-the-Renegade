@@ -6,9 +6,10 @@ using SIS.Characters;
 namespace SIS.States.Actions
 {
 	//[CreateAssetMenu(menuName = "States/State Actions/State Action Composite")]
-	public class StateActionComposite<C> : StateActions<C> where C : Character
+	public class StateActionComposite<C, SA> : StateActions<C> where C : Character
+															   where SA : StateActions<C>
 	{
-		public StateActions<C>[] actions;
+		public SA[] actions;
 
 		public override void Execute(C owner)
 		{

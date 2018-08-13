@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontal: {fileID: 11400000, guid: a15e987a2f8b4274b972a17755f75b8f, type: 2}
   vertical: {fileID: 11400000, guid: 54826546bcf91b943836a441ad568380, type: 2}
-  aimingButton: {fileID: 0}
+  aimingButton: {fileID: 11400000, guid: 46f8de32eb7f1634195eaf8432eb8f92, type: 2}
   shootButton: {fileID: 0}
   crouchButton: {fileID: 0}
   reloadButton: {fileID: 0}
