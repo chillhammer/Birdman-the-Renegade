@@ -2,6 +2,7 @@
 using UnityEditor;
 using SIS.BehaviorEditor;
 
+
 namespace SIS.Characters.Sis
 {
 	//Since Generic Variables Cannot Be Shown in Inspector

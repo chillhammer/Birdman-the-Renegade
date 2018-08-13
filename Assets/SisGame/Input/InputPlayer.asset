@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c94fff59ac95049bdef3d29e35bf64, type: 3}
+  m_Name: InputPlayer
+  m_EditorClassIdentifier: 
+  horizontal: {fileID: 11400000, guid: a15e987a2f8b4274b972a17755f75b8f, type: 2}
+  vertical: {fileID: 11400000, guid: 54826546bcf91b943836a441ad568380, type: 2}
+  aimingButton: {fileID: 0}
+  shootButton: {fileID: 0}
+  crouchButton: {fileID: 0}
+  reloadButton: {fileID: 0}
+  moveAmount: 0
+  moveDirection: {x: 0, y: 0, z: 0}
+  cameraTransform: {fileID: 11400000, guid: 9d1babb12888d48458a6f457e3daec60, type: 2}
+  pivotTransform: {fileID: 11400000, guid: f948770e58dae564a932fe55e5620b01, type: 2}
+  playerState: {fileID: 11400000, guid: 7a5eaaf58a516004ead97e53823d534c, type: 2}

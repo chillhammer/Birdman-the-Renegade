@@ -48,11 +48,15 @@ namespace SIS.BehaviorEditor
 
 		protected virtual void OnEnable()
 		{
-			//Debug.Log("Settings is of type: " + settings.GetType().Name);
-			settings = Resources.Load("EditorSettings") as EditorSettings<C>;
+			LoadEditorSettings();
 			style = settings.skin.GetStyle("window");
 			activeStyle = settings.activeSkin.GetStyle("window");
 		}
+
+		/// <summary>
+		/// Loads ScriptableObject, sets parents node, and then set the variable 'settings'
+		/// </summary>
+		protected abstract void LoadEditorSettings();
 
 		#endregion
 

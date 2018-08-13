@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using SIS.States;
 
 namespace SIS.Characters.Sis
@@ -23,7 +24,7 @@ namespace SIS.Characters.Sis
 			parent.onFixed = onFixed;
 			parent.onEnter = onEnter;
 			parent.onExit = onExit;
-			//parent.transitions = transitions;
+			//parent.transitions = (List<Transition<Sis>>) transitions;
 		}
 
 		public override void Tick(Sis owner)

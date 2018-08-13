@@ -16,7 +16,7 @@ namespace SIS.Characters.Sis
 		public override void Execute(Sis owner)
 		{
 			//Handles Move Amount
-			float moveAmount = 1;// owner.movementValues.moveAmount;
+			float moveAmount = owner.movementValues.moveAmount;
 			float targetSpeed = (owner.isCrouching ? crouchSpeed : movementSpeed);
 
 			if (moveAmount > 0.1f)

@@ -8,14 +8,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: b0cffa1ad5f2c724f9115b5fd3ac6dff, type: 3}
   m_Name: SisEditorSettings
   m_EditorClassIdentifier: Assembly-CSharp-Editor:SIS.Characters.Sis:SisEditorSettings
   makeTransition: 0
-  skin: {fileID: 0}
-  activeSkin: {fileID: 0}
-  sisCurrentGraph: {fileID: 0}
-  sisStateNode: {fileID: 0}
-  sisPortalNode: {fileID: 0}
-  sisTransitionNode: {fileID: 0}
-  sisCommentNode: {fileID: 0}
+  skin: {fileID: 11400000, guid: b750db4a2b680974ebfaab962eef1721, type: 2}
+  activeSkin: {fileID: 11400000, guid: 17716144abfbf0c47ae04e814fa9ad54, type: 2}
+  sisCurrentGraph: {fileID: 11400000, guid: 9de867dcd7610ee4a999bad87415663f, type: 2}
+  sisStateNode: {fileID: 11400000, guid: 52c39d9a0aee21547bfac984cdd2e530, type: 2}
+  sisPortalNode: {fileID: 11400000, guid: 830026c216ea4324c9b1b070ec491aa2, type: 2}
+  sisTransitionNode: {fileID: 11400000, guid: 325b43d676ae4ac47976bd799e7549e7, type: 2}
+  sisCommentNode: {fileID: 11400000, guid: 9d002f85cb2b4ec488295e48cc517666, type: 2}
