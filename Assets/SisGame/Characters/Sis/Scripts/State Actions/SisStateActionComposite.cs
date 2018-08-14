@@ -4,6 +4,6 @@ using SIS.States.Actions;
 
 namespace SIS.Characters.Sis
 {
-	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/State Action Switcher")]
-	public class StateActionComposite : StateActionComposite<Sis, SisStateActions> { }
+	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/State Action Composite")]
+	public class SisStateActionComposite : StateActionComposite<Sis, SisStateActions> { }
 }

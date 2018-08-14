@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using SIS.States;
+using System.Linq;
 
 namespace SIS.Characters.Sis
 {
@@ -14,8 +15,8 @@ namespace SIS.Characters.Sis
 		public new SisStateActions[] onEnter;
 		public new SisStateActions[] onExit;
 
-		//[SerializeField]
-		//public new List<SisTransition> transitions = new List<SisTransition>();
+		[SerializeField]
+		public new List<SisTransition> transitions = new List<SisTransition>();
 
 		protected override void SetParentActions()
 		{
@@ -24,7 +25,7 @@ namespace SIS.Characters.Sis
 			parent.onFixed = onFixed;
 			parent.onEnter = onEnter;
 			parent.onExit = onExit;
-			//parent.transitions = (List<Transition<Sis>>) transitions;
+			parent.transitions = transitions.Cast<Transition<Sis>>().ToList();
 		}
 
 		public override void Tick(Sis owner)
@@ -40,7 +41,7 @@ namespace SIS.Characters.Sis
 	[System.Serializable]
 	public class SisTransition : Transition<Sis>
 	{
-		//public new SisCondition condition;
-		//public new SisState targetState;
+		public new SisCondition condition;
+		public new SisState targetState;
 	}
 }

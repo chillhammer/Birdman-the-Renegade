@@ -44,6 +44,11 @@ namespace SIS.Actions.Input
 				playerState.value.movementValues.moveAmount = moveAmount;
 				playerState.value.movementValues.moveDirection = moveDirection;
 				playerState.value.isAiming = aimingButton.isPressed;
+
+				playerState.value.movementValues.lookDirection =
+					Vector3.ProjectOnPlane(cameraTransform.value.forward, Vector3.up).normalized;
+				Ray ray = new Ray(pivotTransform.value.position, pivotTransform.value.forward);
+				playerState.value.movementValues.aimPosition = ray.GetPoint(100);
 				/*
 				playerState.value.isShooting = shootButton.isPressed;
 				//Crouch
@@ -60,12 +65,8 @@ namespace SIS.Actions.Input
 				}
 				reloadButton.targetBoolVariable.value = playerState.value.isReloading;
 
-				playerState.value.movementValues.lookDirection =
-					Vector3.ProjectOnPlane(cameraTransform.value.forward, Vector3.up).normalized;
-				Ray ray = new Ray(pivotTransform.value.position, pivotTransform.value.forward);
-				playerState.value.movementValues.aimPosition = ray.GetPoint(100);
 				*/
-				
+
 			}
         }
     }

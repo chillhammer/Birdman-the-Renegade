@@ -319,6 +319,7 @@ MonoBehaviour:
   player: {fileID: 11400000, guid: 7a5eaaf58a516004ead97e53823d534c, type: 2}
   crosshairSpreadVariable: {fileID: 11400000, guid: 0c3631c3f1147574389899b04cfa5411,
     type: 2}
+  isAiming: {fileID: 11400000, guid: dfc0bd553f313494a87022fdc9f484cd, type: 2}
   crosshairParts:
   - transform: {fileID: 224357680721470166}
     direction: {x: 0, y: 1}
@@ -330,9 +331,10 @@ MonoBehaviour:
     direction: {x: -1, y: 0}
   spreadSpeed: 3
   spreadMaxDist: 50
-  spreadMinDist: 10
-  mouseEmphasis: 0.5
-  movementEmphasis: 0.5
+  spreadMinDist: 12
+  mouseEmphasis: 15
+  movementEmphasis: 30
+  aimingEmphasisMultiplier: 0.4
 --- !u!114 &114496553015159860
 MonoBehaviour:
   m_ObjectHideFlags: 1

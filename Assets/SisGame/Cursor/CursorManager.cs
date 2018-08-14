@@ -13,6 +13,7 @@ namespace SIS.Managers
 		[SerializeField] private InputAxis mouseY;
 		[SerializeField] private Characters.Sis.SisVariable player;
 		[SerializeField] private SO.FloatVariable crosshairSpreadVariable;
+		[SerializeField] private SO.BoolVariable isAiming;
 
 		[SerializeField] CrosshairPart[] crosshairParts;
 		[SerializeField] private float spreadSpeed = 3;
@@ -22,6 +23,9 @@ namespace SIS.Managers
 		[SerializeField] private float mouseEmphasis = 0.5f;
 		[Range(0, 100)]
 		[SerializeField] private float movementEmphasis = 0.5f;
+		[Range(0, 1)]
+		[SerializeField] private float aimingEmphasisMultiplier;
+
 
 		float currentSpread;
 
@@ -50,7 +54,12 @@ namespace SIS.Managers
 			if (crosshairParts == null)
 				return;
 			float targetSpread = CalculateSpread();
-			currentSpread = Mathf.Lerp(currentSpread, targetSpread, spreadSpeed * Time.deltaTime);
+
+			//Limits spread if aiming
+			float aimingMult = 1;
+			if (isAiming.value) aimingMult = 1/ aimingEmphasisMultiplier;
+
+			currentSpread = Mathf.Lerp(currentSpread, targetSpread, spreadSpeed * aimingMult * Time.deltaTime);
 
 			foreach (CrosshairPart crosshair in crosshairParts)
 			{
@@ -68,7 +77,11 @@ namespace SIS.Managers
 
 			float rawSpread = mouseMovement * mouseEmphasis + movement * movementEmphasis;
 
-			return Mathf.Clamp(rawSpread, spreadMinDist, spreadMaxDist);
+			//Limits spread if aiming
+			float aimingMult = 1;
+			if (isAiming.value) aimingMult = aimingEmphasisMultiplier;
+
+			return Mathf.Clamp(rawSpread, spreadMinDist, spreadMaxDist) * aimingMult;
 		}
 
 		[System.Serializable]

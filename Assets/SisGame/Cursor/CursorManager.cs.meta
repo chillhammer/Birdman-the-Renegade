@@ -3,7 +3,12 @@ guid: 45f9d377f2aede141931c54e4a58ba84
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - mouseX: {fileID: 11400000, guid: aa18242b9cbcc3444840fdcd2e3cbebc, type: 2}
+  - mouseY: {fileID: 11400000, guid: 2003691ee2f98a4439717c39fe1bfa89, type: 2}
+  - player: {fileID: 11400000, guid: 7a5eaaf58a516004ead97e53823d534c, type: 2}
+  - crosshairSpreadVariable: {fileID: 11400000, guid: 0c3631c3f1147574389899b04cfa5411,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
