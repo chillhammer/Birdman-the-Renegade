@@ -6,12 +6,13 @@ using SIS.Characters;
 namespace SIS.States.Actions
 {
 	//[CreateAssetMenu(menuName = "Actions/State Actions/Set Animation Bool")]
-	public class SetAnimBool<C> : StateActions<C> where C : Character
+	public class SetAnimBool<C, SA> where C : Character
+									where SA : StateActions<C>
 	{
 		public string targetBool;
 		public bool status;
 
-		public override void Execute(C owner)
+		public void Execute(C owner)
 		{
 			if (owner.anim == null)
 			{

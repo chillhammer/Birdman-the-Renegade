@@ -422,6 +422,7 @@ Transform:
   - {fileID: 4795292332925510}
   - {fileID: 4698180293357634}
   - {fileID: 4600242005586538}
+  - {fileID: 4654354965280232}
   m_Father: {fileID: 4990168036774874}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -583,12 +584,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1752202853717960}
-  m_LocalRotation: {x: -0.760162, y: -0, z: -0, w: 0.64973354}
-  m_LocalPosition: {x: 0, y: -0.93, z: -0.16}
-  m_LocalScale: {x: 0.34, y: 0.34, z: 0.34}
+  m_LocalRotation: {x: -0.53751576, y: -0.53751564, z: 0.459431, w: 0.45943105}
+  m_LocalPosition: {x: 1.4959028, y: 0.009034269, z: 0.072431445}
+  m_LocalScale: {x: 0.3399999, y: 0.33999994, z: 0.33999994}
   m_Children: []
-  m_Father: {fileID: 4864459777295590}
-  m_RootOrder: 0
+  m_Father: {fileID: 4035627100327606}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -98.95699, y: 0, z: 0}
 --- !u!4 &4673597541458340
 Transform:
@@ -623,14 +624,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1038008882383420}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.9822769, z: -0, w: -0.18743542}
+  m_LocalPosition: {x: 0, y: -0.214, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4772185826925480}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -201.60599, z: 0}
 --- !u!4 &4756061723289528
 Transform:
   m_ObjectHideFlags: 1
@@ -711,8 +712,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4654354965280232}
+  m_Children: []
   m_Father: {fileID: 4772185826925480}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -800,7 +800,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!95 &95787136944826026
 Animator:
@@ -811,7 +811,7 @@ Animator:
   m_GameObject: {fileID: 1403974809701064}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 5bc7af03b0a888741b50079badbf1e5e, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 53c51df3b8630674fb93330c24d9a81f, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -887,9 +887,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.87
+  m_Height: 1.72
   m_Direction: 1
-  m_Center: {x: 0, y: 0.54, z: 0}
+  m_Center: {x: 0, y: 0.62, z: 0}
 --- !u!137 &137202080189198812
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

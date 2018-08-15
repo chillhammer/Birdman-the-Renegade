@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1b0f4f6eb304a4b882e95810f2ade9, type: 3}
   m_Name: MovementAiming
   m_EditorClassIdentifier: 
-  movementSpeed: 2
+  movementSpeed: 3
   movementDrag: 4
   crouchSpeed: 2

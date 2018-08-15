@@ -17,7 +17,7 @@ namespace SIS.Characters.Sis
 				Debug.Log("No Animator Found in action MovementAnimations");
 				return;
 			}
-			owner.anim.SetFloat(floatName, owner.movementValues.moveAmount, 0.2f, owner.delta);
+			owner.anim.SetFloat(floatName, owner.movementValues.moveAmount, 0.1f, owner.delta);
 
 		}
 	}

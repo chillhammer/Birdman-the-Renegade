@@ -8,9 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4333022e343d5684181519fbeab44878, type: 3}
-  m_Name: MoveForward
+  m_Script: {fileID: 11500000, guid: ec11048883bc6de448aaa9e38a1a9c72, type: 3}
+  m_Name: MovementAnimations
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  movementDrag: 4
-  crouchSpeed: 2
+  floatName: Vertical
