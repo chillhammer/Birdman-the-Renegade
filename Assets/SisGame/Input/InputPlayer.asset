@@ -20,5 +20,5 @@ MonoBehaviour:
   moveAmount: 0
   moveDirection: {x: 0, y: 0, z: 0}
   cameraTransform: {fileID: 11400000, guid: 9d1babb12888d48458a6f457e3daec60, type: 2}
-  pivotTransform: {fileID: 11400000, guid: f948770e58dae564a932fe55e5620b01, type: 2}
+  pivotTransform: {fileID: 11400000, guid: 6fb919f8150ef5b4791848ce224bb65f, type: 2}
   playerState: {fileID: 11400000, guid: 7a5eaaf58a516004ead97e53823d534c, type: 2}

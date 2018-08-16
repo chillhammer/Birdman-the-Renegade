@@ -36,8 +36,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4448662690259280}
-  - component: {fileID: 114244232783361104}
   - component: {fileID: 114927103069890870}
+  - component: {fileID: 114111439293379944}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4519569848400238}
-  - component: {fileID: 114620945002241976}
+  - component: {fileID: 114101167948418154}
   m_Layer: 0
   m_Name: Holder2
   m_TagString: Untagged
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4846585394981846}
-  - component: {fileID: 114843147356987120}
+  - component: {fileID: 114707861937898576}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -111,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1481529409863882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.403, y: 0.17, z: -4.593}
+  m_LocalPosition: {x: 0.4, y: 0.58, z: -4.593}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4444265924400064}
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1809103407389374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.21, y: 2.02, z: 0.19}
+  m_LocalPosition: {x: 0.55, y: 1.27, z: 0.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4519569848400238}
@@ -179,19 +179,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1092994479367452}
   m_Enabled: 1
---- !u!114 &114244232783361104
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1397941860056968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6491225021534054e91e9883c93fa4da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformVariable: {fileID: 11400000, guid: 9d1babb12888d48458a6f457e3daec60, type: 2}
---- !u!114 &114620945002241976
+--- !u!114 &114101167948418154
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,7 +191,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformVariable: {fileID: 11400000, guid: 0d0e09d816ccc744e934fc3b7c8c64a3, type: 2}
---- !u!114 &114843147356987120
+--- !u!114 &114111439293379944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397941860056968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6491225021534054e91e9883c93fa4da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformVariable: {fileID: 11400000, guid: 9d1babb12888d48458a6f457e3daec60, type: 2}
+--- !u!114 &114707861937898576
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,4 +231,5 @@ MonoBehaviour:
   updateActions:
   - {fileID: 11400000, guid: 534b51b1be754d34ab9216340c9a1191, type: 2}
   - {fileID: 11400000, guid: 236f2898a20cc21468b785db9ffb207b, type: 2}
+  - {fileID: 11400000, guid: 809c3969913edfe499a379a873608892, type: 2}
   lateActions: []

@@ -53,6 +53,7 @@ GameObject:
   - component: {fileID: 136196543225488228}
   - component: {fileID: 114814181087060196}
   - component: {fileID: 114391990089040116}
+  - component: {fileID: 114220950706958684}
   m_Layer: 9
   m_Name: Sis
   m_TagString: Untagged
@@ -819,6 +820,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114220950706958684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1038008882383420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6491225021534054e91e9883c93fa4da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformVariable: {fileID: 11400000, guid: f948770e58dae564a932fe55e5620b01, type: 2}
 --- !u!114 &114391990089040116
 MonoBehaviour:
   m_ObjectHideFlags: 1

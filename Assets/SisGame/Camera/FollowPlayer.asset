@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 11400000, guid: f948770e58dae564a932fe55e5620b01, type: 2}
   currentTransform: {fileID: 11400000, guid: 9d1babb12888d48458a6f457e3daec60, type: 2}
-  speed: 9
+  speed: 15
