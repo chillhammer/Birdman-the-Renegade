@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: SisTopHalf
+  m_Mask: 01000000000000000100000000000000000000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: SisBody
+    m_Weight: 0
+  - m_Path: SisBody/Plaque
+    m_Weight: 0
+  - m_Path: SisRig
+    m_Weight: 0
+  - m_Path: SisRig/Pelvis
+    m_Weight: 0
+  - m_Path: SisRig/Pelvis/Thigh_L
+    m_Weight: 0
+  - m_Path: SisRig/Pelvis/Thigh_L/Shin_L
+    m_Weight: 0
+  - m_Path: SisRig/Pelvis/Thigh_L/Shin_L/Ankle_L
+    m_Weight: 0
+  - m_Path: SisRig/Pelvis/Thigh_L/Shin_L/Ankle_L/Toes_L
+    m_Weight: 0
+  - m_Path: SisRig/Pelvis/Thigh_R
+    m_Weight: 0
+  - m_Path: SisRig/Pelvis/Thigh_R/Shin_R
+    m_Weight: 0
+  - m_Path: SisRig/Pelvis/Thigh_R/Shin_R/Ankle_R
+    m_Weight: 0
+  - m_Path: SisRig/Pelvis/Thigh_R/Shin_R/Ankle_R/Toes_R
+    m_Weight: 0
+  - m_Path: SisRig/Pelvis/Torso
+    m_Weight: 1
+  - m_Path: SisRig/Pelvis/Torso/Clavicle_L
+    m_Weight: 1
+  - m_Path: SisRig/Pelvis/Torso/Clavicle_L/Bicep_L
+    m_Weight: 1
+  - m_Path: SisRig/Pelvis/Torso/Clavicle_L/Bicep_L/Arm_L
+    m_Weight: 1
+  - m_Path: SisRig/Pelvis/Torso/Clavicle_L/Bicep_L/Arm_L/Hand_L
+    m_Weight: 1
+  - m_Path: SisRig/Pelvis/Torso/ClavicleR
+    m_Weight: 1
+  - m_Path: SisRig/Pelvis/Torso/ClavicleR/Bicep_R
+    m_Weight: 1
+  - m_Path: SisRig/Pelvis/Torso/ClavicleR/Bicep_R/Arm_R
+    m_Weight: 1
+  - m_Path: SisRig/Pelvis/Torso/ClavicleR/Bicep_R/Arm_R/Hand_R
+    m_Weight: 1
+  - m_Path: SisRig/Pelvis/Torso/Neck
+    m_Weight: 1
+  - m_Path: SisRig/Pelvis/Torso/Neck/Head
+    m_Weight: 1

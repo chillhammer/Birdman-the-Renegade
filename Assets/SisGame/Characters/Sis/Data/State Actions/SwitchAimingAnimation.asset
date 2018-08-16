@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a587ccca8db46e4f8be718758455c13, type: 3}
+  m_Name: SwitchAimingAnimation
+  m_EditorClassIdentifier: 
+  switcher:
+    targetBool: {fileID: 11400000, guid: dfc0bd553f313494a87022fdc9f484cd, type: 2}
+    onFalseAction: {fileID: 11400000, guid: fe8bf4bf4a48cf84b847070a8729ab0e, type: 2}
+    onTrueAction: {fileID: 11400000, guid: 76bc451bc2b3cd7469d371d1e0308907, type: 2}
