@@ -21,6 +21,8 @@ namespace SIS.Characters.Sis
 		Vector3 lookDir;
 		Weapon curWeapon;
 		RecoilHandler recoilHandler;
+		Vector3 basePosition;
+		Vector3 baseRotation;
 
 		public void Init(Sis sis)
 		{
@@ -33,14 +35,18 @@ namespace SIS.Characters.Sis
 			CreateAimPivot();
 			CreateRightHandTarget();
 			//Setup Aim Position
-			owner.movementValues.aimPosition = owner.mTransform.position + transform.forward * 15;
+			owner.movementValues.aimPosition = owner.mTransform.position + owner.mTransform.forward * 15;
 			owner.movementValues.aimPosition.y += 1.4f;
+
+			recoilHandler = new RecoilHandler();
 		}
 
 		
 		//Update pivot and right hand
 		private void OnAnimatorMove()
 		{
+			if (owner == null)
+				return;
 			lookDir = CaculateLookDirection();
 			HandlePivot();
 		}
@@ -113,6 +119,11 @@ namespace SIS.Characters.Sis
 		//Uses Mecanim's IK feature to look at aimPosition
 		private void OnAnimatorIK()
 		{
+			if (owner == null) {
+				Debug.Log("Owner is null in IK Aiming");
+				return;
+			}
+
 			HandleWeights();
 
 			anim.SetLookAtWeight(lookWeight, bodyWeight, 1, 1, 1);
@@ -172,40 +183,5 @@ namespace SIS.Characters.Sis
 			anim.SetIKPosition(goal, t.position);
 			anim.SetIKRotation(goal, t.rotation);
 		}
-
-
-		#region Recoil
-		float recoilTimer;
-		Vector3 offsetPosition;
-		Vector3 offsetRotation;
-		Vector3 basePosition;
-		Vector3 baseRotation;
-		bool isRecoiling;
-
-		public void RecoilAnim()
-		{
-			if (!isRecoiling)
-			{
-				isRecoiling = true;
-				recoilTimer = 0;
-				offsetPosition = Vector3.zero;
-			}
-		}
-
-		public void Recoil()
-		{
-			recoilTimer += owner.delta * 3;
-			if (recoilTimer > 1)
-			{
-				recoilTimer = 1;
-				isRecoiling = false;
-			}
-
-			offsetPosition = Vector3.forward * curWeapon.recoilZ.Evaluate(recoilTimer);
-			offsetRotation = Vector3.right * 90 * -curWeapon.recoilY.Evaluate(recoilTimer);
-			rhTarget.localPosition = basePosition + offsetPosition;
-			rhTarget.localEulerAngles = baseRotation + offsetRotation;
-		}
-		#endregion
 	}
 }
