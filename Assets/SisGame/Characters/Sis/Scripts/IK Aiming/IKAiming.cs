@@ -149,7 +149,7 @@ namespace SIS.Characters.Sis
 
 			//Constraints on IK for looking at sharp angles
 			float angle = Vector3.Angle(owner.mTransform.forward, lookDir);
-			if (angle > 76)
+			if (angle > 45)
 				targetLookWeight = 0;
 
 			if (angle > 60)
