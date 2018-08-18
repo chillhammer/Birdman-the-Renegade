@@ -6,6 +6,7 @@ using SIS.Items;
 
 namespace SIS.Managers
 {
+	[CreateAssetMenu(menuName = "Singles/Resources Manager")]
 	public class ResourcesManager : ScriptableObject
 	{
 		public List<Item> allItems = new List<Item>();
@@ -27,6 +28,10 @@ namespace SIS.Managers
 		public Item InstiateItem(string itemName)
 		{
 			Item defaultItem = FindItem(itemName);
+			if (defaultItem == null)
+			{
+				Debug.LogWarning("Failed to Find Item Instance: " + itemName);
+			}
 			Item newItem = Instantiate(defaultItem);
 			newItem.name = defaultItem.name;
 
