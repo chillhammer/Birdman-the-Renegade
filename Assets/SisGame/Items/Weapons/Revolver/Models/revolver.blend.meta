@@ -4,11 +4,21 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Plane
+    100004: Revolver
     400000: //RootNode
+    400002: Plane
+    400004: Revolver
     2100000: Material
+    2100002: unnamed
     2300000: //RootNode
+    2300002: Plane
+    2300004: Revolver
     3300000: //RootNode
+    3300002: Plane
+    3300004: Revolver
     4300000: Revolver
+    4300002: Plane
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
