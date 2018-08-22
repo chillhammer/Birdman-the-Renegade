@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7122a7d2900222a4889270183b4dc84d, type: 3}
   m_Name: RotateOnMoveDirection
   m_EditorClassIdentifier: 
-  speed: 8
+  speed: 12

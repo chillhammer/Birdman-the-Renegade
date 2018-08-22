@@ -177,7 +177,7 @@ MonoBehaviour:
   floor: {fileID: 1420099505138398, guid: ab282929ae069204c98bae1cdd389f76, type: 2}
   player: {fileID: 1038008882383420, guid: 1f8407d9f7f30084497940f87530e4a8, type: 2}
   enemy: {fileID: 0}
-  roomMin: 3
+  roomMin: 5
   roomMax: 12
 --- !u!1 &442283214
 GameObject:
