@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5eec0137c24d10d4bb2a5a6fff876d4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5af762b708aa3d848b02d672e7e40a9b, type: 3}
   m_Name: WallZoomOverride
   m_EditorClassIdentifier: 
   pivotTransform: {fileID: 11400000, guid: 6fb919f8150ef5b4791848ce224bb65f, type: 2}

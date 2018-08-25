@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4932956509481908}
+  - component: {fileID: 114263514491030148}
   m_Layer: 0
   m_Name: DungeonGenerator
   m_TagString: Untagged
@@ -39,3 +40,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114263514491030148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1259594474959258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0737126d6b942134aa0337e20598002c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeon: {fileID: 11400000, guid: fcafa1c3f050c43448a48e9105f95af5, type: 2}
+  dungeonParent: {fileID: 0}
+  block: {fileID: 1800040313532366, guid: 71ae54459527d604aa58b9d28ec1034f, type: 2}
+  floor: {fileID: 1420099505138398, guid: ab282929ae069204c98bae1cdd389f76, type: 2}
+  player: {fileID: 1038008882383420, guid: 1f8407d9f7f30084497940f87530e4a8, type: 2}
+  enemy: {fileID: 0}
+  generateNewDungeon: 1
+  WIDTH: 40
+  HEIGHT: 40
+  roomMin: 5
+  roomMax: 12
+  roomAmount: 16
+  firstRoomWidth: 12
+  firstRoomHeight: 12
