@@ -16,8 +16,10 @@ namespace SIS.Map
 
 		Tile[] tiles;
 		List<Room> rooms;
+		public List<List<Waypoint>> waypointsByRoomCache; //only to keep waypoint data
 
 		public int RoomCount { get { return rooms.Count; } }
+		public Tile[] Tiles { get { return tiles; } }
 
 		//Override values from DungeonGenerator
 		public void SetFromGeneration(Tile[] tiles, List<Room> rooms, WaypointSystem waypointSystem, 
@@ -26,6 +28,7 @@ namespace SIS.Map
 			this.tiles = tiles;
 			this.rooms = rooms;
 			this.waypointSystem = waypointSystem;
+			waypointsByRoomCache = waypointSystem.waypointsByRoom;
 			WIDTH = width;
 			HEIGHT = height;
 		}

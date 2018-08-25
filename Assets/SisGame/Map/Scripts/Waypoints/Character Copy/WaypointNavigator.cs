@@ -7,36 +7,42 @@ using SIS.Map;
 
 namespace SIS.Waypoints
 {
+	//API that allows for characters to move through waypoint system
+	//Use CurrentWaypoint to find what to navigate to
 	public class WaypointNavigator : MonoBehaviour
 	{
 
-		public WaypointGraph waypointGraph;
 		public Dungeon dungeon;
+		public float nextWaypointDistCheck = 1.2f;
 
-		CharacterController characterController;
-
+		WaypointGraph waypointGraph;
 		List<Waypoint> path;
 		int pathIndex = -1; //current waypoint index
 
-		private void Start()
+		public Waypoint CurrentWaypoint
 		{
-			characterController = GetComponent<CharacterController>();
+			get
+			{
+				if (pathIndex == -1)
+					return new Waypoint();
+				return path[pathIndex];
+			}
+		}
+
+		private void Awake()
+		{
+			waypointGraph = new WaypointGraph(dungeon.waypointSystem, dungeon);
 		}
 
 		//TODO: Replace with FSM/BT
 		private void Update()
 		{
-			Navigate();
+			CheckNextWaypoint();
 
 			if (Input.GetKeyDown(KeyCode.C))
 			{
 				int roomIndex = Random.Range(0, dungeon.RoomCount);
 				StartNavigation(roomIndex);
-			}
-
-			if (!characterController.isGrounded)
-			{
-				characterController.Move(Physics.gravity * Time.deltaTime);
 			}
 
 			//Draw Debug Path Lines
@@ -51,12 +57,14 @@ namespace SIS.Waypoints
 		}
 
 		//Move Towards Current Waypoint
-		void Navigate(float speed = 2f)
+		void CheckNextWaypoint()
 		{
 			if (path == null) return;
 			if (pathIndex < 0 || pathIndex >= path.Count) return;
 
+			/*
 			Waypoint waypoint = path[pathIndex];
+
 			Vector3 target = new Vector3(waypoint.X, 0, waypoint.Y);
 			Vector3 direction = (target - transform.position).normalized;
 
@@ -66,9 +74,11 @@ namespace SIS.Waypoints
 
 			Vector3 motion = transform.forward * speed * Time.deltaTime;
 			characterController.Move(motion);
+			*/
 
 			//Progressing Waypoints
-			if (Vector3.Distance(transform.position, target) < 1.2f)
+			Vector3 target = new Vector3(CurrentWaypoint.X, 0, CurrentWaypoint.Y);
+			if (Vector3.Distance(transform.position, target) < nextWaypointDistCheck)
 			{
 				++pathIndex;
 			}

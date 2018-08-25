@@ -45,7 +45,10 @@ namespace SIS.Map
 		private void Generate()
 		{
 			if (!generateNewDungeon)
+			{
+				tiles = dungeon.Tiles;
 				return;
+			}
 			tiles = new Tile[WIDTH * HEIGHT];
 			potentialExits = new List<Rect>();
 			rooms = new List<Room>();
@@ -76,8 +79,6 @@ namespace SIS.Map
 				//First Room
 				room = new Room(WIDTH / 2, HEIGHT / 2, firstRoomWidth, firstRoomHeight);
 
-				//Player
-				PlaceObject((int)(WIDTH * 0.5f) + 2, (int)(HEIGHT * 0.5f) + 2, player, 0.5f);
 			}
 			else
 			{
@@ -235,6 +236,9 @@ namespace SIS.Map
 
 			SpawnOuterEdges();
 
+			//Player
+			PlaceObject((int)(WIDTH * 0.5f) + 2, (int)(HEIGHT * 0.5f) + 2, player, 0.5f);
+
 			//Enemy
 			/*
 			GameObject enemyInst = PlaceObject((int)(WIDTH * 0.5f) + 3, (int)(HEIGHT * 0.5f) + 3, enemy, 1f);
@@ -256,7 +260,7 @@ namespace SIS.Map
 		private void SpawnFloor()
 		{
 			GameObject bigFloor = Instantiate(floor, Vector3.zero, Quaternion.identity, dungeonParent.transform);
-			bigFloor.transform.localScale = new Vector3(WIDTH, 0, HEIGHT);
+			//bigFloor.transform.localScale = new Vector3(WIDTH, 1, HEIGHT);
 		}
 
 		private void SpawnOuterEdges()
@@ -283,7 +287,10 @@ namespace SIS.Map
 		private void SetupObjects()
 		{
 			waypointSystem = new GameObject("Waypoint System").AddComponent<WaypointSystem>();
-			waypointSystem.Init(dungeon);
+			if (generateNewDungeon)
+				waypointSystem.Init(dungeon);
+			else
+				waypointSystem.Init(dungeon, dungeon.waypointsByRoomCache);
 
 
 			tileObjects = new Dictionary<Tile, GameObject>();
