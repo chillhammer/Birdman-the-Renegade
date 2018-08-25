@@ -10,14 +10,17 @@ namespace SIS.Waypoints
 	public class WaypointGraph
 	{
 		List<List<WaypointNode>> nodesByRoom;
-		DungeonGenerator dungeon;
+		WaypointSystem waypointSystem;
+		Dungeon dungeon;
 
 		private WaypointGraph() { }
 
 		//Creates Shallow Copy Based Off Unique WaypointSystem
-		public WaypointGraph(WaypointSystem system, DungeonGenerator dg)
+		//WaypointNode allows for unique meta data to help with AStar
+		public WaypointGraph(WaypointSystem system, Dungeon dg)
 		{
 			dungeon = dg;
+			waypointSystem = system;
 			nodesByRoom = new List<List<WaypointNode>>();
 			foreach (List<Waypoint> roomWaypoints in system.waypointsByRoom)
 			{
@@ -88,32 +91,19 @@ namespace SIS.Waypoints
 			return new List<Waypoint>();
 		}
 
+		//Allows for AStar to pseudo access the WaypointSystem
 		public Waypoint FindClosestWaypoint(Vector3 position)
 		{
-			Vector2Int pos = new Vector2Int((int)position.x, (int)position.z);
-			int roomIndex = dungeon.GetRoomIndex(pos);
-			if (roomIndex == -1)
-			{
-				//TODO: Manually find closest waypoint. Currently in Hall
-				Debug.LogWarning("Finding Closeset Waypoint Failed. Not in Room");
-				return new Waypoint(0, 0);
-			}
-			//Search For Smallest Distance
-			Waypoint closest = new Waypoint(0, 0);
-			float bestDist = float.MaxValue;
-			foreach (WaypointNode node in nodesByRoom[roomIndex])
-			{
-				Vector2Int nodePos = new Vector2Int(node.Waypoint.X, node.Waypoint.Y);
-				float nodeDist = Vector2Int.Distance(nodePos, pos);
-				if (nodeDist < bestDist)
-				{
-					bestDist = nodeDist;
-					closest = node.Waypoint;
-				}
-
-			}
-			return closest;
+			return waypointSystem.FindClosestWaypoint(position);
 		}
+
+		//Allows for navigation to rooms
+		public Waypoint GetCenterRoomWaypoint(int roomIndex)
+		{
+			return nodesByRoom[roomIndex][0].Waypoint;
+		}
+
+
 
 		//Helper Functions
 		//Converts waypoint to node equivalent

@@ -11,7 +11,7 @@ namespace SIS.Waypoints
 	{
 
 		public WaypointGraph waypointGraph;
-		public DungeonGenerator dungeonGenerator;
+		public Dungeon dungeon;
 
 		CharacterController characterController;
 
@@ -30,7 +30,7 @@ namespace SIS.Waypoints
 
 			if (Input.GetKeyDown(KeyCode.C))
 			{
-				int roomIndex = Random.Range(0, dungeonGenerator.waypointSystem.waypointsByRoom.Count);
+				int roomIndex = Random.Range(0, dungeon.RoomCount);
 				StartNavigation(roomIndex);
 			}
 
@@ -101,12 +101,12 @@ namespace SIS.Waypoints
 
 		public void StartNavigation(int roomIndex)
 		{
-			if (roomIndex < 0 || roomIndex >= dungeonGenerator.waypointSystem.waypointsByRoom.Count)
+			if (roomIndex < 0 || roomIndex >= dungeon.RoomCount)
 			{
 				Debug.LogWarning("Room Index Out of Bound");
 				return;
 			}
-			StartNavigation(dungeonGenerator.waypointSystem.waypointsByRoom[roomIndex][0]);
+			StartNavigation(waypointGraph.GetCenterRoomWaypoint(roomIndex));
 		}
 		#endregion
 

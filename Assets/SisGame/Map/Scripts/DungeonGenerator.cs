@@ -2,31 +2,37 @@
 using UnityEngine;
 using SIS.Waypoints;
 
-public enum Tile { None, Floor, Wall }
+public enum Tile { None, Floor, Wall, Doorframe}
 public enum Direction { North, East, South, West, NumOfDirections }
 
 namespace SIS.Map
 {
 	public class DungeonGenerator : MonoBehaviour
 	{
-		[HideInInspector]
-		public WaypointSystem waypointSystem;
+		public Dungeon dungeon;
 		public GameObject dungeonParent;
 		public GameObject block;
 		public GameObject floor;
 		public GameObject player;
 		public GameObject enemy;
 
-		public const int WIDTH = 40;
-		public const int HEIGHT = 40;
+		#region Settings
+		[SerializeField] private bool generateNewDungeon = true;
+		[SerializeField] private int WIDTH = 40;
+		[SerializeField] private int HEIGHT = 40;
 
-		public int roomMin = 3;
-		public int roomMax = 12;
+		[SerializeField] private int roomMin = 3;
+		[SerializeField] private int roomMax = 12;
+		[SerializeField] private int roomAmount = 16;
+		[SerializeField] private int firstRoomWidth = 12;
+		[SerializeField] private int firstRoomHeight =12;
+		#endregion
 
-		Tile[] _tiles;
 		Dictionary<Tile, GameObject> tileObjects;
+		Tile[] tiles;
+		List<Room> rooms;
+		WaypointSystem waypointSystem;
 		List<Rect> potentialExits;
-		List<Rect> rooms;
 
 		// Use this for initialization
 		void Start()
@@ -38,35 +44,40 @@ namespace SIS.Map
 
 		private void Generate()
 		{
-			_tiles = new Tile[WIDTH * HEIGHT];
+			if (!generateNewDungeon)
+				return;
+			tiles = new Tile[WIDTH * HEIGHT];
 			potentialExits = new List<Rect>();
-			rooms = new List<Rect>();
+			rooms = new List<Room>();
 			//Fill
 			for (int i = 0; i < WIDTH * HEIGHT; ++i)
 			{
-				_tiles[i] = Tile.Wall;
+				tiles[i] = Tile.Wall;
 			}
 
 			GenerateRoom(true);
-			for (int i = 0; i < 16; ++i)
+			for (int i = 0; i < roomAmount - 1; ++i)
 			{
 				GenerateRoom();
 			}
+
+			//Transfer to Dungeon ScriptableObject
+			dungeon.SetFromGeneration(tiles, rooms, waypointSystem, WIDTH, HEIGHT);
 		}
 
 		private void GenerateRoom(bool isFirstRoom = false)
 		{
-			Rect room;
+			Room room;
 			Vector2Int oldRoomEnt = Vector2Int.zero;
 			Vector2Int newRoomEnt = Vector2Int.zero;
 			Direction? dir = null;
 			if (isFirstRoom)
 			{
 				//First Room
-				room = new Rect(new Vector2(WIDTH * 0.5f, HEIGHT * 0.5f), new Vector2(10, 10));
+				room = new Room(WIDTH / 2, HEIGHT / 2, firstRoomWidth, firstRoomHeight);
 
 				//Player
-				PlaceObject((int)(WIDTH * 0.5f) + 2, (int)(HEIGHT * 0.5f) + 2, player, 1f);
+				PlaceObject((int)(WIDTH * 0.5f) + 2, (int)(HEIGHT * 0.5f) + 2, player, 0.5f);
 			}
 			else
 			{
@@ -115,27 +126,27 @@ namespace SIS.Map
 							break;
 					}
 
-					room = new Rect(new Vector2(rx, ry), dimensions);
+					Room sourceRoom = GetRoom(oldRoomEnt.x, oldRoomEnt.y);
+					room = new Room(new Vector2(rx, ry), dimensions, sourceRoom);
 
-				} while (!RectFilled(room) && ++attempts < 100);
+				} while (!RectFilled(room.rect) && ++attempts < 100);
 				if (attempts == 100)
 				{
 					Debug.LogWarning("Cannot Generate Room");
 					return;
 				}
 				//Mark Exit
-				SetTile(ex, ey, Tile.Floor);
+				SetTile(ex, ey, Tile.Doorframe);
 				//Largen Exit
-				int dif = (int)((Random.Range(0, 2) - 0.5f) * 2f); // -1 or 1
-				dif = -1;
+				int dif = -1;
 				if (dir == Direction.North || dir == Direction.South)
-					SetTile(ex + dif, ey, Tile.Floor);
+					SetTile(ex + dif, ey, Tile.Doorframe);
 				else
-					SetTile(ex, ey + dif, Tile.Floor);
+					SetTile(ex, ey + dif, Tile.Doorframe);
 			}
 			rooms.Add(room);
-			waypointSystem.AddWaypointsByRoom(room);
-			FillRect(room);
+			waypointSystem.AddWaypointsByRoom(room.rect);
+			FillRect(room.rect);
 
 			//Connect Room Waypoints
 			if (!isFirstRoom)
@@ -145,9 +156,11 @@ namespace SIS.Map
 				waypointSystem.AddWaypointsByHall(oldRoomEnt, iOldRoom, newRoomEnt, iNewRoom);
 			}
 
-			AddPotentialExits(room, dir);
+			AddPotentialExits(room.rect, dir);
+			AddEmergentRoomConnections(room); //Connects emergent rooms and their waypoints
 		}
 
+		//After adding room, keep track of edges to add more rooms
 		private void AddPotentialExits(Rect room, Direction? dir)
 		{
 			int pad = 2;
@@ -162,9 +175,51 @@ namespace SIS.Map
 			if (dir != Direction.East) potentialExits.Add(westSide);
 		}
 
+		//After adding room, look at edges to connect rooms, then connect if possible. also their waypoints
+		private void AddEmergentRoomConnections(Room room)
+		{
+			int x1 = (int)room.rect.xMin;
+			int y1 = (int)room.rect.yMin;
+			int x2 = (int)room.rect.xMax;
+			int y2 = (int)room.rect.yMax;
+			for (int r = y1; r < y2 - 1; ++r)
+			{
+				CheckPotentialConnection(room, r, x1 - 1);
+
+				CheckPotentialConnection(room, r, x2);
+			}
+
+			for (int c = x1; c < x2 - 1; ++c)
+			{
+				CheckPotentialConnection(room, y1 - 1, c);
+
+				CheckPotentialConnection(room, y2, c);
+			}
+		}
+
+		//Submethod of AddEmergentRoomConections, checks at specific location
+		private void CheckPotentialConnection(Room room, int r, int c)
+		{
+			if (GetTile(r, c) == Tile.Floor)
+			{
+				int potentialRoomIndex = GetRoomIndex(c, r);
+
+				if (potentialRoomIndex != -1)
+				{
+					Room potentialRoom = rooms[potentialRoomIndex];
+
+					if (!room.connected.Contains(potentialRoom)) {
+						ConnectRooms(room, potentialRoom);
+						waypointSystem.ConnectWaypointsByOpening(GetRoomIndex(room), potentialRoomIndex, c, r);
+					}
+				}
+			}
+		}
+
 		private void SpawnObjects()
 		{
-
+			SpawnFloor();
+			//Loop Through Tiles
 			for (int r = 0; r < HEIGHT; ++r)
 			{
 				for (int c = 0; c < WIDTH; ++c)
@@ -178,24 +233,7 @@ namespace SIS.Map
 				}
 			}
 
-			//Edges
-			for (int r = 0; r < HEIGHT; ++r)
-			{
-				Vector3 objPos = new Vector3(-1, 0, r);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
-
-				objPos = new Vector3(WIDTH, 0, r);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
-			}
-
-			for (int c = 0; c < WIDTH; ++c)
-			{
-				Vector3 objPos = new Vector3(c, 0, -1);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
-
-				objPos = new Vector3(c, 0, HEIGHT);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
-			}
+			SpawnOuterEdges();
 
 			//Enemy
 			/*
@@ -215,13 +253,41 @@ namespace SIS.Map
 
 		}
 
+		private void SpawnFloor()
+		{
+			GameObject bigFloor = Instantiate(floor, Vector3.zero, Quaternion.identity, dungeonParent.transform);
+			bigFloor.transform.localScale = new Vector3(WIDTH, 0, HEIGHT);
+		}
+
+		private void SpawnOuterEdges()
+		{
+			for (int r = 0; r < HEIGHT; ++r)
+			{
+				Vector3 objPos = new Vector3(-1, 0, r);
+				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
+
+				objPos = new Vector3(WIDTH, 0, r);
+				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
+			}
+
+			for (int c = 0; c < WIDTH; ++c)
+			{
+				Vector3 objPos = new Vector3(c, 0, -1);
+				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
+
+				objPos = new Vector3(c, 0, HEIGHT);
+				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
+			}
+		}
+
 		private void SetupObjects()
 		{
 			waypointSystem = new GameObject("Waypoint System").AddComponent<WaypointSystem>();
+			waypointSystem.Init(dungeon);
 
 
 			tileObjects = new Dictionary<Tile, GameObject>();
-			tileObjects.Add(Tile.Floor, floor);
+			//tileObjects.Add(Tile.Floor, floor);
 			tileObjects.Add(Tile.Wall, block);
 		}
 
@@ -257,41 +323,59 @@ namespace SIS.Map
 		//Instantiate GameObject at Tile
 		private GameObject PlaceObject(int x, int y, GameObject obj, float elevation = 0f)
 		{
-			Vector3 gridOffset = new Vector3(1f, 0f, 1f);
-			return Instantiate(obj, new Vector3(gridOffset.x * x, elevation, gridOffset.z * y), Quaternion.identity);
+			return Instantiate(obj, new Vector3(x, elevation, y), Quaternion.identity);
 		}
 
 		private void SetTile(int x, int y, Tile tile)
 		{
 			int index = x + y * WIDTH;
-			if (index >= _tiles.Length || index < 0) return;
-			_tiles[index] = tile;
+			if (index >= tiles.Length || index < 0) return;
+			tiles[index] = tile;
 		}
-		#endregion
 
-		//Public Accessors
-		public Tile GetTile(int x, int y)
+		//Connect rooms. no worries about duplicates since connected is HashSet
+		private void ConnectRooms(Room room1, Room room2)
+		{
+			room1.connected.Add(room2);
+			room2.connected.Add(room1);
+		}
+
+
+		//Duplicate Code from Dungeon, Only needed for generation.
+		//Should not be public or accessed
+		private Tile GetTile(int x, int y)
 		{
 			int index = x + y * WIDTH;
 			if (x >= WIDTH || x < 0 || y >= HEIGHT || y < 0) return Tile.None;
-			return _tiles[index];
+			return tiles[index];
 		}
 
-		public Rect GetRoom(int x, int y)
+		private Room GetRoom(int x, int y)
 		{
 			int index = GetRoomIndex(x, y);
-			if (index == -1) return Rect.zero;
+			if (index == -1) return null;
 			return rooms[index];
 		}
 
-		public int GetRoomIndex(int x, int y)
+		//Converts room to its index
+		public int GetRoomIndex(Room room)
+		{
+			for (int i = 0; i < rooms.Count; ++i)
+			{
+				if (rooms[i] == room)
+					return i;
+			}
+			return -1;
+		}
+
+		private int GetRoomIndex(int x, int y)
 		{
 			if (x >= WIDTH || x < 0 || y >= HEIGHT || y < 0) return -1;
 			int index = 0;
 			Vector2 pos = new Vector2(x, y);
-			foreach (Rect room in rooms)
+			foreach (Room room in rooms)
 			{
-				if (room.Contains(pos))
+				if (room.rect.Contains(pos))
 				{
 					return index;
 				}
@@ -300,9 +384,10 @@ namespace SIS.Map
 			return -1;
 		}
 
-		public int GetRoomIndex(Vector2Int pos)
+		private int GetRoomIndex(Vector2Int pos)
 		{
 			return GetRoomIndex(pos.x, pos.y);
 		}
+		#endregion
 	}
 }
