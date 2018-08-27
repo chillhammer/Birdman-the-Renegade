@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Name: ShootBatch
   m_EditorClassIdentifier: 
   action:
-    actions: []
+    actions:
+    - {fileID: 11400000, guid: 8313ec3197265a74bac3f1f17f5a4e9e, type: 2}
+    - {fileID: 11400000, guid: 24f0c0ca4baae3a4eaaa34fb49ac42f8, type: 2}

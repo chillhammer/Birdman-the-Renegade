@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512

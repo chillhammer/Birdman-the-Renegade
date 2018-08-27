@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da14dfdd42db364a9397384ddcefd23, type: 3}
+  m_Name: RoboPadronEditorSettings
+  m_EditorClassIdentifier: 
+  makeTransition: 0
+  skin: {fileID: 11400000, guid: b750db4a2b680974ebfaab962eef1721, type: 2}
+  activeSkin: {fileID: 11400000, guid: 17716144abfbf0c47ae04e814fa9ad54, type: 2}
+  roboCurrentGraph: {fileID: 11400000, guid: 6c55961f4852b684a8b4ebdde881e4e0, type: 2}
+  roboStateNode: {fileID: 11400000, guid: ab5dde45111789249a514a1c7b3c8bb6, type: 2}
+  roboPortalNode: {fileID: 11400000, guid: 0f9704d5543c97740af4aaa442b5aa2d, type: 2}
+  roboTransitionNode: {fileID: 11400000, guid: 7494e7ba552c40f4a8b61eac7456ad0f, type: 2}
+  roboCommentNode: {fileID: 11400000, guid: 697d6edf71bfcc74bac5a6516d57849d, type: 2}

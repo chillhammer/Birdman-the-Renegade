@@ -10,5 +10,16 @@ namespace SIS.Characters.Example
 {
 	//Composite allows to group multiple actions into one
 	//[CreateAssetMenu(menuName = "Characters/Sis/State Actions/State Action Switcher")]
-	public class StateActionComposite : StateActionComposite<Example, ExampleStateActions> { }
+	public class StateActionComposite : ExampleStateActions
+	{
+		public ExampleComposite action;
+
+		public override void Execute(Example owner)
+		{
+			action.Execute(owner);
+		}
+
+		[System.Serializable]
+		public class ExampleComposite : StateActionComposite<Example, ExampleStateActions> { }
+	}
 }

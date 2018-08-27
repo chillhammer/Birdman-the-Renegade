@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Name: WallZoomOverride
   m_EditorClassIdentifier: 
   pivotTransform: {fileID: 11400000, guid: 6fb919f8150ef5b4791848ce224bb65f, type: 2}
-  actualCameraTransform: {fileID: 11400000, guid: 0d0e09d816ccc744e934fc3b7c8c64a3,
-    type: 2}
   wallLayer:
     serializedVersion: 2
     m_Bits: 1024
+  pivotSpeed: 0.9
+  whiskerLength: 0.2
+  defaultLocalPivotPos: {x: 0.69, y: 1.641, z: -0.25}

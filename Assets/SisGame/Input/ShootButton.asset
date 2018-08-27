@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c680e6f3a7cb44cb9b9e272e35bcc7, type: 3}
   m_Name: ShootButton
   m_EditorClassIdentifier: 
-  targetInput: 
+  targetInput: Fire1
   isPressed: 0
   keyState: 0
-  updateBoolVar: 1
+  updateBoolVar: 0
   targetBoolVariable: {fileID: 0}
