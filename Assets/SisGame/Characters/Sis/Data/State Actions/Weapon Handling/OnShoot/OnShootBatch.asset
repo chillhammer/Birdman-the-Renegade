@@ -9,10 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df8dcc8fb4de22c4087b662bd007aa0c, type: 3}
-  m_Name: ShootBatch
+  m_Name: OnShootBatch
   m_EditorClassIdentifier: 
   action:
     actions:
-    - {fileID: 11400000, guid: 8313ec3197265a74bac3f1f17f5a4e9e, type: 2}
-    - {fileID: 11400000, guid: 24f0c0ca4baae3a4eaaa34fb49ac42f8, type: 2}
-    - {fileID: 11400000, guid: eabf2d200b424af4ba8d681a7988deed, type: 2}
+    - {fileID: 11400000, guid: c07cec8a833fde84688c44d150b22b65, type: 2}
+    - {fileID: 11400000, guid: 2a06cd16dedb5db43885426a0c7f4850, type: 2}

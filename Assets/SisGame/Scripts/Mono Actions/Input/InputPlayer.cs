@@ -49,8 +49,9 @@ namespace SIS.Actions.Input
 					Vector3.ProjectOnPlane(cameraTransform.value.forward, Vector3.up).normalized;
 				Ray ray = new Ray(pivotTransform.value.position, pivotTransform.value.forward);
 				playerState.value.movementValues.aimPosition = ray.GetPoint(100);
-				
-				playerState.value.isShooting = shootButton.isPressed;
+
+				if (shootButton.isPressed)
+					playerState.value.isShooting = true;
 				/*
 				//Crouch
 				if (crouchButton.isPressed)

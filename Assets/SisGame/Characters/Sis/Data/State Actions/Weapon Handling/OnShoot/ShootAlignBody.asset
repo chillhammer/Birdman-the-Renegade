@@ -8,11 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28c680e6f3a7cb44cb9b9e272e35bcc7, type: 3}
-  m_Name: ShootButton
+  m_Script: {fileID: 11500000, guid: 361eb9679cd0b9f499d15cb126a374ff, type: 3}
+  m_Name: ShootAlignBody
   m_EditorClassIdentifier: 
-  targetInput: Fire1
-  isPressed: 0
-  keyState: 0
-  updateBoolVar: 1
-  targetBoolVariable: {fileID: 11400000, guid: f2cec12ee825c55459e478ff0330f743, type: 2}
+  speed: 8
