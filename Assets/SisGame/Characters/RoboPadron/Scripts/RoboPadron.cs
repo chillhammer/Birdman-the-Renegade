@@ -7,6 +7,7 @@ using SIS.Items.Weapons;
 
 namespace SIS.Characters.Robo
 {
+	[RequireComponent(typeof(Waypoints.WaypointNavigator))]
 	public class RoboPadron : Character, IHittable
 	{
 		#region StateMachine Setup
@@ -41,10 +42,12 @@ namespace SIS.Characters.Robo
 
 		public float health = 1;
 
+		[HideInInspector] public Waypoints.WaypointNavigator waypointNavigator;
+
 		//Allows for initial setup, better to use InitActionBatch, but it's here if you don't want to make action
 		protected override void SetupComponents()
 		{
-			//Example: TrajectorySystem.Init()
+			waypointNavigator = GetComponent<Waypoints.WaypointNavigator>();
 		}
 
 		public void OnHit(Character shooter, Weapon weapon, Vector3 dir, Vector3 pos)
