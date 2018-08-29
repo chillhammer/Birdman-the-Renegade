@@ -11,3 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6454430aa0029064785ef103845c9e56, type: 3}
   m_Name: HandleShooting
   m_EditorClassIdentifier: 
+  isShooting: {fileID: 11400000, guid: f2cec12ee825c55459e478ff0330f743, type: 2}
+  shootingLength: 0.075

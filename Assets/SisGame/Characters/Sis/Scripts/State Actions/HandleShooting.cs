@@ -69,7 +69,6 @@ namespace SIS.Characters.Sis
 			if (startedShooting)
 			{
 				DelayStopShooting(owner);
-				Debug.Log("hi");
 			}
 		}
 

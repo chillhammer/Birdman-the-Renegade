@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using SIS.States;
 using SIS.Items;
+using SIS.Items.Weapons;
 
 namespace SIS.Characters.Robo
 {
-	public class RoboPadron : Character
+	public class RoboPadron : Character, IHittable
 	{
 		#region StateMachine Setup
 		//State Actions use this instead of Time.delta
@@ -44,6 +45,17 @@ namespace SIS.Characters.Robo
 		protected override void SetupComponents()
 		{
 			//Example: TrajectorySystem.Init()
+		}
+
+		public void OnHit(Character shooter, Weapon weapon, Vector3 dir, Vector3 pos)
+		{
+			health--;
+			rigid.AddForceAtPosition(dir, pos);
+
+			if (health <= 0)
+			{
+				Destroy(gameObject);
+			}
 		}
 	}
 }

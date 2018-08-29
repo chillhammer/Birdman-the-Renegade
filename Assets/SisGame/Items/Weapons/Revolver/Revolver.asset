@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165c39555fcf09449a3ab1d56cf7e58, type: 3}
   m_Name: Revolver
   m_EditorClassIdentifier: 
-  magazineBullets: 6
+  magazineBullets: 120
   fireRate: 0.4
   holdingPosition: {fileID: 11400000, guid: 8d048c15af662134188d0db191ede3c6, type: 2}
   holdingEulers: {fileID: 11400000, guid: d0cd4c053ea20c54e8b7abc6fb7150b2, type: 2}

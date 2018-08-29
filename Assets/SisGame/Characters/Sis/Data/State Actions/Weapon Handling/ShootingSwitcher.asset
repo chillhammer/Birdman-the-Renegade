@@ -14,4 +14,4 @@ MonoBehaviour:
   switcher:
     targetBool: {fileID: 11400000, guid: f2cec12ee825c55459e478ff0330f743, type: 2}
     onFalseAction: {fileID: 11400000, guid: 14eff93d7cf19cc468941063a6e03695, type: 2}
-    onTrueAction: {fileID: 11400000}
+    onTrueAction: {fileID: 11400000, guid: b5a090e86d4a01b469a10e44e71fe5bb, type: 2}
