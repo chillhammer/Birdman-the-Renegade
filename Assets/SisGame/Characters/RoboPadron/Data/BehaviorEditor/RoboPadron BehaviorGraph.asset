@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170a7576c037fb84089796fb4b23b6d4, type: 3}
   m_Name: RoboPadron BehaviorGraph
   m_EditorClassIdentifier: 
-  idCount: 1
+  idCount: 2

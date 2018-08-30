@@ -42,6 +42,7 @@ namespace SIS.Map
 			SpawnObjects();
 		}
 
+		#region Generation Helpers
 		private void Generate()
 		{
 			if (!generateNewDungeon)
@@ -216,6 +217,7 @@ namespace SIS.Map
 				}
 			}
 		}
+		#endregion
 
 		private void SpawnObjects()
 		{
@@ -240,20 +242,8 @@ namespace SIS.Map
 			PlaceObject((int)(WIDTH * 0.5f) + 2, (int)(HEIGHT * 0.5f) + 2, player, 0.5f);
 
 			//Enemy
-			/*
-			GameObject enemyInst = PlaceObject((int)(WIDTH * 0.5f) + 3, (int)(HEIGHT * 0.5f) + 3, enemy, 1f);
-			WaypointNavigator enemyNavigator = enemyInst.GetComponent<WaypointNavigator>();
-			enemyNavigator.waypointGraph = new WaypointGraph(waypointSystem, this);
-			enemyNavigator.dungeonGenerator = this;
-			enemyNavigator.StartNavigation(14);
-
-
-			enemyInst = PlaceObject((int)(WIDTH * 0.5f) + 2, (int)(HEIGHT * 0.5f) + 2, enemy, 1f);
-			enemyNavigator = enemyInst.GetComponent<WaypointNavigator>();
-			enemyNavigator.waypointGraph = new WaypointGraph(waypointSystem, this);
-			enemyNavigator.dungeonGenerator = this;
-			enemyNavigator.StartNavigation(14);
-			*/
+			if (enemy != null)
+				PlaceObject((int)(WIDTH * 0.5f) + 3, (int)(HEIGHT * 0.5f) + 3, enemy, 5f);
 
 		}
 

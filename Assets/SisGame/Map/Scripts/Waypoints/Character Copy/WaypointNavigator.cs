@@ -14,18 +14,36 @@ namespace SIS.Waypoints
 
 		public Dungeon dungeon;
 		public float nextWaypointDistCheck = 1.2f;
+		public bool automaticWaypointUpdate = true; //updates current waypoint
 
 		WaypointGraph waypointGraph;
 		List<Waypoint> path;
-		int pathIndex = -1; //current waypoint index
+		[SerializeField] int pathIndex = -1; //current waypoint index
 
 		public Waypoint CurrentWaypoint
 		{
 			get
 			{
-				if (pathIndex == -1)
+				if (path == null || pathIndex == -1 || pathIndex >= path.Count)
 					return new Waypoint();
 				return path[pathIndex];
+			}
+		}
+
+		public Vector3 DirectionToWaypoint
+		{
+			get
+			{
+				Vector3 target = new Vector3(CurrentWaypoint.X, 0, CurrentWaypoint.Y);
+				return (target - transform.position).normalized;
+			}
+		}
+
+		public bool PathFinished
+		{
+			get
+			{
+				return pathIndex == -1;
 			}
 		}
 
@@ -34,11 +52,12 @@ namespace SIS.Waypoints
 			waypointGraph = new WaypointGraph(dungeon.waypointSystem, dungeon);
 		}
 
-		//TODO: Replace with FSM/BT
 		private void Update()
 		{
-			CheckNextWaypoint();
+			if (automaticWaypointUpdate)
+				CheckNextWaypoint();
 
+			//Debug
 			if (Input.GetKeyDown(KeyCode.C))
 			{
 				int roomIndex = Random.Range(0, dungeon.RoomCount);
@@ -57,30 +76,20 @@ namespace SIS.Waypoints
 		}
 
 		//Move Towards Current Waypoint
-		void CheckNextWaypoint()
+		public void CheckNextWaypoint()
 		{
 			if (path == null) return;
 			if (pathIndex < 0 || pathIndex >= path.Count) return;
-
-			/*
-			Waypoint waypoint = path[pathIndex];
-
-			Vector3 target = new Vector3(waypoint.X, 0, waypoint.Y);
-			Vector3 direction = (target - transform.position).normalized;
-
-			transform.rotation = Quaternion.Slerp(transform.rotation,
-				Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)), 2f * Time.deltaTime);
-
-
-			Vector3 motion = transform.forward * speed * Time.deltaTime;
-			characterController.Move(motion);
-			*/
 
 			//Progressing Waypoints
 			Vector3 target = new Vector3(CurrentWaypoint.X, 0, CurrentWaypoint.Y);
 			if (Vector3.Distance(transform.position, target) < nextWaypointDistCheck)
 			{
 				++pathIndex;
+				if (pathIndex >= path.Count)
+				{
+					pathIndex = -1;
+				}
 			}
 		}
 
