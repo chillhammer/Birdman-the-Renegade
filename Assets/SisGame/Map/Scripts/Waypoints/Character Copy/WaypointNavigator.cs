@@ -47,9 +47,12 @@ namespace SIS.Waypoints
 			}
 		}
 
-		private void Awake()
+		private void Start()
 		{
-			waypointGraph = new WaypointGraph(dungeon.waypointSystem, dungeon);
+			if (waypointGraph == null) {
+				waypointGraph = new WaypointGraph(dungeon.waypointSystem, dungeon);
+				pathIndex = -1;
+			}
 		}
 
 		private void Update()
@@ -93,8 +96,22 @@ namespace SIS.Waypoints
 			}
 		}
 
+		public void SetWaypointGraph(WaypointSystem waypointSystem, Dungeon dg)
+		{
+			waypointGraph = new WaypointGraph(waypointSystem, dg);
+		}
+		public void SetWaypointGraph()
+		{
+			waypointGraph = new WaypointGraph(dungeon.waypointSystem, dungeon);
+		}
+
 		public void StartNavigation(int goalX, int goalY)
 		{
+			if (waypointGraph == null)
+			{
+				Debug.LogWarning("Cant Start Navigation, due to Waypoint Graph not being initialized yet");
+				return;
+			}
 			Waypoint start = waypointGraph.FindClosestWaypoint(transform.position);
 			Waypoint goal = waypointGraph.FindClosestWaypoint(new Vector3(goalX, 0f, goalY));
 
@@ -125,7 +142,14 @@ namespace SIS.Waypoints
 				Debug.LogWarning("Room Index Out of Bound");
 				return;
 			}
+			if (waypointGraph == null)
+			{
+				Debug.LogWarning("Cant Start Navigation, due to Waypoint Graph not being initialized yet");
+				return;
+			}
+
 			StartNavigation(waypointGraph.GetCenterRoomWaypoint(roomIndex));
+			
 		}
 		#endregion
 

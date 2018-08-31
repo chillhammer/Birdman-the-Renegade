@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using SIS.States;
+using System.Linq;
 
 //Unity does not show C# Generics in the Inspector
 //Thus, we must inherit from Generic and then expose custom variables and then set the originals
@@ -18,6 +19,9 @@ namespace SIS.Characters.Robo
 		public new RoboPadronStateActions[] onEnter;
 		public new RoboPadronStateActions[] onExit;
 
+		[SerializeField]
+		public new List<RoboPadronTransition> transitions = new List<RoboPadronTransition>();
+
 		//Sets hidden variables to state actions show in GUI
 		protected override void SetParentActions()
 		{
@@ -26,6 +30,7 @@ namespace SIS.Characters.Robo
 			parent.onFixed = onFixed;
 			parent.onEnter = onEnter;
 			parent.onExit = onExit;
+			parent.transitions = transitions.Cast<Transition<RoboPadron>>().ToList();
 		}
 
 		public override void Tick(RoboPadron owner)
@@ -38,5 +43,8 @@ namespace SIS.Characters.Robo
 	public abstract class RoboPadronStateActions : StateActions<RoboPadron> { }
 	public abstract class RoboPadronCondition : Condition<RoboPadron> { }
 	[System.Serializable]
-	public class RoboPadronTransition : Transition<RoboPadron> { }
+	public class RoboPadronTransition : Transition<RoboPadron> {
+		public new RoboPadronCondition condition;
+		public new RoboPadronState targetState;
+	}
 }

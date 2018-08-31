@@ -79,6 +79,39 @@ namespace SIS.Map
 		{
 			return GetRoomIndex(pos.x, pos.y);
 		}
+
+		//If you are in hall
+		public int GetClosestRoomIndex(int x, int y)
+		{
+			if (x >= WIDTH || x < 0 || y >= HEIGHT || y < 0) return -1;
+			int index = 0;
+			int closestRoomIndex = 0;
+			Vector2 pos = new Vector2(x, y);
+			float bestDist = 0;
+			foreach (Room room in rooms)
+			{
+				Vector2 center = room.rect.center;
+				float dist = Vector2.Distance(center, pos);
+				if (dist < bestDist)
+				{
+					bestDist = dist;
+					closestRoomIndex = index;
+				}
+				++index;
+			}
+			return closestRoomIndex;
+		}
+
+		public int GetClosestRoomIndex(Vector2Int pos)
+		{
+			return GetClosestRoomIndex(pos.x, pos.y);
+		}
+
+		public Room GetRandomRoom()
+		{
+			int roomIndex = Random.Range(0, rooms.Count);
+			return rooms[roomIndex];
+		}
 		#endregion
 	}
 }

@@ -24,7 +24,7 @@ namespace SIS.States
 
 		//Polymorphism
 		protected abstract void SetParentActions();
-		private void Awake()
+		private void OnEnable()
 		{
 			SetParentActions();
 		}

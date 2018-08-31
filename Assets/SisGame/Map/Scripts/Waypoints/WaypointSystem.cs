@@ -113,9 +113,7 @@ namespace SIS.Waypoints
 			int roomIndex = dungeon.GetRoomIndex(pos);
 			if (roomIndex == -1)
 			{
-				//TODO: Manually find closest waypoint. Currently in Hall
-				Debug.LogWarning("Finding Closeset Waypoint Failed. Not in Room");
-				return new Waypoint(0, 0);
+				roomIndex = dungeon.GetClosestRoomIndex(pos);
 			}
 			return FindClosestWaypointInRoom(position, roomIndex);
 		}

@@ -63,5 +63,5 @@ MonoBehaviour:
   roomMin: 5
   roomMax: 12
   roomAmount: 16
-  firstRoomWidth: 12
-  firstRoomHeight: 12
+  firstRoomWidth: 10
+  firstRoomHeight: 10

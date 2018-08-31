@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using SIS.States;
+using System.Linq;
 
 //Unity does not show C# Generics in the Inspector
 //Thus, we must inherit from Generic and then expose custom variables and then set the originals
@@ -18,6 +19,8 @@ namespace SIS.Characters.Example
 		public new ExampleStateActions[] onUpdate;
 		public new ExampleStateActions[] onEnter;
 		public new ExampleStateActions[] onExit;
+		[SerializeField]
+		public new List<ExampleTransition> transitions = new List<ExampleTransition>();
 
 		//Sets hidden variables to state actions show in GUI
 		protected override void SetParentActions()
@@ -27,6 +30,7 @@ namespace SIS.Characters.Example
 			parent.onFixed = onFixed;
 			parent.onEnter = onEnter;
 			parent.onExit = onExit;
+			parent.transitions = transitions.Cast<Transition<Example>>().ToList();
 		}
 
 		public override void Tick(Example owner)
@@ -39,5 +43,8 @@ namespace SIS.Characters.Example
 	public abstract class ExampleStateActions : StateActions<Example> { }
 	public abstract class ExampleCondition : Condition<Example> { }
 	[System.Serializable]
-	public class ExampleTransition : Transition<Example>{ }
+	public class ExampleTransition : Transition<Example>{
+		public new ExampleCondition condition;
+		public new ExampleState targetState;
+	}
 }

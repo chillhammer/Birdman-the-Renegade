@@ -14,7 +14,6 @@ namespace SIS.Map
 		public GameObject block;
 		public GameObject floor;
 		public GameObject player;
-		public GameObject enemy;
 
 		#region Settings
 		[SerializeField] private bool generateNewDungeon = true;
@@ -35,7 +34,7 @@ namespace SIS.Map
 		List<Rect> potentialExits;
 
 		// Use this for initialization
-		void Start()
+		private void Awake()
 		{
 			SetupObjects();
 			Generate();
@@ -241,16 +240,11 @@ namespace SIS.Map
 			//Player
 			PlaceObject((int)(WIDTH * 0.5f) + 2, (int)(HEIGHT * 0.5f) + 2, player, 0.5f);
 
-			//Enemy
-			if (enemy != null)
-				PlaceObject((int)(WIDTH * 0.5f) + 3, (int)(HEIGHT * 0.5f) + 3, enemy, 5f);
-
 		}
 
 		private void SpawnFloor()
 		{
-			GameObject bigFloor = Instantiate(floor, Vector3.zero, Quaternion.identity, dungeonParent.transform);
-			//bigFloor.transform.localScale = new Vector3(WIDTH, 1, HEIGHT);
+			Instantiate(floor, Vector3.zero, Quaternion.identity, dungeonParent.transform);
 		}
 
 		private void SpawnOuterEdges()

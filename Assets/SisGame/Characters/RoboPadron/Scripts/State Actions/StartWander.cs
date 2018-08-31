@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
-using SIS.States.Actions;
 
 namespace SIS.Characters.Robo
 {
@@ -12,6 +10,7 @@ namespace SIS.Characters.Robo
 		{
 			int roomAmount = owner.waypointNavigator.dungeon.RoomCount;
 			int randomRoom = Random.Range(0, roomAmount);
+			owner.waypointNavigator.SetWaypointGraph();
 			owner.waypointNavigator.StartNavigation(randomRoom);
 		}
 	}
