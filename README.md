@@ -1,4 +1,4 @@
-# The-Renegade-of-Birdman
+# Birdman the Renegade
 A third person shooter game featuring modular AI and a procedural dungeon generator.
 Made for Georgia Tech's Game Development Club, VGDev during the semester Fall 2018.
 
