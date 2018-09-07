@@ -96,6 +96,7 @@ namespace SIS.Waypoints
 			}
 		}
 
+		//Custom Waypoint Graph
 		public void SetWaypointGraph(WaypointSystem waypointSystem, Dungeon dg)
 		{
 			waypointGraph = new WaypointGraph(waypointSystem, dg);
@@ -105,6 +106,7 @@ namespace SIS.Waypoints
 			waypointGraph = new WaypointGraph(dungeon.waypointSystem, dungeon);
 		}
 
+		//Actually sets path and initiates path index
 		public void StartNavigation(int goalX, int goalY)
 		{
 			if (waypointGraph == null)
