@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361eb9679cd0b9f499d15cb126a374ff, type: 3}
   m_Name: ShootAlignBody
   m_EditorClassIdentifier: 
-  speed: 18
+  speed: 35

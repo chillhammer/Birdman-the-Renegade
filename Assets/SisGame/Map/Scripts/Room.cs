@@ -3,11 +3,12 @@ using System.Collections.Generic;
 
 //Basically graph node
 //RoomType will allow for custom rooms to be generated
+[System.Serializable]
 public class Room
 {
 	public Rect rect;
 	public HashSet<Room> connected;
-	public Room generatedFrom; //meta
+	[SerializeField] public Room generatedFrom; //meta
 	public RoomType roomType = RoomType.Normal;
 
 	#region Constructors

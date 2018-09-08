@@ -15,7 +15,7 @@ namespace SIS.Map
 		[HideInInspector] public int HEIGHT;
 
 		Tile[] tiles;
-		List<Room> rooms;
+		[SerializeField] List<Room> rooms;
 		public List<List<Waypoint>> waypointsByRoomCache; //only to keep waypoint data
 
 		public int RoomCount { get { return rooms.Count; } }

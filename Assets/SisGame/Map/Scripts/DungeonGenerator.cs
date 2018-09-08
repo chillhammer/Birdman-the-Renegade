@@ -179,18 +179,18 @@ namespace SIS.Map
 		//After adding room, look at edges to connect rooms, then connect if possible. also their waypoints
 		private void AddEmergentRoomConnections(Room room)
 		{
-			int x1 = (int)room.rect.xMin;
-			int y1 = (int)room.rect.yMin;
-			int x2 = (int)room.rect.xMax;
-			int y2 = (int)room.rect.yMax;
-			for (int r = y1; r < y2 - 1; ++r)
+			int x1 = (int)room.rect.x;
+			int y1 = (int)room.rect.y;
+			int x2 = (int)room.rect.x + (int)room.rect.width;
+			int y2 = (int)room.rect.y + (int)room.rect.height;
+			for (int r = y1; r < y2; ++r)
 			{
 				CheckPotentialConnection(room, r, x1 - 1);
 
 				CheckPotentialConnection(room, r, x2);
 			}
 
-			for (int c = x1; c < x2 - 1; ++c)
+			for (int c = x1; c < x2; ++c)
 			{
 				CheckPotentialConnection(room, y1 - 1, c);
 
