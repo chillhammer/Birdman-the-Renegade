@@ -9,6 +9,7 @@ namespace SIS.Items.Weapons
 	{
 		public int magazineBullets = 30;
 		public float fireRate = 0.2f;
+		public float recoilLength = 0.2f;
 
 		public SO.Vector3Variable holdingPosition;
 		public SO.Vector3Variable holdingEulers;

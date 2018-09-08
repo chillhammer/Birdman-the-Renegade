@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d1b0f4f6eb304a4b882e95810f2ade9, type: 3}
-  m_Name: MovementAiming
+  m_Name: MovementGunReady
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  movementDrag: 5
+  movementSpeed: 2
+  movementDrag: 4
   crouchSpeed: 2

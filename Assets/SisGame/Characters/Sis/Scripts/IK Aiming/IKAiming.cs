@@ -163,7 +163,7 @@ namespace SIS.Characters.Sis
 		//Start the recoil process
 		public void StartRecoil()
 		{
-			recoilHandler.StartRecoil(0.35f);
+			recoilHandler.StartRecoil(curWeapon.recoilLength);
 		}
 
 		//Tick the recoil and update offset positions

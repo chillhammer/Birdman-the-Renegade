@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db47cd817af1733419bbf188fd884a32, type: 3}
+  m_Name: HandleGunReady
+  m_EditorClassIdentifier: 
+  isGunReady: {fileID: 11400000, guid: 838b2b3a40729134f84b9edbff6c69da, type: 2}
+  isShooting: {fileID: 11400000, guid: f2cec12ee825c55459e478ff0330f743, type: 2}
+  gunReadyLength: 0.6

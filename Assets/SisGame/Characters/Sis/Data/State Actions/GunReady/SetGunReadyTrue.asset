@@ -9,8 +9,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf9a1cd3682c9ed4b801155401823b70, type: 3}
-  m_Name: SetShootingAnimTrue
+  m_Name: SetGunReadyTrue
   m_EditorClassIdentifier: 
   action:
-    targetBool: Shooting
+    targetBool: GunReady
     status: 1

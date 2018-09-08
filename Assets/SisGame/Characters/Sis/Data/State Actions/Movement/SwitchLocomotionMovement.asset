@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a587ccca8db46e4f8be718758455c13, type: 3}
-  m_Name: SwitchLocomotionRotation
+  m_Name: SwitchLocomotionMovement
   m_EditorClassIdentifier: 
   switcher:
-    targetBool: {fileID: 11400000, guid: dfc0bd553f313494a87022fdc9f484cd, type: 2}
-    onFalseAction: {fileID: 11400000, guid: db14161b7eb8a894da1e94cce9fd8fc0, type: 2}
-    onTrueAction: {fileID: 11400000, guid: 2a06cd16dedb5db43885426a0c7f4850, type: 2}
+    targetBool: {fileID: 11400000, guid: 33a2fc3a859850f4590844dbfb1af2e0, type: 2}
+    onFalseAction: {fileID: 11400000, guid: 43d4551fa16d4c04abe1b492dea6de71, type: 2}
+    onTrueAction: {fileID: 11400000, guid: ee8fcd8393600ea4d982599a97cd9cf8, type: 2}
