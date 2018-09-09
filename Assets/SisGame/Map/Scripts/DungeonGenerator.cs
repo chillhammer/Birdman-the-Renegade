@@ -11,7 +11,7 @@ namespace SIS.Map
 	{
 		public Dungeon dungeon;
 		public GameObject dungeonParent;
-		public GameObject block;
+		public GameObject wall;
 		public GameObject floor;
 		public GameObject player;
 
@@ -27,7 +27,6 @@ namespace SIS.Map
 		[SerializeField] private int firstRoomHeight =12;
 		#endregion
 
-		Dictionary<Tile, GameObject> tileObjects;
 		Tile[] tiles;
 		List<Room> rooms;
 		WaypointSystem waypointSystem;
@@ -229,11 +228,9 @@ namespace SIS.Map
 			{
 				for (int c = 0; c < WIDTH; ++c)
 				{
-					GameObject obj;
-					if (tileObjects.TryGetValue(GetTile(c, r), out obj))
+					if (GetTile(c, r) == Tile.Wall)
 					{
-						Vector3 objPos = new Vector3(c, 0, r);
-						Instantiate(obj, objPos, Quaternion.identity, wallParent.transform);
+						SpawnWall(c, r, wallParent.transform);
 					}
 				}
 			}
@@ -247,6 +244,12 @@ namespace SIS.Map
 
 		}
 
+		private void SpawnWall(int c, int r, Transform parent)
+		{
+			Vector3 objPos = new Vector3(c, 0, r);
+			Instantiate(wall, objPos, Quaternion.identity, parent);
+		}
+
 		private void SpawnFloor()
 		{
 			Instantiate(floor, Vector3.zero, Quaternion.identity, dungeonParent.transform);
@@ -257,19 +260,19 @@ namespace SIS.Map
 			for (int r = 0; r < HEIGHT; ++r)
 			{
 				Vector3 objPos = new Vector3(-1, 0, r);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, parent);
+				Instantiate(wall, objPos, Quaternion.identity, parent);
 
 				objPos = new Vector3(WIDTH, 0, r);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, parent);
+				Instantiate(wall, objPos, Quaternion.identity, parent);
 			}
 
 			for (int c = 0; c < WIDTH; ++c)
 			{
 				Vector3 objPos = new Vector3(c, 0, -1);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, parent);
+				Instantiate(wall, objPos, Quaternion.identity, parent);
 
 				objPos = new Vector3(c, 0, HEIGHT);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, parent);
+				Instantiate(wall, objPos, Quaternion.identity, parent);
 			}
 		}
 
@@ -281,10 +284,6 @@ namespace SIS.Map
 			else
 				waypointSystem.Init(dungeon, dungeon.waypointsByRoomCache);
 
-
-			tileObjects = new Dictionary<Tile, GameObject>();
-			//tileObjects.Add(Tile.Floor, floor);
-			tileObjects.Add(Tile.Wall, block);
 		}
 
 		#region  Private Helpers
