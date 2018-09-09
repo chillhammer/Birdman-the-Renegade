@@ -221,6 +221,9 @@ namespace SIS.Map
 		private void SpawnObjects()
 		{
 			SpawnFloor();
+			GameObject wallParent = new GameObject("Walls");
+			wallParent.transform.parent = dungeonParent.transform;
+
 			//Loop Through Tiles
 			for (int r = 0; r < HEIGHT; ++r)
 			{
@@ -230,12 +233,14 @@ namespace SIS.Map
 					if (tileObjects.TryGetValue(GetTile(c, r), out obj))
 					{
 						Vector3 objPos = new Vector3(c, 0, r);
-						Instantiate(obj, objPos, Quaternion.identity, dungeonParent.transform);
+						Instantiate(obj, objPos, Quaternion.identity, wallParent.transform);
 					}
 				}
 			}
 
-			SpawnOuterEdges();
+			SpawnOuterEdges(wallParent.transform);
+
+			wallParent.AddComponent<CombineChildren>();
 
 			//Player
 			PlaceObject((int)(WIDTH * 0.5f) + 2, (int)(HEIGHT * 0.5f) + 2, player, 0.5f);
@@ -247,24 +252,24 @@ namespace SIS.Map
 			Instantiate(floor, Vector3.zero, Quaternion.identity, dungeonParent.transform);
 		}
 
-		private void SpawnOuterEdges()
+		private void SpawnOuterEdges(Transform parent)
 		{
 			for (int r = 0; r < HEIGHT; ++r)
 			{
 				Vector3 objPos = new Vector3(-1, 0, r);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
+				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, parent);
 
 				objPos = new Vector3(WIDTH, 0, r);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
+				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, parent);
 			}
 
 			for (int c = 0; c < WIDTH; ++c)
 			{
 				Vector3 objPos = new Vector3(c, 0, -1);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
+				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, parent);
 
 				objPos = new Vector3(c, 0, HEIGHT);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
+				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, parent);
 			}
 		}
 
