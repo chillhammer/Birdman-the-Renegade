@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using SIS.Waypoints;
+using System.Linq;
 
 public enum Tile { None, Floor, Wall, Doorframe}
 public enum Direction { North, East, South, West, NumOfDirections }
@@ -12,6 +13,7 @@ namespace SIS.Map
 		public Dungeon dungeon;
 		public GameObject dungeonParent;
 		public GameObject wall;
+		public GameObject corner;
 		public GameObject floor;
 		public GameObject player;
 
@@ -230,7 +232,11 @@ namespace SIS.Map
 				{
 					if (GetTile(c, r) == Tile.Wall)
 					{
-						SpawnWall(c, r, wallParent.transform);
+						bool cornerSpawned = SpawnCornerIfPossible(c, r, wallParent.transform);
+						if (!cornerSpawned)
+						{
+							SpawnWall(c, r, wallParent.transform);
+						}
 					}
 				}
 			}
@@ -248,6 +254,69 @@ namespace SIS.Map
 		{
 			Vector3 objPos = new Vector3(c, 0, r);
 			Instantiate(wall, objPos, Quaternion.identity, parent);
+		}
+
+		///<summary>
+		///Spawns corner with given rotation and x, z displacement
+		///x, z displacement required to fit the corner into grid as origin of corner is at its corner
+		///</summary>
+		private void SpawnCorner(int c, int r, Transform parent, Quaternion rotation, int xOffset, int zOffset)
+		{
+			Vector3 objPos = new Vector3(c + xOffset, 0, r + zOffset);
+			Instantiate(corner, objPos, rotation, parent);
+		}
+
+		///<summary>
+		///Check if a given tile at c, r is a corner and spawns if it is
+		///Returns if corner was spawned
+		///Assumes that given tile is a Tile.Wall
+		///</summary>
+		private bool SpawnCornerIfPossible(int c, int r, Transform parent)
+		{
+			Tile[] neighbors = GetTileNeighbors(c, r);
+			int walls = 0;
+			int wallType = neighbors.Aggregate(0, (b, tile) => {
+				if (tile == Tile.Wall) {
+					b = b | 1;
+					walls++;
+				}
+				return b << 1;
+			});
+			wallType /= 2;
+
+			if (walls != 2)
+			{
+				// not a corner
+				return false;
+			}
+
+			if (c == 0 || c == HEIGHT - 1 || r == 0 || r == WIDTH - 1)
+			{
+				// can't decide if corner if tile is at edge of Dungeon due to outerwall
+				// TODO: account for the outer wall
+				return false;
+			}
+
+			// flags to determine orientation of corner
+			const int northEastCorner = 3, northWestCorner = 6, southEastCorner = 9, southWestCorner = 12;
+
+			switch (wallType)
+			{
+				case northEastCorner:
+					SpawnCorner(c, r, parent, Quaternion.Euler(0, -90, 0), 1, 0);
+					return true;
+				case northWestCorner:
+					SpawnCorner(c, r, parent, Quaternion.Euler(0, 180, 0), 1, 1);
+					return true;
+				case southEastCorner:
+					SpawnCorner(c, r, parent, Quaternion.Euler(0, 0, 0), 0, 0);
+					return true;
+				case southWestCorner:
+					SpawnCorner(c, r, parent, Quaternion.Euler(0, 90, 0), 0, 1);
+					return true;
+				default:
+					return false;
+			}
 		}
 
 		private void SpawnFloor()
@@ -343,6 +412,21 @@ namespace SIS.Map
 			int index = x + y * WIDTH;
 			if (x >= WIDTH || x < 0 || y >= HEIGHT || y < 0) return Tile.None;
 			return tiles[index];
+		}
+
+		///<summary>
+		///Returns adjacent neighbors of a tile at position x, y
+		///in clockwise order, starting from the north neighbor
+		///</summary>
+		private Tile[] GetTileNeighbors(int x, int y)
+		{
+			Tile[] neighbors = new Tile[] {
+				GetTile(x, y + 1),
+				GetTile(x + 1, y),
+				GetTile(x, y - 1),
+				GetTile(x - 1, y)
+			};
+			return neighbors;
 		}
 
 		private Room GetRoom(int x, int y)
