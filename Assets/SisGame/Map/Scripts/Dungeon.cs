@@ -80,10 +80,9 @@ namespace SIS.Map
 			return GetRoomIndex(pos.x, pos.y);
 		}
 
-		//If you are in hall
+		//If you are in hall or outside map
 		public int GetClosestRoomIndex(int x, int y)
 		{
-			if (x >= WIDTH || x < 0 || y >= HEIGHT || y < 0) return -1;
 			int index = 0;
 			int closestRoomIndex = 0;
 			Vector2 pos = new Vector2(x, y);

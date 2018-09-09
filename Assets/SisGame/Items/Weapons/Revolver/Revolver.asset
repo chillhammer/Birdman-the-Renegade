@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Name: Revolver
   m_EditorClassIdentifier: 
   magazineBullets: 120
-  fireRate: 0.4
+  fireRate: 0.2
+  recoilLength: 0.2
   holdingPosition: {fileID: 11400000, guid: 8d048c15af662134188d0db191ede3c6, type: 2}
   holdingEulers: {fileID: 11400000, guid: d0cd4c053ea20c54e8b7abc6fb7150b2, type: 2}
   modelPrefab: {fileID: 1043542097370994, guid: 572f244d45082b54ebfa83d413e898d0,

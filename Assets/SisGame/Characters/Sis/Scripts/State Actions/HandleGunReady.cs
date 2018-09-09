@@ -19,7 +19,7 @@ namespace SIS.Characters.Sis
 
 		public override void Execute(Sis owner)
 		{
-			if (isShooting.value)
+			if (isShooting.value && !owner.isAiming)
 			{
 				gunReadyTimer = gunReadyLength;
 			}
@@ -30,6 +30,7 @@ namespace SIS.Characters.Sis
 			}
 
 			isGunReady.value = gunReadyTimer > 0;
+			owner.isGunReady = isGunReady.value;
 		}
 	}
 }

@@ -16,7 +16,10 @@ namespace SIS.Items.Weapons
 		public void StartRecoil(float recoilTime)
 		{
 			if (isRecoiling)
-				return;
+			{
+				Debug.Log("Recoil Failed. Restarting recoiling");
+				//return;
+			}
 
 			isRecoiling = true;
 			recoilTimer = 0;
