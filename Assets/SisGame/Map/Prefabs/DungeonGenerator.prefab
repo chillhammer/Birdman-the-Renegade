@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dungeon: {fileID: 11400000, guid: fcafa1c3f050c43448a48e9105f95af5, type: 2}
   dungeonParent: {fileID: 0}
-  block: {fileID: 1800040313532366, guid: 71ae54459527d604aa58b9d28ec1034f, type: 2}
+  wall: {fileID: 1800040313532366, guid: 71ae54459527d604aa58b9d28ec1034f, type: 2}
   floor: {fileID: 1420099505138398, guid: ab282929ae069204c98bae1cdd389f76, type: 2}
   player: {fileID: 1038008882383420, guid: 1f8407d9f7f30084497940f87530e4a8, type: 2}
   generateNewDungeon: 1
