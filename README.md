@@ -2,7 +2,7 @@
 A third person shooter game featuring modular AI and a procedural dungeon generator.
 Made for Georgia Tech's Game Development Club, VGDev during the semester Fall 2018.
 
-![alt-text](https://drive.google.com/open?id=1oJL7z3LcBNaFF0dTkosBrIYxSpfzmPGB)
+![alt-text](https://i.imgur.com/C5Y2Mit.jpg)
 
 ### Link to Google Docs tutorials for this code base: ###
 https://drive.google.com/open?id=1cMawCFnEpCxc6qB8e3u63QJLc3U567Kq
