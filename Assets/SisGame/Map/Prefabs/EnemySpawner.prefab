@@ -56,5 +56,5 @@ MonoBehaviour:
   enemies:
   - enemy: {fileID: 1284060523504750, guid: f42c9d02174afdd4f92b728e4b3f33b3, type: 2}
     number: 10
-    sameRoom: 1
+    sameRoom: 0
     elevation: 1.33

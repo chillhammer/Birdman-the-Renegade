@@ -34,7 +34,6 @@ namespace SIS.Characters.Sis
 			if (owner.isShooting && !startedShooting)
 			{
 				startedShooting = true;
-				//owner.isShooting = false;
 				
 				if (bullets > 0)
 				{
@@ -70,6 +69,7 @@ namespace SIS.Characters.Sis
 			{
 				DelayStopShooting(owner);
 			}
+
 		}
 
 		private void DelayStopShooting(Sis owner)

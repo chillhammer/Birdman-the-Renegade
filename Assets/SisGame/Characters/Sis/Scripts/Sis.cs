@@ -55,6 +55,7 @@ namespace SIS.Characters.Sis
 		#region Flags and Toggles
 		public bool isAiming;
 		public bool isShooting;
+		public bool isGunReady;
 		public bool isCrouching;
 		public bool isReloading;
 		public bool isInteracting;

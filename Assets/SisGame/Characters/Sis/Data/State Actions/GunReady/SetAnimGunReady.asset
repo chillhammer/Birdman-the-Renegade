@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a587ccca8db46e4f8be718758455c13, type: 3}
+  m_Name: SetAnimGunReady
+  m_EditorClassIdentifier: 
+  switcher:
+    targetBool: {fileID: 11400000, guid: 838b2b3a40729134f84b9edbff6c69da, type: 2}
+    onFalseAction: {fileID: 11400000, guid: 4db49a42f8a7cdd4992abc9b779bc99f, type: 2}
+    onTrueAction: {fileID: 11400000, guid: 53b226311f1415f45a71204320cdf470, type: 2}

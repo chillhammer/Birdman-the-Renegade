@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4444265924400064}
   - component: {fileID: 20054737815055020}
   - component: {fileID: 81913281863150826}
+  - component: {fileID: 114433233804311224}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -37,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4448662690259280}
   - component: {fileID: 114927103069890870}
-  - component: {fileID: 114111439293379944}
+  - component: {fileID: 114366412543143796}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -53,7 +54,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4519569848400238}
-  - component: {fileID: 114101167948418154}
   m_Layer: 0
   m_Name: Holder2
   m_TagString: Untagged
@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4846585394981846}
-  - component: {fileID: 114707861937898576}
+  - component: {fileID: 114256878386190496}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -111,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1481529409863882}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 0.58, z: -3.5}
+  m_LocalPosition: {x: 0.0000022053719, y: 0.00000023841858, z: -3.4999938}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4444265924400064}
@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1809103407389374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.69, y: 1.641, z: -0.25}
+  m_LocalPosition: {x: 0.607, y: 1.653, z: -0.159}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4519569848400238}
@@ -179,31 +179,7 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1092994479367452}
   m_Enabled: 1
---- !u!114 &114101167948418154
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1481529409863882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6491225021534054e91e9883c93fa4da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformVariable: {fileID: 11400000, guid: 0d0e09d816ccc744e934fc3b7c8c64a3, type: 2}
---- !u!114 &114111439293379944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1397941860056968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6491225021534054e91e9883c93fa4da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transformVariable: {fileID: 11400000, guid: 9d1babb12888d48458a6f457e3daec60, type: 2}
---- !u!114 &114707861937898576
+--- !u!114 &114256878386190496
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,6 +191,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformVariable: {fileID: 11400000, guid: 6fb919f8150ef5b4791848ce224bb65f, type: 2}
+--- !u!114 &114366412543143796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397941860056968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6491225021534054e91e9883c93fa4da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformVariable: {fileID: 11400000, guid: 9d1babb12888d48458a6f457e3daec60, type: 2}
+--- !u!114 &114433233804311224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1092994479367452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6491225021534054e91e9883c93fa4da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformVariable: {fileID: 11400000, guid: 0d0e09d816ccc744e934fc3b7c8c64a3, type: 2}
 --- !u!114 &114927103069890870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,5 +233,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 236f2898a20cc21468b785db9ffb207b, type: 2}
   - {fileID: 11400000, guid: 809c3969913edfe499a379a873608892, type: 2}
   lateActions:
-  - {fileID: 11400000, guid: 6edf212526bfe0541b8a0afba6d1123e, type: 2}
   - {fileID: 11400000, guid: 9bc810103ff310b4f8341eec89b88506, type: 2}

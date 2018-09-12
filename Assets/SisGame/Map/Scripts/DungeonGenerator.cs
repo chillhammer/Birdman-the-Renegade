@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using SIS.Waypoints;
+using System.Linq;
 
 public enum Tile { None, Floor, Wall, Doorframe}
 public enum Direction { North, East, South, West, NumOfDirections }
@@ -11,7 +12,8 @@ namespace SIS.Map
 	{
 		public Dungeon dungeon;
 		public GameObject dungeonParent;
-		public GameObject block;
+		public GameObject wall;
+		public GameObject corner;
 		public GameObject floor;
 		public GameObject player;
 
@@ -27,7 +29,6 @@ namespace SIS.Map
 		[SerializeField] private int firstRoomHeight =12;
 		#endregion
 
-		Dictionary<Tile, GameObject> tileObjects;
 		Tile[] tiles;
 		List<Room> rooms;
 		WaypointSystem waypointSystem;
@@ -179,18 +180,18 @@ namespace SIS.Map
 		//After adding room, look at edges to connect rooms, then connect if possible. also their waypoints
 		private void AddEmergentRoomConnections(Room room)
 		{
-			int x1 = (int)room.rect.xMin;
-			int y1 = (int)room.rect.yMin;
-			int x2 = (int)room.rect.xMax;
-			int y2 = (int)room.rect.yMax;
-			for (int r = y1; r < y2 - 1; ++r)
+			int x1 = (int)room.rect.x;
+			int y1 = (int)room.rect.y;
+			int x2 = (int)room.rect.x + (int)room.rect.width;
+			int y2 = (int)room.rect.y + (int)room.rect.height;
+			for (int r = y1; r < y2; ++r)
 			{
 				CheckPotentialConnection(room, r, x1 - 1);
 
 				CheckPotentialConnection(room, r, x2);
 			}
 
-			for (int c = x1; c < x2 - 1; ++c)
+			for (int c = x1; c < x2; ++c)
 			{
 				CheckPotentialConnection(room, y1 - 1, c);
 
@@ -221,25 +222,101 @@ namespace SIS.Map
 		private void SpawnObjects()
 		{
 			SpawnFloor();
+			GameObject wallParent = new GameObject("Walls");
+			wallParent.transform.parent = dungeonParent.transform;
+
 			//Loop Through Tiles
 			for (int r = 0; r < HEIGHT; ++r)
 			{
 				for (int c = 0; c < WIDTH; ++c)
 				{
-					GameObject obj;
-					if (tileObjects.TryGetValue(GetTile(c, r), out obj))
+					if (GetTile(c, r) == Tile.Wall)
 					{
-						Vector3 objPos = new Vector3(c, 0, r);
-						Instantiate(obj, objPos, Quaternion.identity, dungeonParent.transform);
+						bool cornerSpawned = SpawnCornerIfPossible(c, r, wallParent.transform);
+						if (!cornerSpawned)
+						{
+							SpawnWall(c, r, wallParent.transform);
+						}
 					}
 				}
 			}
 
-			SpawnOuterEdges();
+			SpawnOuterEdges(wallParent.transform);
+
+			wallParent.AddComponent<CombineChildren>();
 
 			//Player
 			PlaceObject((int)(WIDTH * 0.5f) + 2, (int)(HEIGHT * 0.5f) + 2, player, 0.5f);
 
+		}
+
+		private void SpawnWall(int c, int r, Transform parent)
+		{
+			Vector3 objPos = new Vector3(c, 0, r);
+			Instantiate(wall, objPos, Quaternion.identity, parent);
+		}
+
+		///<summary>
+		///Spawns corner with given rotation and x, z displacement
+		///x, z displacement required to fit the corner into grid as origin of corner is at its corner
+		///</summary>
+		private void SpawnCorner(int c, int r, Transform parent, Quaternion rotation, int xOffset, int zOffset)
+		{
+			Vector3 objPos = new Vector3(c + xOffset, 0, r + zOffset);
+			Instantiate(corner, objPos, rotation, parent);
+		}
+
+		///<summary>
+		///Check if a given tile at c, r is a corner and spawns if it is
+		///Returns if corner was spawned
+		///Assumes that given tile is a Tile.Wall
+		///</summary>
+		private bool SpawnCornerIfPossible(int c, int r, Transform parent)
+		{
+			Tile[] neighbors = GetTileNeighbors(c, r);
+			int walls = 0;
+			int wallType = neighbors.Aggregate(0, (b, tile) => {
+				if (tile == Tile.Wall) {
+					b = b | 1;
+					walls++;
+				}
+				return b << 1;
+			});
+			wallType /= 2;
+
+			if (walls != 2)
+			{
+				// not a corner
+				return false;
+			}
+
+			if (c == 0 || c == HEIGHT - 1 || r == 0 || r == WIDTH - 1)
+			{
+				// can't decide if corner if tile is at edge of Dungeon due to outerwall
+				// TODO: account for the outer wall
+				return false;
+			}
+
+			// flags to determine orientation of corner
+			const int northEastCorner = 3, northWestCorner = 6, southEastCorner = 9, southWestCorner = 12;
+
+			switch (wallType)
+			{
+				case northEastCorner:
+					SpawnCorner(c, r, parent, Quaternion.Euler(0, -90, 0), 1, 0);
+					return true;
+				case northWestCorner:
+					SpawnCorner(c, r, parent, Quaternion.Euler(0, 180, 0), 1, 1);
+					return true;
+				case southEastCorner:
+					SpawnCorner(c, r, parent, Quaternion.Euler(0, 0, 0), 0, 0);
+					return true;
+				case southWestCorner:
+					SpawnCorner(c, r, parent, Quaternion.Euler(0, 90, 0), 0, 1);
+					return true;
+				default:
+					return false;
+			}
 		}
 
 		private void SpawnFloor()
@@ -247,24 +324,24 @@ namespace SIS.Map
 			Instantiate(floor, Vector3.zero, Quaternion.identity, dungeonParent.transform);
 		}
 
-		private void SpawnOuterEdges()
+		private void SpawnOuterEdges(Transform parent)
 		{
 			for (int r = 0; r < HEIGHT; ++r)
 			{
 				Vector3 objPos = new Vector3(-1, 0, r);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
+				Instantiate(wall, objPos, Quaternion.identity, parent);
 
 				objPos = new Vector3(WIDTH, 0, r);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
+				Instantiate(wall, objPos, Quaternion.identity, parent);
 			}
 
 			for (int c = 0; c < WIDTH; ++c)
 			{
 				Vector3 objPos = new Vector3(c, 0, -1);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
+				Instantiate(wall, objPos, Quaternion.identity, parent);
 
 				objPos = new Vector3(c, 0, HEIGHT);
-				Instantiate(tileObjects[Tile.Wall], objPos, Quaternion.identity, dungeonParent.transform);
+				Instantiate(wall, objPos, Quaternion.identity, parent);
 			}
 		}
 
@@ -276,10 +353,6 @@ namespace SIS.Map
 			else
 				waypointSystem.Init(dungeon, dungeon.waypointsByRoomCache);
 
-
-			tileObjects = new Dictionary<Tile, GameObject>();
-			//tileObjects.Add(Tile.Floor, floor);
-			tileObjects.Add(Tile.Wall, block);
 		}
 
 		#region  Private Helpers
@@ -339,6 +412,21 @@ namespace SIS.Map
 			int index = x + y * WIDTH;
 			if (x >= WIDTH || x < 0 || y >= HEIGHT || y < 0) return Tile.None;
 			return tiles[index];
+		}
+
+		///<summary>
+		///Returns adjacent neighbors of a tile at position x, y
+		///in clockwise order, starting from the north neighbor
+		///</summary>
+		private Tile[] GetTileNeighbors(int x, int y)
+		{
+			Tile[] neighbors = new Tile[] {
+				GetTile(x, y + 1),
+				GetTile(x + 1, y),
+				GetTile(x, y - 1),
+				GetTile(x - 1, y)
+			};
+			return neighbors;
 		}
 
 		private Room GetRoom(int x, int y)

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: HandleShooting
   m_EditorClassIdentifier: 
   isShooting: {fileID: 11400000, guid: f2cec12ee825c55459e478ff0330f743, type: 2}
-  shootingLength: 0.075
+  shootingLength: 0.1
