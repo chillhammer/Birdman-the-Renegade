@@ -322,6 +322,7 @@ namespace SIS.Map
 		private void SpawnFloor()
 		{
 			Instantiate(floor, Vector3.zero, Quaternion.identity, dungeonParent.transform);
+			//floorGO.transform.localScale = new Vector3(WIDTH, 0, HEIGHT);
 		}
 
 		private void SpawnOuterEdges(Transform parent)

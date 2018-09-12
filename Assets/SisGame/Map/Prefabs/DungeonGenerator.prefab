@@ -54,13 +54,14 @@ MonoBehaviour:
   dungeon: {fileID: 11400000, guid: fcafa1c3f050c43448a48e9105f95af5, type: 2}
   dungeonParent: {fileID: 0}
   wall: {fileID: 1800040313532366, guid: 71ae54459527d604aa58b9d28ec1034f, type: 2}
+  corner: {fileID: 1660074524252052, guid: fb1badccf18bc58409a1455ca07ec303, type: 2}
   floor: {fileID: 1420099505138398, guid: ab282929ae069204c98bae1cdd389f76, type: 2}
   player: {fileID: 1038008882383420, guid: 1f8407d9f7f30084497940f87530e4a8, type: 2}
   generateNewDungeon: 1
   WIDTH: 40
   HEIGHT: 40
-  roomMin: 4
-  roomMax: 12
+  roomMin: 6
+  roomMax: 14
   roomAmount: 16
-  firstRoomWidth: 10
-  firstRoomHeight: 10
+  firstRoomWidth: 12
+  firstRoomHeight: 12
