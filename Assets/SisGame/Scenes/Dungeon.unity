@@ -157,38 +157,6 @@ Prefab:
       propertyPath: dungeonParent
       value: 
       objectReference: {fileID: 1901667228}
-    - target: {fileID: 114263514491030148, guid: 2508e4e399a7d204483c594bd288915d,
-        type: 2}
-      propertyPath: corner
-      value: 
-      objectReference: {fileID: 1660074524252052, guid: fb1badccf18bc58409a1455ca07ec303,
-        type: 2}
-    - target: {fileID: 114263514491030148, guid: 2508e4e399a7d204483c594bd288915d,
-        type: 2}
-      propertyPath: wall
-      value: 
-      objectReference: {fileID: 1800040313532366, guid: 71ae54459527d604aa58b9d28ec1034f,
-        type: 2}
-    - target: {fileID: 114263514491030148, guid: 2508e4e399a7d204483c594bd288915d,
-        type: 2}
-      propertyPath: roomMin
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114263514491030148, guid: 2508e4e399a7d204483c594bd288915d,
-        type: 2}
-      propertyPath: roomMax
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 114263514491030148, guid: 2508e4e399a7d204483c594bd288915d,
-        type: 2}
-      propertyPath: WIDTH
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 114263514491030148, guid: 2508e4e399a7d204483c594bd288915d,
-        type: 2}
-      propertyPath: HEIGHT
-      value: 80
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2508e4e399a7d204483c594bd288915d, type: 2}
   m_IsPrefabAsset: 0
