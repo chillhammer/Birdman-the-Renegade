@@ -4,7 +4,7 @@ Made for Georgia Tech's Game Development Club, VGDev during the semester Fall 20
 
 ![alt-text](https://i.imgur.com/C5Y2Mit.jpg)
 
-![alt-text](https://imgur.com/a/Tvma0eA)
+![alt-text](https://i.imgur.com/20UXNj6.png)
 
 ### Link to Google Docs tutorials for this code base: ###
 https://drive.google.com/open?id=1cMawCFnEpCxc6qB8e3u63QJLc3U567Kq
