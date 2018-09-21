@@ -27,21 +27,24 @@ namespace SIS.Items.Weapons
 			runtime = new RuntimeWeapon();
 
 			runtime.modelInstance = Instantiate(modelPrefab);
+			runtime.weaponTip = runtime.modelInstance.transform.Find("WeaponTip");
 			runtime.weaponFX = runtime.modelInstance.GetComponent<WeaponFX>();
 			if (runtime.weaponFX == null)
 			{
 				runtime.weaponFX = runtime.modelInstance.AddComponent<WeaponFX>();
 			}
-			runtime.weaponFX.Init();
+			runtime.weaponFX.Init(runtime.weaponTip);
 
 			runtime.lastFired = 0;
 			runtime.currentBullets = magazineBullets;
 		}
 
 		//InGame Settings
+		[System.Serializable]
 		public class RuntimeWeapon
 		{
 			public GameObject modelInstance;
+			public Transform weaponTip;
 			public WeaponFX weaponFX;
 			public float lastFired;
 			public int currentBullets;
