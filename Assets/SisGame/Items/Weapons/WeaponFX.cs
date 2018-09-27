@@ -24,7 +24,7 @@ namespace SIS.Items.Weapons
 
 		public void Shoot(Vector3 dir)
 		{
-			//weaponTip.rotation = Quaternion.LookRotation(dir);
+			//weaponTip.rotation = Quaternion.LookRotation(dir); Updating in HandleShooting
 			isShooting = true;
 
 
