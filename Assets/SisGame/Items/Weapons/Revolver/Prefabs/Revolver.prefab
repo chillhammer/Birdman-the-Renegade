@@ -69,6 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4225137211673866}
+  - component: {fileID: 114761232925409162}
   m_Layer: 0
   m_Name: WeaponTip
   m_TagString: Untagged
@@ -96,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1043542097370994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.750996, y: -1.9010692, z: 14.8040695}
+  m_LocalPosition: {x: 30.5, y: -1.9010692, z: 14.8040695}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4115565485250988}
@@ -191,6 +192,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114761232925409162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1288725880225616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8480ccf070ffce944918076099d3c757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fixedUpdateActions: []
+  updateActions: []
+  lateActions:
+  - {fileID: 11400000, guid: 845928caa3b22f044aa6c7f902402ec1, type: 2}
 --- !u!198 &198306577034078320
 ParticleSystem:
   m_ObjectHideFlags: 1
