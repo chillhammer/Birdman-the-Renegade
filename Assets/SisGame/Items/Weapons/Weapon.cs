@@ -35,6 +35,11 @@ namespace SIS.Items.Weapons
 			}
 			runtime.weaponFX.Init(runtime.weaponTip);
 
+			if (runtime.weaponTip)
+			{
+				runtime.weaponTip.SetParent(null); //Detach
+			}
+
 			runtime.lastFired = 0;
 			runtime.currentBullets = magazineBullets;
 		}

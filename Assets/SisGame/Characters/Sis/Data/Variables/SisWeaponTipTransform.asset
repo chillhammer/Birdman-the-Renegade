@@ -8,8 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e6b1a02975bd284dafbd35d76cb8d48, type: 3}
-  m_Name: WeaponTipAlignment
+  m_Script: {fileID: 11500000, guid: 034edd6a9f7307741b5b416ea4dd83d9, type: 3}
+  m_Name: SisWeaponTipTransform
   m_EditorClassIdentifier: 
-  sis: {fileID: 11400000, guid: 7a5eaaf58a516004ead97e53823d534c, type: 2}
-  tipTransform: {fileID: 11400000, guid: 73325f83a012f184dbee1d06316f4362, type: 2}
+  value: {fileID: 0}
