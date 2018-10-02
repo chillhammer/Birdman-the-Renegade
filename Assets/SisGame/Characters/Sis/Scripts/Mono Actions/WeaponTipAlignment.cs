@@ -18,7 +18,6 @@ namespace SIS.Characters.Sis
 				Items.Weapons.Weapon.RuntimeWeapon runtime = sis.value.inventory.currentWeapon.runtime;
 
 				Vector3 origin = tipTransform.value.position;
-					//(runtime.weaponTip == null ? runtime.modelInstance.transform.position : runtime.weaponTip.position);
 				Vector3 dir = sis.value.movementValues.aimPosition - origin;
 
 				//Actual Alignment
