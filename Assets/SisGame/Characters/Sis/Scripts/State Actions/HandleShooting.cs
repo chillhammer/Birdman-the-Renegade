@@ -30,6 +30,12 @@ namespace SIS.Characters.Sis
 			int bullets = runtime.currentBullets;
 			isShooting.value = owner.isShooting;
 
+			//Update Shooting Variables for FX and Ballistics
+			Vector3 origin = (runtime.weaponTip == null ? runtime.modelInstance.transform.position : runtime.weaponTip.position);
+			Vector3 dir = owner.movementValues.aimPosition - runtime.weaponTip.position;
+			//runtime.weaponTip.rotation = Quaternion.LookRotation(dir); WeaponTipAlignment Action
+			// -----
+
 			//Shooting
 			if (owner.isShooting && !startedShooting)
 			{
@@ -40,14 +46,13 @@ namespace SIS.Characters.Sis
 					if (Time.realtimeSinceStartup - runtime.lastFired > weapon.fireRate)
 					{
 						runtime.lastFired = Time.realtimeSinceStartup;
-						//Recoil and FX
-						runtime.weaponFX.Shoot();
-						owner.aiming.StartRecoil();
 
 						//Ballistics
-						Vector3 origin = runtime.modelInstance.transform.position;
-						Vector3 dir = owner.movementValues.aimPosition - origin;
 						weapon.ballistics.Execute(owner, weapon, dir);
+
+						//Recoil and FX
+						runtime.weaponFX.Shoot(dir);
+						owner.aiming.StartRecoil();
 
 						//Decrement Bullets
 						runtime.currentBullets--;
