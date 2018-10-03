@@ -9,28 +9,51 @@ namespace SIS.Items.Weapons
 	{
 		ParticleSystem[] particles;
 		AudioSource audioSource;
+		Transform weaponTip;
 
 		public bool isShooting;
 
 
-		public void Init()
+		public void Init(Transform tip)
 		{
 			CreateAudioHolder();
 
 			particles = GetComponentsInChildren<ParticleSystem>();
+			weaponTip = tip;
 		}
 
-		public void Shoot()
+		public void Shoot(Vector3 dir)
 		{
+			//weaponTip.rotation = Quaternion.LookRotation(dir); Updating in HandleShooting
 			isShooting = true;
+
 
 			if (particles != null)
 			{
+
 				foreach (ParticleSystem system in particles)
 				{
 					system.Play();
 				}
 			}
+			//StartCoroutine(ShootParticleDelay(dir));
+		}
+
+		IEnumerator ShootParticleDelay(Vector3 dir)
+		{
+			yield return new WaitForFixedUpdate();
+			isShooting = true;
+
+			
+			if (particles != null)
+			{
+
+				foreach (ParticleSystem system in particles)
+				{
+					system.Play();
+				}
+			}
+			
 		}
 
 		//Helper Functions
