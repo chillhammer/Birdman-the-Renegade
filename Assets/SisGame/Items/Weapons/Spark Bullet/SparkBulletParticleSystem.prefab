@@ -3698,11 +3698,11 @@ ParticleSystem:
     radiusScale: 1
   SubModule:
     serializedVersion: 2
-    enabled: 0
+    enabled: 1
     subEmitters:
     - serializedVersion: 2
       emitter: {fileID: 0}
-      type: 0
+      type: 2
       properties: 0
   LightsModule:
     enabled: 0
