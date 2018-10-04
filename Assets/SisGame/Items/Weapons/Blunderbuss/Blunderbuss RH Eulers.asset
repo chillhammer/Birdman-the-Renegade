@@ -8,9 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b228fc6774f56f4183e1cdc88363fc0, type: 3}
-  m_Name: ResourcesManager
+  m_Script: {fileID: 11500000, guid: b94b33feb8aa43b43870a6060b1f5374, type: 3}
+  m_Name: BlunderbussHoldingEulers
   m_EditorClassIdentifier: 
-  allItems:
-  - {fileID: 11400000, guid: 087b3e3858453ac45bde19021f83f050, type: 2}
-  - {fileID: 11400000, guid: e552dc2b146b26b47b5103b2e67ea404, type: 2}
+  value: {x: 0, y: 0, z: 0}

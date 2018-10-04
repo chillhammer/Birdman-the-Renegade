@@ -32,9 +32,7 @@ namespace SIS.Characters.Sis
 
 			//Update Shooting Variables for FX and Ballistics
 			Vector3 origin = (runtime.weaponTip == null ? runtime.modelInstance.transform.position : runtime.weaponTip.position);
-			Vector3 dir = owner.movementValues.aimPosition - runtime.weaponTip.position;
-			//runtime.weaponTip.rotation = Quaternion.LookRotation(dir); WeaponTipAlignment Action
-			// -----
+			Vector3 dir = owner.movementValues.aimPosition - origin;
 
 			//Shooting
 			if (owner.isShooting && !startedShooting)

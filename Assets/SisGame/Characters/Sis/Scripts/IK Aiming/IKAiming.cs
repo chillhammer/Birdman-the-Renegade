@@ -16,6 +16,7 @@ namespace SIS.Characters.Sis
 		float bodyWeight;
 
 		Transform rhTarget;
+		Transform lhTarget;
 		public Transform shoulder;
 		public Transform aimPivot;
 		Vector3 lookDir;
@@ -51,12 +52,19 @@ namespace SIS.Characters.Sis
 			HandlePivot();
 		}
 
-		#region Right Hand Target is on Weapon
+		#region Right Hand and Lef Hand Target is on Weapon
 		//Creates empty object for right hand target
 		void CreateRightHandTarget()
 		{
 			rhTarget = new GameObject().transform;
 			rhTarget.name = "Right Hand Target";
+			rhTarget.parent = aimPivot;
+		}
+
+		void CreateLeftHandTarget()
+		{
+			rhTarget = new GameObject().transform;
+			rhTarget.name = "Left Hand Target";
 			rhTarget.parent = aimPivot;
 		}
 		//Sets right hand target ontop of weapon

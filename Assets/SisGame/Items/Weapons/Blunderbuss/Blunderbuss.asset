@@ -16,7 +16,7 @@ MonoBehaviour:
   recoilLength: 0.2
   holdingPosition: {fileID: 11400000, guid: 8d048c15af662134188d0db191ede3c6, type: 2}
   holdingEulers: {fileID: 11400000, guid: d0cd4c053ea20c54e8b7abc6fb7150b2, type: 2}
-  modelPrefab: {fileID: 1373509958206898, guid: 2b218fa53f39e1b419167a3e55aec14b,
+  modelPrefab: {fileID: 1919201045682130, guid: 2b218fa53f39e1b419167a3e55aec14b,
     type: 2}
   runtime:
     modelInstance: {fileID: 0}
