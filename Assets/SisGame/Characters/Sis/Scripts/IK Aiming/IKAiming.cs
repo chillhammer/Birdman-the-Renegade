@@ -36,6 +36,7 @@ namespace SIS.Characters.Sis
 
 			CreateAimPivot();
 			CreateRightHandTarget();
+			CreateLeftHandTarget();
 			//Setup Aim Position
 			owner.movementValues.aimPosition = owner.mTransform.position + owner.mTransform.forward * 15;
 			owner.movementValues.aimPosition.y += 1.4f;
