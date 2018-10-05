@@ -38,8 +38,8 @@ namespace SIS.Items.Weapons
 				isRecoiling = false;
 			}
 			float progress = recoilTimer / recoilTime;
-			OffsetPosition = Vector3.forward * weapon.recoilZ.Evaluate(progress);
-			OffsetRotation = Vector3.right * 90 * -weapon.recoilY.Evaluate(progress);
+            OffsetPosition = Vector3.forward * weapon.recoilZ.Evaluate(progress) + Vector3.up * weapon.recoilY.Evaluate(progress);
+            OffsetRotation = Vector3.zero; //Vector3.right * 90 * -weapon.recoilY.Evaluate(progress);
 		}
 
 
