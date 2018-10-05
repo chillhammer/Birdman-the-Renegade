@@ -9,6 +9,10 @@ namespace SIS.Items.Weapons
 	[CreateAssetMenu(menuName = "Items/Ballistics/Ray")]
 	public class RayBallistics : Ballistics
 	{
+		public override void Init(Weapon weapon)
+		{
+		}
+
 		public override void Execute(Character owner, Weapon weapon, Vector3 intendedDirection)
 		{
 			Vector3 origin = weapon.runtime.modelInstance.transform.position;

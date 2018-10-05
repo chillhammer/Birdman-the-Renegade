@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 4518782118875394}
   - component: {fileID: 198452958439475832}
   - component: {fileID: 199489559888845294}
+  - component: {fileID: 114238070628293000}
   m_Layer: 0
   m_Name: SparkBulletParticleSystem
   m_TagString: Untagged
@@ -253,6 +254,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114238070628293000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1724490269699068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceaef6f71eec7264ab4886a2461d8f73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114262967105191912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3919,7 +3931,7 @@ ParticleSystem:
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -3937,7 +3949,7 @@ ParticleSystem:
     radiusScale: 1
   SubModule:
     serializedVersion: 2
-    enabled: 1
+    enabled: 0
     subEmitters:
     - serializedVersion: 2
       emitter: {fileID: 198862296231909494}
@@ -4880,7 +4892,7 @@ ParticleSystem:
   lengthInSec: 1.8
   simulationSpeed: 1
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0

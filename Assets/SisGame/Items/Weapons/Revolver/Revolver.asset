@@ -11,13 +11,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165c39555fcf09449a3ab1d56cf7e58, type: 3}
   m_Name: Revolver
   m_EditorClassIdentifier: 
+  decrementBulletsOnShoot: 0
   magazineBullets: 120
   fireRate: 0.2
   recoilLength: 0.2
+  damageOnHit: 1
   holdingPosition: {fileID: 11400000, guid: 8d048c15af662134188d0db191ede3c6, type: 2}
   holdingEulers: {fileID: 11400000, guid: d0cd4c053ea20c54e8b7abc6fb7150b2, type: 2}
+  IKLeftHand: 0
+  leftHoldingPosition: {fileID: 0}
+  leftHoldingEulers: {fileID: 0}
   modelPrefab: {fileID: 1043542097370994, guid: 572f244d45082b54ebfa83d413e898d0,
     type: 2}
+  runtime:
+    modelInstance: {fileID: 0}
+    weaponTip: {fileID: 0}
+    weaponFX: {fileID: 0}
+    lastFired: 0
+    currentBullets: 0
   recoilY:
     serializedVersion: 2
     m_Curve:
@@ -84,4 +95,4 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ballistics: {fileID: 11400000, guid: 03fa9a8a44e20c846886a890348597af, type: 2}
+  ballistics: {fileID: 11400000, guid: ec2cfa06c27fd234d9063a40f41a519b, type: 2}

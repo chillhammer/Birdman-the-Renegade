@@ -18,7 +18,7 @@ namespace SIS.Items.Weapons
 		{
 			CreateAudioHolder();
 
-			particles = GetComponentsInChildren<ParticleSystem>();
+			particles = GetComponents<ParticleSystem>();
 			weaponTip = tip;
 		}
 
@@ -30,9 +30,10 @@ namespace SIS.Items.Weapons
 
 			if (particles != null)
 			{
-
+				
 				foreach (ParticleSystem system in particles)
 				{
+					Debug.Log("Weapon FX Particle Effect Shot: " + system.name);
 					system.Play();
 				}
 			}

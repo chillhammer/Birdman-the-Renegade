@@ -7,9 +7,11 @@ namespace SIS.Items.Weapons
 	[CreateAssetMenu(menuName = "Items/Weapon")]
 	public class Weapon : Item
 	{
+		public bool decrementBulletsOnShoot = true;
 		public int magazineBullets = 30;
 		public float fireRate = 0.2f;
 		public float recoilLength = 0.2f;
+		public int damageOnHit = 1;
 
 		public SO.Vector3Variable holdingPosition; //used in IKAiming, to snap arm to weapon
 		public SO.Vector3Variable holdingEulers;
@@ -44,6 +46,8 @@ namespace SIS.Items.Weapons
 			{
 				runtime.weaponTip.SetParent(null); //Detach
 			}
+
+			ballistics.Init(this);
 
 			runtime.lastFired = 0;
 			runtime.currentBullets = magazineBullets;

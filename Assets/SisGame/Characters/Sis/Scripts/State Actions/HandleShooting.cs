@@ -46,16 +46,20 @@ namespace SIS.Characters.Sis
 						runtime.lastFired = Time.realtimeSinceStartup;
 
 						//Ballistics
-						weapon.ballistics.Execute(owner, weapon, dir);
+						if (weapon.ballistics != null)
+							weapon.ballistics.Execute(owner, weapon, dir);
 
 						//Recoil and FX
 						runtime.weaponFX.Shoot(dir);
 						owner.aiming.StartRecoil();
 
 						//Decrement Bullets
-						runtime.currentBullets--;
-						if (runtime.currentBullets < 0)
-							runtime.currentBullets = 0;
+						if (weapon.decrementBulletsOnShoot)
+						{
+							runtime.currentBullets--;
+							if (runtime.currentBullets < 0)
+								runtime.currentBullets = 0;
+						}
 					}
 				}
 				else //Reload if out of bullets
