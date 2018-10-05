@@ -37,25 +37,8 @@ namespace SIS.Items.Weapons
 					system.Play();
 				}
 			}
-			//StartCoroutine(ShootParticleDelay(dir));
 		}
 
-		IEnumerator ShootParticleDelay(Vector3 dir)
-		{
-			yield return new WaitForFixedUpdate();
-			isShooting = true;
-
-			
-			if (particles != null)
-			{
-
-				foreach (ParticleSystem system in particles)
-				{
-					system.Play();
-				}
-			}
-			
-		}
 
 		//Helper Functions
 		protected void CreateAudioHolder()

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 822
   particleSystemName: SparkBulletParticleSystem

@@ -21,9 +21,11 @@ namespace SIS.Items.Weapons
 		private void Start()
 		{
 			part = GetComponent<ParticleSystem>();
-			ParticleSystem[] ps = GetComponentsInChildren<ParticleSystem>();
+			//On Hit Particle System is Second On List
+			ParticleSystem[] ps = transform.parent.GetComponentsInChildren<ParticleSystem>();
 			if (ps != null && ps.Length > 1)
 				onHitParticleSystem = ps[1];
+
 			collisionEvents = new List<ParticleCollisionEvent>();
 
 		}
@@ -34,7 +36,14 @@ namespace SIS.Items.Weapons
 			weapon = wep;
 			incomingDirection = dir;
 			ParticleSystem.CollisionModule coll = part.collision;
-			coll.collidesWith = ignore;
+			coll.collidesWith = ~ignore;
+			//Not Used, Could Be Replaced with Muzzle Flash.
+			/*
+			onHitParticleSystem.transform.position = 
+				(weapon.runtime.weaponTip != null ? 
+					weapon.runtime.weaponTip.position : 
+					weapon.runtime.modelInstance.transform.position);
+			*/
 		}
 
 		void OnParticleCollision(GameObject other)
