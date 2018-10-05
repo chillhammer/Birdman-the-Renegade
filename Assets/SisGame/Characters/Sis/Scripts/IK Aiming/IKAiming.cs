@@ -69,13 +69,35 @@ namespace SIS.Characters.Sis
 			lhTarget.name = "Left Hand Target";
 			lhTarget.parent = aimPivot;
 		}
+
+		//For When Weapon Loads in and Changes Top Half Layer
+		void SetAnimLayerWeight(string animationLayer, float weight)
+		{
+			int layerIndex = anim.GetLayerIndex(animationLayer);
+			if (layerIndex >= 0)
+			{
+				anim.SetLayerWeight(layerIndex, weight);
+			} else
+			{
+				Debug.LogWarning("Cannot find animation layer: " + animationLayer);
+			}
+		}
+
 		//Sets right hand target ontop of weapon
 		//Activate method whenever you change weapons
 		public void UpdateWeaponAiming(Weapon w)
 		{
+			if (curWeapon != null) { //Turn Off Weapon Animation Layer
+				SetAnimLayerWeight(curWeapon.topHalfAnimatorLayerName, 0);
+			}
+
 			curWeapon = w;
+
 			if (w == null)
 				return;
+			//Turn On Weapon Animation Layer
+			SetAnimLayerWeight(curWeapon.topHalfAnimatorLayerName, 1);
+
 			//Update so right hand is holding weapon
 			rhTarget.localPosition = w.holdingPosition.value;
 			rhTarget.localEulerAngles = w.holdingEulers.value;

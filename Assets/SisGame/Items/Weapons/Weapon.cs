@@ -27,6 +27,7 @@ namespace SIS.Items.Weapons
 		public AnimationCurve recoilZ;
 		
 		public Ballistics ballistics;
+		public string topHalfAnimatorLayerName = "RevolverTopHalf"; //for custom animations
 
 		//Will Instiate Runtime Object of this Scriptable Object
 		public void Init()
