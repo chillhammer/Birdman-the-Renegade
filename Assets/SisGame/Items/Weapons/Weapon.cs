@@ -11,8 +11,13 @@ namespace SIS.Items.Weapons
 		public float fireRate = 0.2f;
 		public float recoilLength = 0.2f;
 
-		public SO.Vector3Variable holdingPosition;
+		public SO.Vector3Variable holdingPosition; //used in IKAiming, to snap arm to weapon
 		public SO.Vector3Variable holdingEulers;
+
+		public bool IKLeftHand = false;
+		public SO.Vector3Variable leftHoldingPosition; //used in IKAiming
+		public SO.Vector3Variable leftHoldingEulers;
+
 		public GameObject modelPrefab;
 		public RuntimeWeapon runtime;
 

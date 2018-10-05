@@ -869,7 +869,7 @@ MonoBehaviour:
     lookDirection: {x: 0.10170621, y: 0, z: -0.9948145}
     aimPosition: {x: 0, y: 0, z: 0}
   inventory:
-    weaponName: Blunderbuss
+    weaponName: Revolver
     currentWeapon: {fileID: 0}
   isAiming: 0
   isShooting: 0

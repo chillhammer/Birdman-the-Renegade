@@ -17,6 +17,7 @@ namespace SIS.Characters.Sis
 
 		Transform rhTarget;
 		Transform lhTarget;
+		bool updateLeftHand;
 		public Transform shoulder;
 		public Transform aimPivot;
 		Vector3 lookDir;
@@ -63,9 +64,9 @@ namespace SIS.Characters.Sis
 
 		void CreateLeftHandTarget()
 		{
-			rhTarget = new GameObject().transform;
-			rhTarget.name = "Left Hand Target";
-			rhTarget.parent = aimPivot;
+			lhTarget = new GameObject().transform;
+			lhTarget.name = "Left Hand Target";
+			lhTarget.parent = aimPivot;
 		}
 		//Sets right hand target ontop of weapon
 		//Activate method whenever you change weapons
@@ -77,6 +78,14 @@ namespace SIS.Characters.Sis
 			//Update so right hand is holding weapon
 			rhTarget.localPosition = w.holdingPosition.value;
 			rhTarget.localEulerAngles = w.holdingEulers.value;
+
+			//Update so right hand is holding weapon
+			updateLeftHand = w.IKLeftHand;
+			if (updateLeftHand)
+			{
+				lhTarget.localPosition = w.leftHoldingPosition.value;
+				lhTarget.localEulerAngles = w.leftHoldingEulers.value;
+			}
 
 			//Store local transform for recoil
 			basePosition = rhTarget.localPosition;
@@ -137,7 +146,10 @@ namespace SIS.Characters.Sis
 			anim.SetLookAtWeight(lookWeight, bodyWeight, 1, 1, 1);
 			anim.SetLookAtPosition(owner.movementValues.aimPosition);
 
+
 			UpdateIK(AvatarIKGoal.RightHand, rhTarget, handWeight);
+			if (updateLeftHand)
+				UpdateIK(AvatarIKGoal.LeftHand, lhTarget, handWeight);
 		}
 
 		//Tunes IK weights based on a number of factors
