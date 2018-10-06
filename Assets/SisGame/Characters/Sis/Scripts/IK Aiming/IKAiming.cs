@@ -186,7 +186,7 @@ namespace SIS.Characters.Sis
 			if (owner.isGunReady)
 				targetHandWeight = 0.5f;
 			if (owner.isShooting)
-				targetHandWeight = 0.075f;
+				targetHandWeight = 1;
 			if (owner.isAiming) {
 				targetHandWeight = 1;
 				bodyWeight = 0.4f;

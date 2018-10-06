@@ -23,14 +23,17 @@ namespace SIS.Items.Weapons
 
 			isRecoiling = true;
 			recoilTimer = 0;
-			OffsetPosition = Vector3.zero;
+			OffsetPosition = Vector3.forward;
 			this.recoilTime = recoilTime;
 		}
 
 		public void Tick(Weapon weapon, float delta)
 		{
 			if (!isRecoiling)
+			{
+				OffsetPosition = Vector3.forward;
 				return;
+			}
 			recoilTimer += delta;
 			if (recoilTimer > recoilTime)
 			{
@@ -38,8 +41,8 @@ namespace SIS.Items.Weapons
 				isRecoiling = false;
 			}
 			float progress = recoilTimer / recoilTime;
-            OffsetPosition = Vector3.forward * weapon.recoilZ.Evaluate(progress) + Vector3.up * weapon.recoilY.Evaluate(progress);
-            OffsetRotation = Vector3.zero; //Vector3.right * 90 * -weapon.recoilY.Evaluate(progress);
+			OffsetPosition = Vector3.forward * weapon.recoilZ.Evaluate(progress) + Vector3.up * weapon.recoilY.Evaluate(progress);
+			OffsetRotation = Vector3.zero;// Vector3.right * 90 * -weapon.recoilY.Evaluate(progress);
 		}
 
 

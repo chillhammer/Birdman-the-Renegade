@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165c39555fcf09449a3ab1d56cf7e58, type: 3}
   m_Name: Blunderbuss
   m_EditorClassIdentifier: 
-  decrementBulletsOnShoot: 1
+  decrementBulletsOnShoot: 0
   magazineBullets: 30
   fireRate: 0.2
   recoilLength: 0.2
@@ -34,31 +34,31 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0.52888674
-      outSlope: 0.52888674
+      time: -0.19641495
+      value: -0.0035705566
+      inSlope: 0.6859723
+      outSlope: 0.6859723
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.49191284
-      value: 0.26016617
-      inSlope: 0.024510622
-      outSlope: 0.024510622
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1.0095096
-      value: 0.011789367
-      inSlope: -0.62329805
-      outSlope: -0.62329805
+      time: -0.095460236
+      value: 0.06568158
+      inSlope: -0.18517643
+      outSlope: -0.18517643
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33069184
+      inWeight: 0.33333334
+      outWeight: 0.25706178
+    - serializedVersion: 3
+      time: 1.0095096
+      value: 0.010034606
+      inSlope: 0.012162602
+      outSlope: 0.012162602
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.31471685
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -67,17 +67,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: -0.037490845
-      value: 0.9991455
-      inSlope: -7.1010714
-      outSlope: -7.1010714
+      time: 0.008243561
+      value: 1.0021935
+      inSlope: -4.826502
+      outSlope: -4.826502
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.020896912
-      value: 0.5845299
+      time: 0.11793989
+      value: 0.47274393
       inSlope: -0.15001616
       outSlope: -0.15001616
       tangentMode: 0
@@ -87,11 +87,11 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0.99556375
       value: 1.0001874
-      inSlope: 1.6546572
-      outSlope: 1.6546572
+      inSlope: 0.28261623
+      outSlope: 0.28261623
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.43854007
+      inWeight: 0.51558703
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
