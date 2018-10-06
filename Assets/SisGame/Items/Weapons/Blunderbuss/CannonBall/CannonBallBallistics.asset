@@ -8,7 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94b33feb8aa43b43870a6060b1f5374, type: 3}
-  m_Name: BB RH Eulers
+  m_Script: {fileID: 11500000, guid: a3026493e6cf3634abe8cbb88703ea93, type: 3}
+  m_Name: CannonBallBallistics
   m_EditorClassIdentifier: 
-  value: {x: -28.68, y: 0, z: 0}
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  projectile: {fileID: 0}
