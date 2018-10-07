@@ -14,4 +14,5 @@ MonoBehaviour:
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 0
-  projectile: {fileID: 0}
+  projectile: {fileID: 1346750400851638, guid: 0f19d4e03fd72c446b9ab396fa1e5a6d, type: 2}
+  projectileSpeed: 100
