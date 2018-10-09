@@ -13,7 +13,7 @@ namespace SIS.Characters.Robo
 
 		public override void Execute(RoboPadron owner)
 		{
-
+			owner.rigid.velocity = Vector3.zero;
 			if (owner.waypointNavigator.PathFinished)
 				return;
 
@@ -25,7 +25,8 @@ namespace SIS.Characters.Robo
 
 			Vector3 motion = owner.mTransform.forward * moveSpeed * owner.delta;
 			//owner.rigid.AddForce(motion);
-			owner.mTransform.position = owner.mTransform.position + motion;
+			owner.rigid.velocity = motion;
+			//owner.mTransform.position = owner.mTransform.position + motion;
 		}
 	}
 }

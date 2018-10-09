@@ -7,10 +7,50 @@ ModelImporter:
     100002: //RootNode
     100004: Torus
     100006: Torus_001
+    100008: Arm_L
+    100010: Arm_R
+    100012: Armature
+    100014: Bicep_L
+    100016: Bicep_R
+    100018: C-Logo
+    100020: Ear_L
+    100022: Ear_R
+    100024: Foot_L
+    100026: Foot_R
+    100028: Gun
+    100030: Hand_L
+    100032: Hand_R
+    100034: Hat
+    100036: Head
+    100038: RoboPadron_Model
+    100040: Root
+    100042: Toes_L
+    100044: Toes_R
+    100046: Torso
     400000: Cylinder_002
     400002: //RootNode
     400004: Torus
     400006: Torus_001
+    400008: Arm_L
+    400010: Arm_R
+    400012: Armature
+    400014: Bicep_L
+    400016: Bicep_R
+    400018: C-Logo
+    400020: Ear_L
+    400022: Ear_R
+    400024: Foot_L
+    400026: Foot_R
+    400028: Gun
+    400030: Hand_L
+    400032: Hand_R
+    400034: Hat
+    400036: Head
+    400038: RoboPadron_Model
+    400040: Root
+    400042: Toes_L
+    400044: Toes_R
+    400046: Torso
     2100000: Material_003
     2100002: Material_001
     2100004: DarkLeather
@@ -23,17 +63,38 @@ ModelImporter:
     2100018: Dark
     2100020: Greay
     2100022: Eyes
+    2100024: Material_004
     2300000: Cylinder_002
     2300002: Torus
     2300004: Torus_001
+    2300006: C-Logo
+    2300008: Gun
+    2300010: Hat
     3300000: Cylinder_002
     3300002: Torus
     3300004: Torus_001
+    3300006: C-Logo
+    3300008: Gun
+    3300010: Hat
     4300000: Torus_001
     4300002: Torus
     4300004: Cylinder_002
+    4300006: RoboPadron_Model
+    4300008: C-Logo
+    4300010: Hat
+    4300012: Gun
     7400000: Default Take
+    7400002: RoboAiming
+    7400004: ArmatureAction
+    7400006: PoseLib
+    7400008: RoboStanding
+    7400010: RoboWalking
+    7400012: RoboWalking
+    7400014: RoboAiming
+    7400016: RoboStanding
     9500000: //RootNode
+    13700000: RoboPadron_Model
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -61,7 +122,91 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: RoboStanding
+      takeName: Standing
+      firstFrame: -1
+      lastFrame: 0
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: -0.16
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RoboWalking
+      takeName: Walking2
+      firstFrame: -1
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: -0.28
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: RoboAiming
+      takeName: Aiming
+      firstFrame: -1
+      lastFrame: 0
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: -0.16
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -105,8 +250,8 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    rootMotionBoneName: Root
+    rootMotionBoneRotation: {x: -0, y: -0, z: -0.70710677, w: 0.7071069}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
