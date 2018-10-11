@@ -13,6 +13,8 @@ namespace SIS.Items.Weapons
         private GameObject projectile;
         [SerializeField]
         private float projectileSpeed;
+        [SerializeField]
+        private float persistTime;
 
         private GameObject container;
 
@@ -32,12 +34,20 @@ namespace SIS.Items.Weapons
 			Vector3 dir = intendedDirection;
             GameObject proj = Instantiate<GameObject>(projectile, origin, Quaternion.identity);
             Rigidbody rb = proj.GetComponent<Rigidbody>();
+            RigidbodyProjectileOnHit onHit = proj.GetComponent<RigidbodyProjectileOnHit>();
+
             if (rb == null) {
                 Debug.LogWarning("RigidbodyBallistics projectiles must have a rigidbody component");
-            } else {
-                rb.velocity = dir.normalized * projectileSpeed;
-                proj.transform.parent = container.transform;
+                return;
             }
+            if (onHit == null) {
+                Debug.LogWarning("RigidbodyBallistics projectiles must have a RigidbodyProjectileOnHit component");
+                return;
+            }
+
+            onHit.UpdateOnHitSettings(owner, weapon, ignoreLayers, persistTime);
+            rb.velocity = dir.normalized * projectileSpeed;
+            proj.transform.parent = container.transform;
 		}
 	}
 }
