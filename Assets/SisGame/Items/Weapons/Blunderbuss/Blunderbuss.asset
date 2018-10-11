@@ -96,5 +96,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ballistics: {fileID: 11400000, guid: 03fa9a8a44e20c846886a890348597af, type: 2}
+  ballistics: {fileID: 11400000, guid: fc8c8079171eda74bb9bd1d7e4f447b8, type: 2}
   topHalfAnimatorLayerName: RevolverTopHalf

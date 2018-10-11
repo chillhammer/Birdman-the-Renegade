@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015dd2a951dfdda43814dbb837b946e8, type: 3}
   m_Name: Move Wander
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 150
   turnSpeed: 6

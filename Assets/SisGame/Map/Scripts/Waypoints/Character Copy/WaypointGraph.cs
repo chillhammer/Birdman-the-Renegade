@@ -131,7 +131,8 @@ namespace SIS.Waypoints
 				current.cameFrom = null;
 				current = next;
 			}
-			path.RemoveAt(0); //Removing First One -- test
+			if (path.Count > 1)
+				path.RemoveAt(0); //Removing First One -- test
 			return path;
 		}
 	}

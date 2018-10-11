@@ -106,24 +106,24 @@ namespace SIS.Map
 							rx = ex - (int)(dimensions.x * 0.5);
 							ry = ey - (int)dimensions.y;
 							oldRoomEnt = new Vector2Int(ex, ey + 1);
-							newRoomEnt = new Vector2Int(ex, ey - 1);
+							newRoomEnt = new Vector2Int(ex, ey - 2);
 							break;
 						case Direction.East:
 							rx = ex + 1;
 							ry = ey - (int)(dimensions.y * 0.5);
 							oldRoomEnt = new Vector2Int(ex - 1, ey);
-							newRoomEnt = new Vector2Int(ex + 1, ey);
+							newRoomEnt = new Vector2Int(ex + 2, ey);
 							break;
 						case Direction.South:
 							rx = ex - (int)(dimensions.x * 0.5);
 							ry = ey + 1;
-							oldRoomEnt = new Vector2Int(ex, ey - 1);
+							oldRoomEnt = new Vector2Int(ex, ey - 2);
 							newRoomEnt = new Vector2Int(ex, ey + 1);
 							break;
 						case Direction.West:
 							rx = ex - (int)dimensions.x;
 							ry = ey - (int)(dimensions.y * 0.5);
-							oldRoomEnt = new Vector2Int(ex + 1, ey);
+							oldRoomEnt = new Vector2Int(ex + 2, ey);
 							newRoomEnt = new Vector2Int(ex - 1, ey);
 							break;
 					}

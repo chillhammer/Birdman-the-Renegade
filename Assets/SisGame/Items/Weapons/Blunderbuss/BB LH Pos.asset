@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b94b33feb8aa43b43870a6060b1f5374, type: 3}
   m_Name: BB LH Pos
   m_EditorClassIdentifier: 
-  value: {x: 0.227, y: -0.163, z: 0.421}
+  value: {x: 1.5, y: -0.097, z: 0.546}

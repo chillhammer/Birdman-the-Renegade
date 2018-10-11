@@ -25,7 +25,10 @@ namespace SIS.Waypoints
 			get
 			{
 				if (path == null || pathIndex == -1 || pathIndex >= path.Count)
+				{
+					Debug.LogWarning("CurrentWaypoint Out of Bounds. Index: " + pathIndex);
 					return new Waypoint();
+				}
 				return path[pathIndex];
 			}
 		}

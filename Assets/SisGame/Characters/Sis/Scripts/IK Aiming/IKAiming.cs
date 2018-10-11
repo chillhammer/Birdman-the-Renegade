@@ -25,6 +25,8 @@ namespace SIS.Characters.Sis
 		RecoilHandler recoilHandler;
 		Vector3 basePosition;
 		Vector3 baseRotation;
+        Vector3 lBasePosition;
+        Vector3 lBaseRotation;
 
 		public void Init(Sis sis)
 		{
@@ -113,6 +115,8 @@ namespace SIS.Characters.Sis
 			//Store local transform for recoil
 			basePosition = rhTarget.localPosition;
 			baseRotation = rhTarget.localEulerAngles;
+            lBasePosition = lhTarget.localPosition;
+            lBaseRotation = lhTarget.localEulerAngles;
 		}
 		#endregion
 
@@ -219,6 +223,10 @@ namespace SIS.Characters.Sis
 			recoilHandler.Tick(curWeapon, owner.delta);
 			rhTarget.localPosition = basePosition + recoilHandler.OffsetPosition;
 			rhTarget.localEulerAngles = baseRotation + recoilHandler.OffsetRotation;
+            if (curWeapon.IKLeftHand) {
+                lhTarget.localPosition = lBasePosition + recoilHandler.OffsetPosition;
+                lhTarget.localEulerAngles = lBaseRotation + recoilHandler.OffsetRotation;
+            }
 		}
 		#endregion
 
