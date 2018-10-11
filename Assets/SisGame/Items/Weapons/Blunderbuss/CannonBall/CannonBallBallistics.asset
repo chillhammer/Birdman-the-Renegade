@@ -13,6 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   projectile: {fileID: 1346750400851638, guid: 0f19d4e03fd72c446b9ab396fa1e5a6d, type: 2}
-  projectileSpeed: 100
+  projectileSpeed: 50
+  persistTime: 10
