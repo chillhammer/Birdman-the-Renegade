@@ -25,6 +25,8 @@ namespace SIS.Items.Weapons
 
 		public AnimationCurve recoilY;
 		public AnimationCurve recoilZ;
+
+		public AudioClip fireAudio;
 		
 		public Ballistics ballistics;
 		public string topHalfAnimatorLayerName = "RevolverTopHalf"; //for custom animations
@@ -41,7 +43,7 @@ namespace SIS.Items.Weapons
 			{
 				runtime.weaponFX = runtime.modelInstance.AddComponent<WeaponFX>();
 			}
-			runtime.weaponFX.Init(runtime.weaponTip);
+			runtime.weaponFX.Init(runtime.weaponTip, fireAudio);
 
 			if (runtime.weaponTip)
 			{

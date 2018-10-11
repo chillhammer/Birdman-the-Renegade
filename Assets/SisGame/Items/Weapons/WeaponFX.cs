@@ -14,9 +14,9 @@ namespace SIS.Items.Weapons
 		public bool isShooting;
 
 
-		public void Init(Transform tip)
+		public void Init(Transform tip, AudioClip sound)
 		{
-			CreateAudioHolder();
+			CreateAudioHolder(sound);
 
 			particles = GetComponents<ParticleSystem>();
 			weaponTip = tip;
@@ -26,7 +26,7 @@ namespace SIS.Items.Weapons
 		{
 			//weaponTip.rotation = Quaternion.LookRotation(dir); Updating in HandleShooting
 			isShooting = true;
-
+			audioSource.PlayOneShot(audioSource.clip);
 
 			if (particles != null)
 			{
@@ -41,13 +41,14 @@ namespace SIS.Items.Weapons
 
 
 		//Helper Functions
-		protected void CreateAudioHolder()
+		protected void CreateAudioHolder(AudioClip sound)
 		{
 			GameObject go = new GameObject();
 			go.name = "Audio Holder";
 			go.transform.parent = this.transform;
 			audioSource = go.AddComponent<AudioSource>();
 			audioSource.spatialBlend = 1;
+			audioSource.clip = sound;
 		}
 	}
 }
