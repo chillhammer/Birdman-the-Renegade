@@ -5818,6 +5818,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114707690902722026, guid: 69aeaa6c520648a4dbc8c1b366981b5e,
+        type: 2}
+      propertyPath: enemies.Array.data[0].number
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114707690902722026, guid: 69aeaa6c520648a4dbc8c1b366981b5e,
+        type: 2}
+      propertyPath: enemies.Array.data[0].elevation
+      value: 0.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69aeaa6c520648a4dbc8c1b366981b5e, type: 2}
   m_IsPrefabAsset: 0
