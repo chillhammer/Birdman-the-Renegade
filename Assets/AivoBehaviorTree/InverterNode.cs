@@ -9,7 +9,7 @@
             this.node = node;
         }
         
-        public AivoTreeStatus Tick(long timeTick, T context)
+        public AivoTreeStatus Tick(float timeTick, T context)
         {
             var status = node.Tick(timeTick, context);
             switch (status)

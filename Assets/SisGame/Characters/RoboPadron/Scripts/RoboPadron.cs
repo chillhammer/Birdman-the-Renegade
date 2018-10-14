@@ -11,8 +11,6 @@ namespace SIS.Characters.Robo
 	public class RoboPadron : Character, IHittable
 	{
 		#region StateMachine Setup
-		//State Actions use this instead of Time.delta
-		public float delta { get { return stateMachine.delta; } }
 
 		//Must Start Off in a State
 		[SerializeField] private RoboPadronState startingState; 
@@ -36,6 +34,7 @@ namespace SIS.Characters.Robo
 		private void Update()
 		{
 			stateMachine.Tick();
+			delta = stateMachine.delta;
 		}
 
 		#endregion

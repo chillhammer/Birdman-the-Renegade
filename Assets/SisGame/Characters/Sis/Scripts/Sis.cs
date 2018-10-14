@@ -10,7 +10,6 @@ namespace SIS.Characters.Sis
 	public class Sis : Character
 	{
 		#region StateMachine Setup
-		public float delta { get { return stateMachine.delta; } }
 		[SerializeField] private SisState startingState;
 		[SerializeField] private SisStateActions initActionsBatch;
 
@@ -30,6 +29,7 @@ namespace SIS.Characters.Sis
 		private void Update()
 		{
 			stateMachine.Tick();
+			delta = stateMachine.delta;
 		}
 
 		#endregion

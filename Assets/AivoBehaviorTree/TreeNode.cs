@@ -2,6 +2,6 @@
 {
     public interface TreeNode<T>
     {
-        AivoTreeStatus Tick(long timeTick, T context);
+        AivoTreeStatus Tick(float timeTick, T context);
     }
 }

@@ -15,6 +15,8 @@ namespace SIS.Characters
 		public Rigidbody rigid;
 		[HideInInspector]
 		public Animator anim;
+		[HideInInspector]
+		public float delta;
 
 		protected virtual void Start()
 		{

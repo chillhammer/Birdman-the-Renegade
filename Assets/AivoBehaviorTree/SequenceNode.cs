@@ -13,7 +13,7 @@ namespace AivoTree
             _nodes = nodes;
         }
 
-        public AivoTreeStatus Tick(long timeTick, T context)
+        public AivoTreeStatus Tick(float timeTick, T context)
         {
             var nodesToSearch = runningNode == null
                 ? _nodes
