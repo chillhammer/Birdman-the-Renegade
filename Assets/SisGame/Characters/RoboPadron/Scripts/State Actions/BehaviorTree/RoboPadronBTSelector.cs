@@ -14,10 +14,11 @@ namespace SIS.Characters.Robo
 		AivoTree.SelectorNode<RoboPadron> selector;
 
 		//Copys over State Action Nodes into Sequence. State Action Nodes are acted as Tree Nodes
-		public override void Init()
+		public override BehaviorTreeNode<RoboPadron, RoboPadronStateActions> InitNode()
 		{
 			selector = new AivoTree.SelectorNode<RoboPadron>(bTNodes);
-			node = new BehaviorTreeNode<RoboPadron, RoboPadronStateActions>(selector);
+			return new BehaviorTreeNode<RoboPadron, RoboPadronStateActions>(selector);
+			
 		}
 	}
 }

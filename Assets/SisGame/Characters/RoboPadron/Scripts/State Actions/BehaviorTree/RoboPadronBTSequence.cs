@@ -14,10 +14,11 @@ namespace SIS.Characters.Robo
 		AivoTree.SequenceNode<RoboPadron> sequence;
 
 		//Copys over State Action Nodes into Sequence. State Action Nodes are acted as Tree Nodes
-		public override void Init()
+		public override BehaviorTreeNode<RoboPadron, RoboPadronStateActions> InitNode()
 		{
-			sequence = new AivoTree.SequenceNode<RoboPadron>(bTNodes); //Actually create node
-			node = new BehaviorTreeNode<RoboPadron, RoboPadronStateActions>(sequence); //Saves as Wrapper
+			sequence = new AivoTree.SequenceNode<RoboPadron>(bTNodes);
+			return new BehaviorTreeNode<RoboPadron, RoboPadronStateActions>(sequence);
+
 		}
 	}
 }

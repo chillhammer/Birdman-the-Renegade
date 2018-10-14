@@ -8,10 +8,9 @@ namespace SIS.Characters.Robo
 	{
 		public override void Execute(RoboPadron owner)
 		{
-			int roomAmount = owner.waypointNavigator.dungeon.RoomCount;
-			int randomRoom = Random.Range(0, roomAmount);
 			owner.waypointNavigator.SetWaypointGraph();
-			owner.waypointNavigator.StartNavigation(randomRoom);
+
+			
 		}
 	}
 }

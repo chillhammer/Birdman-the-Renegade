@@ -15,15 +15,10 @@ namespace SIS.Characters.Robo
 	{
 		AivoTree.ActionNode<RoboPadron> actionNode;
 
-		private void Awake()
-		{
-			Init();
-		}
-
-		public override void Init()
+		public override BehaviorTreeNode<RoboPadron, RoboPadronStateActions> InitNode()
 		{
 			actionNode = new AivoTree.ActionNode<RoboPadron>(Act);
-			node = new BehaviorTreeNode<RoboPadron, RoboPadronStateActions>(actionNode);
+			return new BehaviorTreeNode<RoboPadron, RoboPadronStateActions>(actionNode);
 		}
 
 		public abstract AivoTree.AivoTreeStatus Act(float timeTick, RoboPadron owner);
