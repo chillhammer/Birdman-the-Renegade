@@ -8,9 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e2abd8434d3164591b3250df7809f7, type: 3}
-  m_Name: Wander Sequence
+  m_Script: {fileID: 11500000, guid: e7f2258b65740234391c9f3aae757da3, type: 3}
+  m_Name: Wander Wait 2
   m_EditorClassIdentifier: 
-  bTNodes:
-  - {fileID: 11400000, guid: 3c064ec7def8b944f936dd1b4caae316, type: 2}
-  - {fileID: 11400000, guid: 357507c25fdd80b468e71dfa6282fca2, type: 2}
+  secondsToWait: 0.5

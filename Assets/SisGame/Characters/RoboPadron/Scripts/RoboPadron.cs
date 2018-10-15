@@ -41,12 +41,19 @@ namespace SIS.Characters.Robo
 
 		public float health = 1;
 
+		[HideInInspector] public Transform headBone;
+
 		[HideInInspector] public Waypoints.WaypointNavigator waypointNavigator;
+		[HideInInspector] public Vision vision;
 
 		//Allows for initial setup, better to use InitActionBatch, but it's here if you don't want to make action
 		protected override void SetupComponents()
 		{
 			waypointNavigator = GetComponent<Waypoints.WaypointNavigator>();
+			vision = GetComponent<Vision>();
+			headBone = mTransform.FindDeepChild("Head");
+			
+			if (headBone == null) Debug.LogWarning("Could not find Head bone on RoboPadron");
 		}
 
 		public void OnHit(Character shooter, Weapon weapon, Vector3 dir, Vector3 pos)

@@ -253,7 +253,8 @@ namespace SIS.Map
 		private void SpawnWall(int c, int r, Transform parent)
 		{
 			Vector3 objPos = new Vector3(c, 0, r);
-			Instantiate(wall, objPos, Quaternion.identity, parent);
+			GameObject obj = Instantiate(wall, objPos, Quaternion.identity, parent);
+			obj.layer = LayerMask.NameToLayer("Map");
 		}
 
 		///<summary>
@@ -263,7 +264,8 @@ namespace SIS.Map
 		private void SpawnCorner(int c, int r, Transform parent, Quaternion rotation, int xOffset, int zOffset)
 		{
 			Vector3 objPos = new Vector3(c + xOffset, 0, r + zOffset);
-			Instantiate(corner, objPos, rotation, parent);
+			GameObject obj = Instantiate(corner, objPos, rotation, parent);
+			obj.layer = LayerMask.NameToLayer("Map");
 		}
 
 		///<summary>

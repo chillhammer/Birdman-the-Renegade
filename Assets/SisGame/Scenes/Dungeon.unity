@@ -242,7 +242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 174367097}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5458,7 +5458,7 @@ GameObject:
   - component: {fileID: 1157550077}
   - component: {fileID: 1157550076}
   - component: {fileID: 1157550075}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5593,7 +5593,7 @@ GameObject:
   - component: {fileID: 1550217983}
   - component: {fileID: 1550217982}
   - component: {fileID: 1550217981}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5818,16 +5818,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114707690902722026, guid: 69aeaa6c520648a4dbc8c1b366981b5e,
-        type: 2}
-      propertyPath: enemies.Array.data[0].number
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114707690902722026, guid: 69aeaa6c520648a4dbc8c1b366981b5e,
-        type: 2}
-      propertyPath: enemies.Array.data[0].elevation
-      value: 0.6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69aeaa6c520648a4dbc8c1b366981b5e, type: 2}
   m_IsPrefabAsset: 0
@@ -5884,7 +5874,7 @@ GameObject:
   - component: {fileID: 1715016998}
   - component: {fileID: 1715016997}
   - component: {fileID: 1715016996}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6099,7 +6089,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1901667229}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6130,7 +6120,7 @@ GameObject:
   - component: {fileID: 1923909161}
   - component: {fileID: 1923909160}
   - component: {fileID: 1923909159}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
