@@ -105,8 +105,8 @@ namespace SIS.Map
 						case Direction.North:
 							rx = ex - (int)(dimensions.x * 0.5);
 							ry = ey - (int)dimensions.y;
-							oldRoomEnt = new Vector2Int(ex, ey + 1);
-							newRoomEnt = new Vector2Int(ex, ey - 2);
+							oldRoomEnt = new Vector2Int(ex, ey - 1);
+							newRoomEnt = new Vector2Int(ex, ey + 2);
 							break;
 						case Direction.East:
 							rx = ex + 1;
@@ -117,8 +117,8 @@ namespace SIS.Map
 						case Direction.South:
 							rx = ex - (int)(dimensions.x * 0.5);
 							ry = ey + 1;
-							oldRoomEnt = new Vector2Int(ex, ey - 2);
-							newRoomEnt = new Vector2Int(ex, ey + 1);
+							oldRoomEnt = new Vector2Int(ex, ey + 2);
+							newRoomEnt = new Vector2Int(ex, ey - 1);
 							break;
 						case Direction.West:
 							rx = ex - (int)dimensions.x;

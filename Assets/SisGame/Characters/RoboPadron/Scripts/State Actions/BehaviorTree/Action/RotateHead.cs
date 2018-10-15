@@ -12,7 +12,6 @@ namespace SIS.Characters.Robo
 
 		public override AivoTree.AivoTreeStatus Act(float timeTick, RoboPadron owner)
 		{
-			owner.isAiming = true;
 			//Change X Rotation of Head
 			float current = owner.headBone.transform.localRotation.eulerAngles.x;
 			Vector3 eulers = owner.headBone.transform.localRotation.eulerAngles;
