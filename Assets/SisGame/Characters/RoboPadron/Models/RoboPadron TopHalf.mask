@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: RoboPadron TopHalf
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 1
+  - m_Path: Armature/Root
+    m_Weight: 1
+  - m_Path: Armature/Root/Foot_L
+    m_Weight: 0
+  - m_Path: Armature/Root/Foot_L/Toes_L
+    m_Weight: 0
+  - m_Path: Armature/Root/Foot_R
+    m_Weight: 0
+  - m_Path: Armature/Root/Foot_R/Toes_R
+    m_Weight: 0
+  - m_Path: Armature/Root/Torso
+    m_Weight: 1
+  - m_Path: Armature/Root/Torso/Bicep_L
+    m_Weight: 1
+  - m_Path: Armature/Root/Torso/Bicep_L/Arm_L
+    m_Weight: 1
+  - m_Path: Armature/Root/Torso/Bicep_L/Arm_L/Hand_L
+    m_Weight: 1
+  - m_Path: Armature/Root/Torso/Bicep_R
+    m_Weight: 1
+  - m_Path: Armature/Root/Torso/Bicep_R/Arm_R
+    m_Weight: 1
+  - m_Path: Armature/Root/Torso/Bicep_R/Arm_R/Hand_R
+    m_Weight: 1
+  - m_Path: Armature/Root/Torso/Head
+    m_Weight: 0
+  - m_Path: Armature/Root/Torso/Head/Ear_L
+    m_Weight: 0
+  - m_Path: Armature/Root/Torso/Head/Ear_R
+    m_Weight: 0
+  - m_Path: C-Logo
+    m_Weight: 0
+  - m_Path: Gun
+    m_Weight: 0
+  - m_Path: Hat
+    m_Weight: 0
+  - m_Path: RoboPadron_Model
+    m_Weight: 0

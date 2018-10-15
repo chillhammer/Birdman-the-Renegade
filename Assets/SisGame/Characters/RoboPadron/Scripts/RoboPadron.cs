@@ -42,6 +42,8 @@ namespace SIS.Characters.Robo
 		public float health = 1;
 
 		[HideInInspector] public Transform headBone;
+		[HideInInspector] public Transform gunModel;
+		[HideInInspector] public bool isAiming = false;
 
 		[HideInInspector] public Waypoints.WaypointNavigator waypointNavigator;
 		[HideInInspector] public Vision vision;
@@ -52,7 +54,8 @@ namespace SIS.Characters.Robo
 			waypointNavigator = GetComponent<Waypoints.WaypointNavigator>();
 			vision = GetComponent<Vision>();
 			headBone = mTransform.FindDeepChild("Head");
-			
+			gunModel = mTransform.FindDeepChild("Gun");
+
 			if (headBone == null) Debug.LogWarning("Could not find Head bone on RoboPadron");
 		}
 

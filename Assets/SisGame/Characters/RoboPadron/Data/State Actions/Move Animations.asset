@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Name: Move Animations
   m_EditorClassIdentifier: 
   forwardAnimatorText: Vertical
+  aimingAnimatorText: Aiming
+  gunMoveSpeed: 5
