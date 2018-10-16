@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0bd34ab85562b7408ad15e71c03ec61, type: 3}
   m_Name: RoboPadronWander
   m_EditorClassIdentifier: 
-  idCount: 0
+  idCount: 1
   onFixed: []
   onUpdate:
   - {fileID: 11400000, guid: 42f5089747df18f48b164892c6671675, type: 2}
@@ -20,4 +20,8 @@ MonoBehaviour:
   onEnter:
   - {fileID: 0}
   onExit: []
-  transitions: []
+  transitions:
+  - id: 0
+    disable: 0
+    condition: {fileID: 11400000, guid: 6a135c73e25933c45b23fd84d8e9eaf4, type: 2}
+    targetState: {fileID: 11400000, guid: 5c7081c5df7005644891853cee34a603, type: 2}

@@ -31,7 +31,12 @@ namespace SIS.Characters.Sis
 			stateMachine.Tick();
 			delta = stateMachine.delta;
 		}
-
+		public override void ChangeState(int transitionIndex)
+		{
+			var newState = stateMachine.currentState.transitions[transitionIndex].targetState;
+			stateMachine.currentState = newState;
+			stateMachine.currentState.OnEnter(this);
+		}
 		#endregion
 
 		public float health;
@@ -83,5 +88,6 @@ namespace SIS.Characters.Sis
 		{
 			anim.CrossFade(targetAnim, 0.2f);
 		}
+
 	}
 }

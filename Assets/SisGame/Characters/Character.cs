@@ -27,5 +27,7 @@ namespace SIS.Characters
 		}
 
 		protected abstract void SetupComponents();
+
+		public abstract void ChangeState(int transitionIndex);
 	}
 }

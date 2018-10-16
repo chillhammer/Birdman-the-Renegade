@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 170a7576c037fb84089796fb4b23b6d4, type: 3}
-  m_Name: RoboPadron BehaviorGraph
+  m_Script: {fileID: 11500000, guid: 51041e8b7cfda7c4c95fa9e801aff5b2, type: 3}
+  m_Name: Can See Player
   m_EditorClassIdentifier: 
-  idCount: 9
+  description: 

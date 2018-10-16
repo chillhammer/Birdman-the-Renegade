@@ -8,7 +8,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 170a7576c037fb84089796fb4b23b6d4, type: 3}
-  m_Name: RoboPadron BehaviorGraph
+  m_Script: {fileID: 11500000, guid: c0bd34ab85562b7408ad15e71c03ec61, type: 3}
+  m_Name: RoboPadronFight
   m_EditorClassIdentifier: 
-  idCount: 9
+  idCount: 0
+  onFixed: []
+  onUpdate: []
+  onEnter: []
+  onExit: []
+  transitions: []

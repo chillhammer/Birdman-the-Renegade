@@ -36,6 +36,12 @@ namespace SIS.Characters.Robo
 			stateMachine.Tick();
 			delta = stateMachine.delta;
 		}
+		public override void ChangeState(int transitionIndex)
+		{
+			var newState = stateMachine.currentState.transitions[transitionIndex].targetState;
+			stateMachine.currentState = newState;
+			stateMachine.currentState.OnEnter(this);
+		}
 
 		#endregion
 
@@ -48,6 +54,18 @@ namespace SIS.Characters.Robo
 
 		[HideInInspector] public Waypoints.WaypointNavigator waypointNavigator;
 		[HideInInspector] public Vision vision;
+
+		#region Last Known Position
+		[System.Serializable]
+		public struct LastKnownLocation
+		{
+			public Vector3 position;
+			public Room room;
+		}
+		#endregion
+
+		//Serializable Fields
+		public LastKnownLocation playerLastKnownLocation;
 
 		//Allows for initial setup, better to use InitActionBatch, but it's here if you don't want to make action
 		protected override void SetupComponents()

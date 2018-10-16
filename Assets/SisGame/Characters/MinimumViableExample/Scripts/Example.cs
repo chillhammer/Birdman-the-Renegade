@@ -42,7 +42,12 @@ namespace SIS.Characters.Example
 		{
 			stateMachine.Tick();
 		}
-
+		public override void ChangeState(int transitionIndex)
+		{
+			var newState = stateMachine.currentState.transitions[transitionIndex].targetState;
+			stateMachine.currentState = newState;
+			stateMachine.currentState.OnEnter(this);
+		}
 		#endregion
 
 		public float health; //Optional, may incorporate any form of health system

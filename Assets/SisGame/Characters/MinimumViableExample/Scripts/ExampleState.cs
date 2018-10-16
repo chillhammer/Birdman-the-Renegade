@@ -31,6 +31,11 @@ namespace SIS.Characters.Example
 			parent.onEnter = onEnter;
 			parent.onExit = onExit;
 			parent.transitions = transitions.Cast<Transition<Example>>().ToList();
+			for (int i = 0; i < parent.transitions.Count; ++i)
+			{
+				parent.transitions[i].condition = transitions[i].condition;
+				parent.transitions[i].targetState = transitions[i].targetState;
+			}
 		}
 
 		public override void Tick(Example owner)
