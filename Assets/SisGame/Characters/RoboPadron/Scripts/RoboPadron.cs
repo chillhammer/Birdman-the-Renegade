@@ -44,6 +44,7 @@ namespace SIS.Characters.Robo
 		[HideInInspector] public Transform headBone;
 		[HideInInspector] public Transform gunModel;
 		[HideInInspector] public bool isAiming = false;
+		[HideInInspector] public bool canSeePlayer = false;
 
 		[HideInInspector] public Waypoints.WaypointNavigator waypointNavigator;
 		[HideInInspector] public Vision vision;
