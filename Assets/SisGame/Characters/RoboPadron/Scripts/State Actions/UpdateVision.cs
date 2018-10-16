@@ -50,6 +50,10 @@ namespace SIS.Characters.Robo
 								{
 									if (onPlayerSightEvent != null)
 										onPlayerSightEvent.Raise();
+
+									//Update Last Known Location
+									owner.playerLastKnownLocation.position = playerPos;
+									owner.playerLastKnownLocation.timeSeen = Time.realtimeSinceStartup;
 								}
 								owner.canSeePlayer = true;
 							} else

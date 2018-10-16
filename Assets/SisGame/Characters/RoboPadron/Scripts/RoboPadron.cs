@@ -60,7 +60,7 @@ namespace SIS.Characters.Robo
 		public struct LastKnownLocation
 		{
 			public Vector3 position;
-			public Room room;
+			public float timeSeen;
 		}
 		#endregion
 

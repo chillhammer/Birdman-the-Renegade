@@ -6,7 +6,7 @@ namespace SIS.Characters.Robo
 	[CreateAssetMenu(menuName = "Characters/RoboPadron/State Actions/Behavior Tree/In Range Last Known Location")]
 	public class InRangeLastKnownLocation : RoboPadronBTAction
 	{
-		public float range = 1f;
+		public float range = 2f;
 
 		public override AivoTree.AivoTreeStatus Act(float timeTick, RoboPadron owner)
 		{

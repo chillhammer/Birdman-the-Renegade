@@ -154,7 +154,6 @@ namespace SIS.Waypoints
 			}
 
 			StartNavigation(waypointGraph.GetCenterRoomWaypoint(roomIndex));
-			
 		}
 		#endregion
 

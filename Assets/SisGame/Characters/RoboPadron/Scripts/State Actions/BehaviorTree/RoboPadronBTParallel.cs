@@ -10,16 +10,16 @@ namespace SIS.Characters.Robo
 	//Parallel returns first node that is not in Running status
 	//Will run all nodes concurrently
 
-	[CreateAssetMenu(menuName = "Characters/RoboPadron/State Actions/Behavior Tree/Parllel")]
-	public class ExampleBTParellel : RoboPadronBTNode
+	[CreateAssetMenu(menuName = "Characters/RoboPadron/State Actions/Behavior Tree/Parallel")]
+	public class RoboPadronBTParallel : RoboPadronBTNode
 	{
 		public RoboPadronBTNode[] bTNodes;
-		AivoTree.ParellelNode<RoboPadron> parellel;
+		AivoTree.ParallelNode<RoboPadron> parellel;
 
 		//Copys over State Action Nodes into Sequence. State Action Nodes are acted as Tree Nodes
 		public override BehaviorTreeNode<RoboPadron, RoboPadronStateActions> InitNode()
 		{
-			parellel = new AivoTree.ParellelNode<RoboPadron>(bTNodes);
+			parellel = new AivoTree.ParallelNode<RoboPadron>(bTNodes);
 			return new BehaviorTreeNode<RoboPadron, RoboPadronStateActions>(parellel);
 			
 		}
