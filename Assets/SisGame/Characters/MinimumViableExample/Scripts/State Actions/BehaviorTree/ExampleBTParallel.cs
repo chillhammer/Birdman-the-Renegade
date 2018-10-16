@@ -14,12 +14,14 @@ namespace SIS.Characters.Example
 	public class ExampleBTParellel : ExampleBTNode
 	{
 		public ExampleBTNode[] bTNodes;
+		public int successesNeeded = 1;
+		public int failuresNeeded = 1;
 		AivoTree.ParallelNode<Example> parellel;
 
 		//Copys over State Action Nodes into Sequence. State Action Nodes are acted as Tree Nodes
 		public override BehaviorTreeNode<Example, ExampleStateActions> InitNode()
 		{
-			parellel = new AivoTree.ParallelNode<Example>(bTNodes);
+			parellel = new AivoTree.ParallelNode<Example>(bTNodes, successesNeeded, failuresNeeded);
 			return new BehaviorTreeNode<Example, ExampleStateActions>(parellel);
 			
 		}

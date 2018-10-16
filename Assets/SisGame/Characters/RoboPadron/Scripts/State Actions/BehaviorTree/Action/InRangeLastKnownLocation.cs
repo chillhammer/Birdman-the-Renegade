@@ -15,7 +15,7 @@ namespace SIS.Characters.Robo
 			{
 				return AivoTree.AivoTreeStatus.Success;
 			}
-			return AivoTree.AivoTreeStatus.Running;
+			return AivoTree.AivoTreeStatus.Failure;
 		}
 	}
 }

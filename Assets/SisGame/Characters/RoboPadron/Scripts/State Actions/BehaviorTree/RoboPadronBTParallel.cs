@@ -14,12 +14,14 @@ namespace SIS.Characters.Robo
 	public class RoboPadronBTParallel : RoboPadronBTNode
 	{
 		public RoboPadronBTNode[] bTNodes;
+		public int successesNeeded = 1;
+		public int failuresNeeded = 1;
 		AivoTree.ParallelNode<RoboPadron> parellel;
 
 		//Copys over State Action Nodes into Sequence. State Action Nodes are acted as Tree Nodes
 		public override BehaviorTreeNode<RoboPadron, RoboPadronStateActions> InitNode()
 		{
-			parellel = new AivoTree.ParallelNode<RoboPadron>(bTNodes);
+			parellel = new AivoTree.ParallelNode<RoboPadron>(bTNodes, successesNeeded, failuresNeeded);
 			return new BehaviorTreeNode<RoboPadron, RoboPadronStateActions>(parellel);
 			
 		}
