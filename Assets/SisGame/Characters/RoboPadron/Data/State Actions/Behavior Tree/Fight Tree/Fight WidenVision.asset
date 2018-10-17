@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3be9c613d3f3b0449bbe7cbcfaf404f6, type: 3}
-  m_Name: NavigateToShootPlayer
+  m_Script: {fileID: 11500000, guid: a470db71cc8ed4d44a989d040e9feb45, type: 3}
+  m_Name: Fight WidenVision
   m_EditorClassIdentifier: 
-  moveSpeed: 300
-  turnSpeed: 7
+  fov: 340
+  maxDistance: 20

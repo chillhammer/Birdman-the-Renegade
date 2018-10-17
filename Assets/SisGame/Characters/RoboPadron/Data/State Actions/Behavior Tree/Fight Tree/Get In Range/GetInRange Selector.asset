@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e2abd8434d3164591b3250df7809f7, type: 3}
-  m_Name: NavigateToShootPlayer Sequence
+  m_Script: {fileID: 11500000, guid: 42ac022bb253a7943acaa808417e1c83, type: 3}
+  m_Name: GetInRange Selector
   m_EditorClassIdentifier: 
   bTNodes:
-  - {fileID: 11400000, guid: eb335724e064cb44ab66d1705aa68635, type: 2}
-  - {fileID: 11400000, guid: 69cf520c232ffdf49aa1ef6728697fbb, type: 2}
+  - {fileID: 11400000, guid: 06f4336e107e2fa44a588aec2445f8b0, type: 2}
+  - {fileID: 11400000, guid: b44cbf11a585af74e99cbc35e568e63a, type: 2}

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb43b91646f851f409d8e9fe1f678fb4, type: 3}
-  m_Name: GetInRange Parallel
+  m_Name: NavigateToShoot Parallel
   m_EditorClassIdentifier: 
   bTNodes:
-  - {fileID: 11400000, guid: 06f4336e107e2fa44a588aec2445f8b0, type: 2}
-  - {fileID: 11400000, guid: b44cbf11a585af74e99cbc35e568e63a, type: 2}
-  successesNeeded: 1
-  failuresNeeded: 2
+  - {fileID: 11400000, guid: eb335724e064cb44ab66d1705aa68635, type: 2}
+  - {fileID: 11400000, guid: 69cf520c232ffdf49aa1ef6728697fbb, type: 2}
+  successesNeeded: 2
+  failuresNeeded: 1

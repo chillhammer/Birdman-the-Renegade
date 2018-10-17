@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3642fd0ea951f72418e8a9c6b0a03658, type: 3}
   m_Name: InShootingRange
   m_EditorClassIdentifier: 
-  range: 1
+  range: 4

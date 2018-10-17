@@ -46,18 +46,21 @@ namespace AivoTree
 					indicesToSkip.Add(i);
 					++sucesses;
 				}
+				++i;
 			}
 			if (sucesses >= sucessesNeeded)
 			{
+				UnityEngine.Debug.Log("Parallel Node Succeeded. Successes: " + sucesses + " and Failures: " + failures + ". Successes Needed: " + sucessesNeeded);
 				Reset();
 				return AivoTreeStatus.Success;
 			}
 			if (failures >= failuresNeeded || indicesToSkip.Count >= nodesToSearch.Length)
 			{
+				UnityEngine.Debug.Log("Parallel Node Failed. Successes: " + sucesses + " and Failures: " + failures);
 				Reset();
 				return AivoTreeStatus.Failure;
 			}
-
+			UnityEngine.Debug.Log("Parallel Node is Running. Successes: " + sucesses + " and Failures: " + failures);
 			return AivoTreeStatus.Running;
 		}
 
