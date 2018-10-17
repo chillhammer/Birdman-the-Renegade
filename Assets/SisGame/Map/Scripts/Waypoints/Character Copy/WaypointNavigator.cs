@@ -117,10 +117,14 @@ namespace SIS.Waypoints
 				Debug.LogWarning("Cant Start Navigation, due to Waypoint Graph not being initialized yet");
 				return;
 			}
+
 			Waypoint start = waypointGraph.FindClosestWaypoint(transform.position);
 			Waypoint goal = waypointGraph.FindClosestWaypoint(new Vector3(goalX, 0f, goalY));
 
 			path = waypointGraph.AStar(start, goal);
+			if (goal.X != goalX || goal.Y != goalY)
+				path.Add(new Waypoint(goalX, goalY)); //Custom Location
+			OptimizePath();
 			pathIndex = 0;
 		}
 		#region StartNavigation Overloads
@@ -157,6 +161,44 @@ namespace SIS.Waypoints
 		}
 		#endregion
 
+		private void OptimizePath()
+		{
+			int i = path.Count - 1;
+			while (i >= 0)
+			{
+				if (i >= 2) {
+					if (IsPathClearBetweenWaypoints(path[i], path[i - 2]))
+					{
+						path.RemoveAt(i - 1);
+						Debug.Log("Removed Waypoint! Optimization");
+					}
+				} else if (i == 1) {
+					if (IsPathClearBetweenWaypoints(path[i], path[i - 1]))
+					{
+						path.RemoveAt(i - 1);
+						Debug.Log("Removed Waypoint! Optimization");
+					}
+				}
+				--i;
+			}
+		}
 
+		private bool IsPathClearBetweenWaypoints(Waypoint wp1, Waypoint wp2)
+		{
+			float height = 1.2f;
+			int mapLayer = LayerMask.NameToLayer("Map");
+			Vector3 pos1 = new Vector3(wp1.X, height, wp1.Y);
+			Vector3 pos2 = new Vector3(wp2.X, height, wp2.Y);
+
+			
+			float dist = (pos2 - pos1).magnitude + 0.1f;
+			Vector3 dir = (pos2 - pos1).normalized;
+			RaycastHit hit;
+
+			Vector3 boxCenter = pos1;
+			Vector3 boxHalfExtents = new Vector3(1.1f, 0.9f, 0.1f);
+
+			return !Physics.BoxCast(boxCenter, boxHalfExtents, dir, transform.rotation, dist, ~mapLayer);
+		}
 	}
 }

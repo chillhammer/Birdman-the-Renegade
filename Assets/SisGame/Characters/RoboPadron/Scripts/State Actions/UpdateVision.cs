@@ -40,12 +40,12 @@ namespace SIS.Characters.Robo
 						LayerMask mapAndPlayer = LayerMask.NameToLayer("Player") | LayerMask.NameToLayer("Map");
 						Ray ray = new Ray(headPos, dir);
 
-						Debug.DrawLine(headPos, playerPos, Color.blue, 0.25f);
 						if (Physics.Raycast(ray, out raycastHit, owner.vision.maxDistance, ~mapAndPlayer))
 						{
 							//Debug.Log("Hit Something. Tag is " + raycastHit.collider.tag + ". Name is " + raycastHit.collider.name);
 							if (raycastHit.collider.tag == "Player")
 							{
+								Debug.DrawLine(headPos, playerPos, Color.blue, 0.25f);
 								if (!owner.canSeePlayer)
 								{
 									if (onPlayerSightEvent != null)
