@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Name: Fight Root
   m_EditorClassIdentifier: 
   bTNodes:
-  - {fileID: 11400000, guid: 16970e41685c06e4e84bf286fa41ff1d, type: 2}
+  - {fileID: 11400000, guid: 75677090e921412429d560a3204a5731, type: 2}
+  - {fileID: 11400000, guid: 83325ca05e0e2fd48bbbaf56dc79f1ee, type: 2}

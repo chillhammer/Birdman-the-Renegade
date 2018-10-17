@@ -9,8 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56e2abd8434d3164591b3250df7809f7, type: 3}
-  m_Name: InShootingRange Stop
+  m_Name: TryEnteringLastKnownRoom Sequence
   m_EditorClassIdentifier: 
   bTNodes:
-  - {fileID: 11400000, guid: 06f4336e107e2fa44a588aec2445f8b0, type: 2}
-  - {fileID: 11400000, guid: a7b279cf7d3440a4c80036aeca46c4a1, type: 2}
+  - {fileID: 11400000, guid: 644ee0f5cc830374ea908018bff32e9c, type: 2}
+  - {fileID: 11400000, guid: 33292e50596697c4c8e2183ce14d14b4, type: 2}
+  - {fileID: 11400000, guid: 69cf520c232ffdf49aa1ef6728697fbb, type: 2}

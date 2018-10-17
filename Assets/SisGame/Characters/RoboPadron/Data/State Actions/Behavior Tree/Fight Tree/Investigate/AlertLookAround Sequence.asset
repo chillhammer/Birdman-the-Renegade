@@ -9,8 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56e2abd8434d3164591b3250df7809f7, type: 3}
-  m_Name: InShootingRange Stop
+  m_Name: AlertLookAround Sequence
   m_EditorClassIdentifier: 
   bTNodes:
-  - {fileID: 11400000, guid: 06f4336e107e2fa44a588aec2445f8b0, type: 2}
-  - {fileID: 11400000, guid: a7b279cf7d3440a4c80036aeca46c4a1, type: 2}
+  - {fileID: 11400000, guid: a46f24b81ea350f48810e44591d9121f, type: 2}
+  - {fileID: 11400000, guid: 7cb0331086c73914194f0ec316162537, type: 2}
+  - {fileID: 11400000, guid: 2f5f28eae4c56f845a83b2f48193c2c9, type: 2}
+  - {fileID: 11400000, guid: 2712dc77b79f6b24d83c2fa6ccb72b43, type: 2}

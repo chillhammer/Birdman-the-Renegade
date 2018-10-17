@@ -202,7 +202,7 @@ namespace SIS.Waypoints
 			RaycastHit hit;
 
 			Vector3 boxCenter = pos1;
-			Vector3 boxHalfExtents = new Vector3(0.2f, 0.2f, 0.01f);
+			Vector3 boxHalfExtents = new Vector3(0.5f, 0.5f, 0.01f);
 
 			return !Physics.BoxCast(boxCenter, boxHalfExtents, dir, Quaternion.LookRotation(dir), dist, ~mapLayer);
 		}

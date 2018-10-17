@@ -28,6 +28,8 @@ namespace AivoTree
 		{
 			var nodesToSearch = _nodes;
 			int i = 0;
+			sucesses = 0;
+			failures = 0;
 			foreach (TreeNode<T> node in nodesToSearch)
 			{
 				if (indicesToSkip.Contains(i))
@@ -43,7 +45,7 @@ namespace AivoTree
 				}
 				if (status == AivoTreeStatus.Success)
 				{
-					indicesToSkip.Add(i);
+					//indicesToSkip.Add(i);
 					++sucesses;
 				}
 				++i;
