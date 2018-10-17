@@ -38,7 +38,7 @@ namespace AivoTree
 				AivoTreeStatus status = node.Tick(timeTick, context);
 				if (status == AivoTreeStatus.Failure)
 				{
-					indicesToSkip.Add(i);
+					//indicesToSkip.Add(i);
 					++failures;
 				}
 				if (status == AivoTreeStatus.Success)
@@ -47,20 +47,23 @@ namespace AivoTree
 					++sucesses;
 				}
 				++i;
+
+				//Termination Conditions
+				if (sucesses >= sucessesNeeded)
+				{
+					UnityEngine.Debug.Log("Parallel Node Succeeded. Successes: " + sucesses + " and Failures: " + failures + ". Successes Needed: " + sucessesNeeded);
+					Reset();
+					return AivoTreeStatus.Success;
+				}
+				if (failures >= failuresNeeded || indicesToSkip.Count >= nodesToSearch.Length)
+				{
+					UnityEngine.Debug.Log("Parallel Node Failed. Successes: " + sucesses + " and Failures: " + failures);
+					Reset();
+					return AivoTreeStatus.Failure;
+				}
 			}
-			if (sucesses >= sucessesNeeded)
-			{
-				UnityEngine.Debug.Log("Parallel Node Succeeded. Successes: " + sucesses + " and Failures: " + failures + ". Successes Needed: " + sucessesNeeded);
-				Reset();
-				return AivoTreeStatus.Success;
-			}
-			if (failures >= failuresNeeded || indicesToSkip.Count >= nodesToSearch.Length)
-			{
-				UnityEngine.Debug.Log("Parallel Node Failed. Successes: " + sucesses + " and Failures: " + failures);
-				Reset();
-				return AivoTreeStatus.Failure;
-			}
-			UnityEngine.Debug.Log("Parallel Node is Running. Successes: " + sucesses + " and Failures: " + failures);
+			
+			UnityEngine.Debug.Log("Parallel Node is Running. Successes: " + sucesses + " and Failures: " + failures + ". Successes Needed: " + sucessesNeeded);
 			return AivoTreeStatus.Running;
 		}
 

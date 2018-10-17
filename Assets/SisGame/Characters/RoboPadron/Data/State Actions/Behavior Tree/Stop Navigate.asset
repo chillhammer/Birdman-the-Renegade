@@ -8,9 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ac022bb253a7943acaa808417e1c83, type: 3}
-  m_Name: GetInRange Selector
+  m_Script: {fileID: 11500000, guid: 1c968aabfbf6c7549b95d32b8de57cb8, type: 3}
+  m_Name: New Stop Navigate
   m_EditorClassIdentifier: 
-  bTNodes:
-  - {fileID: 11400000, guid: 06f4336e107e2fa44a588aec2445f8b0, type: 2}
-  - {fileID: 11400000, guid: b44cbf11a585af74e99cbc35e568e63a, type: 2}

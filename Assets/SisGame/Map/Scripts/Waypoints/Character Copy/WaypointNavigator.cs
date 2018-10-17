@@ -94,9 +94,15 @@ namespace SIS.Waypoints
 				++pathIndex;
 				if (pathIndex >= path.Count)
 				{
-					pathIndex = -1;
+					StopNavigate();
 				}
 			}
+		}
+
+		//Stop Navigation
+		public void StopNavigate()
+		{
+			pathIndex = -1;
 		}
 
 		//Custom Waypoint Graph
@@ -191,14 +197,14 @@ namespace SIS.Waypoints
 			Vector3 pos2 = new Vector3(wp2.X, height, wp2.Y);
 
 			
-			float dist = (pos2 - pos1).magnitude + 0.1f;
+			float dist = (pos2 - pos1).magnitude + 0.01f;
 			Vector3 dir = (pos2 - pos1).normalized;
 			RaycastHit hit;
 
 			Vector3 boxCenter = pos1;
-			Vector3 boxHalfExtents = new Vector3(1.1f, 0.9f, 0.1f);
+			Vector3 boxHalfExtents = new Vector3(0.2f, 0.2f, 0.01f);
 
-			return !Physics.BoxCast(boxCenter, boxHalfExtents, dir, transform.rotation, dist, ~mapLayer);
+			return !Physics.BoxCast(boxCenter, boxHalfExtents, dir, Quaternion.LookRotation(dir), dist, ~mapLayer);
 		}
 	}
 }

@@ -11,8 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb43b91646f851f409d8e9fe1f678fb4, type: 3}
   m_Name: GetInRange Parallel
   m_EditorClassIdentifier: 
-  bTNodes:
-  - {fileID: 11400000, guid: 06f4336e107e2fa44a588aec2445f8b0, type: 2}
-  - {fileID: 11400000, guid: b44cbf11a585af74e99cbc35e568e63a, type: 2}
+  bTNodes: []
   successesNeeded: 1
-  failuresNeeded: 2
+  failuresNeeded: 1
