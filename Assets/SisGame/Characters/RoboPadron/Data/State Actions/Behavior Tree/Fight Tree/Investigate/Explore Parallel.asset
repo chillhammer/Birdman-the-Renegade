@@ -9,11 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb43b91646f851f409d8e9fe1f678fb4, type: 3}
-  m_Name: Can'tSee Investigate Parallel
+  m_Name: Explore Parallel
   m_EditorClassIdentifier: 
   bTNodes:
-  - {fileID: 11400000, guid: e9eb768b959b3d74d82936331576b3fd, type: 2}
-  - {fileID: 11400000, guid: 8faeaabae56bc004d8e87939cdb1eea5, type: 2}
-  - {fileID: 11400000, guid: 458819bb694f8f4408566886dc908920, type: 2}
-  successesNeeded: 3
-  failuresNeeded: 1
+  - {fileID: 11400000, guid: c4686505f6a4e28488f4aace70109961, type: 2}
+  - {fileID: 11400000, guid: acccd438b2bd21a499943a288288b187, type: 2}
+  successesNeeded: 2
+  failuresNeeded: 2
