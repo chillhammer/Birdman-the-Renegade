@@ -88,5 +88,10 @@ namespace SIS.Characters.Robo
 				Destroy(gameObject);
 			}
 		}
+
+		public void OnDrawGizmosSelected()
+		{
+			Gizmos.DrawWireSphere(playerLastKnownLocation.position, 0.3f);
+		}
 	}
 }

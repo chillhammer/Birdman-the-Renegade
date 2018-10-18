@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Name: AlertLookAround Sequence
   m_EditorClassIdentifier: 
   bTNodes:
-  - {fileID: 11400000, guid: bfdff4988225cd64c826a0c37f6b32f0, type: 2}
   - {fileID: 11400000, guid: a46f24b81ea350f48810e44591d9121f, type: 2}
   - {fileID: 11400000, guid: 7cb0331086c73914194f0ec316162537, type: 2}
   - {fileID: 11400000, guid: 2f5f28eae4c56f845a83b2f48193c2c9, type: 2}

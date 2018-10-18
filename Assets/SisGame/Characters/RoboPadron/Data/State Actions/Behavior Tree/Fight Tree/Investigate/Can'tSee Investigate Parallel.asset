@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bTNodes:
   - {fileID: 11400000, guid: e9eb768b959b3d74d82936331576b3fd, type: 2}
-  - {fileID: 11400000, guid: 8faeaabae56bc004d8e87939cdb1eea5, type: 2}
+  - {fileID: 11400000, guid: ff7d55c2187d82849b007209381e7ab1, type: 2}
   - {fileID: 11400000, guid: 458819bb694f8f4408566886dc908920, type: 2}
   successesNeeded: 3
   failuresNeeded: 1

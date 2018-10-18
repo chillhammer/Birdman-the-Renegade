@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: Investigate RotateHeadLeft
   m_EditorClassIdentifier: 
   angleTarget: -90
-  rotateSpeed: 125
+  rotateSpeed: 150

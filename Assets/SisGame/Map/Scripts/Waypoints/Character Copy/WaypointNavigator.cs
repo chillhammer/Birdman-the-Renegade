@@ -127,10 +127,28 @@ namespace SIS.Waypoints
 			Waypoint start = waypointGraph.FindClosestWaypoint(transform.position);
 			Waypoint goal = waypointGraph.FindClosestWaypoint(new Vector3(goalX, 0f, goalY));
 
-			path = waypointGraph.AStar(start, goal);
+			Waypoint accurateStart = new Waypoint((int)transform.position.x, (int)transform.position.z);
+			Waypoint accurateGoal = goal;
 			if (goal.X != goalX || goal.Y != goalY)
-				path.Add(new Waypoint(goalX, goalY)); //Custom Location
-			OptimizePath();
+				accurateGoal = new Waypoint(goalX, goalY); //Custom Location
+
+			//Naive Movement Optimization
+			if (IsPathClearBetweenWaypoints(accurateStart, accurateGoal))
+			{
+				path = new List<Waypoint>();
+				path.Add(accurateGoal);
+				Debug.Log("Simple navigation since path is clear");
+				pathIndex = 0;
+				return;
+			}
+
+			path = waypointGraph.AStar(start, goal);
+
+			//path.Insert(0, accurateStart); //O(n)
+			if (goal.X != goalX || goal.Y != goalY)
+				path.Add(accurateGoal);
+
+			//OptimizePath();
 			pathIndex = 0;
 		}
 		#region StartNavigation Overloads
@@ -202,7 +220,7 @@ namespace SIS.Waypoints
 			RaycastHit hit;
 
 			Vector3 boxCenter = pos1;
-			Vector3 boxHalfExtents = new Vector3(0.5f, 0.5f, 0.01f);
+			Vector3 boxHalfExtents = new Vector3(1.2f, 0.5f, 0.01f);
 
 			return !Physics.BoxCast(boxCenter, boxHalfExtents, dir, Quaternion.LookRotation(dir), dist, ~mapLayer);
 		}

@@ -8,8 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3be9c613d3f3b0449bbe7cbcfaf404f6, type: 3}
-  m_Name: NavigateToShootPlayer
+  m_Script: {fileID: 11500000, guid: 2f3d4b55aca3b544582906b6c74b0345, type: 3}
+  m_Name: Not In Path
   m_EditorClassIdentifier: 
-  moveSpeed: 250
-  turnSpeed: 7
+  bTNode: {fileID: 11400000, guid: fcb9d3fc733061a47806c154225dad94, type: 2}

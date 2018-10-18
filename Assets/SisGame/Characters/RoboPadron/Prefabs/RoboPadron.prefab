@@ -908,7 +908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 15
   angleFOV: 120
-  meshResolution: 100
+  meshResolution: 50
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -918,7 +918,7 @@ MonoBehaviour:
   headTransform: {fileID: 4624484685357170}
   viewMeshFilterName: VisionMesh
   edgeResolveIterations: 100
-  edgeDistThreshold: 0.1
+  edgeDistThreshold: 0.066
 --- !u!114 &114258515672266822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -953,8 +953,14 @@ MonoBehaviour:
   initActionsBatch: {fileID: 11400000, guid: 9a39694808aff1d41a0aad4bdc7de3d8, type: 2}
   health: 1
   headBone: {fileID: 0}
+  gunModel: {fileID: 0}
+  isAiming: 0
+  canSeePlayer: 0
   waypointNavigator: {fileID: 114258515672266822}
   vision: {fileID: 0}
+  playerLastKnownLocation:
+    position: {x: 0, y: 0, z: 0}
+    timeSeen: 0
 --- !u!136 &136933288462042646
 CapsuleCollider:
   m_ObjectHideFlags: 1

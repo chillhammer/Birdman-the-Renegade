@@ -8,8 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbd8b5195a6e5e64f9319ad279a89d4f, type: 3}
-  m_Name: Investigate RotateHeadRight
+  m_Script: {fileID: 11500000, guid: e7f2258b65740234391c9f3aae757da3, type: 3}
+  m_Name: PostInvestigate Wait
   m_EditorClassIdentifier: 
-  angleTarget: 90
-  rotateSpeed: 125
+  secondsToWait: 1

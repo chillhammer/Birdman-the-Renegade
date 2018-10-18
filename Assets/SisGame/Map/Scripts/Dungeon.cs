@@ -86,7 +86,7 @@ namespace SIS.Map
 			int index = 0;
 			int closestRoomIndex = 0;
 			Vector2 pos = new Vector2(x, y);
-			float bestDist = 0;
+			float bestDist = float.MaxValue;
 			foreach (Room room in rooms)
 			{
 				Vector2 center = room.rect.center;

@@ -16,7 +16,10 @@ namespace SIS.Characters.Robo
 				return AivoTree.AivoTreeStatus.Failure;
 
 			if (room.rect.Contains(new Vector2(owner.mTransform.position.x, owner.mTransform.position.z)))
+			{
+				Debug.Log("RoboPadron is in Last Known Room");
 				return AivoTree.AivoTreeStatus.Success;
+			}
 
 			return AivoTree.AivoTreeStatus.Failure;
 

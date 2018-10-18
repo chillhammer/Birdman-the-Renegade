@@ -8,7 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7f2258b65740234391c9f3aae757da3, type: 3}
-  m_Name: PostInvestigate Wait
+  m_Script: {fileID: 11500000, guid: d7b349d850e13a84a88dfd6fcdad560f, type: 3}
+  m_Name: In Path
   m_EditorClassIdentifier: 
-  secondsToWait: 2
