@@ -12,6 +12,7 @@ namespace SIS.Characters.Robo
 		public override AivoTree.AivoTreeStatus Act(float timeTick, RoboPadron owner)
 		{
 			timer += timeTick;
+			//Debug.Log("Timer: " + timer);
 			if (timer > secondsToWait)
 			{
 				timer = 0;

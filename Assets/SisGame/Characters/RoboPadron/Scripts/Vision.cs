@@ -22,26 +22,56 @@ namespace SIS.Characters.Robo
 		public string viewMeshFilterName = "VisionMesh";
 		MeshFilter viewMeshFilter;
 		Mesh viewMesh;
+		MeshRenderer viewMeshRenderer;
+
+		public float MeshAlpha
+		{
+			get
+			{
+				if (viewMeshRenderer == null)
+				{
+					Debug.Log("viewMeshRenderer is null");
+					return 0;
+				}
+				
+				return viewMeshRenderer.material.color.a;
+			}
+			set
+			{
+				if (viewMeshRenderer == null)
+				{
+					Debug.Log("viewMeshRenderer is null");
+					return;
+				}
+				Color color = viewMeshRenderer.material.color;
+				Color newColor = new Color(color.r, color.g, color.b, value);
+				viewMeshRenderer.material.color = newColor;
+			}
+		}
 
 		[Range(0, 100)]
 		public int edgeResolveIterations = 1;
 		[Range(0f, 2f)]
 		public float edgeDistThreshold = 0.5f;
 
+		private void Start()
+		{
+			viewMesh = new Mesh();
+			Transform viewMeshTransform = transform.FindDeepChild(viewMeshFilterName);
+			if (viewMeshTransform == null)
+			{
+				Debug.LogWarning("Cannot find " + viewMeshFilterName);
+			}
+			viewMeshFilter = viewMeshTransform.GetComponent<MeshFilter>();
+			viewMeshFilter.mesh = viewMesh;
+			viewMeshRenderer = viewMeshTransform.GetComponent<MeshRenderer>();
+		}
+
 		public void LateUpdate()
 		{
-			if (viewMesh == null)
-			{
-				viewMesh = new Mesh();
-				Transform viewMeshTransform = transform.FindDeepChild(viewMeshFilterName);
-				if (viewMeshTransform == null) {
-					Debug.LogWarning("Cannot find " + viewMeshFilterName);
-				}
-				viewMeshFilter = viewMeshTransform.GetComponent<MeshFilter>();
-				viewMeshFilter.mesh = viewMesh;
-			}
 			//Drawing FOV
-			DrawFieldOfView(headTransform);
+			if (MeshAlpha != 0)
+				DrawFieldOfView(headTransform);
 		}
 
 		private void DrawFieldOfView(Transform transform)

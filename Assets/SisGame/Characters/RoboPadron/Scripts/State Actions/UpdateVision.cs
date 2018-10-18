@@ -11,13 +11,18 @@ namespace SIS.Characters.Robo
 		public float frequencyInSeconds = 0.25f;
 		public SO.TransformVariable playerTransform;
 		public SO.GameEvent onPlayerSightEvent;
+		public float lightSwitchSpeed = 5f;
 
 		float timer = 0;
+		float originalMeshAlpha = -1;
 
 		public override void Execute(RoboPadron owner)
 		{
 			if (owner.vision == null)
 				return;
+			//Mesh Opacity
+			UpdateMeshAlpha(owner);
+
 			//Update Timer
 			if (timer < frequencyInSeconds) {
 				timer += owner.delta;
@@ -64,6 +69,24 @@ namespace SIS.Characters.Robo
 					}
 				}
 			}
+		}
+
+		void UpdateMeshAlpha(RoboPadron owner)
+		{
+			if (originalMeshAlpha == -1f)
+			{
+				originalMeshAlpha = owner.vision.MeshAlpha;
+			}
+
+			float targetAlpha;
+			if (owner.canSeePlayer)
+			{
+				targetAlpha = 0;
+			} else
+			{
+				targetAlpha = originalMeshAlpha;
+			}
+			owner.vision.MeshAlpha = Mathf.Lerp(owner.vision.MeshAlpha, targetAlpha, owner.delta * lightSwitchSpeed);
 		}
 	}
 }

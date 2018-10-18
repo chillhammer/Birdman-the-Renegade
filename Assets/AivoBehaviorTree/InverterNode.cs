@@ -22,5 +22,10 @@
                     return status;
             }
         }
+
+		public void Reset(T context)
+		{
+			node.Reset(context);
+		}
     }
 }

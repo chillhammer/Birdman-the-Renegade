@@ -32,6 +32,12 @@ namespace SIS.Characters.Example
 			return GetNode(context).Tick(timeTick, context);
 		}
 
+		//Allows for nodes to be reset, which means they can break out mid-way
+		public void Reset(Example context)
+		{
+			GetNode(context).Reset(context);
+		}
+
 
 		//Helper to get node for this instance. Lazy instantiation
 		//Since it is a Scriptable Object, we use a dictionary to have a Node for each enemy

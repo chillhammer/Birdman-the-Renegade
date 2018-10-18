@@ -54,13 +54,13 @@ namespace AivoTree
 				if (sucesses >= sucessesNeeded)
 				{
 					UnityEngine.Debug.Log("Parallel Node Succeeded. Successes: " + sucesses + " and Failures: " + failures + ". Successes Needed: " + sucessesNeeded);
-					Reset();
+					Reset(context);
 					return AivoTreeStatus.Success;
 				}
 				if (failures >= failuresNeeded || indicesToSkip.Count >= nodesToSearch.Length)
 				{
 					UnityEngine.Debug.Log("Parallel Node Failed. Successes: " + sucesses + " and Failures: " + failures);
-					Reset();
+					Reset(context);
 					return AivoTreeStatus.Failure;
 				}
 			}
@@ -69,11 +69,15 @@ namespace AivoTree
 			return AivoTreeStatus.Running;
 		}
 
-		private void Reset()
+		public void Reset(T context)
 		{
 			indicesToSkip.Clear();
 			sucesses = 0;
 			failures = 0;
+			foreach (TreeNode<T> node in _nodes)
+			{
+				node.Reset(context);
+			}
 		}
 	}
 }

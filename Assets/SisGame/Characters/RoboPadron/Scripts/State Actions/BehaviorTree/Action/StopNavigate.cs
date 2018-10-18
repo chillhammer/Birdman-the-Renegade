@@ -8,7 +8,7 @@ namespace SIS.Characters.Robo
 	{
 		public override AivoTree.AivoTreeStatus Act(float timeTick, RoboPadron owner)
 		{
-			Debug.Log("Stopping Navigation");
+			//Debug.Log("Stopping Navigation");
 			owner.waypointNavigator.StopNavigate();
 			return AivoTree.AivoTreeStatus.Success;
 		}

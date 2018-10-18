@@ -15,5 +15,9 @@ namespace AivoTree
         {
             return _fn(timeTick, context);
         }
+
+		public void Reset(T context)
+		{
+		}
     }
 }

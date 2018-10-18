@@ -13,7 +13,7 @@ namespace SIS.Characters.Robo
 			Room room = dungeon.GetRoom((int)pos.x, (int)pos.z);
 			int roomIndex = dungeon.GetRoomIndex(room);
 			if (roomIndex == -1)
-				roomIndex = dungeon.GetClosestRoomIndex((int)pos.x, (int)pos.y);
+				roomIndex = dungeon.GetClosestRoomIndex(pos);
 
 			owner.waypointNavigator.StartNavigation(roomIndex);
 

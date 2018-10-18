@@ -101,7 +101,12 @@ namespace SIS.Map
 			return closestRoomIndex;
 		}
 
-		public int GetClosestRoomIndex(Vector2Int pos)
+		public int GetClosestRoomIndex(Vector3 transformPosition)
+		{
+			return GetClosestRoomIndex((int)transformPosition.x, (int)transformPosition.z);
+		}
+
+			public int GetClosestRoomIndex(Vector2Int pos)
 		{
 			return GetClosestRoomIndex(pos.x, pos.y);
 		}

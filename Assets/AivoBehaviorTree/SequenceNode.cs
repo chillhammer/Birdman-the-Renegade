@@ -36,5 +36,14 @@ namespace AivoTree
                 return acc;
             });
         }
-    }
+
+		public void Reset(T context)
+		{
+			foreach (TreeNode<T> node in _nodes)
+			{
+				node.Reset(context);
+				runningNode = null;
+			}
+		}
+	}
 }

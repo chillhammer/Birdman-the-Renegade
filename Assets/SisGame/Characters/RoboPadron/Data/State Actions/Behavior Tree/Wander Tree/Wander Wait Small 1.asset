@@ -9,6 +9,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7f2258b65740234391c9f3aae757da3, type: 3}
-  m_Name: Wander Wait 3
+  m_Name: Wander Wait Small
   m_EditorClassIdentifier: 
-  secondsToWait: 0.5
+  secondsToWait: 0.35

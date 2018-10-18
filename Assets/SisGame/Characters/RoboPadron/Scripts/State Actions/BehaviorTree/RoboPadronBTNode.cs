@@ -50,5 +50,10 @@ namespace SIS.Characters.Robo
 			}
 			return node;
 		}
+		public void Reset(RoboPadron owner)
+		{
+			GetNode(owner).Reset(owner);
+		}
 	}
+
 }

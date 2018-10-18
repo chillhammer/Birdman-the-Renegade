@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Name: Wander Sequence
   m_EditorClassIdentifier: 
   bTNodes:
+  - {fileID: 11400000, guid: cf0b7936de3dda3449cfac197cd0d768, type: 2}
   - {fileID: 11400000, guid: 3c064ec7def8b944f936dd1b4caae316, type: 2}
   - {fileID: 11400000, guid: 357507c25fdd80b468e71dfa6282fca2, type: 2}
-  - {fileID: 11400000, guid: 47643ea6709a40145ba37e94f25cc452, type: 2}
   - {fileID: 11400000, guid: 72a6cb4eb155d954d871e7bb06cd728b, type: 2}
-  - {fileID: 11400000, guid: 04da57490da681443ab0dae612cdec56, type: 2}
+  - {fileID: 11400000, guid: 47643ea6709a40145ba37e94f25cc452, type: 2}
   - {fileID: 11400000, guid: 1c810f455e12cd44f85561cda72333e6, type: 2}
-  - {fileID: 11400000, guid: 4cf6cf04eeff376448be0cb85e76dbe9, type: 2}
+  - {fileID: 11400000, guid: 47643ea6709a40145ba37e94f25cc452, type: 2}
   - {fileID: 11400000, guid: d398ad8e486bddb4d9bbd52abd88ae65, type: 2}
+  - {fileID: 11400000, guid: 04da57490da681443ab0dae612cdec56, type: 2}

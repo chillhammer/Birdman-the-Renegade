@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f2258b65740234391c9f3aae757da3, type: 3}
   m_Name: PostInvestigate Wait
   m_EditorClassIdentifier: 
-  secondsToWait: 1
+  secondsToWait: 2

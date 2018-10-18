@@ -29,6 +29,11 @@ namespace SIS.States.Actions.BehaviorTree
 		{
 			return node.Tick(timeTick, characterContext);
 		}
+
+		public void Reset(C characterContext)
+		{
+			node.Reset(characterContext);
+		}
 		
 	}
 }
