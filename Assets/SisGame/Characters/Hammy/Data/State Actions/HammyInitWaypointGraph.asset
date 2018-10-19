@@ -8,7 +8,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7f2258b65740234391c9f3aae757da3, type: 3}
-  m_Name: Wander Wait Small 2
+  m_Script: {fileID: 11500000, guid: 97c1eea2d71f6374190f9296419423a0, type: 3}
+  m_Name: HammyInitWaypointGraph
   m_EditorClassIdentifier: 
-  secondsToWait: 0.35

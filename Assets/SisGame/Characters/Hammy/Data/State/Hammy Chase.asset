@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63172654119b8c24194d412b765ef2a5, type: 3}
+  m_Name: Hammy Chase
+  m_EditorClassIdentifier: 
+  idCount: 0
+  onFixed: []
+  onUpdate:
+  - {fileID: 11400000, guid: 9f9df17ec222af44eb3754b06d713302, type: 2}
+  onEnter: []
+  onExit: []
+  transitions:
+  - id: 0
+    disable: 0
+    condition: {fileID: 11400000, guid: af9217bcb55be1c448ddc9114bc5864a, type: 2}
+    targetState: {fileID: 11400000, guid: 96f593a6ac265b845915eeb5d97cc5de, type: 2}
+  - id: 0
+    disable: 0
+    condition: {fileID: 11400000, guid: 7c8424e50f6d1784292af53d5e65d5fb, type: 2}
+    targetState: {fileID: 11400000, guid: c27b528d5a45d364b9c3d58ae71919fd, type: 2}

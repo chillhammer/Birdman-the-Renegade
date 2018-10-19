@@ -13,10 +13,10 @@ namespace SIS.Characters.Robo
 		#region StateMachine Setup
 
 		//Must Start Off in a State
-		[SerializeField] private RoboPadronState startingState; 
+		[SerializeField] private RoboPadronState startingState;
 
 		//Optional. Use StateActionComposite to run multiple actions on create
-		[SerializeField] private RoboPadronStateActions initActionsBatch; 
+		[SerializeField] private RoboPadronStateActions initActionsBatch;
 
 		public StateMachine<RoboPadron> stateMachine;
 

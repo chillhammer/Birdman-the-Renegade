@@ -8,7 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7f2258b65740234391c9f3aae757da3, type: 3}
-  m_Name: Wander Wait Small 2
+  m_Script: {fileID: 11500000, guid: 8b7839e7ce68f874dace2e0b098c2b40, type: 3}
+  m_Name: Hammy Exit State
   m_EditorClassIdentifier: 
-  secondsToWait: 0.35
+  description: 
+  Value: 0
