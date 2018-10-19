@@ -148,6 +148,10 @@ namespace SIS.Waypoints
 			if (goal.X != goalX || goal.Y != goalY)
 				path.Add(accurateGoal);
 
+			if (path.Count > 1)
+			{
+				path.RemoveAt(0);
+			}
 			//OptimizePath();
 			pathIndex = 0;
 		}
@@ -217,12 +221,13 @@ namespace SIS.Waypoints
 			
 			float dist = (pos2 - pos1).magnitude + 0.01f;
 			Vector3 dir = (pos2 - pos1).normalized;
-			RaycastHit hit;
+			//RaycastHit hit;
 
 			Vector3 boxCenter = pos1;
 			Vector3 boxHalfExtents = new Vector3(1.2f, 0.5f, 0.01f);
 
-			return !Physics.BoxCast(boxCenter, boxHalfExtents, dir, Quaternion.LookRotation(dir), dist, ~mapLayer);
+			return !Physics.Raycast(pos1, dir, dist, ~mapLayer);
+			//return !Physics.BoxCast(boxCenter, boxHalfExtents, dir, Quaternion.LookRotation(dir), dist, ~mapLayer);
 		}
 	}
 }

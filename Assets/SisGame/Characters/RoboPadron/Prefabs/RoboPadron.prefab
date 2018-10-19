@@ -908,7 +908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 15
   angleFOV: 120
-  meshResolution: 50
+  meshResolution: 100
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -956,6 +956,7 @@ MonoBehaviour:
   gunModel: {fileID: 0}
   isAiming: 0
   canSeePlayer: 0
+  transitionToWander: 0
   waypointNavigator: {fileID: 114258515672266822}
   vision: {fileID: 0}
   playerLastKnownLocation:

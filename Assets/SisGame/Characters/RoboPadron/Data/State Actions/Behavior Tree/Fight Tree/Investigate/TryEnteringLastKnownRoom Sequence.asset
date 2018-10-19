@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Name: TryEnteringLastKnownRoom Sequence
   m_EditorClassIdentifier: 
   bTNodes:
-  - {fileID: 11400000, guid: 812ca2b7734c498459a51e6cf36f3c2e, type: 2}
   - {fileID: 11400000, guid: 644ee0f5cc830374ea908018bff32e9c, type: 2}
   - {fileID: 11400000, guid: 33292e50596697c4c8e2183ce14d14b4, type: 2}

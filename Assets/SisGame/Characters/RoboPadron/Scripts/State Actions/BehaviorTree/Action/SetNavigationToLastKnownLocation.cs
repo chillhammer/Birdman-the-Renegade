@@ -9,6 +9,7 @@ namespace SIS.Characters.Robo
 
 		public override AivoTree.AivoTreeStatus Act(float timeTick, RoboPadron owner)
 		{
+			Debug.Log("Setting navigation to last known location");
 			owner.waypointNavigator.StartNavigation(owner.playerLastKnownLocation.position);
 
 			return AivoTree.AivoTreeStatus.Success;

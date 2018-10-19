@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be9c613d3f3b0449bbe7cbcfaf404f6, type: 3}
   m_Name: NavigateToShootPlayer
   m_EditorClassIdentifier: 
-  moveSpeed: 250
+  moveSpeed: 225
   turnSpeed: 7

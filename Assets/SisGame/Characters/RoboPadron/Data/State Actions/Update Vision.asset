@@ -14,3 +14,4 @@ MonoBehaviour:
   frequencyInSeconds: 0.15
   playerTransform: {fileID: 11400000, guid: f948770e58dae564a932fe55e5620b01, type: 2}
   onPlayerSightEvent: {fileID: 0}
+  lightSwitchSpeed: 5

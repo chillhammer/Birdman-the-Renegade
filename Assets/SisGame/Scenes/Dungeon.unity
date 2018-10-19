@@ -231,6 +231,11 @@ Prefab:
       propertyPath: dungeonParent
       value: 
       objectReference: {fileID: 1901667228}
+    - target: {fileID: 114263514491030148, guid: 2508e4e399a7d204483c594bd288915d,
+        type: 2}
+      propertyPath: roomMin
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2508e4e399a7d204483c594bd288915d, type: 2}
   m_IsPrefabAsset: 0

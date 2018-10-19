@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: GetInRange Parallel
   m_EditorClassIdentifier: 
   bTNodes:
-  - {fileID: 11400000, guid: e68ac5b7ea916f54db9f87dbbbc05689, type: 2}
-  - {fileID: 11400000, guid: b44cbf11a585af74e99cbc35e568e63a, type: 2}
+  - {fileID: 11400000, guid: 7a6ae3f7ea07e1a4fb75942bea147f9f, type: 2}
+  - {fileID: 11400000, guid: 27d7affa495a2874ab8301e8e5ce21b1, type: 2}
   successesNeeded: 1
-  failuresNeeded: 2
+  failuresNeeded: 1

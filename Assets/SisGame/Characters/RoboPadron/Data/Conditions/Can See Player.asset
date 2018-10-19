@@ -11,4 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51041e8b7cfda7c4c95fa9e801aff5b2, type: 3}
   m_Name: Can See Player
   m_EditorClassIdentifier: 
-  description: 
+  description: Transition to fight!
+  wanderRoot: {fileID: 11400000, guid: 42f5089747df18f48b164892c6671675, type: 2}

@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a470db71cc8ed4d44a989d040e9feb45, type: 3}
   m_Name: Fight NarrowVision
   m_EditorClassIdentifier: 
-  fov: 60
-  maxDistance: 20
+  fov: 120
+  maxDistance: 15

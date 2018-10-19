@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Name: TryApproachingLastKnownPosition Sequence
   m_EditorClassIdentifier: 
   bTNodes:
-  - {fileID: 11400000, guid: 812ca2b7734c498459a51e6cf36f3c2e, type: 2}
   - {fileID: 11400000, guid: df17612938d0c054cbfae0ec39421405, type: 2}
   - {fileID: 11400000, guid: eb335724e064cb44ab66d1705aa68635, type: 2}

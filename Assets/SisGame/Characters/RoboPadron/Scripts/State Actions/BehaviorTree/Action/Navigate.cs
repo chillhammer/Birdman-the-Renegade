@@ -9,11 +9,31 @@ namespace SIS.Characters.Robo
 		public float moveSpeed = 3f;
 		public float turnSpeed = 2f;
 
+		float timeoutTime = 4f;
+		float timer = 0;
+		Vector3 previousPosition;
+
 		public override AivoTree.AivoTreeStatus Act(float timeTick, RoboPadron owner)
 		{
 			owner.rigid.velocity = Vector3.zero;
 			if (owner.waypointNavigator.PathFinished)
 				return AivoTree.AivoTreeStatus.Success;
+
+			//Debug.Log((owner.mTransform.position - previousPosition).sqrMagnitude);
+			if ((owner.mTransform.position - previousPosition).sqrMagnitude < 0.001f)
+			{
+				timer += owner.delta;
+				if (timer >= timeoutTime)
+				{
+					Debug.Log("Navigation failed");
+					timer = 0;
+					return AivoTree.AivoTreeStatus.Failure;
+				}
+			} else
+			{
+				timer = 0;
+			}
+			previousPosition = owner.mTransform.position;
 
 			Vector3 direction = owner.waypointNavigator.DirectionToWaypoint;
 
@@ -25,7 +45,6 @@ namespace SIS.Characters.Robo
 			//owner.rigid.AddForce(motion);
 			owner.rigid.velocity = motion;
 			//owner.mTransform.position = owner.mTransform.position + motion;
-
 
 			return AivoTree.AivoTreeStatus.Running;
 		}
