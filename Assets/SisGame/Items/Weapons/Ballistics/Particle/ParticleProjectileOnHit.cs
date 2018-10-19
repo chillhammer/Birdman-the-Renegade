@@ -51,12 +51,15 @@ namespace SIS.Items.Weapons
 
 			int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
 
-			Debug.Log("Particle Hit " + other.name + ". Times: " + numCollisionEvents);
+			//Debug.Log("Particle Hit " + other.name + ". Times: " + numCollisionEvents);
 			if (numCollisionEvents > 0)
 			{
+				incomingDirection = collisionEvents[0].velocity.normalized;
 				Vector3 intersection = collisionEvents[0].intersection;
-				onHitParticleSystem.transform.position = intersection;
-				onHitParticleSystem.Play();
+				if (onHitParticleSystem != null)
+				{
+					onHitParticleSystem.transform.position = intersection;
+				}
 
 				IHittable isHittable = other.GetComponentInParent<IHittable>();
 				if (isHittable == null)
@@ -65,8 +68,12 @@ namespace SIS.Items.Weapons
 				}
 				else
 				{
+					if (onHitParticleSystem != null)
+						onHitParticleSystem.transform.position = intersection + incomingDirection * 0.3f;
 					isHittable.OnHit(owner, weapon, incomingDirection, intersection);
 				}
+				if (onHitParticleSystem != null)
+					onHitParticleSystem.Play();
 			}
 		}
 	}

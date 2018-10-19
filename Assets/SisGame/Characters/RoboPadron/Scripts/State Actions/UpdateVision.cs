@@ -40,6 +40,7 @@ namespace SIS.Characters.Robo
 					Vector3 dir = (playerPos - headPos).normalized;
 					if (Vector3.Angle(headAngle, dir) < owner.vision.angleFOV *0.5f)
 					{
+						Debug.DrawLine(headPos, playerPos, Color.green, 0.25f);
 						//Debug.Log("Within Angle! Dir: " + dir + " - HeadAngle: " + headAngle);
 						RaycastHit raycastHit;
 						LayerMask mapAndPlayer = LayerMask.NameToLayer("Player") | LayerMask.NameToLayer("Map");

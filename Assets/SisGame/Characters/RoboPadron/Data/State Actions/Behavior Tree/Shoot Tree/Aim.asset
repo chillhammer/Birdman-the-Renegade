@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42ac022bb253a7943acaa808417e1c83, type: 3}
-  m_Name: Fight Root
+  m_Script: {fileID: 11500000, guid: 40ba7f24686939544acea5d7f1c18a9b, type: 3}
+  m_Name: Aim
   m_EditorClassIdentifier: 
-  bTNodes:
-  - {fileID: 11400000, guid: 75677090e921412429d560a3204a5731, type: 2}
-  - {fileID: 11400000, guid: 83325ca05e0e2fd48bbbaf56dc79f1ee, type: 2}
+  playerTransform: {fileID: 11400000, guid: f948770e58dae564a932fe55e5620b01, type: 2}
+  headRotateSpeed: 10
+  bodyRotateSpeed: 10

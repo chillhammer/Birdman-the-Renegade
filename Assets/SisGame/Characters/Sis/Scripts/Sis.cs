@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using SIS.States;
 using SIS.Items;
-
+using SIS.Items.Weapons;
 
 namespace SIS.Characters.Sis
 {
-	public class Sis : Character
+	public class Sis : Character, IHittable
 	{
 		#region StateMachine Setup
 		[SerializeField] private SisState startingState;
@@ -89,5 +89,9 @@ namespace SIS.Characters.Sis
 			anim.CrossFade(targetAnim, 0.2f);
 		}
 
+		public void OnHit(Character shooter, Weapon weapon, Vector3 dir, Vector3 pos)
+		{
+			rigid.AddForce(dir, ForceMode.Impulse);
+		}
 	}
 }

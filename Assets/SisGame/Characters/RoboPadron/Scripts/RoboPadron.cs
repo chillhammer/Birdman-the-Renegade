@@ -49,7 +49,9 @@ namespace SIS.Characters.Robo
 
 		[HideInInspector] public Transform headBone;
 		[HideInInspector] public Transform gunModel;
-		[HideInInspector] public bool isAiming = false;
+		[HideInInspector] public Transform gunTip;
+		[HideInInspector] public ParticleSystem bulletSystem;
+		public bool isAiming = false;
 		public bool canSeePlayer = false;
 		[HideInInspector] public bool transitionToWander = false;
 
@@ -75,6 +77,7 @@ namespace SIS.Characters.Robo
 			vision = GetComponent<Vision>();
 			headBone = mTransform.FindDeepChild("Head");
 			gunModel = mTransform.FindDeepChild("Gun");
+			bulletSystem = gunModel.GetComponentInChildren<ParticleSystem>();
 
 			if (headBone == null) Debug.LogWarning("Could not find Head bone on RoboPadron");
 		}
