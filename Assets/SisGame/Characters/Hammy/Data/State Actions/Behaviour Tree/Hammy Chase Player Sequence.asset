@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d9ff9063509e9644a5d672d34b169d0, type: 3}
+  m_Name: Hammy Chase Player Sequence
+  m_EditorClassIdentifier: 
+  bTNodes:
+  - {fileID: 11400000, guid: 8e0df66bec5f5a541b2bfd297c1bb09f, type: 2}
