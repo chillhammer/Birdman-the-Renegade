@@ -20,7 +20,7 @@ MonoBehaviour:
   transitions:
   - id: 0
     disable: 0
-    condition: {fileID: 11400000, guid: af9217bcb55be1c448ddc9114bc5864a, type: 2}
+    condition: {fileID: 11400000, guid: cce1bd598016f36459e1591412cf28fc, type: 2}
     targetState: {fileID: 11400000, guid: 96f593a6ac265b845915eeb5d97cc5de, type: 2}
   - id: 0
     disable: 0

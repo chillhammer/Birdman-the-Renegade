@@ -24,4 +24,3 @@ namespace SIS.Characters.Ham
         }
     }
 }
-

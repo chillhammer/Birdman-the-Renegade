@@ -48,30 +48,6 @@ namespace SIS.Characters.Ham
 	public abstract class HammyStateActions : StateActions<Hammy> { }
 	public abstract class HammyCondition : Condition<Hammy> { }
 
-	[CreateAssetMenu(menuName = "Characters/Hammy/Conditions/HammyNegatedCondition")]
-	public class HammyNegatedCondition : HammyCondition
-	{
-		public HammyCondition NegatedCondition;
-        public override bool CheckCondition(Hammy owner)
-		{
-			return !NegatedCondition.CheckCondition(owner);
-		}
-	}
-
-	[CreateAssetMenu(menuName = "Characters/Hammy/Conditions/HammyAndCondition")]
-	public class HammyAndCondition : HammyCondition
-	{
-		public HammyCondition[] HammyConditions;
-        public override bool CheckCondition(Hammy owner)
-		{
-			foreach (HammyCondition cond in HammyConditions)
-			{
-				if (!cond.CheckCondition(owner)) return false;
-			}
-			return true;
-		}
-	}
-
 	[System.Serializable]
 	public class HammyTransition : Transition<Hammy>{
 		public new HammyCondition condition;
