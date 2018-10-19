@@ -8,10 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: e1757d48550979049a788d32ed1a7c2d, type: 3}
   m_Name: Hammy LOS and Within 20f of Player
-  m_EditorClassIdentifier: Assembly-CSharp:SIS.Characters.Ham:HammyAndCondition
+  m_EditorClassIdentifier: 
   description: 
   HammyConditions:
-  - {fileID: 11400000, guid: 1d78459d0c9f52648ba1ff099abab766, type: 2}
   - {fileID: 11400000, guid: 76dfb524b09380a4f920bf6a296ba19c, type: 2}
+  - {fileID: 11400000, guid: 1d78459d0c9f52648ba1ff099abab766, type: 2}
