@@ -19,6 +19,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4449735500124712}
+  - component: {fileID: 114584155385612530}
+  - component: {fileID: 114920367274683328}
+  - component: {fileID: 54103982169717634}
+  - component: {fileID: 65760479376132324}
   m_Layer: 0
   m_Name: Hammy
   m_TagString: Untagged
@@ -36,6 +40,21 @@ GameObject:
   - component: {fileID: 4328182688656526}
   m_Layer: 0
   m_Name: tail_base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1396817630780974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4441234971966218}
+  m_Layer: 0
+  m_Name: Fin Reference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,6 +395,19 @@ Transform:
   m_Father: {fileID: 4591030675770136}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4441234971966218
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1396817630780974}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.51, z: -0.59}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4449735500124712}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4449735500124712
 Transform:
   m_ObjectHideFlags: 1
@@ -383,10 +415,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1098440364130272}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.244141, y: -1.0664608, z: 2.7243884}
+  m_LocalPosition: {x: 19.304676, y: 11.699295, z: 20.36284}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4465106696569014}
+  - {fileID: 4441234971966218}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -506,6 +539,33 @@ Transform:
   m_Father: {fileID: 4591030675770136}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54103982169717634
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098440364130272}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &65760479376132324
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098440364130272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25, y: 1.3, z: 1.5}
+  m_Center: {x: 0, y: 0.5, z: -0.5}
 --- !u!95 &95435639573435938
 Animator:
   serializedVersion: 3
@@ -524,6 +584,45 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114584155385612530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098440364130272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce66bdb9bdb016d4cb30d667c1e6c22b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dungeon: {fileID: 11400000, guid: fcafa1c3f050c43448a48e9105f95af5, type: 2}
+  nextWaypointDistCheck: 1.2
+  automaticWaypointUpdate: 1
+  pathIndex: -1
+--- !u!114 &114920367274683328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1098440364130272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a5e590f7f70677419d09d26c045b9f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mTransform: {fileID: 0}
+  rigid: {fileID: 0}
+  anim: {fileID: 0}
+  delta: 0
+  startingState: {fileID: 11400000, guid: 96f593a6ac265b845915eeb5d97cc5de, type: 2}
+  initActionsBatch: {fileID: 11400000, guid: b1911be50b7711c4ab35ec22dea969bd, type: 2}
+  health: 5
+  playerTransform: {fileID: 11400000, guid: f948770e58dae564a932fe55e5620b01, type: 2}
+  FinTransform: {fileID: 0}
+  waypointNavigator: {fileID: 0}
+  patrolRoute: 
+  patrolIndex: 0
+  sameRoomAsPlayer: 0
 --- !u!137 &137525557764802768
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

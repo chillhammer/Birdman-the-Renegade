@@ -22,7 +22,7 @@ namespace SIS.Map
 		public Tile[] Tiles { get { return tiles; } }
 
 		//Override values from DungeonGenerator
-		public void SetFromGeneration(Tile[] tiles, List<Room> rooms, WaypointSystem waypointSystem, 
+		public void SetFromGeneration(Tile[] tiles, List<Room> rooms, WaypointSystem waypointSystem,
 			int width, int height)
 		{
 			this.tiles = tiles;
@@ -116,6 +116,7 @@ namespace SIS.Map
 			int roomIndex = Random.Range(0, rooms.Count);
 			return rooms[roomIndex];
 		}
+
 		#endregion
 	}
 }
