@@ -14,5 +14,5 @@ MonoBehaviour:
   bTNodes:
   - {fileID: 11400000, guid: 7a6ae3f7ea07e1a4fb75942bea147f9f, type: 2}
   - {fileID: 11400000, guid: 27d7affa495a2874ab8301e8e5ce21b1, type: 2}
-  successesNeeded: 1
+  successesNeeded: 2
   failuresNeeded: 1

@@ -11,7 +11,7 @@ namespace SIS.Characters.Robo
 		public override AivoTree.AivoTreeStatus Act(float timeTick, RoboPadron owner)
 		{
 			float dist = Vector3.SqrMagnitude(owner.playerLastKnownLocation.position - owner.mTransform.position);
-			//Debug.Log("Range to LKL: " + dist);
+			//Debug.Log("Range to LKL: " + Mathf.Sqrt(dist));
 			if (dist <= range * range)
 			{
 				return AivoTree.AivoTreeStatus.Success;

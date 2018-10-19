@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: Can Transition To Wander
   m_EditorClassIdentifier: 
   description: Flag Once Done Investigating
+  fightRoot: {fileID: 11400000, guid: abd516d031c9fd545a207ef78284181f, type: 2}
