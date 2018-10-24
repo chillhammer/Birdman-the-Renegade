@@ -28,6 +28,9 @@ namespace SIS.Characters.Robo
 				timer += owner.delta;
 				return;
 			}
+
+			if (owner.vision.MeshAlpha == 0)
+				return;
 			timer = 0;
 			if (playerTransform.value != null) {
 				Vector3 playerPos = playerTransform.value.position;
@@ -38,7 +41,8 @@ namespace SIS.Characters.Robo
 				{
 					//Debug.Log("Within Dist!");
 					Vector3 dir = (playerPos - headPos).normalized;
-					if (Vector3.Angle(headAngle, dir) < owner.vision.angleFOV *0.5f)
+					//if (Vector3.Angle(headAngle, dir) < owner.vision.angleFOV *0.5f)
+					if (Mathf.Rad2Deg * Mathf.Acos(Vector3.Dot(headAngle, dir)) < owner.vision.angleFOV * 0.5f)
 					{
 						Debug.DrawLine(headPos, playerPos, Color.green, 0.25f);
 						//Debug.Log("Within Angle! Dir: " + dir + " - HeadAngle: " + headAngle);
@@ -67,6 +71,9 @@ namespace SIS.Characters.Robo
 								owner.canSeePlayer = false;
 							}
 						}
+					} else
+					{
+						//Debug.Log("Not Within Angle! Dir: " + dir + " - HeadAngle: " + headAngle);
 					}
 				}
 			}
@@ -80,7 +87,7 @@ namespace SIS.Characters.Robo
 			}
 
 			float targetAlpha;
-			if (owner.canSeePlayer)
+			if (owner.canSeePlayer || owner.health == 0)
 			{
 				targetAlpha = 0;
 			} else

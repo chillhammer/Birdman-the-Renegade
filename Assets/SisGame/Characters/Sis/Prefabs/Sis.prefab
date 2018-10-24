@@ -859,9 +859,9 @@ MonoBehaviour:
   rigid: {fileID: 54209258339737766}
   anim: {fileID: 95787136944826026}
   delta: 0
-  startingState: {fileID: 11400000, guid: 16c92dd07f0fccc42a9ec4db29d87708, type: 2}
-  initActionsBatch: {fileID: 11400000, guid: 4fa7239c51068c34381fd48d5cb810b0, type: 2}
   health: 0
+  startingState: {fileID: 11400000, guid: 841b7245e5c205f498bc6f12b50cfad3, type: 2}
+  initActionsBatch: {fileID: 11400000, guid: 4fa7239c51068c34381fd48d5cb810b0, type: 2}
   movementValues:
     horizontal: 0
     vertical: 0

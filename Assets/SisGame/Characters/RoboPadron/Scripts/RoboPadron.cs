@@ -64,9 +64,19 @@ namespace SIS.Characters.Robo
 			public float timeSeen;
 		}
 		#endregion
+		#region Death Fall Variables
+		[System.Serializable]
+		public struct DeathFallProgress
+		{
+			public Quaternion originalRotation;
+			public Vector3 fallTowards;
+			public float timer;
+		}
+		#endregion
 
 		//Serializable Fields
 		public LastKnownLocation playerLastKnownLocation;
+		public DeathFallProgress deathFallProgress;
 
 		//Allows for initial setup, better to use InitActionBatch, but it's here if you don't want to make action
 		protected override void SetupComponents()
@@ -91,7 +101,7 @@ namespace SIS.Characters.Robo
 
 			if (health <= 0)
 			{
-				Destroy(gameObject);
+				//Destroy(gameObject);
 			}
 		}
 
