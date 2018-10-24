@@ -17,6 +17,7 @@ namespace SIS.Items.Weapons
 		Characters.Character owner;
 		Weapon weapon;
 		Vector3 incomingDirection;
+		float justHit = 0;
 
 		private void Start()
 		{
@@ -27,7 +28,12 @@ namespace SIS.Items.Weapons
 				onHitParticleSystem = ps[1];
 
 			collisionEvents = new List<ParticleCollisionEvent>();
+			justHit = 0;
+		}
 
+		private void Update()
+		{
+			justHit = Mathf.Max(0, justHit - 1);
 		}
 
 		public void UpdateOnHitSettings(Characters.Character owner, Weapon wep, Vector3 dir, LayerMask ignore)
@@ -48,7 +54,6 @@ namespace SIS.Items.Weapons
 
 		void OnParticleCollision(GameObject other)
 		{
-
 			int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
 
 			//Debug.Log("Particle Hit " + other.name + ". Times: " + numCollisionEvents);
@@ -68,12 +73,14 @@ namespace SIS.Items.Weapons
 				}
 				else
 				{
+					//You hit enemy!
 					if (onHitParticleSystem != null)
 						onHitParticleSystem.transform.position = intersection + incomingDirection * 0.3f;
 					isHittable.OnHit(owner, weapon, incomingDirection, intersection);
 				}
 				if (onHitParticleSystem != null)
 					onHitParticleSystem.Play();
+
 			}
 		}
 	}

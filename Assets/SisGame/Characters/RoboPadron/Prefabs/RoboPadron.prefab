@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 224011928739504478}
   - component: {fileID: 222014816458296670}
   - component: {fileID: 114552649180355136}
+  - component: {fileID: 114735043555960382}
   m_Layer: 0
   m_Name: HealthBar Green
   m_TagString: Untagged
@@ -518,7 +519,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1284060523504750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.231373, y: 0.4212594, z: 23.18608}
+  m_LocalPosition: {x: 23.081728, y: 7.3471255, z: 10.909359}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4080472596944734}
@@ -1120,6 +1121,19 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &114735043555960382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1722791084836164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdf7d7050b4e84949a80f7c64bf28195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 114868717050894402}
+  healthbarImage: {fileID: 114552649180355136}
 --- !u!114 &114868717050894402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1135,9 +1149,9 @@ MonoBehaviour:
   rigid: {fileID: 54898382318220698}
   anim: {fileID: 0}
   delta: 0
+  health: 3
   startingState: {fileID: 11400000, guid: e873b80615c22cf41bf47bc9bdf0312e, type: 2}
   initActionsBatch: {fileID: 11400000, guid: 9a39694808aff1d41a0aad4bdc7de3d8, type: 2}
-  health: 1
   headBone: {fileID: 0}
   gunModel: {fileID: 0}
   gunTip: {fileID: 0}
@@ -10582,11 +10596,11 @@ RectTransform:
   m_Father: {fileID: 224444366880561242}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.13}
-  m_SizeDelta: {x: 1.5, y: 0.2}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.92, y: 0.42611113}
+  m_AnchorMax: {x: 0.92, y: 0.49051207}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1.67, y: 0}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!224 &224444366880561242
 RectTransform:
   m_ObjectHideFlags: 1
@@ -10604,5 +10618,5 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 2.67}
-  m_SizeDelta: {x: 796, y: 448}
+  m_SizeDelta: {x: 2, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}

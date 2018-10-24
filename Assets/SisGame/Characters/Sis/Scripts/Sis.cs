@@ -39,7 +39,6 @@ namespace SIS.Characters.Sis
 		}
 		#endregion
 
-		public float health;
 		//Serializable Properties
 		public MovementValues movementValues;
 		public Inventory inventory;

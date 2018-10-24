@@ -45,8 +45,6 @@ namespace SIS.Characters.Robo
 
 		#endregion
 
-		public float health = 1;
-
 		[HideInInspector] public Transform headBone;
 		[HideInInspector] public Transform gunModel;
 		[HideInInspector] public Transform gunTip;
@@ -84,7 +82,11 @@ namespace SIS.Characters.Robo
 
 		public void OnHit(Character shooter, Weapon weapon, Vector3 dir, Vector3 pos)
 		{
+			if (health == 0)
+				return;
 			health--;
+			if (onHitDelegate != null)
+				onHitDelegate();
 			rigid.AddForceAtPosition(dir, pos);
 
 			if (health <= 0)

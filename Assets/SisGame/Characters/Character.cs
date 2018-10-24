@@ -18,6 +18,10 @@ namespace SIS.Characters
 		[HideInInspector]
 		public float delta;
 
+		public float health;
+		[HideInInspector] public delegate void OnHitDelegate();
+		[HideInInspector] public OnHitDelegate onHitDelegate;
+
 		protected virtual void Start()
 		{
 			mTransform = this.transform;
