@@ -13,9 +13,17 @@ namespace SIS.Items
 
 		public void ReloadCurrentWeapon()
 		{
-			int magazineAmount = currentWeapon.magazineBullets;
+			Weapon.RuntimeWeapon runtime = currentWeapon.runtime;
+			int bulletsNeeded = runtime.magazineCapacity - runtime.magazineSize;
 
-			currentWeapon.runtime.currentBullets = magazineAmount;
+			//Check if we have enough bullets for full reload
+			if (runtime.currentBullets < bulletsNeeded) {
+				runtime.magazineSize += runtime.currentBullets;
+				runtime.currentBullets = 0;
+			} else {
+				runtime.magazineSize = runtime.magazineCapacity;
+				runtime.currentBullets -= bulletsNeeded;
+			}
 		}
 	}
 }

@@ -11,8 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165c39555fcf09449a3ab1d56cf7e58, type: 3}
   m_Name: Blunderbuss
   m_EditorClassIdentifier: 
-  decrementBulletsOnShoot: 0
-  magazineBullets: 20
+  decrementBulletsOnShoot: 1
+  numBullets: 30
+  magazineCapacity: 30
   fireRate: 0.5
   recoilLength: 0.2
   damageOnHit: 2
@@ -30,6 +31,8 @@ MonoBehaviour:
     weaponFX: {fileID: 0}
     lastFired: 0
     currentBullets: 0
+    magazineCapacity: 0
+    magazineSize: 0
   recoilY:
     serializedVersion: 2
     m_Curve:
@@ -98,4 +101,4 @@ MonoBehaviour:
     m_RotationOrder: 4
   fireAudio: {fileID: 8300000, guid: 4d39c29683a501342819723b5c8802be, type: 3}
   ballistics: {fileID: 11400000, guid: fc8c8079171eda74bb9bd1d7e4f447b8, type: 2}
-  topHalfAnimatorLayerName: RevolverTopHalf
+  topHalfAnimatorLayerName: BlunderbussTopHalf

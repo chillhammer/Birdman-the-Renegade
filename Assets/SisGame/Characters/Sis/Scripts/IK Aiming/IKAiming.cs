@@ -197,6 +197,8 @@ namespace SIS.Characters.Sis
 			}
 			else
 				bodyWeight = 0.3f;
+			if (owner.isReloading)
+				targetHandWeight = 0;
 
 			//Constraints on IK for looking at sharp angles
 			float angle = Vector3.Angle(owner.mTransform.forward, lookDir);

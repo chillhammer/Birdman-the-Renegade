@@ -27,7 +27,6 @@ namespace SIS.Characters.Sis
 		{
 			Weapon weapon = owner.inventory.currentWeapon;
 			Weapon.RuntimeWeapon runtime = weapon.runtime;
-			int bullets = runtime.currentBullets;
 			isShooting.value = owner.isShooting;
 
 			//Update Shooting Variables for FX and Ballistics
@@ -35,11 +34,11 @@ namespace SIS.Characters.Sis
 			Vector3 dir = owner.movementValues.aimPosition - origin;
 
 			//Shooting
-			if (owner.isShooting && !startedShooting)
+			if (owner.isShooting && !startedShooting && !owner.isReloading)
 			{
 				startedShooting = true;
 				
-				if (bullets > 0)
+				if (runtime.magazineSize > 0)
 				{
 					if (Time.realtimeSinceStartup - runtime.lastFired > weapon.fireRate)
 					{
@@ -56,8 +55,8 @@ namespace SIS.Characters.Sis
 						//Decrement Bullets
 						if (weapon.decrementBulletsOnShoot)
 						{
-							runtime.currentBullets--;
-							if (runtime.currentBullets < 0)
+							runtime.magazineSize--;
+							if (runtime.magazineSize < 0)
 								runtime.currentBullets = 0;
 						}
 					}
@@ -69,7 +68,7 @@ namespace SIS.Characters.Sis
 					owner.isShooting = false;
 					owner.isReloading = true;
 				}
-			} 
+			}
 
 			//Delay
 			if (startedShooting)

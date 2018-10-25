@@ -15,11 +15,14 @@ namespace SIS.Characters.Sis
 
 		public StateMachine<Sis> stateMachine;
 
+		private ReloadBehavior reloadBehavior;
+
 		private new void Start()
 		{
 			base.Start();
 			stateMachine = new StateMachine<Sis>(this, startingState, initActionsBatch);
-
+			reloadBehavior = GetComponentInChildren<Animator>().GetBehaviour<ReloadBehavior>();
+			reloadBehavior.sis = this;
 		}
 		//Run State Machine Logic
 		private void FixedUpdate()
@@ -61,8 +64,8 @@ namespace SIS.Characters.Sis
 		public bool isShooting;
 		public bool isGunReady;
 		public bool isCrouching;
-		public bool isReloading;
-		public bool isInteracting;
+		public bool isReloading = false;
+		public bool doneReloading;
 
 		public void ToggleCrouching()
 		{
@@ -71,6 +74,10 @@ namespace SIS.Characters.Sis
 		public void SetReloading()
 		{
 			isReloading = true;
+		}
+		public void OnStopReloading()
+		{
+			doneReloading = true;
 		}
 		#endregion
 
