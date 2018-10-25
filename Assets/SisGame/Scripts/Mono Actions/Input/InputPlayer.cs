@@ -58,16 +58,16 @@ namespace SIS.Actions.Input
 				{
 					playerState.value.ToggleCrouching();
 					crouchButton.targetBoolVariable.value = playerState.value.isCrouching;
-				}
+				}*/
 				//Reload
 				if (reloadButton.isPressed)
 				{
 					playerState.value.SetReloading();
 					
 				}
-				reloadButton.targetBoolVariable.value = playerState.value.isReloading;
+				//reloadButton.targetBoolVariable.value = playerState.value.isReloading;
 
-				*/
+				
 
 			}
         }

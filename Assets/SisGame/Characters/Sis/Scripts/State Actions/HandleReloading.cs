@@ -8,32 +8,33 @@ namespace SIS.Characters.Sis
 	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/Handle Reloading")]
 	public class HandleReloading : SisStateActions
 	{
+		private bool reloading = false;
 		public override void Execute(Sis owner)
 		{
 			Weapon weapon = owner.inventory.currentWeapon;
 			Weapon.RuntimeWeapon runtime = weapon.runtime;
-			int bullets = runtime.currentBullets;
 
 			//Reloading
 			if (owner.isReloading)
 			{
-				int magazine = weapon.magazineBullets;
-				if (bullets < magazine)
+				
+				if (runtime.magazineSize < runtime.magazineCapacity)
 				{
+					owner.isShooting = false;
 					//Start Animation
-					if (!owner.isInteracting)
+					if (!owner.doneReloading && !reloading)
 					{
-						owner.isInteracting = true;
-						owner.PlayAnimation("Reload");
-						owner.anim.SetBool("InteractingHands", true);
+						owner.anim.SetTrigger("Reload");
+						reloading = true;
 					}
 					else
 					{
 						//Reload at End of Animation
-						if (!owner.anim.GetBool("InteractingHands"))
+						if (owner.doneReloading)
 						{
 							owner.isReloading = false;
-							owner.isInteracting = false;
+							owner.doneReloading = false;
+							reloading = false;
 							owner.inventory.ReloadCurrentWeapon();
 						}
 					}

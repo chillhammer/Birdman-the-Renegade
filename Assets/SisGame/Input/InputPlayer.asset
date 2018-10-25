@@ -16,7 +16,7 @@ MonoBehaviour:
   aimingButton: {fileID: 11400000, guid: 46f8de32eb7f1634195eaf8432eb8f92, type: 2}
   shootButton: {fileID: 11400000, guid: b49d0e6781e64824bb8588afd87a1e30, type: 2}
   crouchButton: {fileID: 0}
-  reloadButton: {fileID: 0}
+  reloadButton: {fileID: 11400000, guid: bd166804d79e51248a0924fd8b28ce99, type: 2}
   moveAmount: 0
   moveDirection: {x: 0, y: 0, z: 0}
   cameraTransform: {fileID: 11400000, guid: 9d1babb12888d48458a6f457e3daec60, type: 2}

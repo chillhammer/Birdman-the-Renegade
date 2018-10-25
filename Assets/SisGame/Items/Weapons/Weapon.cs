@@ -8,7 +8,8 @@ namespace SIS.Items.Weapons
 	public class Weapon : Item
 	{
 		public bool decrementBulletsOnShoot = true;
-		public int magazineBullets = 30;
+		public int numBullets = 30;
+		public int magazineCapacity = 30;
 		public float fireRate = 0.2f;
 		public float recoilLength = 0.2f;
 		public int damageOnHit = 1;
@@ -53,7 +54,9 @@ namespace SIS.Items.Weapons
 			ballistics.Init(this);
 
 			runtime.lastFired = 0;
-			runtime.currentBullets = magazineBullets;
+			runtime.currentBullets = numBullets;
+			runtime.magazineCapacity = magazineCapacity;
+			runtime.magazineSize = magazineCapacity;
 		}
 
 		//InGame Settings
@@ -65,6 +68,8 @@ namespace SIS.Items.Weapons
 			public WeaponFX weaponFX;
 			public float lastFired;
 			public int currentBullets;
+			public int magazineCapacity;
+			public int magazineSize;
 		}
 	}
 }
