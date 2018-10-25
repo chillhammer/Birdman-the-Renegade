@@ -17,6 +17,7 @@ namespace SIS.Items.Weapons
 		Characters.Character owner;
 		Weapon weapon;
 		Vector3 incomingDirection;
+		float baseDamage;
 		float justHit = 0;
 
 		private void Start()
@@ -36,26 +37,20 @@ namespace SIS.Items.Weapons
 			justHit = Mathf.Max(0, justHit - 1);
 		}
 
-		public void UpdateOnHitSettings(Characters.Character owner, Weapon wep, Vector3 dir, LayerMask ignore)
+		public void UpdateOnHitSettings(Characters.Character owner, Vector3 dir, LayerMask ignore, float baseDamage)
 		{
 			this.owner = owner;
-			weapon = wep;
+			this.baseDamage = baseDamage;
 			incomingDirection = dir;
 			ParticleSystem.CollisionModule coll = part.collision;
 			coll.collidesWith = ~ignore;
-			//Not Used, Could Be Replaced with Muzzle Flash.
-			/*
-			onHitParticleSystem.transform.position = 
-				(weapon.runtime.weaponTip != null ? 
-					weapon.runtime.weaponTip.position : 
-					weapon.runtime.modelInstance.transform.position);
-			*/
 		}
 
 		void OnParticleCollision(GameObject other)
 		{
+			if (owner == null)
+				return;
 			int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
-
 			//Debug.Log("Particle Hit " + other.name + ". Times: " + numCollisionEvents);
 			if (numCollisionEvents > 0)
 			{
@@ -76,7 +71,7 @@ namespace SIS.Items.Weapons
 					//You hit enemy!
 					if (onHitParticleSystem != null)
 						onHitParticleSystem.transform.position = intersection + incomingDirection * 0.3f;
-					isHittable.OnHit(owner, weapon, incomingDirection, intersection);
+					isHittable.OnHit(owner, baseDamage, incomingDirection, intersection);
 				}
 				if (onHitParticleSystem != null)
 					onHitParticleSystem.Play();

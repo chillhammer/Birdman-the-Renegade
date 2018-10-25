@@ -15,6 +15,7 @@ namespace SIS.Characters.Robo
 			if (timer > 1 / fireRate)
 			{
 				timer = 0;
+				owner.projectileOnHit.UpdateOnHitSettings(owner, owner.bulletSystem.shape.rotation, 0, 1);
 				owner.bulletSystem.Play();
 				return AivoTree.AivoTreeStatus.Success;
 			}

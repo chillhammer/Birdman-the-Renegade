@@ -28,9 +28,8 @@ namespace SIS.Items.Weapons
             }
         }
 
-		public override void Execute(Character owner, Weapon weapon, Vector3 intendedDirection)
+		public override void Execute(Character owner, float baseDamage, Vector3 intendedDirection, Vector3 origin)
 		{
-			Vector3 origin = weapon.runtime.weaponTip.position;
 			Vector3 dir = intendedDirection;
             GameObject proj = Instantiate<GameObject>(projectile, origin, Quaternion.identity);
             Rigidbody rb = proj.GetComponent<Rigidbody>();
@@ -45,7 +44,7 @@ namespace SIS.Items.Weapons
                 return;
             }
 
-            onHit.UpdateOnHitSettings(owner, weapon, ignoreLayers, persistTime);
+            onHit.UpdateOnHitSettings(owner, baseDamage, ignoreLayers, persistTime);
             rb.velocity = dir.normalized * projectileSpeed;
             proj.transform.parent = container.transform;
 		}

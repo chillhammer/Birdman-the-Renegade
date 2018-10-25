@@ -13,9 +13,8 @@ namespace SIS.Items.Weapons
 		{
 		}
 
-		public override void Execute(Character owner, Weapon weapon, Vector3 intendedDirection)
+		public override void Execute(Character owner, float baseDamage, Vector3 intendedDirection, Vector3 origin)
 		{
-			Vector3 origin = weapon.runtime.modelInstance.transform.position;
 			Vector3 dir = intendedDirection;
 			Ray ray = new Ray(origin, dir);
 			RaycastHit hit;
@@ -29,7 +28,7 @@ namespace SIS.Items.Weapons
 					//GameObject hitParticle = GameObject.
 				} else
 				{
-					isHittable.OnHit(owner, weapon, dir, hit.point);
+					isHittable.OnHit(owner, baseDamage, dir, hit.point);
 				}
 			}
 		}

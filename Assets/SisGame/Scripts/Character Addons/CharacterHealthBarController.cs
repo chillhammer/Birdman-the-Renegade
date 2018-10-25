@@ -6,8 +6,13 @@ namespace SIS.Characters {
 	public class CharacterHealthBarController : MonoBehaviour {
 
 		[SerializeField] Character character;
+		[SerializeField] Sis.SisVariable sisVariable;
 		[SerializeField] UnityEngine.UI.RawImage healthbarImage;
 		[SerializeField] AnimationCurve hitShake;
+		[SerializeField] bool destroyOnZero;
+		[Range(0,1)]
+		[SerializeField] float shakeIntensity = 0.6f;
+		[SerializeField] float shakeTime = 1f;
 
 		float maxHealth;
 		float maxHealthWidth;
@@ -21,6 +26,10 @@ namespace SIS.Characters {
 
 		// Use this for initialization
 		void Start() {
+			if (sisVariable != null)
+			{
+				SetCharacter(sisVariable.value);
+			}
 			maxHealth = character.health;
 			maxHealthWidth = HealthBarWidth;
 			targetWidth = maxHealthWidth;
@@ -28,17 +37,32 @@ namespace SIS.Characters {
 
 		private void OnEnable()
 		{
-			character.onHitDelegate += OnHit; //Update when hit
+			if (character != null)
+				character.onHitDelegate += OnHit; //Update when hit
 		}
 		private void OnDisable()
 		{
-			character.onHitDelegate -= OnHit;
+			if (character != null)
+				character.onHitDelegate -= OnHit;
+		}
+
+		public void SetCharacter(Character c)
+		{
+			if (character != null)
+			{
+				character.onHitDelegate -= OnHit;
+			}
+			character = c;
+			if (character != null)
+			{
+				character.onHitDelegate += OnHit; //Update when hit
+			}
 		}
 
 		private void Update()
 		{
 			HealthBarWidth = Mathf.Lerp(HealthBarWidth, targetWidth, 3f * Time.deltaTime);
-			if (HealthBarWidth <= 0.01f)
+			if (HealthBarWidth <= 0.01f && destroyOnZero)
 			{
 				Destroy(gameObject);
 			}
@@ -54,11 +78,10 @@ namespace SIS.Characters {
 		IEnumerator ShakeBar()
 		{
 			float timer = 0;
-			float seconds = 1;
-			while (timer < seconds)
+			while (timer < shakeTime)
 			{
 				timer += Time.deltaTime;
-				float offsetX = 0.6f * hitShake.Evaluate(timer / seconds);
+				float offsetX = shakeIntensity * hitShake.Evaluate(timer / shakeTime);
 				transform.localPosition = transform.right * offsetX;
 				yield return null;
 			}

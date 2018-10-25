@@ -47,7 +47,7 @@ namespace SIS.Characters.Sis
 
 						//Ballistics
 						if (weapon.ballistics != null)
-							weapon.ballistics.Execute(owner, weapon, dir);
+							weapon.ballistics.Execute(owner, weapon.damageOnHit, dir, origin);
 
 						//Recoil and FX
 						runtime.weaponFX.Shoot(dir);

@@ -859,7 +859,7 @@ MonoBehaviour:
   rigid: {fileID: 54209258339737766}
   anim: {fileID: 95787136944826026}
   delta: 0
-  health: 0
+  health: 100
   startingState: {fileID: 11400000, guid: 841b7245e5c205f498bc6f12b50cfad3, type: 2}
   initActionsBatch: {fileID: 11400000, guid: 4fa7239c51068c34381fd48d5cb810b0, type: 2}
   movementValues:

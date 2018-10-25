@@ -17,8 +17,6 @@ namespace SIS.Characters.Ham
 	public class Hammy : Character, IHittable
 	{
 		#region StateMachine Setup
-		//State Actions use this instead of Time.delta
-		public float delta { get { return stateMachine.delta; } }
 
 		//Must Start Off in a State
 		[SerializeField] private HammyState startingState;
@@ -51,7 +49,6 @@ namespace SIS.Characters.Ham
 		}
 		#endregion
 
-		public float health = 10; //Optional, may incorporate any form of health system
 		public SO.TransformVariable playerTransform;
 		[HideInInspector] public Transform FinTransform;
 
@@ -68,9 +65,9 @@ namespace SIS.Characters.Ham
 			FinTransform = mTransform.FindDeepChild("Fin Reference");
 		}
 
-		public void OnHit(Character shooter, Weapon weapon, Vector3 dir, Vector3 pos)
+		public void OnHit(Character shooter, float baseDamage, Vector3 dir, Vector3 pos)
 		{
-			health--;
+			health -= baseDamage;
 			rigid.AddForceAtPosition(dir, pos);
 
 			if (health <= 0)

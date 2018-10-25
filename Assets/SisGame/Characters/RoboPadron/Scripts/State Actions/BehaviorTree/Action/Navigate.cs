@@ -9,7 +9,7 @@ namespace SIS.Characters.Robo
 		public float moveSpeed = 3f;
 		public float turnSpeed = 2f;
 
-		float timeoutTime = 4f;
+		float timeoutTime = 2f;
 		float timer = 0;
 		Vector3 previousPosition;
 
@@ -20,7 +20,7 @@ namespace SIS.Characters.Robo
 				return AivoTree.AivoTreeStatus.Success;
 
 			//Debug.Log((owner.mTransform.position - previousPosition).sqrMagnitude);
-			if ((owner.mTransform.position - previousPosition).sqrMagnitude < 0.001f)
+			if ((owner.mTransform.position - previousPosition).sqrMagnitude < 0.005f)
 			{
 				timer += owner.delta;
 				if (timer >= timeoutTime)

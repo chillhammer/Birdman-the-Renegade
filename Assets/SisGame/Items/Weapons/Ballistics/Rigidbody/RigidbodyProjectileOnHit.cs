@@ -8,6 +8,7 @@ namespace SIS.Items.Weapons {
         Characters.Character owner;
         Weapon weapon;
         LayerMask ignore;
+		float baseDamage;
 
         Rigidbody rb;
 
@@ -23,9 +24,9 @@ namespace SIS.Items.Weapons {
                 
         }
 
-        public void UpdateOnHitSettings(Characters.Character owner, Weapon wep, LayerMask ignore, float persistTime) {
+        public void UpdateOnHitSettings(Characters.Character owner, float baseDamage, LayerMask ignore, float persistTime) {
             this.owner = owner;
-            weapon = wep;
+			this.baseDamage = baseDamage;
             this.ignore = ignore;
             killTime = Time.time + persistTime;
         }
@@ -36,7 +37,7 @@ namespace SIS.Items.Weapons {
             IHittable hittable = collision.gameObject.GetComponent<IHittable>();
 
             if (hittable != null) {
-                hittable.OnHit(owner, weapon, rb.velocity.normalized, collision.contacts[0].point);
+                hittable.OnHit(owner, baseDamage, rb.velocity.normalized, collision.contacts[0].point);
                 Destroy(this.gameObject);
             }
         }

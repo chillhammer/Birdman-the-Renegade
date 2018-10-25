@@ -88,9 +88,14 @@ namespace SIS.Characters.Sis
 			anim.CrossFade(targetAnim, 0.2f);
 		}
 
-		public void OnHit(Character shooter, Weapon weapon, Vector3 dir, Vector3 pos)
+		public void OnHit(Character shooter, float baseDamage, Vector3 dir, Vector3 pos)
 		{
+			Debug.Log("Hit player!");
 			rigid.AddForce(dir, ForceMode.Impulse);
+			if (health <= 0)
+				return;
+			health -= baseDamage;
+			onHitDelegate();
 		}
 	}
 }

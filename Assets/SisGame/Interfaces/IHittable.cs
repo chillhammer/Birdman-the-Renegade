@@ -8,12 +8,12 @@ namespace SIS
 	//General
 	interface IHittable
 	{
-		void OnHit(Character shooter, Weapon weapon, Vector3 dir, Vector3 pos);
+		void OnHit(Character shooter, float baseDamage, Vector3 dir, Vector3 pos);
 	}
 
 	//Generic
 	interface IHittable<C> where C : Character
 	{
-		void OnHit(C shooter, Weapon weapon, Vector3 dir, Vector3 pos);
+		void OnHit(C shooter, float baseDamage, Vector3 dir, Vector3 pos);
 	}
 }

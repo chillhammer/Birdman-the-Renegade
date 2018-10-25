@@ -49,6 +49,7 @@ namespace SIS.Characters.Robo
 		[HideInInspector] public Transform gunModel;
 		[HideInInspector] public Transform gunTip;
 		[HideInInspector] public ParticleSystem bulletSystem;
+		[HideInInspector] public ParticleProjectileOnHit projectileOnHit;
 		public bool isAiming = false;
 		public bool canSeePlayer = false;
 		[HideInInspector] public bool transitionToWander = false;
@@ -86,23 +87,25 @@ namespace SIS.Characters.Robo
 			headBone = mTransform.FindDeepChild("Head");
 			gunModel = mTransform.FindDeepChild("Gun");
 			bulletSystem = gunModel.GetComponentInChildren<ParticleSystem>();
+			projectileOnHit = bulletSystem.GetComponent<ParticleProjectileOnHit>();
 
 			if (headBone == null) Debug.LogWarning("Could not find Head bone on RoboPadron");
 		}
 
-		public void OnHit(Character shooter, Weapon weapon, Vector3 dir, Vector3 pos)
+		public void OnHit(Character shooter, float baseDamage, Vector3 dir, Vector3 pos)
 		{
 			if (health == 0)
 				return;
-			health--;
+			health -= baseDamage;
 			if (onHitDelegate != null)
 				onHitDelegate();
-			rigid.AddForceAtPosition(dir, pos);
+			rigid.AddForceAtPosition(dir * 2, pos);
 
-			if (health <= 0)
-			{
-				//Destroy(gameObject);
-			}
+			playerLastKnownLocation.position = shooter.mTransform.position;
+			playerLastKnownLocation.timeSeen = Time.frameCount;
+
+			canSeePlayer = true;
+			//NOTE: Death Is Handled by Transitions
 		}
 
 		public void OnDrawGizmosSelected()
