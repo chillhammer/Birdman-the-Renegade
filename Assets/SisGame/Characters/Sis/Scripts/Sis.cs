@@ -63,6 +63,8 @@ namespace SIS.Characters.Sis
 		public bool isReloading = false;
 		public bool doneReloading;
 		public bool isDead { get { return health == 0; } }
+		public float switchWeaponAxis;
+		public int switchWeaponChange { get { return (switchWeaponAxis > 0) ? 1 : (switchWeaponAxis < 0) ? -1 : 0; } }
 
 		public void ToggleCrouching()
 		{

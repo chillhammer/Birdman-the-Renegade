@@ -870,14 +870,18 @@ MonoBehaviour:
     lookDirection: {x: 0.10170621, y: 0, z: -0.9948145}
     aimPosition: {x: 0, y: 0, z: 0}
   inventory:
-    weaponName: Revolver
     currentWeapon: {fileID: 0}
+    weapons:
+    - {fileID: 11400000, guid: 087b3e3858453ac45bde19021f83f050, type: 2}
+    - {fileID: 11400000, guid: e552dc2b146b26b47b5103b2e67ea404, type: 2}
+    currentWeaponIndex: 0
   isAiming: 0
   isShooting: 0
   isGunReady: 0
   isCrouching: 0
   isReloading: 0
   doneReloading: 0
+  switchWeaponAxis: 0
   aiming: {fileID: 0}
 --- !u!136 &136196543225488228
 CapsuleCollider:
