@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Name: Blunderbuss
   m_EditorClassIdentifier: 
   decrementBulletsOnShoot: 1
-  numBullets: 30
-  magazineCapacity: 30
+  infiniteTotalBullets: 0
+  numBullets: 20
+  magazineCapacity: 5
   fireRate: 0.5
   recoilLength: 0.2
   damageOnHit: 2
