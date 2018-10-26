@@ -11,3 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e976d1b3d5fc28542b6e4cae91f0c870, type: 3}
   m_Name: HandleReloading
   m_EditorClassIdentifier: 
+  isReloading: {fileID: 11400000, guid: 5f58ea98a06608d43909808aca1d8f48, type: 2}

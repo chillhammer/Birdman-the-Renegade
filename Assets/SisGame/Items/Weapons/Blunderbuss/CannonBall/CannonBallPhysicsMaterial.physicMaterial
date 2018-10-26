@@ -6,8 +6,8 @@ PhysicMaterial:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: CannonBallPhysicsMaterial
-  dynamicFriction: 0.6
-  staticFriction: 0.6
-  bounciness: 1
-  frictionCombine: 0
-  bounceCombine: 2
+  dynamicFriction: 100
+  staticFriction: 100
+  bounciness: 0.02
+  frictionCombine: 2
+  bounceCombine: 0

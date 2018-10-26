@@ -62,6 +62,7 @@ namespace SIS.Characters.Sis
 		public bool isCrouching;
 		public bool isReloading = false;
 		public bool doneReloading;
+		public bool isDead { get { return health == 0; } }
 
 		public void ToggleCrouching()
 		{

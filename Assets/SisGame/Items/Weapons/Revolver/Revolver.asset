@@ -11,8 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165c39555fcf09449a3ab1d56cf7e58, type: 3}
   m_Name: Revolver
   m_EditorClassIdentifier: 
-  decrementBulletsOnShoot: 0
-  magazineBullets: 120
+  decrementBulletsOnShoot: 1
+  infiniteTotalBullets: 1
+  numBullets: 30
+  magazineCapacity: 6
   fireRate: 0.2
   recoilLength: 0.2
   damageOnHit: 1
@@ -29,6 +31,8 @@ MonoBehaviour:
     weaponFX: {fileID: 0}
     lastFired: 0
     currentBullets: 0
+    magazineCapacity: 0
+    magazineSize: 0
   recoilY:
     serializedVersion: 2
     m_Curve:
@@ -95,4 +99,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  fireAudio: {fileID: 0}
   ballistics: {fileID: 11400000, guid: ec2cfa06c27fd234d9063a40f41a519b, type: 2}
+  topHalfAnimatorLayerName: RevolverTopHalf

@@ -208,9 +208,18 @@ namespace SIS.Characters.Sis
 			if (angle > 60)
 				targetHandWeight = 0;
 
+			//Dead
+			if (owner.isDead)
+			{
+				targetHandWeight = 0f;
+				bodyWeight = 0f;
+				targetLookWeight = 0f;
+			}
+
 			//Smoothly Change Weights
 			lookWeight = Mathf.Lerp(lookWeight, targetLookWeight, owner.delta);
 			handWeight = Mathf.Lerp(handWeight, targetHandWeight, 9 * owner.delta);
+
 		}
 		#region Recoil
 		//Start the recoil process

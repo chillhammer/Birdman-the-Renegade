@@ -16,6 +16,12 @@ namespace SIS.Items
 			Weapon.RuntimeWeapon runtime = currentWeapon.runtime;
 			int bulletsNeeded = runtime.magazineCapacity - runtime.magazineSize;
 
+			if (currentWeapon.infiniteTotalBullets)
+			{
+				runtime.magazineSize += bulletsNeeded;
+				return;
+			}
+
 			//Check if we have enough bullets for full reload
 			if (runtime.currentBullets < bulletsNeeded) {
 				runtime.magazineSize += runtime.currentBullets;

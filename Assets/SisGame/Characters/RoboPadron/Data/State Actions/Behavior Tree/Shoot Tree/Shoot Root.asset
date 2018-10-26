@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Name: Shoot Root
   m_EditorClassIdentifier: 
   bTNodes:
+  - {fileID: 11400000, guid: feadf6d806a7fa14391130fc838e6617, type: 2}
   - {fileID: 11400000, guid: c98e5a83195485a49b6a44033041d106, type: 2}

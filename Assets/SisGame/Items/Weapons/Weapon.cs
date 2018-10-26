@@ -8,6 +8,7 @@ namespace SIS.Items.Weapons
 	public class Weapon : Item
 	{
 		public bool decrementBulletsOnShoot = true;
+		public bool infiniteTotalBullets = false;
 		public int numBullets = 30;
 		public int magazineCapacity = 30;
 		public float fireRate = 0.2f;

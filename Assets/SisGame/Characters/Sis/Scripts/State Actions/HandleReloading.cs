@@ -9,11 +9,13 @@ namespace SIS.Characters.Sis
 	public class HandleReloading : SisStateActions
 	{
 		private bool reloading = false;
+		public SO.BoolVariable isReloading;
 		public override void Execute(Sis owner)
 		{
 			Weapon weapon = owner.inventory.currentWeapon;
 			Weapon.RuntimeWeapon runtime = weapon.runtime;
 
+			isReloading.value = owner.isReloading;
 			//Reloading
 			if (owner.isReloading)
 			{

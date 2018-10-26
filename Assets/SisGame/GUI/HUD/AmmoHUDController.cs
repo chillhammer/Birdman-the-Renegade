@@ -17,10 +17,13 @@ namespace SIS.HUD
 		{
 			if (sisVariable.value != null)
 			{
-				Weapon.RuntimeWeapon runtimeWeapon = sisVariable.value.inventory.currentWeapon.runtime;
+				Weapon weapon = sisVariable.value.inventory.currentWeapon;
+				Weapon.RuntimeWeapon runtimeWeapon = weapon.runtime;
 				int magazine = runtimeWeapon.magazineSize;
+
 				int total = runtimeWeapon.currentBullets;
-				string ammoText = (magazine < 10 ? " " : "") + magazine.ToString() + " | " + total.ToString();
+				string ammoText = (magazine < 10 ? "0" : "") + magazine.ToString() + " | " + 
+					(weapon.infiniteTotalBullets ? "Inf." : total.ToString());
 				textUI.text = ammoText;
 			}
 		}
