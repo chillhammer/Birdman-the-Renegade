@@ -13,6 +13,7 @@ namespace SIS.Characters {
 		[Range(0,1)]
 		[SerializeField] float shakeIntensity = 0.6f;
 		[SerializeField] float shakeTime = 1f;
+		[SerializeField] float healthLerpSpeed = 3f;
 
 		float maxHealth;
 		float maxHealthWidth;
@@ -61,7 +62,7 @@ namespace SIS.Characters {
 
 		private void Update()
 		{
-			HealthBarWidth = Mathf.Lerp(HealthBarWidth, targetWidth, 3f * Time.deltaTime);
+			HealthBarWidth = Mathf.Lerp(HealthBarWidth, targetWidth, healthLerpSpeed * Time.deltaTime);
 			if (HealthBarWidth <= 0.01f && destroyOnZero)
 			{
 				Destroy(gameObject);
