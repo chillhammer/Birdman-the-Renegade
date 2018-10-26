@@ -877,7 +877,7 @@ MonoBehaviour:
   isGunReady: 0
   isCrouching: 0
   isReloading: 0
-  isInteracting: 0
+  doneReloading: 0
   aiming: {fileID: 0}
 --- !u!136 &136196543225488228
 CapsuleCollider:
@@ -888,10 +888,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: b8d245900fb771343beff855bcb2df82, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.72
-  m_Height: 2.06
+  m_Radius: 0.9
+  m_Height: 2.2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.79, z: 0}
+  m_Center: {x: 0, y: 0.87, z: 0}
 --- !u!137 &137202080189198812
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

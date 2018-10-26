@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54175224584096254}
   - component: {fileID: 135362378825785972}
   - component: {fileID: 114696208404186758}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CannonBallPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ SphereCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346750400851638}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 86484aa62fdcfac47b0f27ca6ad7be1a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

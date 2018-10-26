@@ -17,25 +17,31 @@ namespace SIS.Characters.Sis
 			//Reloading
 			if (owner.isReloading)
 			{
-				
 				if (runtime.magazineSize < runtime.magazineCapacity)
 				{
-					owner.isShooting = false;
-					//Start Animation
-					if (!owner.doneReloading && !reloading)
+					if (runtime.currentBullets == 0)
 					{
-						owner.anim.SetTrigger("Reload");
-						reloading = true;
+						//Chik Chik
 					}
-					else
+					else //Start Reloading!
 					{
-						//Reload at End of Animation
-						if (owner.doneReloading)
+						owner.isShooting = false;
+						//Start Animation
+						if (!owner.doneReloading && !reloading)
 						{
-							owner.isReloading = false;
-							owner.doneReloading = false;
-							reloading = false;
-							owner.inventory.ReloadCurrentWeapon();
+							owner.anim.SetTrigger("Reload");
+							reloading = true;
+						}
+						else
+						{
+							//Reload at End of Animation
+							if (owner.doneReloading)
+							{
+								owner.isReloading = false;
+								owner.doneReloading = false;
+								reloading = false;
+								owner.inventory.ReloadCurrentWeapon();
+							}
 						}
 					}
 				}

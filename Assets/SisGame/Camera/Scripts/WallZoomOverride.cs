@@ -28,7 +28,7 @@ namespace SIS.Camera
 				localPos.z = localHit.z;
 				actualCameraTransform.value.localPosition = localPos;
 				*/
-				actualCameraTransform.value.position = raycastHit.point;
+				actualCameraTransform.value.position = raycastHit.point - dir *0.01f;
 			}
 		}
 	}

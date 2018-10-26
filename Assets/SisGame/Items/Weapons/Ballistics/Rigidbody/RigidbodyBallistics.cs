@@ -15,8 +15,10 @@ namespace SIS.Items.Weapons
         private float projectileSpeed;
         [SerializeField]
         private float persistTime;
+		[SerializeField]
+		private float upwardsForce;
 
-        private GameObject container;
+		private GameObject container;
 
         public override void Init(Weapon weapon)
 		{
@@ -30,7 +32,7 @@ namespace SIS.Items.Weapons
 
 		public override void Execute(Character owner, float baseDamage, Vector3 intendedDirection, Vector3 origin)
 		{
-			Vector3 dir = intendedDirection;
+			Vector3 dir = intendedDirection + Vector3.up * upwardsForce; //account for gravity
             GameObject proj = Instantiate<GameObject>(projectile, origin, Quaternion.identity);
             Rigidbody rb = proj.GetComponent<Rigidbody>();
             RigidbodyProjectileOnHit onHit = proj.GetComponent<RigidbodyProjectileOnHit>();

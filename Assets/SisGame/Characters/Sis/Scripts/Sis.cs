@@ -15,14 +15,10 @@ namespace SIS.Characters.Sis
 
 		public StateMachine<Sis> stateMachine;
 
-		private ReloadBehavior reloadBehavior;
-
 		private new void Start()
 		{
 			base.Start();
 			stateMachine = new StateMachine<Sis>(this, startingState, initActionsBatch);
-			reloadBehavior = GetComponentInChildren<Animator>().GetBehaviour<ReloadBehavior>();
-			reloadBehavior.sis = this;
 		}
 		//Run State Machine Logic
 		private void FixedUpdate()

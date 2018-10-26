@@ -32,8 +32,9 @@ namespace SIS.Items.Weapons {
         }
 
         void OnCollisionEnter(Collision collision) {
-            //Doesn't support ignoring certain layers
-
+			//Doesn't support ignoring certain layers
+			if ((ignore.value & (1 << collision.collider.transform.gameObject.layer)) > 0)
+				return;
             IHittable hittable = collision.gameObject.GetComponent<IHittable>();
 
             if (hittable != null) {
