@@ -10,7 +10,7 @@ namespace SIS.Characters.Sis
 	{
 		public override void Execute(Sis owner)
 		{
-			Debug.Log("SwitchChange: " + owner.switchWeaponChange);
+			//Debug.Log("SwitchChange: " + owner.switchWeaponChange);
 			owner.inventory.ChangeWeaponIndex(owner.switchWeaponChange);
 			GameObject oldWeaponModel = owner.inventory.currentWeapon.runtime.modelInstance;
 			GameObject oldWeaponTip = owner.inventory.currentWeapon.runtime.weaponTip.gameObject;

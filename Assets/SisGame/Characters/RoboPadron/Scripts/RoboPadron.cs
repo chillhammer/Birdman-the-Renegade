@@ -97,6 +97,7 @@ namespace SIS.Characters.Robo
 			if (health == 0)
 				return;
 			health -= baseDamage;
+			if (health < 0) health = 0;
 			if (onHitDelegate != null)
 				onHitDelegate();
 			rigid.AddForceAtPosition(dir * 2, pos);

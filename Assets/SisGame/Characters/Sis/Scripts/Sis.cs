@@ -96,7 +96,7 @@ namespace SIS.Characters.Sis
 
 		public void OnHit(Character shooter, float baseDamage, Vector3 dir, Vector3 pos)
 		{
-			Debug.Log("Hit player!");
+			//Debug.Log("Hit player!");
 			rigid.AddForce(dir, ForceMode.Impulse);
 			if (health <= 0)
 				return;
