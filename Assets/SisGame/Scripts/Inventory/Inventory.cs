@@ -11,6 +11,7 @@ namespace SIS.Items
 		public Weapon currentWeapon;
 		public List<Weapon> weapons;
 		[SerializeField] int currentWeaponIndex = 0;
+		Dictionary<string, Weapon> initializedWeapons;
 
 		public void ReloadCurrentWeapon()
 		{
@@ -43,9 +44,21 @@ namespace SIS.Items
 
 
 			//Create Weapon
-			Weapon targetWeapon = (Weapon)rm.InstiateItem(weapons[currentWeaponIndex].name);
-			currentWeapon = targetWeapon;
-			targetWeapon.Init();
+			string weaponName = weapons[currentWeaponIndex].name;
+			Weapon targetWeapon;
+			if (initializedWeapons == null)
+				initializedWeapons = new Dictionary<string, Weapon>();
+			if (initializedWeapons.TryGetValue(weaponName, out targetWeapon))
+			{
+				currentWeapon = targetWeapon;
+				targetWeapon.CreateModel();
+			} else
+			{
+				targetWeapon = (Weapon)rm.InstiateItem(weaponName);
+				currentWeapon = targetWeapon;
+				targetWeapon.Init();
+				initializedWeapons.Add(weaponName, targetWeapon);
+			}
 
 			if (parentTransform != null)
 			{

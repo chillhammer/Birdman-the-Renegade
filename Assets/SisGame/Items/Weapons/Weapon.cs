@@ -38,6 +38,17 @@ namespace SIS.Items.Weapons
 		{
 			runtime = new RuntimeWeapon();
 
+			CreateModel();
+
+
+			runtime.lastFired = 0;
+			runtime.currentBullets = numBullets;
+			runtime.magazineCapacity = magazineCapacity;
+			runtime.magazineSize = magazineCapacity;
+		}
+
+		public void CreateModel()
+		{
 			runtime.modelInstance = Instantiate(modelPrefab);
 			runtime.weaponTip = runtime.modelInstance.transform.Find("WeaponTip");
 			runtime.weaponFX = runtime.modelInstance.GetComponent<WeaponFX>();
@@ -51,13 +62,7 @@ namespace SIS.Items.Weapons
 			{
 				runtime.weaponTip.SetParent(null); //Detach
 			}
-
 			ballistics.Init(this);
-
-			runtime.lastFired = 0;
-			runtime.currentBullets = numBullets;
-			runtime.magazineCapacity = magazineCapacity;
-			runtime.magazineSize = magazineCapacity;
 		}
 
 		//InGame Settings
