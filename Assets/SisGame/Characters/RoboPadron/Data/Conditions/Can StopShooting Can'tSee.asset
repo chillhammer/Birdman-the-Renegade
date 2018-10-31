@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41b670b1d6d6a041902089b74a634c9, type: 3}
+  m_Name: Can StopShooting Can'tSee
+  m_EditorClassIdentifier: 
+  description: 
+  node: {fileID: 11400000, guid: e9eb768b959b3d74d82936331576b3fd, type: 2}
+  rootToReset: {fileID: 11400000, guid: 2f675383f89a63a469298f0002578567, type: 2}

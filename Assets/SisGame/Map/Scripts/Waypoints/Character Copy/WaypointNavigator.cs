@@ -25,7 +25,10 @@ namespace SIS.Waypoints
 			get
 			{
 				if (path == null || pathIndex == -1 || pathIndex >= path.Count)
+				{
+					Debug.LogWarning("CurrentWaypoint Out of Bounds. Index: " + pathIndex);
 					return new Waypoint();
+				}
 				return path[pathIndex];
 			}
 		}
@@ -91,9 +94,15 @@ namespace SIS.Waypoints
 				++pathIndex;
 				if (pathIndex >= path.Count)
 				{
-					pathIndex = -1;
+					StopNavigate();
 				}
 			}
+		}
+
+		//Stop Navigation
+		public void StopNavigate()
+		{
+			pathIndex = -1;
 		}
 
 		//Custom Waypoint Graph
@@ -114,10 +123,36 @@ namespace SIS.Waypoints
 				Debug.LogWarning("Cant Start Navigation, due to Waypoint Graph not being initialized yet");
 				return;
 			}
+
 			Waypoint start = waypointGraph.FindClosestWaypoint(transform.position);
 			Waypoint goal = waypointGraph.FindClosestWaypoint(new Vector3(goalX, 0f, goalY));
 
+			Waypoint accurateStart = new Waypoint((int)transform.position.x, (int)transform.position.z);
+			Waypoint accurateGoal = goal;
+			if (goal.X != goalX || goal.Y != goalY)
+				accurateGoal = new Waypoint(goalX, goalY); //Custom Location
+
+			//Naive Movement Optimization
+			if (IsPathClearBetweenWaypoints(accurateStart, accurateGoal))
+			{
+				path = new List<Waypoint>();
+				path.Add(accurateGoal);
+				Debug.Log("Simple navigation since path is clear");
+				pathIndex = 0;
+				return;
+			}
+
 			path = waypointGraph.AStar(start, goal);
+
+			//path.Insert(0, accurateStart); //O(n)
+			if (goal.X != goalX || goal.Y != goalY)
+				path.Add(accurateGoal);
+
+			if (path.Count > 1)
+			{
+				path.RemoveAt(0);
+			}
+			//OptimizePath();
 			pathIndex = 0;
 		}
 		#region StartNavigation Overloads
@@ -151,10 +186,48 @@ namespace SIS.Waypoints
 			}
 
 			StartNavigation(waypointGraph.GetCenterRoomWaypoint(roomIndex));
-			
 		}
 		#endregion
 
+		private void OptimizePath()
+		{
+			int i = path.Count - 1;
+			while (i >= 0)
+			{
+				if (i >= 2) {
+					if (IsPathClearBetweenWaypoints(path[i], path[i - 2]))
+					{
+						path.RemoveAt(i - 1);
+						Debug.Log("Removed Waypoint! Optimization");
+					}
+				} else if (i == 1) {
+					if (IsPathClearBetweenWaypoints(path[i], path[i - 1]))
+					{
+						path.RemoveAt(i - 1);
+						Debug.Log("Removed Waypoint! Optimization");
+					}
+				}
+				--i;
+			}
+		}
 
+		private bool IsPathClearBetweenWaypoints(Waypoint wp1, Waypoint wp2)
+		{
+			float height = 1.2f;
+			int mapLayer = LayerMask.NameToLayer("Map");
+			Vector3 pos1 = new Vector3(wp1.X, height, wp1.Y);
+			Vector3 pos2 = new Vector3(wp2.X, height, wp2.Y);
+
+			
+			float dist = (pos2 - pos1).magnitude + 0.01f;
+			Vector3 dir = (pos2 - pos1).normalized;
+			//RaycastHit hit;
+
+			Vector3 boxCenter = pos1;
+			Vector3 boxHalfExtents = new Vector3(1.2f, 0.5f, 0.01f);
+
+			return !Physics.Raycast(pos1, dir, dist, ~mapLayer);
+			//return !Physics.BoxCast(boxCenter, boxHalfExtents, dir, Quaternion.LookRotation(dir), dist, ~mapLayer);
+		}
 	}
 }

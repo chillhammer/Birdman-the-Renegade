@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c41ff84432198f43a630feefd4fc132, type: 3}
+  m_Name: SetNotReloadingAndAGR Or
+  m_EditorClassIdentifier: 
+  bools:
+  - {fileID: 11400000, guid: 33a2fc3a859850f4590844dbfb1af2e0, type: 2}
+  targetBool: {fileID: 11400000, guid: 5953e0905d2c91644b7fe93926253066, type: 2}

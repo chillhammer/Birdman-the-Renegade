@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a587ccca8db46e4f8be718758455c13, type: 3}
+  m_Name: SetNotReloadingAndAGR Switcher
+  m_EditorClassIdentifier: 
+  switcher:
+    targetBool: {fileID: 11400000, guid: 5f58ea98a06608d43909808aca1d8f48, type: 2}
+    onFalseAction: {fileID: 11400000, guid: 562ed90b0763e6149b90b00100a0e8d0, type: 2}
+    onTrueAction: {fileID: 11400000, guid: 5f7798c159947b7468d20fba6f30b6b2, type: 2}

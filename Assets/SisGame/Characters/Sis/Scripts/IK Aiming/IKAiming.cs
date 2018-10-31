@@ -16,6 +16,8 @@ namespace SIS.Characters.Sis
 		float bodyWeight;
 
 		Transform rhTarget;
+		Transform lhTarget;
+		bool updateLeftHand;
 		public Transform shoulder;
 		public Transform aimPivot;
 		Vector3 lookDir;
@@ -23,6 +25,8 @@ namespace SIS.Characters.Sis
 		RecoilHandler recoilHandler;
 		Vector3 basePosition;
 		Vector3 baseRotation;
+        Vector3 lBasePosition;
+        Vector3 lBaseRotation;
 
 		public void Init(Sis sis)
 		{
@@ -34,6 +38,7 @@ namespace SIS.Characters.Sis
 
 			CreateAimPivot();
 			CreateRightHandTarget();
+			CreateLeftHandTarget();
 			//Setup Aim Position
 			owner.movementValues.aimPosition = owner.mTransform.position + owner.mTransform.forward * 15;
 			owner.movementValues.aimPosition.y += 1.4f;
@@ -51,7 +56,7 @@ namespace SIS.Characters.Sis
 			HandlePivot();
 		}
 
-		#region Right Hand Target is on Weapon
+		#region Right Hand and Lef Hand Target is on Weapon
 		//Creates empty object for right hand target
 		void CreateRightHandTarget()
 		{
@@ -59,20 +64,59 @@ namespace SIS.Characters.Sis
 			rhTarget.name = "Right Hand Target";
 			rhTarget.parent = aimPivot;
 		}
+
+		void CreateLeftHandTarget()
+		{
+			lhTarget = new GameObject().transform;
+			lhTarget.name = "Left Hand Target";
+			lhTarget.parent = aimPivot;
+		}
+
+		//For When Weapon Loads in and Changes Top Half Layer
+		void SetAnimLayerWeight(string animationLayer, float weight)
+		{
+			int layerIndex = anim.GetLayerIndex(animationLayer);
+			if (layerIndex >= 0)
+			{
+				anim.SetLayerWeight(layerIndex, weight);
+			} else
+			{
+				Debug.LogWarning("Cannot find animation layer: " + animationLayer);
+			}
+		}
+
 		//Sets right hand target ontop of weapon
 		//Activate method whenever you change weapons
 		public void UpdateWeaponAiming(Weapon w)
 		{
+			if (curWeapon != null) { //Turn Off Weapon Animation Layer
+				SetAnimLayerWeight(curWeapon.topHalfAnimatorLayerName, 0);
+			}
+
 			curWeapon = w;
+
 			if (w == null)
 				return;
+			//Turn On Weapon Animation Layer
+			SetAnimLayerWeight(curWeapon.topHalfAnimatorLayerName, 1);
+
 			//Update so right hand is holding weapon
 			rhTarget.localPosition = w.holdingPosition.value;
 			rhTarget.localEulerAngles = w.holdingEulers.value;
 
+			//Update so right hand is holding weapon
+			updateLeftHand = w.IKLeftHand;
+			if (updateLeftHand)
+			{
+				lhTarget.localPosition = w.leftHoldingPosition.value;
+				lhTarget.localEulerAngles = w.leftHoldingEulers.value;
+			}
+
 			//Store local transform for recoil
 			basePosition = rhTarget.localPosition;
 			baseRotation = rhTarget.localEulerAngles;
+            lBasePosition = lhTarget.localPosition;
+            lBaseRotation = lhTarget.localEulerAngles;
 		}
 		#endregion
 
@@ -129,7 +173,10 @@ namespace SIS.Characters.Sis
 			anim.SetLookAtWeight(lookWeight, bodyWeight, 1, 1, 1);
 			anim.SetLookAtPosition(owner.movementValues.aimPosition);
 
+
 			UpdateIK(AvatarIKGoal.RightHand, rhTarget, handWeight);
+			if (updateLeftHand)
+				UpdateIK(AvatarIKGoal.LeftHand, lhTarget, handWeight);
 		}
 
 		//Tunes IK weights based on a number of factors
@@ -143,13 +190,15 @@ namespace SIS.Characters.Sis
 			if (owner.isGunReady)
 				targetHandWeight = 0.5f;
 			if (owner.isShooting)
-				targetHandWeight = 0.075f;
+				targetHandWeight = 1;
 			if (owner.isAiming) {
 				targetHandWeight = 1;
 				bodyWeight = 0.4f;
 			}
 			else
 				bodyWeight = 0.3f;
+			if (owner.isReloading)
+				targetHandWeight = 0;
 
 			//Constraints on IK for looking at sharp angles
 			float angle = Vector3.Angle(owner.mTransform.forward, lookDir);
@@ -159,9 +208,18 @@ namespace SIS.Characters.Sis
 			if (angle > 60)
 				targetHandWeight = 0;
 
+			//Dead
+			if (owner.isDead)
+			{
+				targetHandWeight = 0f;
+				bodyWeight = 0f;
+				targetLookWeight = 0f;
+			}
+
 			//Smoothly Change Weights
 			lookWeight = Mathf.Lerp(lookWeight, targetLookWeight, owner.delta);
 			handWeight = Mathf.Lerp(handWeight, targetHandWeight, 9 * owner.delta);
+
 		}
 		#region Recoil
 		//Start the recoil process
@@ -176,6 +234,10 @@ namespace SIS.Characters.Sis
 			recoilHandler.Tick(curWeapon, owner.delta);
 			rhTarget.localPosition = basePosition + recoilHandler.OffsetPosition;
 			rhTarget.localEulerAngles = baseRotation + recoilHandler.OffsetRotation;
+            if (curWeapon.IKLeftHand) {
+                lhTarget.localPosition = lBasePosition + recoilHandler.OffsetPosition;
+                lhTarget.localEulerAngles = lBaseRotation + recoilHandler.OffsetRotation;
+            }
 		}
 		#endregion
 

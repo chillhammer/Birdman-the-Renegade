@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 189d14a7f4b4f624d8a5a17e29ef1dfd, type: 3}
+  m_Name: SisDead
+  m_EditorClassIdentifier: 
+  idCount: 0
+  onFixed: []
+  onUpdate:
+  - {fileID: 11400000, guid: c74a3adf3a80b05499371c81a1bb45fc, type: 2}
+  onEnter:
+  - {fileID: 11400000, guid: e0af9bb8134b23746830af21bdd4dba9, type: 2}
+  - {fileID: 11400000, guid: e00c8c547d4f06348a3730a5442eed0c, type: 2}
+  onExit: []
+  transitions: []

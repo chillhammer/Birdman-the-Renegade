@@ -17,6 +17,12 @@ namespace SIS.Characters.Sis
 			{
 				Items.Weapons.Weapon.RuntimeWeapon runtime = sis.value.inventory.currentWeapon.runtime;
 
+				if (runtime.weaponTip == null)
+				{
+					Debug.LogWarning("There is no WeaponTip on weapon " + runtime.modelInstance.name);
+					return;
+				}
+
 				Vector3 origin = tipTransform.value.position;
 				Vector3 dir = sis.value.movementValues.aimPosition - origin;
 

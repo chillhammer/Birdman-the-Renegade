@@ -14,8 +14,6 @@ namespace SIS.States
         public StateActions<C>[] onEnter;
         public StateActions<C>[] onExit;
 
-		[HideInInspector]
-		public StateMachine<C> stateMachine;
 
         public int idCount;
 
@@ -69,9 +67,9 @@ namespace SIS.States
                 {
                     if (transitions[i].targetState != null)
                     {
-						stateMachine.currentState = transitions[i].targetState;
-                        OnExit(owner);
-						stateMachine.currentState.OnEnter(owner);
+						OnExit(owner);
+
+						owner.ChangeState(i); //Workaround since states are shared
                     }
                     return;
                 }

@@ -7,6 +7,8 @@ namespace SIS.Items.Weapons
 	{
 		public LayerMask ignoreLayers;
 
-		public abstract void Execute(Character owner, Weapon weapon, Vector3 intendedDirection);
+		public abstract void Init(Weapon weapon);
+
+		public abstract void Execute(Character owner, float baseDamage, Vector3 intendedDirection, Vector3 origin);
 	}
 }

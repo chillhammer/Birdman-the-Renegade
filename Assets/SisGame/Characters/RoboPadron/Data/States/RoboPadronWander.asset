@@ -11,10 +11,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0bd34ab85562b7408ad15e71c03ec61, type: 3}
   m_Name: RoboPadronWander
   m_EditorClassIdentifier: 
-  idCount: 0
+  idCount: 1
   onFixed: []
   onUpdate:
-  - {fileID: 11400000, guid: f6bb3a36f27f8fb4b9687cd06e0b7d06, type: 2}
-  onEnter:
-  - {fileID: 11400000, guid: 785d6849b4ac4a34ab7ec040b0f89a96, type: 2}
+  - {fileID: 11400000, guid: 00f684a17b628ee47991e5c09eb3b5da, type: 2}
+  - {fileID: 11400000, guid: cc0002e2e91f4174e979f56fb624f9ee, type: 2}
+  - {fileID: 11400000, guid: 42f5089747df18f48b164892c6671675, type: 2}
+  onEnter: []
   onExit: []
+  transitions:
+  - id: 0
+    disable: 0
+    condition: {fileID: 11400000, guid: 6a135c73e25933c45b23fd84d8e9eaf4, type: 2}
+    targetState: {fileID: 11400000, guid: 5c7081c5df7005644891853cee34a603, type: 2}
+  - id: 0
+    disable: 0
+    condition: {fileID: 11400000, guid: 8606d2b37844d2544af3b3280f5a88a1, type: 2}
+    targetState: {fileID: 11400000, guid: f7b1fbf7c8bfd454dbce9f2e6f0e98fc, type: 2}

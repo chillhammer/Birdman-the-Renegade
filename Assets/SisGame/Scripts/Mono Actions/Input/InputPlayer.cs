@@ -17,6 +17,8 @@ namespace SIS.Actions.Input
 		public InputButton crouchButton;
 		public InputButton reloadButton;
 
+		public InputAxis switchWeaponsAxis;
+
 		public float moveAmount;
 		public Vector3 moveDirection;
 
@@ -58,16 +60,18 @@ namespace SIS.Actions.Input
 				{
 					playerState.value.ToggleCrouching();
 					crouchButton.targetBoolVariable.value = playerState.value.isCrouching;
-				}
+				}*/
 				//Reload
 				if (reloadButton.isPressed)
 				{
 					playerState.value.SetReloading();
 					
 				}
-				reloadButton.targetBoolVariable.value = playerState.value.isReloading;
 
-				*/
+				playerState.value.switchWeaponAxis = switchWeaponsAxis.value;
+				//reloadButton.targetBoolVariable.value = playerState.value.isReloading;
+
+				
 
 			}
         }

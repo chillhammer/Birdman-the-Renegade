@@ -60,8 +60,8 @@ MonoBehaviour:
   generateNewDungeon: 1
   WIDTH: 40
   HEIGHT: 40
-  roomMin: 6
-  roomMax: 14
-  roomAmount: 16
+  roomMin: 5
+  roomMax: 18
+  roomAmount: 13
   firstRoomWidth: 12
   firstRoomHeight: 12

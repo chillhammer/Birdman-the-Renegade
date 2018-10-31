@@ -14,11 +14,11 @@ namespace SIS.Items.Weapons
 		public bool isShooting;
 
 
-		public void Init(Transform tip)
+		public void Init(Transform tip, AudioClip sound)
 		{
-			CreateAudioHolder();
+			CreateAudioHolder(sound);
 
-			particles = GetComponentsInChildren<ParticleSystem>();
+			particles = GetComponents<ParticleSystem>();
 			weaponTip = tip;
 		}
 
@@ -26,44 +26,29 @@ namespace SIS.Items.Weapons
 		{
 			//weaponTip.rotation = Quaternion.LookRotation(dir); Updating in HandleShooting
 			isShooting = true;
-
+			audioSource.PlayOneShot(audioSource.clip);
 
 			if (particles != null)
 			{
-
+				
 				foreach (ParticleSystem system in particles)
 				{
+					Debug.Log("Weapon FX Particle Effect Shot: " + system.name);
 					system.Play();
 				}
 			}
-			//StartCoroutine(ShootParticleDelay(dir));
 		}
 
-		IEnumerator ShootParticleDelay(Vector3 dir)
-		{
-			yield return new WaitForFixedUpdate();
-			isShooting = true;
-
-			
-			if (particles != null)
-			{
-
-				foreach (ParticleSystem system in particles)
-				{
-					system.Play();
-				}
-			}
-			
-		}
 
 		//Helper Functions
-		protected void CreateAudioHolder()
+		protected void CreateAudioHolder(AudioClip sound)
 		{
 			GameObject go = new GameObject();
 			go.name = "Audio Holder";
 			go.transform.parent = this.transform;
 			audioSource = go.AddComponent<AudioSource>();
 			audioSource.spatialBlend = 1;
+			audioSource.clip = sound;
 		}
 	}
 }

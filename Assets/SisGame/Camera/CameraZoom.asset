@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Name: CameraZoom
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 11400000, guid: 0d0e09d816ccc744e934fc3b7c8c64a3, type: 2}
-  targetBool: {fileID: 11400000, guid: dfc0bd553f313494a87022fdc9f484cd, type: 2}
+  targetBool: {fileID: 11400000, guid: bc6a9e678e44f1f45bad837cf9aae91a, type: 2}
   defaultValue: 0
-  affectedValue: 1.5
+  affectedValue: 1.7
   speed: 9
   targetAxis: 2

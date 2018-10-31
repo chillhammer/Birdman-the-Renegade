@@ -15,6 +15,12 @@ namespace SIS.Characters
 		public Rigidbody rigid;
 		[HideInInspector]
 		public Animator anim;
+		[HideInInspector]
+		public float delta;
+
+		public float health;
+		[HideInInspector] public delegate void OnHitDelegate();
+		[HideInInspector] public OnHitDelegate onHitDelegate;
 
 		protected virtual void Start()
 		{
@@ -25,5 +31,7 @@ namespace SIS.Characters
 		}
 
 		protected abstract void SetupComponents();
+
+		public abstract void ChangeState(int transitionIndex);
 	}
 }

@@ -27,37 +27,38 @@ namespace SIS.Characters.Sis
 		{
 			Weapon weapon = owner.inventory.currentWeapon;
 			Weapon.RuntimeWeapon runtime = weapon.runtime;
-			int bullets = runtime.currentBullets;
 			isShooting.value = owner.isShooting;
 
 			//Update Shooting Variables for FX and Ballistics
 			Vector3 origin = (runtime.weaponTip == null ? runtime.modelInstance.transform.position : runtime.weaponTip.position);
-			Vector3 dir = owner.movementValues.aimPosition - runtime.weaponTip.position;
-			//runtime.weaponTip.rotation = Quaternion.LookRotation(dir); WeaponTipAlignment Action
-			// -----
+			Vector3 dir = owner.movementValues.aimPosition - origin;
 
 			//Shooting
-			if (owner.isShooting && !startedShooting)
+			if (owner.isShooting && !startedShooting && !owner.isReloading)
 			{
 				startedShooting = true;
 				
-				if (bullets > 0)
+				if (runtime.magazineSize > 0)
 				{
 					if (Time.realtimeSinceStartup - runtime.lastFired > weapon.fireRate)
 					{
 						runtime.lastFired = Time.realtimeSinceStartup;
 
 						//Ballistics
-						weapon.ballistics.Execute(owner, weapon, dir);
+						if (weapon.ballistics != null)
+							weapon.ballistics.Execute(owner, weapon.damageOnHit, dir, origin);
 
 						//Recoil and FX
 						runtime.weaponFX.Shoot(dir);
 						owner.aiming.StartRecoil();
 
 						//Decrement Bullets
-						runtime.currentBullets--;
-						if (runtime.currentBullets < 0)
-							runtime.currentBullets = 0;
+						if (weapon.decrementBulletsOnShoot)
+						{
+							runtime.magazineSize--;
+							if (runtime.magazineSize < 0)
+								runtime.currentBullets = 0;
+						}
 					}
 				}
 				else //Reload if out of bullets
@@ -67,7 +68,7 @@ namespace SIS.Characters.Sis
 					owner.isShooting = false;
 					owner.isReloading = true;
 				}
-			} 
+			}
 
 			//Delay
 			if (startedShooting)

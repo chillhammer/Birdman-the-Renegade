@@ -11,14 +11,12 @@ namespace SIS.Characters.Robo
 	public class RoboPadron : Character, IHittable
 	{
 		#region StateMachine Setup
-		//State Actions use this instead of Time.delta
-		public float delta { get { return stateMachine.delta; } }
 
 		//Must Start Off in a State
-		[SerializeField] private RoboPadronState startingState; 
+		[SerializeField] private RoboPadronState startingState;
 
 		//Optional. Use StateActionComposite to run multiple actions on create
-		[SerializeField] private RoboPadronStateActions initActionsBatch; 
+		[SerializeField] private RoboPadronStateActions initActionsBatch;
 
 		public StateMachine<RoboPadron> stateMachine;
 
@@ -36,29 +34,84 @@ namespace SIS.Characters.Robo
 		private void Update()
 		{
 			stateMachine.Tick();
+			delta = stateMachine.delta;
+		}
+		public override void ChangeState(int transitionIndex)
+		{
+			var newState = stateMachine.currentState.transitions[transitionIndex].targetState;
+			stateMachine.currentState = newState;
+			stateMachine.currentState.OnEnter(this);
 		}
 
 		#endregion
 
-		public float health = 1;
+		[HideInInspector] public Transform headBone;
+		[HideInInspector] public Transform gunModel;
+		[HideInInspector] public Transform gunTip;
+		[HideInInspector] public ParticleSystem bulletSystem;
+		[HideInInspector] public ParticleProjectileOnHit projectileOnHit;
+		public bool isAiming = false;
+		public bool canSeePlayer = false;
+		[HideInInspector] public bool transitionToWander = false;
 
 		[HideInInspector] public Waypoints.WaypointNavigator waypointNavigator;
+		[HideInInspector] public Vision vision;
+
+		#region Last Known Position
+		[System.Serializable]
+		public struct LastKnownLocation
+		{
+			public Vector3 position;
+			public float timeSeen;
+		}
+		#endregion
+		#region Death Fall Variables
+		[System.Serializable]
+		public struct DeathFallProgress
+		{
+			public Quaternion originalRotation;
+			public Vector3 fallTowards;
+			public float timer;
+		}
+		#endregion
+
+		//Serializable Fields
+		public LastKnownLocation playerLastKnownLocation;
+		public DeathFallProgress deathFallProgress;
 
 		//Allows for initial setup, better to use InitActionBatch, but it's here if you don't want to make action
 		protected override void SetupComponents()
 		{
 			waypointNavigator = GetComponent<Waypoints.WaypointNavigator>();
+			vision = GetComponent<Vision>();
+			headBone = mTransform.FindDeepChild("Head");
+			gunModel = mTransform.FindDeepChild("Gun");
+			bulletSystem = gunModel.GetComponentInChildren<ParticleSystem>();
+			projectileOnHit = bulletSystem.GetComponent<ParticleProjectileOnHit>();
+
+			if (headBone == null) Debug.LogWarning("Could not find Head bone on RoboPadron");
 		}
 
-		public void OnHit(Character shooter, Weapon weapon, Vector3 dir, Vector3 pos)
+		public void OnHit(Character shooter, float baseDamage, Vector3 dir, Vector3 pos)
 		{
-			health--;
-			rigid.AddForceAtPosition(dir, pos);
+			if (health == 0)
+				return;
+			health -= baseDamage;
+			if (health < 0) health = 0;
+			if (onHitDelegate != null)
+				onHitDelegate();
+			rigid.AddForceAtPosition(dir * 2, pos);
 
-			if (health <= 0)
-			{
-				Destroy(gameObject);
-			}
+			playerLastKnownLocation.position = shooter.mTransform.position;
+			playerLastKnownLocation.timeSeen = Time.frameCount;
+
+			canSeePlayer = true;
+			//NOTE: Death Is Handled by Transitions
+		}
+
+		public void OnDrawGizmosSelected()
+		{
+			Gizmos.DrawWireSphere(playerLastKnownLocation.position, 0.3f);
 		}
 	}
 }

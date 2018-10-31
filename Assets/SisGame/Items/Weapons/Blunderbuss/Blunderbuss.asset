@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f165c39555fcf09449a3ab1d56cf7e58, type: 3}
+  m_Name: Blunderbuss
+  m_EditorClassIdentifier: 
+  decrementBulletsOnShoot: 1
+  infiniteTotalBullets: 0
+  numBullets: 20
+  magazineCapacity: 5
+  fireRate: 0.5
+  recoilLength: 0.2
+  damageOnHit: 2
+  holdingPosition: {fileID: 11400000, guid: 774c5114a1d9e3649b3fed4095fbb3c8, type: 2}
+  holdingEulers: {fileID: 11400000, guid: 0e8880a7c50ed4c4ea9f9065d527d88d, type: 2}
+  IKLeftHand: 1
+  leftHoldingPosition: {fileID: 11400000, guid: 913f2f8ce0b88d946a1cae953cd97a89,
+    type: 2}
+  leftHoldingEulers: {fileID: 11400000, guid: e8a6960ef182c65498c59dc279b26d46, type: 2}
+  modelPrefab: {fileID: 1919201045682130, guid: 2b218fa53f39e1b419167a3e55aec14b,
+    type: 2}
+  runtime:
+    modelInstance: {fileID: 0}
+    weaponTip: {fileID: 0}
+    weaponFX: {fileID: 0}
+    lastFired: 0
+    currentBullets: 0
+    magazineCapacity: 0
+    magazineSize: 0
+  recoilY:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.19641495
+      value: -0.0035705566
+      inSlope: 0.6859723
+      outSlope: 0.6859723
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: -0.095460236
+      value: 0.06568158
+      inSlope: -0.18517643
+      outSlope: -0.18517643
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.25706178
+    - serializedVersion: 3
+      time: 1.0095096
+      value: 0.010034606
+      inSlope: 0.012162602
+      outSlope: 0.012162602
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.31471685
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  recoilZ:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.008243561
+      value: 1.0021935
+      inSlope: -4.826502
+      outSlope: -4.826502
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.11793989
+      value: 0.47274393
+      inSlope: -0.15001616
+      outSlope: -0.15001616
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.7352865
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.99556375
+      value: 1.0001874
+      inSlope: 0.28261623
+      outSlope: 0.28261623
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.51558703
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  fireAudio: {fileID: 8300000, guid: 4d39c29683a501342819723b5c8802be, type: 3}
+  ballistics: {fileID: 11400000, guid: fc8c8079171eda74bb9bd1d7e4f447b8, type: 2}
+  topHalfAnimatorLayerName: BlunderbussTopHalf

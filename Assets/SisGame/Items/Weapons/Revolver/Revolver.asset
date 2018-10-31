@@ -11,28 +11,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f165c39555fcf09449a3ab1d56cf7e58, type: 3}
   m_Name: Revolver
   m_EditorClassIdentifier: 
-  magazineBullets: 120
-  fireRate: 0.2
-  recoilLength: 0.2
+  decrementBulletsOnShoot: 1
+  infiniteTotalBullets: 1
+  numBullets: 30
+  magazineCapacity: 6
+  fireRate: 0.15
+  recoilLength: 0.25
+  damageOnHit: 1
   holdingPosition: {fileID: 11400000, guid: 8d048c15af662134188d0db191ede3c6, type: 2}
   holdingEulers: {fileID: 11400000, guid: d0cd4c053ea20c54e8b7abc6fb7150b2, type: 2}
+  IKLeftHand: 0
+  leftHoldingPosition: {fileID: 0}
+  leftHoldingEulers: {fileID: 0}
   modelPrefab: {fileID: 1043542097370994, guid: 572f244d45082b54ebfa83d413e898d0,
     type: 2}
+  runtime:
+    modelInstance: {fileID: 0}
+    weaponTip: {fileID: 0}
+    weaponFX: {fileID: 0}
+    lastFired: 0
+    currentBullets: 0
+    magazineCapacity: 0
+    magazineSize: 0
   recoilY:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: -0.0062561035
-      inSlope: 2.3155255
-      outSlope: 2.3155255
+      inSlope: 4.573427
+      outSlope: 4.573427
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.1295627
-      value: 0.29374966
+      time: 0.08568606
+      value: 0.38562283
       inSlope: 0.056047294
       outSlope: 0.056047294
       tangentMode: 0
@@ -42,8 +57,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1.0539551
       value: -0.08125687
-      inSlope: -0.40567896
-      outSlope: -0.40567896
+      inSlope: -0.48217973
+      outSlope: -0.48217973
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -57,15 +72,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: -0.024894714
       value: 0.8999939
-      inSlope: -91.921715
-      outSlope: -91.921715
+      inSlope: -130.02086
+      outSlope: -130.02086
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.053218782
-      value: -6.2803326
+      time: 0.03647989
+      value: -7.0799847
       inSlope: 0.097576834
       outSlope: 0.097576834
       tangentMode: 0
@@ -75,8 +90,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 7.689562
-      outSlope: 7.689562
+      inSlope: 8.385901
+      outSlope: 8.385901
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -84,4 +99,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ballistics: {fileID: 11400000, guid: 03fa9a8a44e20c846886a890348597af, type: 2}
+  fireAudio: {fileID: 8300000, guid: 1aaccbba9f1c27a439e31be8cb8ccd5e, type: 3}
+  ballistics: {fileID: 11400000, guid: ec2cfa06c27fd234d9063a40f41a519b, type: 2}
+  topHalfAnimatorLayerName: RevolverTopHalf

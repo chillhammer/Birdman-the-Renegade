@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0bd34ab85562b7408ad15e71c03ec61, type: 3}
+  m_Name: RoboPadronShoot
+  m_EditorClassIdentifier: 
+  idCount: 0
+  onFixed: []
+  onUpdate:
+  - {fileID: 11400000, guid: 00f684a17b628ee47991e5c09eb3b5da, type: 2}
+  - {fileID: 11400000, guid: cc0002e2e91f4174e979f56fb624f9ee, type: 2}
+  - {fileID: 11400000, guid: 2f675383f89a63a469298f0002578567, type: 2}
+  onEnter:
+  - {fileID: 11400000, guid: f34b585cbd1d4554a8faf211e7652c0f, type: 2}
+  onExit:
+  - {fileID: 11400000, guid: fb7c805e9bc70fb45bfb7e978eaadc31, type: 2}
+  transitions:
+  - id: 0
+    disable: 0
+    condition: {fileID: 11400000, guid: 291d1be88dd6ba047939186a9763ed9f, type: 2}
+    targetState: {fileID: 11400000, guid: 5c7081c5df7005644891853cee34a603, type: 2}
+  - id: 0
+    disable: 0
+    condition: {fileID: 11400000, guid: 5d6dfa1f07a83dc49ab5910bce57620e, type: 2}
+    targetState: {fileID: 11400000, guid: 5c7081c5df7005644891853cee34a603, type: 2}
+  - id: 0
+    disable: 0
+    condition: {fileID: 11400000, guid: 8606d2b37844d2544af3b3280f5a88a1, type: 2}
+    targetState: {fileID: 11400000, guid: f7b1fbf7c8bfd454dbce9f2e6f0e98fc, type: 2}

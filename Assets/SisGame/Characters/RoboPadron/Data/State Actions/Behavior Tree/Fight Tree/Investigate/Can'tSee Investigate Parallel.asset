@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb43b91646f851f409d8e9fe1f678fb4, type: 3}
+  m_Name: Can'tSee Investigate Parallel
+  m_EditorClassIdentifier: 
+  bTNodes:
+  - {fileID: 11400000, guid: e9eb768b959b3d74d82936331576b3fd, type: 2}
+  - {fileID: 11400000, guid: 458819bb694f8f4408566886dc908920, type: 2}
+  - {fileID: 11400000, guid: ff7d55c2187d82849b007209381e7ab1, type: 2}
+  successesNeeded: 3
+  failuresNeeded: 1

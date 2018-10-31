@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using SIS.States;
 using SIS.Items;
-
+using SIS.Items.Weapons;
 
 namespace SIS.Characters.Sis
 {
-	public class Sis : Character
+	public class Sis : Character, IHittable
 	{
 		#region StateMachine Setup
-		public float delta { get { return stateMachine.delta; } }
 		[SerializeField] private SisState startingState;
 		[SerializeField] private SisStateActions initActionsBatch;
 
@@ -20,7 +19,6 @@ namespace SIS.Characters.Sis
 		{
 			base.Start();
 			stateMachine = new StateMachine<Sis>(this, startingState, initActionsBatch);
-
 		}
 		//Run State Machine Logic
 		private void FixedUpdate()
@@ -30,11 +28,16 @@ namespace SIS.Characters.Sis
 		private void Update()
 		{
 			stateMachine.Tick();
+			delta = stateMachine.delta;
 		}
-
+		public override void ChangeState(int transitionIndex)
+		{
+			var newState = stateMachine.currentState.transitions[transitionIndex].targetState;
+			stateMachine.currentState = newState;
+			stateMachine.currentState.OnEnter(this);
+		}
 		#endregion
 
-		public float health;
 		//Serializable Properties
 		public MovementValues movementValues;
 		public Inventory inventory;
@@ -57,8 +60,11 @@ namespace SIS.Characters.Sis
 		public bool isShooting;
 		public bool isGunReady;
 		public bool isCrouching;
-		public bool isReloading;
-		public bool isInteracting;
+		public bool isReloading = false;
+		public bool doneReloading;
+		public bool isDead { get { return health == 0; } }
+		public float switchWeaponAxis;
+		public int switchWeaponChange { get { return (switchWeaponAxis > 0) ? 1 : (switchWeaponAxis < 0) ? -1 : 0; } }
 
 		public void ToggleCrouching()
 		{
@@ -67,6 +73,10 @@ namespace SIS.Characters.Sis
 		public void SetReloading()
 		{
 			isReloading = true;
+		}
+		public void OnStopReloading()
+		{
+			doneReloading = true;
 		}
 		#endregion
 
@@ -82,6 +92,16 @@ namespace SIS.Characters.Sis
 		public void PlayAnimation(string targetAnim)
 		{
 			anim.CrossFade(targetAnim, 0.2f);
+		}
+
+		public void OnHit(Character shooter, float baseDamage, Vector3 dir, Vector3 pos)
+		{
+			//Debug.Log("Hit player!");
+			rigid.AddForce(dir, ForceMode.Impulse);
+			if (health <= 0)
+				return;
+			health -= baseDamage;
+			onHitDelegate();
 		}
 	}
 }

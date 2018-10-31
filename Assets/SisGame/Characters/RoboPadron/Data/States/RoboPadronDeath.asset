@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0bd34ab85562b7408ad15e71c03ec61, type: 3}
+  m_Name: RoboPadronDeath
+  m_EditorClassIdentifier: 
+  idCount: 0
+  onFixed: []
+  onUpdate:
+  - {fileID: 11400000, guid: 21d72f5dd73afb34bb2d8acf877f0c61, type: 2}
+  - {fileID: 11400000, guid: 00f684a17b628ee47991e5c09eb3b5da, type: 2}
+  onEnter: []
+  onExit: []
+  transitions: []

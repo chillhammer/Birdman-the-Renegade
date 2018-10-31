@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ba7f24686939544acea5d7f1c18a9b, type: 3}
+  m_Name: Aim
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 11400000, guid: f948770e58dae564a932fe55e5620b01, type: 2}
+  headRotateSpeed: 10
+  bodyRotateSpeed: 10

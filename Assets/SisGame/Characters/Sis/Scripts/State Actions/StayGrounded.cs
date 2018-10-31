@@ -14,17 +14,21 @@ namespace SIS.Characters.Sis
 		public override void Execute(Sis owner)
 		{
 			Vector3 origin = owner.mTransform.position;
-			origin.y += snapRange;
+			//origin.y += snapRange;
 			Vector3 dir = -Vector3.up;
-			float dist = snapRange * 2; //Checks After origin has been pushed up
+			float dist = snapRange; //Checks After origin has been pushed up
 			RaycastHit hit;
-			if (Physics.Raycast(origin, dir, out hit, dist, ~ignoreLayers))
+			if (!Physics.Raycast(origin, dir, out hit, dist, ignoreLayers.value))
 			{
-				Vector3 targetPosition = hit.point;
+				/*Vector3 targetPosition = hit.point;
 				targetPosition.x = owner.mTransform.position.x;
 				targetPosition.z = owner.mTransform.position.z;
 				owner.mTransform.position = targetPosition; //origin must be at bottom
+				*/
+				origin.y -= owner.delta;
+				owner.mTransform.position = origin;
 			}
+			Debug.DrawLine(origin, origin + dir * dist, Color.red);
 		}
 	}
 }

@@ -22,7 +22,7 @@ namespace SIS.Map
 		public Tile[] Tiles { get { return tiles; } }
 
 		//Override values from DungeonGenerator
-		public void SetFromGeneration(Tile[] tiles, List<Room> rooms, WaypointSystem waypointSystem, 
+		public void SetFromGeneration(Tile[] tiles, List<Room> rooms, WaypointSystem waypointSystem,
 			int width, int height)
 		{
 			this.tiles = tiles;
@@ -86,7 +86,7 @@ namespace SIS.Map
 			int index = 0;
 			int closestRoomIndex = 0;
 			Vector2 pos = new Vector2(x, y);
-			float bestDist = 0;
+			float bestDist = float.MaxValue;
 			foreach (Room room in rooms)
 			{
 				Vector2 center = room.rect.center;
@@ -101,7 +101,12 @@ namespace SIS.Map
 			return closestRoomIndex;
 		}
 
-		public int GetClosestRoomIndex(Vector2Int pos)
+		public int GetClosestRoomIndex(Vector3 transformPosition)
+		{
+			return GetClosestRoomIndex((int)transformPosition.x, (int)transformPosition.z);
+		}
+
+			public int GetClosestRoomIndex(Vector2Int pos)
 		{
 			return GetClosestRoomIndex(pos.x, pos.y);
 		}
@@ -111,6 +116,7 @@ namespace SIS.Map
 			int roomIndex = Random.Range(0, rooms.Count);
 			return rooms[roomIndex];
 		}
+
 		#endregion
 	}
 }

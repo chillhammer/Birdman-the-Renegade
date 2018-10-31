@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0bd34ab85562b7408ad15e71c03ec61, type: 3}
+  m_Name: RoboPadronFight
+  m_EditorClassIdentifier: 
+  idCount: 0
+  onFixed: []
+  onUpdate:
+  - {fileID: 11400000, guid: 00f684a17b628ee47991e5c09eb3b5da, type: 2}
+  - {fileID: 11400000, guid: abd516d031c9fd545a207ef78284181f, type: 2}
+  - {fileID: 11400000, guid: cc0002e2e91f4174e979f56fb624f9ee, type: 2}
+  onEnter:
+  - {fileID: 11400000, guid: 5ad6d94476e505942b1e3a1cb9b5f663, type: 2}
+  onExit: []
+  transitions:
+  - id: 0
+    disable: 0
+    condition: {fileID: 11400000, guid: cbe312887ad3dd241af9386c5ab50186, type: 2}
+    targetState: {fileID: 11400000, guid: e873b80615c22cf41bf47bc9bdf0312e, type: 2}
+  - id: 0
+    disable: 0
+    condition: {fileID: 11400000, guid: 56d15ca0fe0a7274784f3986a9fe547d, type: 2}
+    targetState: {fileID: 11400000, guid: 19c85031e2375e2409a2ce393ad35184, type: 2}
+  - id: 0
+    disable: 0
+    condition: {fileID: 11400000, guid: 8606d2b37844d2544af3b3280f5a88a1, type: 2}
+    targetState: {fileID: 11400000, guid: f7b1fbf7c8bfd454dbce9f2e6f0e98fc, type: 2}

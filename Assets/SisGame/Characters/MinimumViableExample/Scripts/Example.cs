@@ -16,8 +16,6 @@ namespace SIS.Characters.Example
 	public class Example : Character
 	{
 		#region StateMachine Setup
-		//State Actions use this instead of Time.delta
-		public float delta { get { return stateMachine.delta; } }
 
 		//Must Start Off in a State
 		[SerializeField] private ExampleState startingState; 
@@ -42,10 +40,14 @@ namespace SIS.Characters.Example
 		{
 			stateMachine.Tick();
 		}
-
+		public override void ChangeState(int transitionIndex)
+		{
+			var newState = stateMachine.currentState.transitions[transitionIndex].targetState;
+			stateMachine.currentState = newState;
+			stateMachine.currentState.OnEnter(this);
+		}
 		#endregion
 
-		public float health; //Optional, may incorporate any form of health system
 
 		//Must atleast override since it is abstract
 		//Allows for initial setup, better to use InitActionBatch, but it's here if you don't want to make action

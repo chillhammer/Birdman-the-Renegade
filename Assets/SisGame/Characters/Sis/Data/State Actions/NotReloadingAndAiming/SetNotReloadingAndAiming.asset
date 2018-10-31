@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beb5fb9c52dbca048b53840dda950afb, type: 3}
+  m_Name: SetNotReloadingAndAiming
+  m_EditorClassIdentifier: 
+  bools:
+  - {fileID: 11400000, guid: dfc0bd553f313494a87022fdc9f484cd, type: 2}
+  - {fileID: 11400000, guid: 610fb0e5e40b2e44f93d54841880d24c, type: 2}
+  targetBool: {fileID: 11400000, guid: bc6a9e678e44f1f45bad837cf9aae91a, type: 2}

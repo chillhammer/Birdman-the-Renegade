@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3026493e6cf3634abe8cbb88703ea93, type: 3}
+  m_Name: CannonBallBallistics
+  m_EditorClassIdentifier: 
+  ignoreLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  projectile: {fileID: 1346750400851638, guid: 0f19d4e03fd72c446b9ab396fa1e5a6d, type: 2}
+  projectileSpeed: 45
+  persistTime: 10
+  upwardsForce: 5
