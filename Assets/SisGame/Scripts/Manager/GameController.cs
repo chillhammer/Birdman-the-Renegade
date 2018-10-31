@@ -7,6 +7,7 @@ namespace SIS
 {
 	public class GameController : MonoBehaviour
 	{
+		public int stageIndex = 0;
 		private void Update()
 		{
 			if (Input.GetKeyDown(KeyCode.F12))

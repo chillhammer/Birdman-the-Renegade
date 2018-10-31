@@ -47,7 +47,7 @@ namespace SIS.Items
 			string weaponName = weapons[currentWeaponIndex].name;
 			Weapon targetWeapon;
 			if (initializedWeapons == null)
-				initializedWeapons = new Dictionary<string, Weapon>();
+				initializedWeapons = new Dictionary<string, Weapon>(); 
 			if (initializedWeapons.TryGetValue(weaponName, out targetWeapon))
 			{
 				currentWeapon = targetWeapon;
