@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using SIS.Characters.Sis;
-public class ReloadBehavior : StateMachineBehaviour {
 
-	
+public class ExitReloadBehavior : StateMachineBehaviour {
+
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 	//
@@ -14,10 +14,13 @@ public class ReloadBehavior : StateMachineBehaviour {
 	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 	//
 	//}
-
-	//OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+	public SisVariable sis;
+	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		animator.SetInteger("AmmoToLoad", animator.GetInteger("AmmoToLoad") - 1);
+		if (sis.value != null) {
+			sis.value.OnStopReloading();
+			Debug.Log("Exited reloading anim");
+		}
 	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here
