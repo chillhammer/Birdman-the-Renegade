@@ -84,6 +84,10 @@ ModelImporter:
     7400016: ReloadRevolver
     7400018: ReloadBlunderbuss
     7400020: SisDeath
+    7400022: ReloadBlunderbussStart
+    7400024: ReloadBlunderbussMain
+    7400026: ReloadBlunderbussEnd
+    7400028: SisCannonReady
     9500000: //RootNode
     13700000: SisBody
     2186277476908879412: ImportLogs
@@ -100,18 +104,12 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
-      does not match position in animation file:\n\t'Thigh_L' : position error = 12.086864
-      mm\n\t'Thigh_R' : position error = 12.086912 mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Default Take' has import animation warnings
-      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'Thigh_L' has translation animation that
-      will be discarded.\n\t'Thigh_R' has translation animation that will be discarded.\n\nClip
-      'SisDeath' has import animation warnings that might lower retargeting quality:\nNote:
-      Activate translation DOF on avatar to improve retargeting quality.\n\t'Thigh_L'
-      has translation animation that will be discarded.\n\t'Thigh_R' has translation
-      animation that will be discarded.\n"
+    animationImportWarnings: "\nClip 'SisDeath' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'Thigh_L' has translation animation that will
+      be discarded.\n\t'Thigh_R' has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -377,10 +375,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: ReloadBlunderbuss
-      takeName: ReloadBlunderbuss
+      name: ReloadBlunderbussStart
+      takeName: ReloadBlunderbussStart
       firstFrame: -1
-      lastFrame: 19
+      lastFrame: 4
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -420,6 +418,90 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ReloadBlunderbussMain
+      takeName: ReloadBlunderbussMain
+      firstFrame: -1
+      lastFrame: 17
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ReloadBlunderbussEnd
+      takeName: ReloadBlunderbussEnd
+      firstFrame: -1
+      lastFrame: 5
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: SisCannonReady
+      takeName: SisCannonReady
+      firstFrame: -1
+      lastFrame: 0
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0

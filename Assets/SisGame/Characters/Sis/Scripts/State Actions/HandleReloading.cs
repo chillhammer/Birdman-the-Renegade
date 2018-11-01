@@ -8,7 +8,6 @@ namespace SIS.Characters.Sis
 	[CreateAssetMenu(menuName = "Characters/Sis/State Actions/Handle Reloading")]
 	public class HandleReloading : SisStateActions
 	{
-		private bool reloading = false;
 		public SO.BoolVariable isReloading;
 		public override void Execute(Sis owner)
 		{
@@ -29,19 +28,27 @@ namespace SIS.Characters.Sis
 					{
 						owner.isShooting = false;
 						//Start Animation
-						if (!owner.doneReloading && !reloading)
+						if (owner.reloadingDoOnce)
 						{
+							Debug.Log("Starting reload");
+							int bulletsNeeded = runtime.magazineCapacity - runtime.magazineSize;
+							if (runtime.currentBullets < bulletsNeeded)
+								bulletsNeeded = runtime.currentBullets;
+
 							owner.anim.SetTrigger("Reload");
-							reloading = true;
+							owner.anim.SetInteger("AmmoToLoad", bulletsNeeded);
+							owner.reloadingDoOnce = false;
+							owner.doneReloading = false;
 						}
 						else
 						{
 							//Reload at End of Animation
 							if (owner.doneReloading)
 							{
+								Debug.Log("Finishing reload");
 								owner.isReloading = false;
 								owner.doneReloading = false;
-								reloading = false;
+								owner.reloadingDoOnce = true;
 								owner.inventory.ReloadCurrentWeapon();
 							}
 						}
