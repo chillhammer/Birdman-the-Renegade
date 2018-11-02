@@ -13,6 +13,7 @@ namespace SIS.Map.Enemy {
 		public SO.IntVariable stageIndexVar;
 		public bool LastEnemyDied { get; private set; }
 		public AudioClip enemyKilledSound;
+		public SO.TransformVariable playerTransform;
 
 		List<IHittable> aliveEnemies;
 		List<GameObject> toBeSpawnedEnemies;
@@ -70,7 +71,7 @@ namespace SIS.Map.Enemy {
 					Debug.LogWarning("Enemy Type cannot be null when spawning");
 					continue;
 				}
-				Room room = dungeon.GetRandomRoom();
+				Room room = dungeon.GetRandomRoomNotAdjacent(playerTransform.value.position);
 				Vector3 spawnPos = new Vector3(room.rect.center.x, enemyType.elevation, room.rect.center.y);
 				for (int i = 0; i < enemyType.number; ++i)
 				{
@@ -92,7 +93,7 @@ namespace SIS.Map.Enemy {
 		//Used to spawn in random room
 		public void SpawnEnemy(GameObject enemyObject)
 		{
-			Room room = dungeon.GetRandomRoom();
+			Room room = dungeon.GetRandomRoomNotAdjacent(playerTransform.value.position);
 			Vector3 spawnPos = new Vector3(room.rect.center.x, .2f, room.rect.center.y);
 			GameObject enemy = Instantiate(enemyObject, spawnPos, Quaternion.identity, enemiesParent);
 			IHittable enemyHittable = enemy.GetComponent<IHittable>();

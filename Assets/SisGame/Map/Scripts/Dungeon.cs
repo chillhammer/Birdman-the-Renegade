@@ -117,6 +117,32 @@ namespace SIS.Map
 			return rooms[roomIndex];
 		}
 
+		public Room GetRandomRoomNotAdjacent(Vector3 transformPosition)
+		{
+			Room room = GetRoom((int)transformPosition.x, (int)transformPosition.z);
+			if (room == null)
+				return GetRandomRoom();
+
+			int tries = 15;
+			int tryIndex = 0;
+			while (tryIndex < tries)
+			{
+				++tryIndex;
+				Room randomRoom = GetRandomRoom();
+				if (randomRoom != room)
+				{
+					foreach (Room adjacent in room.connected)
+					{
+						if (adjacent == randomRoom)
+							continue;
+					}
+					return randomRoom;
+				}
+			}
+			Debug.LogWarning("Failed to find not adjacent room");
+			return GetRandomRoom();
+		}
+
 		#endregion
 	}
 }

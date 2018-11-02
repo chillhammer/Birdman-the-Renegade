@@ -17,9 +17,10 @@ public class ExitReloadBehavior : StateMachineBehaviour {
 	public SisVariable sis;
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		if (sis.value != null) {
+		if (sis.value != null && animator.GetLayerWeight(layerIndex) != 0) {
 			sis.value.OnStopReloading();
-			//Debug.Log("Exited reloading anim");
+			animator.SetBool("Reload", false);
+			Debug.Log("Exited reloading anim");
 		}
 	}
 

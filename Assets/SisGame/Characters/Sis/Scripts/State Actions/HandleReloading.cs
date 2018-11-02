@@ -35,7 +35,7 @@ namespace SIS.Characters.Sis
 							if (runtime.currentBullets < bulletsNeeded)
 								bulletsNeeded = runtime.currentBullets;
 
-							owner.anim.SetTrigger("Reload");
+							owner.anim.SetBool("Reload", true);
 							owner.anim.SetInteger("AmmoToLoad", bulletsNeeded);
 							owner.reloadingDoOnce = false;
 							owner.doneReloading = false;
@@ -46,6 +46,7 @@ namespace SIS.Characters.Sis
 							if (owner.doneReloading)
 							{
 								Debug.Log("Finishing reload");
+								owner.anim.SetBool("Reload", false);
 								owner.isReloading = false;
 								owner.doneReloading = false;
 								owner.reloadingDoOnce = true;

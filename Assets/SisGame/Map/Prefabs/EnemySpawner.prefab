@@ -62,6 +62,8 @@ MonoBehaviour:
   stageListing: {fileID: 11400000, guid: fa9be48e3588a5446aa88820ca3b496f, type: 2}
   useStageListing: 1
   stageIndexVar: {fileID: 11400000, guid: 20b6fed3c94e9af48a43e730033c9a61, type: 2}
+  enemyKilledSound: {fileID: 8300000, guid: c7efba6a921a0bb45a6f1d0af06b1052, type: 3}
+  playerTransform: {fileID: 11400000, guid: f948770e58dae564a932fe55e5620b01, type: 2}
 --- !u!114 &114984343247762080
 MonoBehaviour:
   m_ObjectHideFlags: 1
