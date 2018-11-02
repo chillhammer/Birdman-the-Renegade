@@ -91,7 +91,7 @@ namespace SIS.Map.Enemy {
 		public void SpawnEnemy(GameObject enemyObject)
 		{
 			Room room = dungeon.GetRandomRoom();
-			Vector3 spawnPos = new Vector3(room.rect.center.x, 1f, room.rect.center.y);
+			Vector3 spawnPos = new Vector3(room.rect.center.x, .2f, room.rect.center.y);
 			GameObject enemy = Instantiate(enemyObject, spawnPos, Quaternion.identity, enemiesParent);
 			IHittable enemyHittable = enemy.GetComponent<IHittable>();
 			if (enemyHittable != null)
