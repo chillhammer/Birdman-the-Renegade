@@ -6028,6 +6028,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114707690902722026, guid: 69aeaa6c520648a4dbc8c1b366981b5e,
+        type: 2}
+      propertyPath: enemyKilledSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c7efba6a921a0bb45a6f1d0af06b1052, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69aeaa6c520648a4dbc8c1b366981b5e, type: 2}
   m_IsPrefabAsset: 0

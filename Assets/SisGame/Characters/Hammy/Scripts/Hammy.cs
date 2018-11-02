@@ -80,6 +80,10 @@ namespace SIS.Characters.Ham
 		{
 			return health == 0;
 		}
+		public void PlaySound(AudioClip audio)
+		{
+			audioSource.PlayOneShot(audio);
+		}
 
 		public int GetNextPatrolRoomIndex()
 		{

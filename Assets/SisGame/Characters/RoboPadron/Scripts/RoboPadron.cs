@@ -50,6 +50,7 @@ namespace SIS.Characters.Robo
 		[HideInInspector] public Transform gunTip;
 		[HideInInspector] public ParticleSystem bulletSystem;
 		[HideInInspector] public ParticleProjectileOnHit projectileOnHit;
+		[SerializeField] AudioClip onHitSound;
 		public bool isAiming = false;
 		public bool canSeePlayer = false;
 		[HideInInspector] public bool transitionToWander = false;
@@ -101,6 +102,7 @@ namespace SIS.Characters.Robo
 			if (onHitDelegate != null)
 				onHitDelegate();
 			rigid.AddForceAtPosition(dir * 2, pos);
+			audioSource.PlayOneShot(onHitSound);
 
 			playerLastKnownLocation.position = shooter.mTransform.position;
 			playerLastKnownLocation.timeSeen = Time.frameCount;
@@ -112,6 +114,10 @@ namespace SIS.Characters.Robo
 		public bool IsDead()
 		{
 			return health == 0;
+		}
+		public void PlaySound(AudioClip audio)
+		{
+			audioSource.PlayOneShot(audio);
 		}
 
 

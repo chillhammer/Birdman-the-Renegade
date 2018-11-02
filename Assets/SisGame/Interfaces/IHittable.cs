@@ -10,6 +10,7 @@ namespace SIS
 	{
 		void OnHit(Character shooter, float baseDamage, Vector3 dir, Vector3 pos);
 		bool IsDead();
+		void PlaySound(AudioClip audio);
 	}
 
 	//Generic
@@ -17,5 +18,6 @@ namespace SIS
 	{
 		void OnHit(C shooter, float baseDamage, Vector3 dir, Vector3 pos);
 		bool IsDead();
+		void PlaySound(AudioClip audio);
 	}
 }

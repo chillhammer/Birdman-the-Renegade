@@ -109,5 +109,9 @@ namespace SIS.Characters.Sis
 		{
 			return health == 0;
 		}
+		public void PlaySound(AudioClip audio)
+		{
+			audioSource.PlayOneShot(audio);
+		}
 	}
 }
