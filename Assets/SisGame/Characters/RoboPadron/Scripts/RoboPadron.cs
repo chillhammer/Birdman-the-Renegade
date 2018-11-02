@@ -108,10 +108,18 @@ namespace SIS.Characters.Robo
 			canSeePlayer = true;
 			//NOTE: Death Is Handled by Transitions
 		}
+		//Allows for game controller to mark enemy as dead
+		public bool IsDead()
+		{
+			return health == 0;
+		}
+
 
 		public void OnDrawGizmosSelected()
 		{
 			Gizmos.DrawWireSphere(playerLastKnownLocation.position, 0.3f);
 		}
+
+		
 	}
 }

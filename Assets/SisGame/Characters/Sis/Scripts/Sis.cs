@@ -104,5 +104,10 @@ namespace SIS.Characters.Sis
 			health -= baseDamage;
 			onHitDelegate();
 		}
+		//Allows for game controller to mark enemy as dead
+		public bool IsDead()
+		{
+			return health == 0;
+		}
 	}
 }

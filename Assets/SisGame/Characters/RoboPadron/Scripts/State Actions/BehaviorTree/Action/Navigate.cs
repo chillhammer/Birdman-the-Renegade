@@ -20,7 +20,7 @@ namespace SIS.Characters.Robo
 				return AivoTree.AivoTreeStatus.Success;
 
 			//Debug.Log((owner.mTransform.position - previousPosition).sqrMagnitude);
-			if ((owner.mTransform.position - previousPosition).sqrMagnitude < 0.005f)
+			if ((owner.mTransform.position - previousPosition).sqrMagnitude < 0.002f)
 			{
 				timer += owner.delta;
 				if (timer >= timeoutTime)
