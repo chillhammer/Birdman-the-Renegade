@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4419029147758360}
   - component: {fileID: 114762750616257938}
+  - component: {fileID: 114123136835388850}
+  - component: {fileID: 114778446276687338}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -40,6 +42,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114123136835388850
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752712232216998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a055b694402bd469a86915f1319e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: d7e5bbf36cb31d64fa3e39399fd86a2e, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114762750616257938}
+        m_MethodName: StageStarted
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114762750616257938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,3 +86,33 @@ MonoBehaviour:
   endStageEvent: {fileID: 11400000, guid: 33e70c5abc208b4408be56e89d92469b, type: 2}
   startStageEvent: {fileID: 11400000, guid: d7e5bbf36cb31d64fa3e39399fd86a2e, type: 2}
   stageListing: {fileID: 11400000, guid: fa9be48e3588a5446aa88820ca3b496f, type: 2}
+  stageDifficultyTuning: {fileID: 11400000, guid: 49a9edfdc13e4ae499be66520ded5476,
+    type: 2}
+--- !u!114 &114778446276687338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752712232216998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a055b694402bd469a86915f1319e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 33e70c5abc208b4408be56e89d92469b, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114762750616257938}
+        m_MethodName: StageEnded
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

@@ -51,6 +51,7 @@ namespace SIS.Characters.Robo
 		[HideInInspector] public ParticleSystem bulletSystem;
 		[HideInInspector] public ParticleProjectileOnHit projectileOnHit;
 		[SerializeField] AudioClip onHitSound;
+		[SerializeField] SO.FloatVariable maxHealth;
 		public bool isAiming = false;
 		public bool canSeePlayer = false;
 		[HideInInspector] public bool transitionToWander = false;
@@ -89,6 +90,7 @@ namespace SIS.Characters.Robo
 			gunModel = mTransform.FindDeepChild("Gun");
 			bulletSystem = gunModel.GetComponentInChildren<ParticleSystem>();
 			projectileOnHit = bulletSystem.GetComponent<ParticleProjectileOnHit>();
+			health = maxHealth.value;
 
 			if (headBone == null) Debug.LogWarning("Could not find Head bone on RoboPadron");
 		}

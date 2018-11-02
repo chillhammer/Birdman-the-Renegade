@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 225
   turnSpeed: 7
+  overrideMoveSpeed: {fileID: 11400000, guid: 862697ee9ddaa454488d2c4697a26012, type: 2}

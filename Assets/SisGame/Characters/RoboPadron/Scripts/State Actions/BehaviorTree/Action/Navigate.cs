@@ -8,6 +8,7 @@ namespace SIS.Characters.Robo
 	{
 		public float moveSpeed = 3f;
 		public float turnSpeed = 2f;
+		public SO.FloatVariable overrideMoveSpeed;
 
 		float timeoutTime = 2f;
 		float timer = 0;
@@ -40,6 +41,8 @@ namespace SIS.Characters.Robo
 			owner.mTransform.rotation = Quaternion.Slerp(owner.mTransform.rotation,
 				Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)), turnSpeed * owner.delta);
 
+			if (overrideMoveSpeed != null)
+				moveSpeed = overrideMoveSpeed.value;
 
 			Vector3 motion = owner.mTransform.forward * moveSpeed * owner.delta;
 			//owner.rigid.AddForce(motion);

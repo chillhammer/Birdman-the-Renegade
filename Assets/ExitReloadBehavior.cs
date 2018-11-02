@@ -19,7 +19,7 @@ public class ExitReloadBehavior : StateMachineBehaviour {
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 		if (sis.value != null) {
 			sis.value.OnStopReloading();
-			Debug.Log("Exited reloading anim");
+			//Debug.Log("Exited reloading anim");
 		}
 	}
 

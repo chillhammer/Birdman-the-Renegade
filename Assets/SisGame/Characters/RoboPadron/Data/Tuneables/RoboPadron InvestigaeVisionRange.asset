@@ -8,8 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3642fd0ea951f72418e8a9c6b0a03658, type: 3}
-  m_Name: InRangeContinueShooting
+  m_Script: {fileID: 11500000, guid: d933270a864652c489a8784d6e7f696f, type: 3}
+  m_Name: RoboPadron InvestigaeVisionRange
   m_EditorClassIdentifier: 
-  range: 12
-  overrideRange: {fileID: 11400000, guid: 828dac30af81b5c46a06f17556ef22e3, type: 2}
+  value: 0

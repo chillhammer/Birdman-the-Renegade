@@ -552,7 +552,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1284060523504750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.657467, y: -4.572955, z: 27.930294}
+  m_LocalPosition: {x: 8.579948, y: 15.263447, z: 19.19755}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4080472596944734}
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   destroyOnZero: 1
   shakeIntensity: 0.6
   shakeTime: 1
-  healthLerpSpeed: 3
+  healthLerpSpeed: 6
 --- !u!114 &114258515672266822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1405,6 +1405,7 @@ MonoBehaviour:
   bulletSystem: {fileID: 0}
   projectileOnHit: {fileID: 0}
   onHitSound: {fileID: 8300000, guid: 2309772fc08bfa34aacece5c300a6c5e, type: 3}
+  maxHealth: {fileID: 11400000, guid: c7934b3fe774f1645b911bd57b9fe28e, type: 2}
   isAiming: 0
   canSeePlayer: 0
   transitionToWander: 0
@@ -1594,7 +1595,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.6
+      scalar: 1.2
       minScalar: 5
       maxCurve:
         serializedVersion: 2

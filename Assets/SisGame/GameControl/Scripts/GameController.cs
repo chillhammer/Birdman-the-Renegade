@@ -12,6 +12,7 @@ namespace SIS.GameControl
 		public SO.GameEvent endStageEvent;
 		public SO.GameEvent startStageEvent;
 		public StageListing stageListing;
+		public StageDifficultyTuning stageDifficultyTuning;
 
 		private void Start()
 		{
@@ -32,7 +33,12 @@ namespace SIS.GameControl
 				SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
 			}
 		}
-
+		//Called by EventListener
+		public void StageStarted()
+		{
+			stageDifficultyTuning.SetDifficultyTuning();
+		}
+		//Called by EventListener
 		public void StageEnded()
 		{
 

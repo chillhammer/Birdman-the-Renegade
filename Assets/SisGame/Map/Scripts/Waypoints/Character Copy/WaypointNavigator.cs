@@ -137,7 +137,7 @@ namespace SIS.Waypoints
 			{
 				path = new List<Waypoint>();
 				path.Add(accurateGoal);
-				Debug.Log("Simple navigation since path is clear");
+				//Debug.Log("Simple navigation since path is clear");
 				pathIndex = 0;
 				return;
 			}

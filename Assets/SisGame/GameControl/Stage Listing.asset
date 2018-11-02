@@ -18,6 +18,9 @@ MonoBehaviour:
   - enemies:
     - {fileID: 1284060523504750, guid: f42c9d02174afdd4f92b728e4b3f33b3, type: 2}
     maxAlive: 1
+  - enemies:
+    - {fileID: 1284060523504750, guid: f42c9d02174afdd4f92b728e4b3f33b3, type: 2}
+    maxAlive: 1
   - enemies: []
     maxAlive: 0
   stageIndexVar: {fileID: 11400000, guid: 20b6fed3c94e9af48a43e730033c9a61, type: 2}

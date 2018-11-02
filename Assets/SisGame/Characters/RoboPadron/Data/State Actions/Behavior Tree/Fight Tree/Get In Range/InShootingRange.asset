@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Name: InShootingRange
   m_EditorClassIdentifier: 
   range: 8
+  overrideRange: {fileID: 11400000, guid: 162cac88bc72c6949a413b55c2a70a5b, type: 2}
