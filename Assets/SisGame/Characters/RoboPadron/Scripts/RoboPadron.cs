@@ -50,6 +50,8 @@ namespace SIS.Characters.Robo
 		[HideInInspector] public Transform gunTip;
 		[HideInInspector] public ParticleSystem bulletSystem;
 		[HideInInspector] public ParticleProjectileOnHit projectileOnHit;
+		[SerializeField] AudioClip onHitSound;
+		[SerializeField] SO.FloatVariable maxHealth;
 		public bool isAiming = false;
 		public bool canSeePlayer = false;
 		[HideInInspector] public bool transitionToWander = false;
@@ -88,6 +90,7 @@ namespace SIS.Characters.Robo
 			gunModel = mTransform.FindDeepChild("Gun");
 			bulletSystem = gunModel.GetComponentInChildren<ParticleSystem>();
 			projectileOnHit = bulletSystem.GetComponent<ParticleProjectileOnHit>();
+			health = maxHealth.value;
 
 			if (headBone == null) Debug.LogWarning("Could not find Head bone on RoboPadron");
 		}
@@ -101,6 +104,7 @@ namespace SIS.Characters.Robo
 			if (onHitDelegate != null)
 				onHitDelegate();
 			rigid.AddForceAtPosition(dir * 2, pos);
+			audioSource.PlayOneShot(onHitSound);
 
 			playerLastKnownLocation.position = shooter.mTransform.position;
 			playerLastKnownLocation.timeSeen = Time.frameCount;
@@ -108,10 +112,22 @@ namespace SIS.Characters.Robo
 			canSeePlayer = true;
 			//NOTE: Death Is Handled by Transitions
 		}
+		//Allows for game controller to mark enemy as dead
+		public bool IsDead()
+		{
+			return health == 0;
+		}
+		public void PlaySound(AudioClip audio)
+		{
+			audioSource.PlayOneShot(audio);
+		}
+
 
 		public void OnDrawGizmosSelected()
 		{
 			Gizmos.DrawWireSphere(playerLastKnownLocation.position, 0.3f);
 		}
+
+		
 	}
 }

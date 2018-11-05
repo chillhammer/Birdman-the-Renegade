@@ -10,7 +10,7 @@ namespace SIS.Characters.Robo
 		{
 			owner.isAiming = targetBool;
 
-			Debug.Log("Setting Aiming to " + targetBool);
+			//Debug.Log("Setting Aiming to " + targetBool);
 
 			return AivoTree.AivoTreeStatus.Success;
 		}

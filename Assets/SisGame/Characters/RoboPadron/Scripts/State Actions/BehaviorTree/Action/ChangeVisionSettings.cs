@@ -8,9 +8,12 @@ namespace SIS.Characters.Robo
 	{
 		public float fov;
 		public float maxDistance;
+		public SO.FloatVariable maxDistanceVar;
 
 		public override AivoTree.AivoTreeStatus Act(float timeTick, RoboPadron owner)
 		{
+			if (maxDistanceVar != null)
+				maxDistance = maxDistanceVar.value;
 			owner.vision.angleFOV = fov;
 			owner.vision.maxDistance = maxDistance;
 			return AivoTree.AivoTreeStatus.Success;

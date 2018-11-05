@@ -18,7 +18,7 @@ namespace SIS.Characters.Robo
 				
 				if (fightRoot != null)
 				{
-					Debug.Log("Resetting Fight Root");
+					//Debug.Log("Resetting Fight Root");
 					fightRoot.Reset(owner);
 				}
 				return true;

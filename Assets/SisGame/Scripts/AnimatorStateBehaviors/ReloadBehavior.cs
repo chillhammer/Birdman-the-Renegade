@@ -4,7 +4,7 @@ using UnityEngine;
 using SIS.Characters.Sis;
 public class ReloadBehavior : StateMachineBehaviour {
 
-	public SisVariable sis;
+	
 	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
 	//override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 	//
@@ -17,10 +17,7 @@ public class ReloadBehavior : StateMachineBehaviour {
 
 	//OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		if (stateInfo.IsName("Reloading")) {
-			if (sis.value != null)
-				sis.value.OnStopReloading();
-		}
+		animator.SetInteger("AmmoToLoad", animator.GetInteger("AmmoToLoad") - 1);
 	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

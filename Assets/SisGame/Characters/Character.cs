@@ -16,6 +16,8 @@ namespace SIS.Characters
 		[HideInInspector]
 		public Animator anim;
 		[HideInInspector]
+		public AudioSource audioSource;
+		[HideInInspector]
 		public float delta;
 
 		public float health;
@@ -27,6 +29,7 @@ namespace SIS.Characters
 			mTransform = this.transform;
 			rigid = GetComponent<Rigidbody>();
 			anim = GetComponentInChildren<Animator>();
+			audioSource = GetComponent<AudioSource>();
 			SetupComponents();
 		}
 

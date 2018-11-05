@@ -17,8 +17,8 @@ namespace SIS.Items.Weapons
 		{
 			if (isRecoiling)
 			{
-				Debug.Log("Recoil Failed. Restarting recoiling");
-				//return;
+				//Debug.Log("Recoil Failed. Restarting recoiling");
+				return;
 			}
 
 			isRecoiling = true;
