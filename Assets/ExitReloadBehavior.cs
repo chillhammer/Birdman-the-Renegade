@@ -20,7 +20,7 @@ public class ExitReloadBehavior : StateMachineBehaviour {
 		if (sis.value != null && animator.GetLayerWeight(layerIndex) != 0) {
 			sis.value.OnStopReloading();
 			animator.SetBool("Reload", false);
-			Debug.Log("Exited reloading anim");
+			//Debug.Log("Exited reloading anim");
 		}
 	}
 
