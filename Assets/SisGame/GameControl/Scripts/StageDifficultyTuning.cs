@@ -14,6 +14,10 @@ namespace SIS.GameControl
 		public SO.FloatVariable roboShootRangeVar;
 		public SO.FloatVariable roboShootRangeMaxVar;
 
+		public SO.FloatVariable hammyMaxHealth;
+		public SO.FloatVariable hammyRadius;
+		public SO.FloatVariable hammyDamage;
+		public SO.FloatVariable hammySpeed;
 
 		public void SetDifficultyTuning()
 		{
@@ -28,6 +32,10 @@ namespace SIS.GameControl
 			roboMaxHealthVar.value = current.roboMaxHealth;
 			roboShootRangeVar.value = current.roboShootRange;
 			roboShootRangeMaxVar.value = current.roboShootRangeMax;
+			hammyMaxHealth.value = current.hammyMaxHealth;
+			hammyRadius.value = current.hammyRadius;
+			hammyDamage.value = current.hammyDamage;
+			hammySpeed.value = current.hammySpeed;
 		}
 
 		[System.Serializable]
@@ -38,6 +46,11 @@ namespace SIS.GameControl
 			public float roboMaxHealth;
 			public float roboShootRange;
 			public float roboShootRangeMax;
+
+			public float hammySpeed;
+			public float hammyRadius;
+			public float hammyDamage;
+			public float hammyMaxHealth;
 		}
 	}
 }

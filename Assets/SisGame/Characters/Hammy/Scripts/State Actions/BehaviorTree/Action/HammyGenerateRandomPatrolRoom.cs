@@ -10,15 +10,26 @@ namespace SIS.Characters.Ham
 	public class HammyGenerateRandomPatrolRoom : HammyBTAction
 	{
 
-		public int PatrolLength = 1;
+		private int prevInd = -1;
         public override AivoTreeStatus Act(float timeTick, Hammy owner)
         {
 			owner.patrolRoute.Clear();
 			owner.patrolIndex = 0;
 			int roomAmount = owner.waypointNavigator.dungeon.RoomCount;
-			int randomRoom = Random.Range(0, roomAmount);
-			owner.patrolRoute.Add(randomRoom);
-			owner.waypointNavigator.StartNavigation(randomRoom);
+			Vector3 playerPos = owner.playerTransform.value.position;
+			float max_dist = float.MinValue;
+			int max_ind = -1;
+			for (int i = 0; i < roomAmount; i++) {
+				float distance = Vector3.Distance(
+					owner.waypointNavigator.dungeon.Rooms[i].rect.position, playerPos);
+				if (prevInd != i) {
+					max_ind = distance > max_dist ? i : max_ind;
+					max_dist = distance > max_dist ? distance : max_dist;
+				}
+			}
+			prevInd = max_ind;
+			owner.patrolRoute.Add(max_ind);
+			owner.waypointNavigator.StartNavigation(max_ind);
 			return AivoTreeStatus.Success;
         }
 	}

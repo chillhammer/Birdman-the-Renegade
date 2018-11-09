@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6b683c8ab1230254192628b357388ff1, type: 3}
-  m_Name: Hammy Within 15f of Player
+  m_Name: Hammy Within 10f of Player
   m_EditorClassIdentifier: 
   description: 
-  Range: 15
+  Range: 10

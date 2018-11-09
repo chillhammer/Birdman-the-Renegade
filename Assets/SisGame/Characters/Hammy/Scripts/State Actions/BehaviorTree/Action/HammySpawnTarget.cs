@@ -10,7 +10,7 @@ namespace SIS.Characters.Ham
     {
         public override AivoTreeStatus Act(float timeTick, Hammy owner)
         {
-			Vector3 position = owner.playerTransform.value.position;
+            Vector3 position = owner.playerTransform.value.position;
 			position.y = 0;
 			owner.SpawnTargetAtPos(position);
 			return AivoTree.AivoTreeStatus.Success;

@@ -21,6 +21,8 @@ namespace SIS.Map
 		public int RoomCount { get { return rooms.Count; } }
 		public Tile[] Tiles { get { return tiles; } }
 
+		public List<Room> Rooms { get { return rooms; } }
+
 		//Override values from DungeonGenerator
 		public void SetFromGeneration(Tile[] tiles, List<Room> rooms, WaypointSystem waypointSystem,
 			int width, int height)
