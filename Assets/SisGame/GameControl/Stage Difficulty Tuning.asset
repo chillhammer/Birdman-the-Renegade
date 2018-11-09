@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2292b337ac61547b353962c8cfc123, type: 3}
+  m_Name: Stage Difficulty Tuning
+  m_EditorClassIdentifier: 
+  stages:
+  - roboFireRate: 4
+    roboChaseSpeed: 200
+    roboMaxHealth: 3
+    roboShootRange: 8
+    roboShootRangeMax: 12
+  - roboFireRate: 9
+    roboChaseSpeed: 250
+    roboMaxHealth: 5
+    roboShootRange: 12
+    roboShootRangeMax: 24
+  - roboFireRate: 12
+    roboChaseSpeed: 290
+    roboMaxHealth: 7
+    roboShootRange: 20
+    roboShootRangeMax: 30
+  stageIndexVar: {fileID: 11400000, guid: 20b6fed3c94e9af48a43e730033c9a61, type: 2}
+  roboFireRateVar: {fileID: 11400000, guid: 3c3bf47fd433c9f4cbf8cc895e3d46dc, type: 2}
+  roboChaseSpeedVar: {fileID: 11400000, guid: 862697ee9ddaa454488d2c4697a26012, type: 2}
+  roboMaxHealthVar: {fileID: 11400000, guid: c7934b3fe774f1645b911bd57b9fe28e, type: 2}
+  roboShootRangeVar: {fileID: 11400000, guid: 162cac88bc72c6949a413b55c2a70a5b, type: 2}
+  roboShootRangeMaxVar: {fileID: 11400000, guid: 828dac30af81b5c46a06f17556ef22e3,
+    type: 2}

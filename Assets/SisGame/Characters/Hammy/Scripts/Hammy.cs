@@ -82,6 +82,15 @@ namespace SIS.Characters.Ham
 				Destroy(targetInstance);
 			}
 		}
+		//Allows for game controller to mark enemy as dead
+		public bool IsDead()
+		{
+			return health == 0;
+		}
+		public void PlaySound(AudioClip audio)
+		{
+			audioSource.PlayOneShot(audio);
+		}
 
 		public int GetNextPatrolRoomIndex()
 		{

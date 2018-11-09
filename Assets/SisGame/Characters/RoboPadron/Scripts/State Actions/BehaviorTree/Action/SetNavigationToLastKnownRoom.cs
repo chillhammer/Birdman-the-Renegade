@@ -17,7 +17,7 @@ namespace SIS.Characters.Robo
 
 			owner.waypointNavigator.StartNavigation(roomIndex);
 
-			Debug.Log("Setting navigation to last known room");
+			//Debug.Log("Setting navigation to last known room");
 
 			return AivoTree.AivoTreeStatus.Success;
 		}

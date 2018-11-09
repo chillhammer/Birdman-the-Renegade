@@ -34,10 +34,10 @@ namespace SIS.Characters.Robo
 				} else
 				{
 					owner.gunModel.localPosition = Vector3.Lerp(owner.gunModel.localPosition,
-						new Vector3(0.434f, -0.104f, 0.091f), gunMoveSpeed * owner.delta);
+						new Vector3(0.428f, -0.085f, 0.077f), gunMoveSpeed * owner.delta);
 
 					owner.gunModel.localRotation = Quaternion.Slerp(owner.gunModel.localRotation,
-						Quaternion.Euler(new Vector3(48.13f, 18.673f, -70.551f)), gunMoveSpeed * owner.delta);
+						Quaternion.Euler(new Vector3(47.401f, 21.294f, -68.33f)), gunMoveSpeed * owner.delta);
 				}
 			}
 		}
