@@ -30,15 +30,16 @@ namespace SIS.Characters.Ham
 		{
 			base.Start();
 			stateMachine = new StateMachine<Hammy>(this, startingState, initActionsBatch);
-
 		}
 		//Run State Machine Logic
 		private void FixedUpdate()
 		{
+			if (IsDead()) return;
 			stateMachine.FixedTick();
 		}
 		private void Update()
 		{
+			if (IsDead()) return;
 			stateMachine.Tick();
 		}
 		public override void ChangeState(int transitionIndex)
@@ -50,8 +51,20 @@ namespace SIS.Characters.Ham
 		#endregion
 
 		public SO.TransformVariable playerTransform;
-		[HideInInspector] public Transform FinTransform;
+		public ParticleSystem Explosion;
+		public GameObject targetPrefab;
+		public SO.TransformVariable cameraTransform;
+		public AudioClip Slam;
+		[SerializeField] public SO.FloatVariable maxHealth;
 
+		[SerializeField] public SO.FloatVariable damage;
+		[SerializeField] public SO.FloatVariable radius;
+		[SerializeField] public SO.FloatVariable moveSpeed;
+		public float FallSpeed = 1;
+		public float RotSpeed = 1;
+		[HideInInspector] public GameObject targetInstance;
+		[HideInInspector] public Transform FinTransform;
+		[HideInInspector] public Transform HammerBaseTransform;
 		[HideInInspector] public Waypoints.WaypointNavigator waypointNavigator;
 		[HideInInspector] public List<int> patrolRoute = new List<int>();
 		[HideInInspector] public int patrolIndex = 0;
@@ -63,6 +76,9 @@ namespace SIS.Characters.Ham
 			//Hammy: TrajectorySystem.Init()
 			waypointNavigator = GetComponent<Waypoints.WaypointNavigator>();
 			FinTransform = mTransform.FindDeepChild("Fin Reference");
+			HammerBaseTransform = mTransform.FindDeepChild("Hammer Base");
+			health = maxHealth.value;
+			anim.speed = 1.5f;
 		}
 
 		public void OnHit(Character shooter, float baseDamage, Vector3 dir, Vector3 pos)
@@ -70,19 +86,31 @@ namespace SIS.Characters.Ham
 			health -= baseDamage;
 			rigid.AddForceAtPosition(dir, pos);
 
+			if (onHitDelegate != null)
+				onHitDelegate();
+
 			if (health <= 0)
 			{
-				Destroy(gameObject);
+				Collider[] colliders = GetComponentsInChildren<Collider>();
+				foreach (Collider col in colliders) {
+					col.isTrigger = true;
+				}
+				Destroy(targetInstance);
+				StartCoroutine(Death());
 			}
 		}
 		//Allows for game controller to mark enemy as dead
 		public bool IsDead()
 		{
-			return health == 0;
+			return health <= 0;
 		}
 		public void PlaySound(AudioClip audio)
 		{
 			audioSource.PlayOneShot(audio);
+		}
+
+		public void PlaySlam() {
+			PlaySound(Slam);
 		}
 
 		public int GetNextPatrolRoomIndex()
@@ -91,5 +119,47 @@ namespace SIS.Characters.Ham
 			if (patrolIndex >= patrolRoute.Count) return -1;
 			return patrolRoute[patrolIndex];
 		}
+
+		public void SpawnTargetAtPos(Vector3 pos) {
+			targetInstance = Instantiate(targetPrefab, pos, Quaternion.identity);
+			targetInstance.transform.localScale = new Vector3(radius.value, 0.1f, radius.value);
+		}
+
+		public void DestroyTarget() {
+			Destroy(targetInstance);
+			targetInstance = null;
+		}
+
+		public void SpawnExplosionAtPos(Vector3 pos) {
+			Instantiate(Explosion, pos, Quaternion.Euler(-90, 0, 0));
+			StartCoroutine(CameraShake(2));
+		}
+
+		public bool InAir() {
+			return FinTransform.position.y > 0.1;
+		}
+
+		private IEnumerator Death() {
+			anim.SetBool("Slam", false);
+			rigid.velocity = Vector3.zero;
+			float time = 5;
+			while (time > 0) {
+				time -= Time.deltaTime;
+				mTransform.position += Vector3.down * FallSpeed * Time.deltaTime;
+				mTransform.rotation *= Quaternion.Euler(RotSpeed * Time.deltaTime, 0, RotSpeed * Time.deltaTime);
+				yield return null;
+			}
+			Destroy(gameObject);
+		}
+
+		public IEnumerator CameraShake(float time) {
+			// Vector3[] dir = new Vector3 {Vector3.up, Vector3.down, Vector3.left, Vector3.right};
+			while (time > 0) {
+				time -= Time.deltaTime;
+				// cameraTransform.value.position += Vector3.up;
+				yield return null;
+			}
+		}
+
 	}
 }

@@ -12,6 +12,7 @@ namespace SIS.Characters.Ham
 		public HammySetableCondition condition;
 		public override AivoTreeStatus Act(float timeTick, Hammy owner)
 		{
+			Debug.Log("condition set");
 			condition.Value = SetValue;
 			return AivoTree.AivoTreeStatus.Success;
 		}

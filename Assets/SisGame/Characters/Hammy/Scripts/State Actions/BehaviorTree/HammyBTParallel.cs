@@ -11,7 +11,7 @@ namespace SIS.Characters.Ham
 	//Will run all nodes concurrently
 
 	[CreateAssetMenu(menuName = "Characters/Hammy/State Actions/Behavior Tree/Parallel")]
-	public class HammyBTParellel : HammyBTNode
+	public class HammyBTParallel : HammyBTNode
 	{
 		public HammyBTNode[] bTNodes;
 		public int successesNeeded = 1;
