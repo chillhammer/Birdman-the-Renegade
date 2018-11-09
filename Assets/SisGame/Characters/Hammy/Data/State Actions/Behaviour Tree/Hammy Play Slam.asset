@@ -13,6 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bTNodes:
   - {fileID: 11400000, guid: 0283579be0aae044b97e6b71849c4615, type: 2}
+  - {fileID: 11400000, guid: 01a62c37e39c4c94c9fff33df1a33e6f, type: 2}
+  - {fileID: 11400000, guid: 07d1c9e56396d214495dbd685520bc4a, type: 2}
   - {fileID: 11400000, guid: 13211db55d651b6469cf291a3889c0c6, type: 2}
   - {fileID: 11400000, guid: d15874af788b33d4fa49d2aaf1b11eb3, type: 2}
   - {fileID: 11400000, guid: 1fc567352fbf9334c9bf3024133b234c, type: 2}

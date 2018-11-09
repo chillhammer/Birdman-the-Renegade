@@ -50,8 +50,10 @@ namespace SIS.Characters.Ham
 		#endregion
 
 		public SO.TransformVariable playerTransform;
+		public GameObject targetPrefab;
+		[HideInInspector] public GameObject targetInstance;
 		[HideInInspector] public Transform FinTransform;
-
+		[HideInInspector] public Transform HammerBaseTransform;
 		[HideInInspector] public Waypoints.WaypointNavigator waypointNavigator;
 		[HideInInspector] public List<int> patrolRoute = new List<int>();
 		[HideInInspector] public int patrolIndex = 0;
@@ -63,6 +65,7 @@ namespace SIS.Characters.Ham
 			//Hammy: TrajectorySystem.Init()
 			waypointNavigator = GetComponent<Waypoints.WaypointNavigator>();
 			FinTransform = mTransform.FindDeepChild("Fin Reference");
+			HammerBaseTransform = mTransform.FindDeepChild("Hammer Base");
 		}
 
 		public void OnHit(Character shooter, float baseDamage, Vector3 dir, Vector3 pos)
@@ -70,9 +73,13 @@ namespace SIS.Characters.Ham
 			health -= baseDamage;
 			rigid.AddForceAtPosition(dir, pos);
 
+			if (onHitDelegate != null)
+				onHitDelegate();
+
 			if (health <= 0)
 			{
 				Destroy(gameObject);
+				Destroy(targetInstance);
 			}
 		}
 
@@ -81,6 +88,15 @@ namespace SIS.Characters.Ham
 			patrolIndex++;
 			if (patrolIndex >= patrolRoute.Count) return -1;
 			return patrolRoute[patrolIndex];
+		}
+
+		public void SpawnTargetAtPos(Vector3 pos) {
+			targetInstance = Instantiate(targetPrefab, pos, Quaternion.identity);
+		}
+
+		public void DestroyTarget() {
+			Destroy(targetInstance);
+			targetInstance = null;
 		}
 	}
 }

@@ -8,8 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b683c8ab1230254192628b357388ff1, type: 3}
-  m_Name: Hammy Within 5f of Player
+  m_Script: {fileID: 11500000, guid: d45401f392cbcaa4481f99a412512b20, type: 3}
+  m_Name: Hammy Move Towards Player Slow
   m_EditorClassIdentifier: 
-  description: 
-  Range: 5
+  moveSpeed: 200
+  turnSpeed: 2

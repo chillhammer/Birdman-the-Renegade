@@ -16,9 +16,8 @@ namespace SIS.Characters.Ham
 			Vector3 direction = owner.playerTransform.value.position - owner.mTransform.position;
 			direction.y = 0;
 			owner.mTransform.rotation = Quaternion.Slerp(owner.mTransform.rotation,
-				Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)), turnSpeed * owner.delta);
-
-			Vector3 motion = owner.mTransform.forward * moveSpeed * owner.delta;
+				Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z)), turnSpeed * Time.deltaTime);
+			Vector3 motion = owner.mTransform.forward * moveSpeed * Time.deltaTime;
 			owner.rigid.velocity = motion;
 			return AivoTree.AivoTreeStatus.Running;
         }

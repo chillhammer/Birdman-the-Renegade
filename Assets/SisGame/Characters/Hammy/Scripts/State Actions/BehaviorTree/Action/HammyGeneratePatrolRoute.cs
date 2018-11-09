@@ -19,15 +19,12 @@ namespace SIS.Characters.Ham
 			Vector3 position = owner.transform.position;
 			Dungeon dungeon = owner.waypointNavigator.dungeon;
 
-			int startRoomIndex = dungeon.GetClosestRoomIndex((int) position.x, (int) position.y);
-			Debug.Log(startRoomIndex);
+			int startRoomIndex = dungeon.GetRoomIndex((int)owner.mTransform.position.x, (int)owner.mTransform.position.z);
 			owner.patrolRoute.Add(startRoomIndex);
 			// random for now.. need to create a proper connected route.
-			for (int i = 0; i < PatrolLength; i++)
-			{
-				int roomAmount = dungeon.RoomCount;
-				int randomRoom = Random.Range(0, roomAmount);
-				owner.patrolRoute.Add(randomRoom);
+			for (int i = 0; i < PatrolLength; i++) {
+				Room randomRoom = dungeon.GetRandomRoom();
+				owner.patrolRoute.Add(dungeon.GetRoomIndex(randomRoom));
 			}
 			owner.waypointNavigator.StartNavigation(startRoomIndex);
 			return AivoTreeStatus.Success;
