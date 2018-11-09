@@ -14,6 +14,7 @@ MonoBehaviour:
   stages:
   - enemies:
     - {fileID: 1284060523504750, guid: f42c9d02174afdd4f92b728e4b3f33b3, type: 2}
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
     maxAlive: 1
   - enemies:
     - {fileID: 1284060523504750, guid: f42c9d02174afdd4f92b728e4b3f33b3, type: 2}

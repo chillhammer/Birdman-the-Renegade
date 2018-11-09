@@ -29,7 +29,8 @@ namespace SIS.Items.Weapons
 		public AnimationCurve recoilZ;
 
 		public AudioClip fireAudio;
-		
+		public AudioClip reloadAudio;
+
 		public Ballistics ballistics;
 		public string topHalfAnimatorLayerName = "RevolverTopHalf"; //for custom animations
 
