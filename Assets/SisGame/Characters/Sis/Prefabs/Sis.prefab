@@ -191,6 +191,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4772185826925480}
   - component: {fileID: 95787136944826026}
+  - component: {fileID: 114335332078965662}
   m_Layer: 9
   m_Name: SisModel
   m_TagString: Player
@@ -625,7 +626,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1038008882383420}
   m_LocalRotation: {x: -0, y: -0.9822769, z: -0, w: -0.18743542}
-  m_LocalPosition: {x: 22.162748, y: 0.9123821, z: 22.537094}
+  m_LocalPosition: {x: 265.23758, y: 147.4878, z: 22.537094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4772185826925480}
@@ -832,6 +833,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformVariable: {fileID: 11400000, guid: f948770e58dae564a932fe55e5620b01, type: 2}
+--- !u!114 &114335332078965662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403974809701064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d02ef5dcf737b824a99d436d4d903c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sis: {fileID: 11400000, guid: 7a5eaaf58a516004ead97e53823d534c, type: 2}
 --- !u!114 &114391990089040116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -858,6 +871,7 @@ MonoBehaviour:
   mTransform: {fileID: 4733287944558582}
   rigid: {fileID: 54209258339737766}
   anim: {fileID: 95787136944826026}
+  audioSource: {fileID: 0}
   delta: 0
   health: 100
   startingState: {fileID: 11400000, guid: 841b7245e5c205f498bc6f12b50cfad3, type: 2}
@@ -881,6 +895,7 @@ MonoBehaviour:
   isCrouching: 0
   isReloading: 0
   doneReloading: 0
+  reloadingDoOnce: 1
   switchWeaponAxis: 0
   aiming: {fileID: 0}
 --- !u!136 &136196543225488228

@@ -39,6 +39,11 @@ namespace SIS.Items.Weapons
 			}
 		}
 
+		public void Reload(AudioClip reloadSound)
+		{
+			audioSource.PlayOneShot(reloadSound);
+		}
+
 
 		//Helper Functions
 		protected void CreateAudioHolder(AudioClip sound)
