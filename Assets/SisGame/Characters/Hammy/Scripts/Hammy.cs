@@ -60,6 +60,7 @@ namespace SIS.Characters.Ham
 		[SerializeField] public SO.FloatVariable damage;
 		[SerializeField] public SO.FloatVariable radius;
 		[SerializeField] public SO.FloatVariable moveSpeed;
+		[SerializeField] public SO.FloatVariable fleeSpeed;
 		public float FallSpeed = 1;
 		public float RotSpeed = 1;
 		[HideInInspector] public GameObject targetInstance;
@@ -69,6 +70,7 @@ namespace SIS.Characters.Ham
 		[HideInInspector] public List<int> patrolRoute = new List<int>();
 		[HideInInspector] public int patrolIndex = 0;
 		[HideInInspector] public bool sameRoomAsPlayer;
+		[HideInInspector] public bool wasHit;
 		//Must atleast override since it is abstract
 		//Allows for initial setup, better to use InitActionBatch, but it's here if you don't want to make action
 		protected override void SetupComponents()
@@ -83,6 +85,7 @@ namespace SIS.Characters.Ham
 
 		public void OnHit(Character shooter, float baseDamage, Vector3 dir, Vector3 pos)
 		{
+			wasHit = true;
 			health -= baseDamage;
 			rigid.AddForceAtPosition(dir, pos);
 
@@ -106,11 +109,11 @@ namespace SIS.Characters.Ham
 		}
 		public void PlaySound(AudioClip audio)
 		{
-			audioSource.PlayOneShot(audio);
+			audioSource.PlayOneShot(audio, 0.5f);
 		}
 
 		public void PlaySlam() {
-			PlaySound(Slam);
+			audioSource.PlayOneShot(Slam, 0.2f);
 		}
 
 		public int GetNextPatrolRoomIndex()

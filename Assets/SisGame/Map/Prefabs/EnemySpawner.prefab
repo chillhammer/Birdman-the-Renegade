@@ -55,7 +55,7 @@ MonoBehaviour:
   dungeon: {fileID: 11400000, guid: fcafa1c3f050c43448a48e9105f95af5, type: 2}
   enemiesParent: {fileID: 0}
   enemies:
-  - enemy: {fileID: 1284060523504750, guid: f42c9d02174afdd4f92b728e4b3f33b3, type: 2}
+  - enemy: {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
     number: 1
     sameRoom: 0
     elevation: 0.4

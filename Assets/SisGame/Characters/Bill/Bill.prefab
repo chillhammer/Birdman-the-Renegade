@@ -251,7 +251,7 @@ MonoBehaviour:
     m_Bits: 1536
   audioSource: {fileID: 82458594608753442}
   angrySound: {fileID: 8300000, guid: a5fbdb2c97a156640b5c3b30055e144d, type: 3}
-  sisVariable: {fileID: 0}
+  sisVariable: {fileID: 11400000, guid: 7a5eaaf58a516004ead97e53823d534c, type: 2}
   deathSizeCurve:
     serializedVersion: 2
     m_Curve:
@@ -285,6 +285,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  dead: 0
   angry: 0
   normalspeed: 2
   angryspeed: 3

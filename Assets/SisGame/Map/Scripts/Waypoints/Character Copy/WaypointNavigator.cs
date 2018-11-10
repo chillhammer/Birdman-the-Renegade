@@ -15,6 +15,8 @@ namespace SIS.Waypoints
 		public Dungeon dungeon;
 		public float nextWaypointDistCheck = 1.2f;
 		public bool automaticWaypointUpdate = true; //updates current waypoint
+		public bool optmizePath = true;
+		public bool strongOptimizePath = false; //Uses raycasting to skip on redundant nodes
 
 		WaypointGraph waypointGraph;
 		List<Waypoint> path;
@@ -133,13 +135,16 @@ namespace SIS.Waypoints
 				accurateGoal = new Waypoint(goalX, goalY); //Custom Location
 
 			//Naive Movement Optimization
-			if (IsPathClearBetweenWaypoints(accurateStart, accurateGoal))
+			if (optmizePath)
 			{
-				path = new List<Waypoint>();
-				path.Add(accurateGoal);
-				//Debug.Log("Simple navigation since path is clear");
-				pathIndex = 0;
-				return;
+				if (IsPathClearBetweenWaypoints(accurateStart, accurateGoal))
+				{
+					path = new List<Waypoint>();
+					path.Add(accurateGoal);
+					Debug.Log("Simple navigation since path is clear");
+					pathIndex = 0;
+					return;
+				}
 			}
 
 			path = waypointGraph.AStar(start, goal);
@@ -152,7 +157,8 @@ namespace SIS.Waypoints
 			{
 				path.RemoveAt(0);
 			}
-			//OptimizePath();
+			if (strongOptimizePath)
+				OptimizePath();
 			pathIndex = 0;
 		}
 		#region StartNavigation Overloads

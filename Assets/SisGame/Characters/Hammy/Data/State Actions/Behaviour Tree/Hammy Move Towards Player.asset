@@ -11,5 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45401f392cbcaa4481f99a412512b20, type: 3}
   m_Name: Hammy Move Towards Player
   m_EditorClassIdentifier: 
-  moveSpeed: 300
-  turnSpeed: 30
+  turnSpeed: 3

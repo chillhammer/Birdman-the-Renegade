@@ -8,7 +8,6 @@ namespace SIS.Characters.Ham
     [CreateAssetMenu(menuName = "Characters/Hammy/State Actions/Behavior Tree/HammySlamInRadius")]
     public class HammySlamInRadius : HammyBTAction
     {
-		public double radius;
 		public Sis.SisVariable sis;
 		public float force = 10f;
         public override AivoTreeStatus Act(float timeTick, Hammy owner) {

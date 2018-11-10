@@ -20,8 +20,9 @@ namespace SIS.Characters.Ham
 			float max_dist = float.MinValue;
 			int max_ind = -1;
 			for (int i = 0; i < roomAmount; i++) {
+				Vector2 roomCenter = owner.waypointNavigator.dungeon.Rooms[i].rect.center;
 				float distance = Vector3.Distance(
-					owner.waypointNavigator.dungeon.Rooms[i].rect.position, playerPos);
+					new Vector3(roomCenter.x, 0, roomCenter.y), playerPos);
 				if (prevInd != i) {
 					max_ind = distance > max_dist ? i : max_ind;
 					max_dist = distance > max_dist ? distance : max_dist;

@@ -147,7 +147,7 @@ namespace SIS.Characters.Bill
 
         public void PlaySound(AudioClip audio)
         {
-            audioSource.PlayOneShot(audio);
+            audioSource.PlayOneShot(audio, 0.5f);
         }
 
         public void OnDrawGizmosSelected()

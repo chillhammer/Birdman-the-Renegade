@@ -13,15 +13,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stages:
   - enemies:
-    - {fileID: 1284060523504750, guid: f42c9d02174afdd4f92b728e4b3f33b3, type: 2}
+    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+    maxAlive: 1
+  - enemies:
+    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+    maxAlive: 1
+  - enemies:
+    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+    maxAlive: 1
+  - enemies:
+    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+    maxAlive: 4
+  - enemies:
     - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
-    maxAlive: 1
-  - enemies:
-    - {fileID: 1284060523504750, guid: f42c9d02174afdd4f92b728e4b3f33b3, type: 2}
-    maxAlive: 1
-  - enemies:
-    - {fileID: 1284060523504750, guid: f42c9d02174afdd4f92b728e4b3f33b3, type: 2}
-    maxAlive: 1
-  - enemies: []
-    maxAlive: 0
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
+    maxAlive: 4
   stageIndexVar: {fileID: 11400000, guid: 20b6fed3c94e9af48a43e730033c9a61, type: 2}

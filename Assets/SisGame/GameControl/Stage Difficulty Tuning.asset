@@ -17,16 +17,41 @@ MonoBehaviour:
     roboMaxHealth: 3
     roboShootRange: 8
     roboShootRangeMax: 12
+    hammySpeed: 2
+    hammyTurnSpeed: 3
+    hammyRadius: 2
+    hammyDamage: 10
+    hammyMaxHealth: 4
   - roboFireRate: 9
     roboChaseSpeed: 250
     roboMaxHealth: 5
     roboShootRange: 12
     roboShootRangeMax: 24
+    hammySpeed: 4
+    hammyTurnSpeed: 2
+    hammyRadius: 3
+    hammyDamage: 10
+    hammyMaxHealth: 5
   - roboFireRate: 12
     roboChaseSpeed: 290
     roboMaxHealth: 7
     roboShootRange: 20
     roboShootRangeMax: 30
+    hammySpeed: 5
+    hammyTurnSpeed: 3
+    hammyRadius: 4
+    hammyDamage: 10
+    hammyMaxHealth: 6
+  - roboFireRate: 12
+    roboChaseSpeed: 290
+    roboMaxHealth: 7
+    roboShootRange: 20
+    roboShootRangeMax: 30
+    hammySpeed: 6
+    hammyTurnSpeed: 5
+    hammyRadius: 5
+    hammyDamage: 10
+    hammyMaxHealth: 6
   stageIndexVar: {fileID: 11400000, guid: 20b6fed3c94e9af48a43e730033c9a61, type: 2}
   roboFireRateVar: {fileID: 11400000, guid: 3c3bf47fd433c9f4cbf8cc895e3d46dc, type: 2}
   roboChaseSpeedVar: {fileID: 11400000, guid: 862697ee9ddaa454488d2c4697a26012, type: 2}
@@ -34,3 +59,8 @@ MonoBehaviour:
   roboShootRangeVar: {fileID: 11400000, guid: 162cac88bc72c6949a413b55c2a70a5b, type: 2}
   roboShootRangeMaxVar: {fileID: 11400000, guid: 828dac30af81b5c46a06f17556ef22e3,
     type: 2}
+  hammyMaxHealth: {fileID: 11400000, guid: 211890f3eeda0e94db68518f19e1fb7e, type: 2}
+  hammyRadius: {fileID: 11400000, guid: 6c0eec4c02df1d0439db042823843a98, type: 2}
+  hammyDamage: {fileID: 11400000, guid: 45e24b0671291b14eb5bc73de43598c8, type: 2}
+  hammySpeed: {fileID: 11400000, guid: bb1451a62184d334cb63d3370fe22643, type: 2}
+  hammyTurnSpeed: {fileID: 11400000, guid: f3dfb7fa0ba0f6747befe6d4471b9019, type: 2}

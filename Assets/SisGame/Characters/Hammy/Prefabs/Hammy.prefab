@@ -521,7 +521,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272212300700802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.39, z: -1.5}
+  m_LocalPosition: {x: 0, y: -1.39, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4591030675770136}
@@ -537,7 +537,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1098440364130272}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 24.958132, y: 3.3730807, z: 20.85942}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4437472659778024}
@@ -985,6 +985,8 @@ MonoBehaviour:
   dungeon: {fileID: 11400000, guid: fcafa1c3f050c43448a48e9105f95af5, type: 2}
   nextWaypointDistCheck: 1.5
   automaticWaypointUpdate: 1
+  optmizePath: 1
+  strongOptimizePath: 1
   pathIndex: 0
 --- !u!114 &114738174299013806
 MonoBehaviour:
@@ -1032,9 +1034,12 @@ MonoBehaviour:
   targetPrefab: {fileID: 1659521415999056, guid: 5d793a3bf5f1f654ca948270febb3e22,
     type: 2}
   cameraTransform: {fileID: 11400000, guid: 9d1babb12888d48458a6f457e3daec60, type: 2}
+  Slam: {fileID: 8300000, guid: 10baab8f04275bb4e8c7f7c71ab4a4b2, type: 3}
   maxHealth: {fileID: 11400000, guid: 211890f3eeda0e94db68518f19e1fb7e, type: 2}
   damage: {fileID: 11400000, guid: 45e24b0671291b14eb5bc73de43598c8, type: 2}
+  radius: {fileID: 11400000, guid: 6c0eec4c02df1d0439db042823843a98, type: 2}
   moveSpeed: {fileID: 11400000, guid: bb1451a62184d334cb63d3370fe22643, type: 2}
+  fleeSpeed: {fileID: 11400000, guid: 28f64851abb91c74fa53c3247a96547e, type: 2}
   FallSpeed: 1.5
   RotSpeed: 20
   targetInstance: {fileID: 0}
@@ -1044,6 +1049,7 @@ MonoBehaviour:
   patrolRoute: ffffffff090000000700000006000000
   patrolIndex: 1
   sameRoomAsPlayer: 0
+  wasHit: 0
 --- !u!136 &136320818683596278
 CapsuleCollider:
   m_ObjectHideFlags: 1
