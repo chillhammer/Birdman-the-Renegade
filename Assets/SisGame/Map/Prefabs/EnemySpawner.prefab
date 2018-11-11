@@ -55,14 +55,14 @@ MonoBehaviour:
   dungeon: {fileID: 11400000, guid: fcafa1c3f050c43448a48e9105f95af5, type: 2}
   enemiesParent: {fileID: 0}
   enemies:
-  - enemy: {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+  - enemy: {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
     number: 1
     sameRoom: 0
     elevation: 0.4
   stageListing: {fileID: 11400000, guid: fa9be48e3588a5446aa88820ca3b496f, type: 2}
   useStageListing: 1
   stageIndexVar: {fileID: 11400000, guid: 20b6fed3c94e9af48a43e730033c9a61, type: 2}
-  enemyKilledSound: {fileID: 8300000, guid: c7efba6a921a0bb45a6f1d0af06b1052, type: 3}
+  enemyKilledSound: {fileID: 8300000, guid: dc93c074eee35d44c9e7b4fb6307e144, type: 3}
   playerTransform: {fileID: 11400000, guid: f948770e58dae564a932fe55e5620b01, type: 2}
 --- !u!114 &114984343247762080
 MonoBehaviour:

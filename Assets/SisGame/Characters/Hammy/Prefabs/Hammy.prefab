@@ -985,7 +985,7 @@ MonoBehaviour:
   dungeon: {fileID: 11400000, guid: fcafa1c3f050c43448a48e9105f95af5, type: 2}
   nextWaypointDistCheck: 1.5
   automaticWaypointUpdate: 1
-  optmizePath: 1
+  optimizePath: 1
   strongOptimizePath: 1
   pathIndex: 0
 --- !u!114 &114738174299013806
@@ -1034,7 +1034,7 @@ MonoBehaviour:
   targetPrefab: {fileID: 1659521415999056, guid: 5d793a3bf5f1f654ca948270febb3e22,
     type: 2}
   cameraTransform: {fileID: 11400000, guid: 9d1babb12888d48458a6f457e3daec60, type: 2}
-  Slam: {fileID: 8300000, guid: 10baab8f04275bb4e8c7f7c71ab4a4b2, type: 3}
+  Slam: {fileID: 8300000, guid: d490bb35fc0c6a647b8eef1cd0135c19, type: 3}
   maxHealth: {fileID: 11400000, guid: 211890f3eeda0e94db68518f19e1fb7e, type: 2}
   damage: {fileID: 11400000, guid: 45e24b0671291b14eb5bc73de43598c8, type: 2}
   radius: {fileID: 11400000, guid: 6c0eec4c02df1d0439db042823843a98, type: 2}

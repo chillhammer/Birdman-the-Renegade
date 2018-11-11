@@ -17,27 +17,31 @@ namespace SIS.Characters.Sis
 		float shootingTimer = 0;
 
 		bool startedShooting;
+		bool hasShot;
 
 		private void OnEnable()
 		{
 			startedShooting = false;
+			hasShot = false;
 		}
 
 		public override void Execute(Sis owner)
 		{
 			Weapon weapon = owner.inventory.currentWeapon;
 			Weapon.RuntimeWeapon runtime = weapon.runtime;
-			isShooting.value = owner.isShooting;
+
+			isShooting.value = startedShooting;
 
 			//Update Shooting Variables for FX and Ballistics
 			Vector3 origin = (runtime.weaponTip == null ? runtime.modelInstance.transform.position : runtime.weaponTip.position);
 			Vector3 dir = owner.movementValues.aimPosition - origin;
 
+
+
 			//Shooting
-			if (owner.isShooting && !startedShooting && !owner.isReloading)
+			if (owner.isShooting && startedShooting && !hasShot)
 			{
-				startedShooting = true;
-				
+				hasShot = true;
 				if (runtime.magazineSize > 0)
 				{
 					if (Time.realtimeSinceStartup - runtime.lastFired > weapon.fireRate)
@@ -70,6 +74,12 @@ namespace SIS.Characters.Sis
 				}
 			}
 
+			if (owner.isShooting && !startedShooting && !owner.isReloading)
+			{
+				isShooting.value = true;
+				startedShooting = true;
+			}
+
 			//Delay
 			if (startedShooting)
 			{
@@ -87,6 +97,7 @@ namespace SIS.Characters.Sis
 				owner.isShooting = false;
 				startedShooting = false;
 				shootingTimer = 0;
+				hasShot = false;
 			}
 		}
 	}

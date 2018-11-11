@@ -15,7 +15,7 @@ namespace SIS.Waypoints
 		public Dungeon dungeon;
 		public float nextWaypointDistCheck = 1.2f;
 		public bool automaticWaypointUpdate = true; //updates current waypoint
-		public bool optmizePath = true;
+		public bool optimizePath = true;
 		public bool strongOptimizePath = false; //Uses raycasting to skip on redundant nodes
 
 		WaypointGraph waypointGraph;
@@ -135,7 +135,7 @@ namespace SIS.Waypoints
 				accurateGoal = new Waypoint(goalX, goalY); //Custom Location
 
 			//Naive Movement Optimization
-			if (optmizePath)
+			if (optimizePath)
 			{
 				if (IsPathClearBetweenWaypoints(accurateStart, accurateGoal))
 				{
@@ -153,9 +153,11 @@ namespace SIS.Waypoints
 			if (goal.X != goalX || goal.Y != goalY)
 				path.Add(accurateGoal);
 
+			
 			if (path.Count > 1)
 			{
-				path.RemoveAt(0);
+				if (IsPathClearBetweenWaypoints(accurateStart, path[1]))
+					path.RemoveAt(0);
 			}
 			if (strongOptimizePath)
 				OptimizePath();

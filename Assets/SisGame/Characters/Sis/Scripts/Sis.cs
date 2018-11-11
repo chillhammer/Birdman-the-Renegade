@@ -41,6 +41,7 @@ namespace SIS.Characters.Sis
 		//Serializable Properties
 		public MovementValues movementValues;
 		public Inventory inventory;
+		public AudioClip hurtSound;
 
 		#region MovementValues
 		[System.Serializable]
@@ -101,6 +102,7 @@ namespace SIS.Characters.Sis
 			rigid.AddForce(dir, ForceMode.Impulse);
 			if (health <= 0)
 				return;
+			PlaySound(hurtSound);
 			health -= baseDamage;
 			onHitDelegate();
 		}
@@ -111,7 +113,7 @@ namespace SIS.Characters.Sis
 		}
 		public void PlaySound(AudioClip audio)
 		{
-			audioSource.PlayOneShot(audio);
+			audioSource.PlayOneShot(audio, 0.4f);
 		}
 	}
 }

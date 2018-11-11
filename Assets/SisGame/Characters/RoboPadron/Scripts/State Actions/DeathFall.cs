@@ -9,6 +9,7 @@ namespace SIS.Characters.Robo
 	public class DeathFall : RoboPadronBTAction
 	{
 		public AnimationCurve fallProgression;
+		public AudioClip deathFallSound;
 
 		public float secondsToFall = 5f;
 
@@ -20,6 +21,7 @@ namespace SIS.Characters.Robo
 				owner.deathFallProgress.fallTowards = new Vector3(Mathf.Sin(angleFall), 0, Mathf.Cos(angleFall));
 				owner.deathFallProgress.originalRotation = owner.mTransform.rotation;
 				owner.anim.SetFloat("Vertical", 0);
+				owner.PlaySound(deathFallSound);
 			}
 
 			if (owner.deathFallProgress.timer < secondsToFall) {

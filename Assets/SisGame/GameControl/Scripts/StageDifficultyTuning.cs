@@ -20,6 +20,8 @@ namespace SIS.GameControl
 		public SO.FloatVariable hammySpeed;
 		public SO.FloatVariable hammyTurnSpeed;
 
+		public SO.FloatVariable billAngrySpeed;
+
 		public void SetDifficultyTuning()
 		{
 			if (stageIndexVar.value < 0 || stageIndexVar.value >= stages.Length)
@@ -38,6 +40,7 @@ namespace SIS.GameControl
 			hammyDamage.value = current.hammyDamage;
 			hammySpeed.value = current.hammySpeed;
 			hammyTurnSpeed.value = current.hammyTurnSpeed;
+			billAngrySpeed.value = current.billAngrySpeed;
 		}
 
 		[System.Serializable]
@@ -54,6 +57,8 @@ namespace SIS.GameControl
 			public float hammyRadius;
 			public float hammyDamage;
 			public float hammyMaxHealth;
+
+			public float billAngrySpeed;
 		}
 	}
 }

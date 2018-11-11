@@ -53,4 +53,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  deathFallSound: {fileID: 8300000, guid: 304c6189592797047af3a23450054fd7, type: 3}
   secondsToFall: 1.2

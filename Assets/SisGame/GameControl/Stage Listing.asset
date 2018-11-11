@@ -13,19 +13,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stages:
   - enemies:
-    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
     maxAlive: 1
   - enemies:
-    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
     maxAlive: 1
   - enemies:
-    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
     maxAlive: 1
   - enemies:
-    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
-    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
-    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
-    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
     maxAlive: 4
   - enemies:
     - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}

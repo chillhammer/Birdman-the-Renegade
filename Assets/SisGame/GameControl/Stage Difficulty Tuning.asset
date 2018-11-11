@@ -22,6 +22,7 @@ MonoBehaviour:
     hammyRadius: 2
     hammyDamage: 10
     hammyMaxHealth: 4
+    billAngrySpeed: 3
   - roboFireRate: 9
     roboChaseSpeed: 250
     roboMaxHealth: 5
@@ -32,6 +33,7 @@ MonoBehaviour:
     hammyRadius: 3
     hammyDamage: 10
     hammyMaxHealth: 5
+    billAngrySpeed: 5
   - roboFireRate: 12
     roboChaseSpeed: 290
     roboMaxHealth: 7
@@ -42,6 +44,7 @@ MonoBehaviour:
     hammyRadius: 4
     hammyDamage: 10
     hammyMaxHealth: 6
+    billAngrySpeed: 5
   - roboFireRate: 12
     roboChaseSpeed: 290
     roboMaxHealth: 7
@@ -52,6 +55,7 @@ MonoBehaviour:
     hammyRadius: 5
     hammyDamage: 10
     hammyMaxHealth: 6
+    billAngrySpeed: 7
   stageIndexVar: {fileID: 11400000, guid: 20b6fed3c94e9af48a43e730033c9a61, type: 2}
   roboFireRateVar: {fileID: 11400000, guid: 3c3bf47fd433c9f4cbf8cc895e3d46dc, type: 2}
   roboChaseSpeedVar: {fileID: 11400000, guid: 862697ee9ddaa454488d2c4697a26012, type: 2}
@@ -64,3 +68,4 @@ MonoBehaviour:
   hammyDamage: {fileID: 11400000, guid: 45e24b0671291b14eb5bc73de43598c8, type: 2}
   hammySpeed: {fileID: 11400000, guid: bb1451a62184d334cb63d3370fe22643, type: 2}
   hammyTurnSpeed: {fileID: 11400000, guid: f3dfb7fa0ba0f6747befe6d4471b9019, type: 2}
+  billAngrySpeed: {fileID: 11400000, guid: a6602408fa1c7cb4cbc40edd16e42357, type: 2}

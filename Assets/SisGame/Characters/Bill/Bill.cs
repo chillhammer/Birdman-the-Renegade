@@ -14,11 +14,19 @@ namespace SIS.Characters.Bill
         AudioSource audioSource;
         [SerializeField]
         AudioClip angrySound;
-        [SerializeField]
+		[SerializeField]
+		AudioClip deathSound;
+		[SerializeField]
         Sis.SisVariable sisVariable;
         [SerializeField]
         AnimationCurve deathSizeCurve;
-        WaypointNavigator waypointNavigator;
+		[SerializeField]
+		ParticleSystem bubbleParticleSystem;
+		[SerializeField]
+		ParticleSystem sparkParticleSystem;
+		[SerializeField]
+		SO.FloatVariable angrySpeedVariable;
+		WaypointNavigator waypointNavigator;
         CharacterController charactercontroller;
 
         private float timer = 0f;
@@ -26,7 +34,8 @@ namespace SIS.Characters.Bill
         [SerializeField]
         private bool angry = false;
         public float normalspeed = 1;
-        public float angryspeed = 4;
+        private float angryspeed = 4;
+		public float rotationspeed = 3;
         public float hitDistance = 1f;
         // Use this for initialization
         void Start()
@@ -38,81 +47,139 @@ namespace SIS.Characters.Bill
 
         // Update is called once per frame
         void Update()
-        {   
-            if (dead)
-            {
-                timer += Time.deltaTime;
+		{
+			angryspeed = angrySpeedVariable.value;
 
-                float deathTime = 2f;
-                float deathSize = deathSizeCurve.Evaluate(timer / deathTime);
-                transform.localScale = new Vector3(deathSize, deathSize, deathSize);
+			UpdateBubbleParticleSystem();
 
-                if (timer >= deathTime)
-                {
-                    Destroy(gameObject);
-                }
-                return;
-            }
-            if (playerTransform.value != null)
-            {
-                //If There is a Straight Path
-                if (angry && waypointNavigator.PathFinished && CanSeePlayer())
-                {
-                    //Naive Pathfinding
-                    Vector3 dirtoplayer = playerTransform.value.position - transform.position;
-                    charactercontroller.Move(angryspeed * dirtoplayer * Time.deltaTime);
-                    dirtoplayer.y = 0;
-                    Quaternion quatdir = Quaternion.LookRotation(dirtoplayer);
-                    float rotationspeed = 5f;
-                    transform.rotation =
-                        Quaternion.Slerp(transform.rotation, quatdir, rotationspeed * Time.deltaTime);
-                }
-                else
-                {
-                    //Smart pathfinding
-                    timer += Time.deltaTime;
-                    if (timer > 0.5f)
-                    {
-                        timer = 0;
-                        waypointNavigator.StartNavigation(playerTransform.value.position);
-                        // First time seeing the player.
-                        if (angry == false)
-                        {
-                            if (CanSeePlayer())
-                            {
-                                angry = true;
-                                audioSource.PlayOneShot(angrySound, 0.1f);
-                                //Debug.Log("Bill saw the player");
+			if (dead)
+			{
+				timer += Time.deltaTime;
 
-                            }
-                        }
-                    }
-                }
-                
-            }
-            
-            // Movement and rotation.
-            if (!waypointNavigator.PathFinished)
-            {
-                float speed = (angry ? angryspeed : normalspeed);
-                Vector3 dir = waypointNavigator.DirectionToWaypoint;
-                charactercontroller.Move(dir * speed * Time.deltaTime);
-                dir.y = 0;
-                Quaternion quatdir = Quaternion.LookRotation(dir);
-                float rotationspeed = 2.0f;
-                transform.rotation =
-                    Quaternion.Slerp(transform.rotation, quatdir, rotationspeed * Time.deltaTime);
-            }
-            //Hit Sis!
-            if (Vector3.Distance(transform.position, playerTransform.value.position) < hitDistance)
-            {
-                sisVariable.value.OnHit(null, 3f, Vector3.zero, Vector3.zero);
-                SetDead();
+				float deathTime = 0.5f;
+				float deathSize = deathSizeCurve.Evaluate(timer / deathTime);
+				transform.localScale = new Vector3(deathSize, deathSize, deathSize);
 
-            }
-        }
+				//Debug.Log("DeathSize: " + deathSize);
 
-        bool CanSeePlayer()
+				if (timer >= deathTime)
+				{
+					//Bubbles
+					bubbleParticleSystem.gameObject.transform.parent = transform.parent;
+					Destroy(bubbleParticleSystem.gameObject, 1f);
+					bubbleParticleSystem.Emit(3);
+
+					//Sparks
+					sparkParticleSystem.gameObject.transform.parent = transform.parent;
+					Destroy(sparkParticleSystem.gameObject, 1f);
+					sparkParticleSystem.Play();
+
+
+					//Damage
+					if (playerTransform.value != null)
+					{
+						if (Vector3.Distance(transform.position, playerTransform.value.position) < hitDistance + 1f)
+						{
+							Vector3 force = (playerTransform.value.position - transform.position).normalized * 10;
+							sisVariable.value.OnHit(null, 5f, force, transform.position);
+							Debug.Log("Bill hit sis!");
+						}
+					}
+
+					Destroy(gameObject);
+				}
+				return;
+			}
+			if (playerTransform.value != null)
+			{
+				//If There is a Straight Path
+				if (angry && CanSeePlayer())
+				{
+					//Naive Pathfinding
+					waypointNavigator.StopNavigate();
+					Vector3 dirtoplayer = (playerTransform.value.position - transform.position).normalized;
+					charactercontroller.Move(angryspeed * dirtoplayer * Time.deltaTime);
+					dirtoplayer.y = 0;
+					Quaternion quatdir = Quaternion.LookRotation(dirtoplayer);
+					float rotationspeed = 5f;
+					transform.rotation =
+						Quaternion.Slerp(transform.rotation, quatdir, rotationspeed * Time.deltaTime);
+				}
+				else
+				{
+					//Smart pathfinding
+					timer += Time.deltaTime;
+					if (timer > 0.25f)
+					{
+						timer = 0;
+						if (waypointNavigator.PathFinished)
+							waypointNavigator.StartNavigation(playerTransform.value.position);
+						// First time seeing the player.
+						if (angry == false)
+						{
+							if (CanSeePlayer())
+							{
+								angry = true;
+								audioSource.PlayOneShot(angrySound, 0.1f);
+								bubbleParticleSystem.Emit(5);
+								//Debug.Log("Bill saw the player");
+
+							}
+						}
+					}
+				}
+
+			}
+
+			// Movement and rotation.
+			if (!waypointNavigator.PathFinished)
+			{
+				float speed = (angry ? angryspeed : normalspeed);
+				Vector3 dir = waypointNavigator.DirectionToWaypoint;
+				charactercontroller.Move(transform.forward * speed * Time.deltaTime);
+				dir.y = 0;
+				Quaternion quatdir = Quaternion.LookRotation(dir);
+				transform.rotation =
+					Quaternion.Slerp(transform.rotation, quatdir, rotationspeed * Time.deltaTime);
+			}
+			//Hit Sis!
+			if (Vector3.Distance(transform.position, playerTransform.value.position) < hitDistance)
+			{
+				//Vector3 force = (playerTransform.value.position - transform.position).normalized * 25;
+
+				//sisVariable.value.OnHit(null, 5f, force, transform.position);
+				SetDead();
+
+			}
+
+		}
+
+		public bool IsDead()
+		{
+			return dead;
+
+		}
+		public void PlaySound(AudioClip audio)
+		{
+			audioSource.PlayOneShot(audio, 0.5f);
+		}
+
+		//Helpers
+
+		private void UpdateBubbleParticleSystem()
+		{
+			//Update Bubble ParticleSystem
+			if (!angry)
+			{
+				SetBubbles(1, normalspeed);
+			}
+			else if (angry)
+			{
+				SetBubbles(2, angryspeed * 5.5f);
+			}
+		}
+
+		bool CanSeePlayer()
         {
             Vector3 dirtoplayer = playerTransform.value.position - transform.position;
             Ray ray = new Ray(transform.position, dirtoplayer);
@@ -133,26 +200,31 @@ namespace SIS.Characters.Bill
             SetDead();
         }
 
-        public bool IsDead()
-        {
-            return dead;
-            
+		void SetDead()
+		{
+			if (!dead)
+			{
+				dead = true;
+				timer = 0;
+				audioSource.PlayOneShot(deathSound, 1f);
+			}
         }
 
-        void SetDead()
-        {
-            dead = true;
-            timer = 0;
-        }
-
-        public void PlaySound(AudioClip audio)
-        {
-            audioSource.PlayOneShot(audio, 0.5f);
-        }
+        
 
         public void OnDrawGizmosSelected()
         {
             Gizmos.DrawWireSphere(transform.position, hitDistance);
         }
+
+		private void SetBubbles(float speedMultiplier, float rate)
+		{
+			ParticleSystem.VelocityOverLifetimeModule velocity = bubbleParticleSystem.velocityOverLifetime;
+			velocity.speedModifierMultiplier = speedMultiplier;
+			ParticleSystem.EmissionModule emission = bubbleParticleSystem.emission;
+			emission.rateOverTime = normalspeed;
+
+			
+		}
     }
 }
