@@ -82,7 +82,7 @@ namespace SIS.Characters.Bill
 						{
 							Vector3 force = (playerTransform.value.position - transform.position).normalized * 10;
 							sisVariable.value.OnHit(null, 5f, force, transform.position);
-							Debug.Log("Bill hit sis!");
+							//Debug.Log("Bill hit sis!");
 						}
 					}
 
@@ -186,7 +186,7 @@ namespace SIS.Characters.Bill
             RaycastHit raycastHit;
             if (Physics.Raycast(ray, out raycastHit, 100f, visionMask))
             {
-                Debug.Log(raycastHit.collider.name);
+                //Debug.Log(raycastHit.collider.name);
                 if (raycastHit.collider.tag == "Player")
                     return true;
             }
