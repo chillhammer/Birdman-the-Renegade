@@ -125,7 +125,8 @@ namespace SIS.Characters.Ham
 
 		public void SpawnTargetAtPos(Vector3 pos) {
 			targetInstance = Instantiate(targetPrefab, pos, Quaternion.identity);
-			targetInstance.transform.localScale = new Vector3(radius.value, 0.1f, radius.value);
+			//targetInstance.transform.localScale = new Vector3(radius.value, 0.1f, radius.value);
+			targetInstance.GetComponent<HammyTargetGrowth>().scaleTarget = radius.value;
 		}
 
 		public void DestroyTarget() {
