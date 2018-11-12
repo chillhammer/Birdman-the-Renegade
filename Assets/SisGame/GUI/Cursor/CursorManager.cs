@@ -25,6 +25,7 @@ namespace SIS.Managers
 		[SerializeField] private float movementEmphasis = 0.5f;
 		[Range(0, 1)]
 		[SerializeField] private float aimingEmphasisMultiplier;
+		[SerializeField] private SO.BoolVariable isPaused;
 
 
 		float currentSpread;
@@ -33,6 +34,7 @@ namespace SIS.Managers
 		// Use this for initialization
 		void Start()
 		{
+			//Look in Game Control for cursor management (pause)
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
 		}
@@ -44,6 +46,8 @@ namespace SIS.Managers
 
 			//Update Scriptable CrosshairSpread for Shooting
 			crosshairSpreadVariable.value = currentSpread;
+
+			
 		}
 
 		/// <summary>

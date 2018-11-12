@@ -18,8 +18,9 @@ MonoBehaviour:
   crouchButton: {fileID: 0}
   reloadButton: {fileID: 11400000, guid: bd166804d79e51248a0924fd8b28ce99, type: 2}
   switchWeaponsAxis: {fileID: 11400000, guid: 0eca6f8d8fc1d36448ad20d614c60ff1, type: 2}
-  moveAmount: 0
-  moveDirection: {x: 0, y: 0, z: 0}
+  moveAmount: 0.19353959
+  moveDirection: {x: 0.75667596, y: 0, z: -0.6537902}
   cameraTransform: {fileID: 11400000, guid: 9d1babb12888d48458a6f457e3daec60, type: 2}
   pivotTransform: {fileID: 11400000, guid: 6fb919f8150ef5b4791848ce224bb65f, type: 2}
   playerState: {fileID: 11400000, guid: 7a5eaaf58a516004ead97e53823d534c, type: 2}
+  isPaused: {fileID: 11400000, guid: 4e03397a42cc6644cae0c2caebff4d60, type: 2}

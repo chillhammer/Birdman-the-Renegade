@@ -23,9 +23,11 @@ namespace SIS.Menu
 
 		private void Start()
 		{
-			panelImage = optionsPanel.GetComponent<Image>();
+			if (optionsPanel != null)
+				panelImage = optionsPanel.GetComponent<Image>();
 			soundSlider.value = Managers.GameManagers.AudioManager.SoundVolume;
 			musicSlider.value = Managers.GameManagers.AudioManager.MusicVolume;
+			sensitivitySlider.value = sensitivityVariable.value;
 		}
 
 		// Update is called once per frame
@@ -39,11 +41,14 @@ namespace SIS.Menu
 						//optionsPanel.SetActive(false);
 				}
 			}
-			float scale = Mathf.Lerp(OptionsScale, OptionsUp ? 1 : 0, scaleSpeed * Time.deltaTime);
-			panelImage.rectTransform.localScale = new Vector3(scale, scale, scale);
-			if (scale == 0)
+			if (panelImage != null)
 			{
-				optionsPanel.SetActive(false);
+				float scale = Mathf.Lerp(OptionsScale, OptionsUp ? 1 : 0, scaleSpeed * Time.deltaTime);
+				panelImage.rectTransform.localScale = new Vector3(scale, scale, scale);
+				if (scale == 0)
+				{
+					optionsPanel.SetActive(false);
+				}
 			}
 		}
 

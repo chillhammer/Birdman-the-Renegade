@@ -39,7 +39,7 @@ namespace SIS.Characters.Sis
 
 
 			//Shooting
-			if (owner.isShooting && startedShooting && !hasShot)
+			if (owner.isShooting && startedShooting && !hasShot && Time.timeScale != 0)
 			{
 				hasShot = true;
 				if (runtime.magazineSize > 0)
@@ -74,7 +74,7 @@ namespace SIS.Characters.Sis
 				}
 			}
 
-			if (owner.isShooting && !startedShooting && !owner.isReloading)
+			if (owner.isShooting && !startedShooting && !owner.isReloading && Time.timeScale != 0)
 			{
 				isShooting.value = true;
 				startedShooting = true;

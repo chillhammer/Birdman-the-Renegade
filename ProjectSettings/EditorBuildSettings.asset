@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/SisGame/Scenes/MainMenu.unity
+    guid: e9f0ff769b2cd654eb4fff46344e92c3
+  - enabled: 1
     path: Assets/SisGame/Scenes/Dungeon.unity
     guid: 80e25d1b7d797a147ba5d4b4460488e2
-  - enabled: 1
+  - enabled: 0
     path: Assets/SisGame/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}

@@ -25,10 +25,13 @@ namespace SIS.Actions.Input
 		public SO.TransformVariable cameraTransform;
 		public SO.TransformVariable pivotTransform;
 		public Characters.Sis.SisVariable playerState;
+		public SO.BoolVariable isPaused;
 
 
 		public override void Execute()
         {
+			if (isPaused.value)
+				return; 
             moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal.value) + Math.Abs(vertical.value));
 
 			if (cameraTransform.value != null)
