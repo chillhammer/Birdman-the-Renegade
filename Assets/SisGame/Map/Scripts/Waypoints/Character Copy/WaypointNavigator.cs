@@ -17,7 +17,6 @@ namespace SIS.Waypoints
 		public bool automaticWaypointUpdate = true; //updates current waypoint
 		public bool optimizePath = true;
 		public bool strongOptimizePath = false; //Uses raycasting to skip on redundant nodes
-
 		WaypointGraph waypointGraph;
 		List<Waypoint> path;
 		[SerializeField] int pathIndex = -1; //current waypoint index
@@ -153,7 +152,7 @@ namespace SIS.Waypoints
 			if (goal.X != goalX || goal.Y != goalY)
 				path.Add(accurateGoal);
 
-			
+
 			if (path.Count > 1)
 			{
 				if (IsPathClearBetweenWaypoints(accurateStart, path[1]))
@@ -208,12 +207,6 @@ namespace SIS.Waypoints
 						path.RemoveAt(i - 1);
 						Debug.Log("Removed Waypoint! Optimization");
 					}
-				} else if (i == 1) {
-					if (IsPathClearBetweenWaypoints(path[i], path[i - 1]))
-					{
-						path.RemoveAt(i - 1);
-						Debug.Log("Removed Waypoint! Optimization");
-					}
 				}
 				--i;
 			}
@@ -226,7 +219,7 @@ namespace SIS.Waypoints
 			Vector3 pos1 = new Vector3(wp1.X, height, wp1.Y);
 			Vector3 pos2 = new Vector3(wp2.X, height, wp2.Y);
 
-			
+
 			float dist = (pos2 - pos1).magnitude + 0.01f;
 			Vector3 dir = (pos2 - pos1).normalized;
 			//RaycastHit hit;
