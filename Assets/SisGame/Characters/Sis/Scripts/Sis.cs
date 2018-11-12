@@ -104,7 +104,8 @@ namespace SIS.Characters.Sis
 				return;
 			PlaySound(hurtSound);
 			health -= baseDamage;
-			onHitDelegate();
+			if (onHitDelegate != null)
+				onHitDelegate();
 		}
 		//Allows for game controller to mark enemy as dead
 		public bool IsDead()

@@ -72,8 +72,13 @@ namespace SIS.Characters {
 		protected virtual void OnHit()
 		{
 			//Debug.Log("Change HB GUI. Health: " + character.health + ". MaxHealth: " + maxHealth + ". MaxHealthWidth: " + maxHealthWidth);
-			targetWidth = character.health / maxHealth * maxHealthWidth;
+			UpdateWidth();
 			StartCoroutine("ShakeBar");
+		}
+
+		public void UpdateWidth()
+		{
+			targetWidth = character.health / maxHealth * maxHealthWidth;
 		}
 
 		IEnumerator ShakeBar()

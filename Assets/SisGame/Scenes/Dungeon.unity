@@ -6914,7 +6914,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1058454888802568, guid: c58b7079a93132c43a58b1ff260dcbe1, type: 2}
       propertyPath: m_Name
-      value: ResumeButton
+      value: RetryStageButton
       objectReference: {fileID: 0}
     - target: {fileID: 224368744625323718, guid: c58b7079a93132c43a58b1ff260dcbe1,
         type: 2}
@@ -6935,21 +6935,21 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 411822102}
+      objectReference: {fileID: 1197830307}
     - target: {fileID: 114497487427574748, guid: c58b7079a93132c43a58b1ff260dcbe1,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TogglePaused
+      value: ResetStage
       objectReference: {fileID: 0}
     - target: {fileID: 114750051020064782, guid: c58b7079a93132c43a58b1ff260dcbe1,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 411822102}
+      objectReference: {fileID: 1197830307}
     - target: {fileID: 114750051020064782, guid: c58b7079a93132c43a58b1ff260dcbe1,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TogglePaused
+      value: ResetStage
       objectReference: {fileID: 0}
     - target: {fileID: 95822988909024226, guid: c58b7079a93132c43a58b1ff260dcbe1,
         type: 2}
@@ -6976,7 +6976,8 @@ Prefab:
       propertyPath: m_fontSizeBase
       value: 32
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114992304782199616, guid: c58b7079a93132c43a58b1ff260dcbe1, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: c58b7079a93132c43a58b1ff260dcbe1, type: 2}
   m_IsPrefabAsset: 0
 --- !u!224 &1143229543 stripped
@@ -7034,8 +7035,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 411822102}
-        m_MethodName: TogglePaused
+      - m_Target: {fileID: 1197830307}
+        m_MethodName: ResetStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7141,6 +7142,29 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1666441805}
   m_Script: {fileID: 11500000, guid: cca0c64829502734c873df7640ebe559, type: 3}
+--- !u!1 &1197830306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1058454888802568, guid: c58b7079a93132c43a58b1ff260dcbe1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1143229542}
+--- !u!114 &1197830307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1197830306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8643797780cf4b84795046642cc0b247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lostGameFX: {fileID: 1354396829}
+  gameController: {fileID: 411822102}
+  enemiesParent: {fileID: 427650600}
+  dungeonGenerator: {fileID: 1562078979}
+  sis: {fileID: 11400000, guid: 7a5eaaf58a516004ead97e53823d534c, type: 2}
+  stageStartEvent: {fileID: 11400000, guid: d7e5bbf36cb31d64fa3e39399fd86a2e, type: 2}
+  healthbar: {fileID: 2065999484}
 --- !u!114 &1243191543 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114009470961863618, guid: 1cf571b9eaa82b44c83f94f06b2bcb9f,
@@ -8002,6 +8026,12 @@ Transform:
   m_Father: {fileID: 1991126470}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1562078979 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114263514491030148, guid: 2508e4e399a7d204483c594bd288915d,
+    type: 2}
+  m_PrefabInternal: {fileID: 148313430}
+  m_Script: {fileID: 11500000, guid: 0737126d6b942134aa0337e20598002c, type: 3}
 --- !u!1001 &1641204977
 Prefab:
   m_ObjectHideFlags: 0
@@ -8282,6 +8312,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03,
         type: 2}
+    - target: {fileID: 114707690902722026, guid: 69aeaa6c520648a4dbc8c1b366981b5e,
+        type: 2}
+      propertyPath: enemiesParent
+      value: 
+      objectReference: {fileID: 427650601}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69aeaa6c520648a4dbc8c1b366981b5e, type: 2}
   m_IsPrefabAsset: 0
@@ -9317,6 +9352,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4587532776669132, guid: 6553e66ab11b9ac42bf0cfacaef6885b,
     type: 2}
   m_PrefabInternal: {fileID: 244614028}
+--- !u!114 &2065999484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114728840991856696, guid: 6553e66ab11b9ac42bf0cfacaef6885b,
+    type: 2}
+  m_PrefabInternal: {fileID: 244614028}
+  m_Script: {fileID: 11500000, guid: cdf7d7050b4e84949a80f7c64bf28195, type: 3}
 --- !u!1 &2097314434 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1884144535910008, guid: c58b7079a93132c43a58b1ff260dcbe1,

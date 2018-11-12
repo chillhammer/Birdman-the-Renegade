@@ -18,13 +18,16 @@ namespace SIS.HUD
 			if (sisVariable.value != null)
 			{
 				Weapon weapon = sisVariable.value.inventory.currentWeapon;
-				Weapon.RuntimeWeapon runtimeWeapon = weapon.runtime;
-				int magazine = runtimeWeapon.magazineSize;
+				if (weapon != null)
+				{
+					Weapon.RuntimeWeapon runtimeWeapon = weapon.runtime;
+					int magazine = runtimeWeapon.magazineSize;
 
-				int total = runtimeWeapon.currentBullets;
-				string ammoText = (magazine < 10 ? "0" : "") + magazine.ToString() + " | " + 
-					(weapon.infiniteTotalBullets ? "Inf." : total.ToString());
-				textUI.text = ammoText;
+					int total = runtimeWeapon.currentBullets;
+					string ammoText = (magazine < 10 ? "0" : "") + magazine.ToString() + " | " +
+						(weapon.infiniteTotalBullets ? "Inf." : total.ToString());
+					textUI.text = ammoText;
+				}
 			}
 		}
 	}

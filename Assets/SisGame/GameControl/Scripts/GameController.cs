@@ -117,5 +117,12 @@ namespace SIS.GameControl
 				return true;
 			return false;
 		}
+
+		public void StageReset()
+		{
+			gameState = State.InGame;
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+		}
 	}
 }

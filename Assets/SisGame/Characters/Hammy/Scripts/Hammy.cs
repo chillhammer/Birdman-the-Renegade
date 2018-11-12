@@ -134,7 +134,8 @@ namespace SIS.Characters.Ham
 		}
 
 		public void DestroyTarget() {
-			Destroy(targetInstance);
+			if (targetInstance != null)
+				Destroy(targetInstance);
 			targetInstance = null;
 		}
 
@@ -146,6 +147,7 @@ namespace SIS.Characters.Ham
 			return (TailTransform.position.y > 1);
 		}
 		private IEnumerator Death() {
+			DestroyTarget();
 			anim.enabled = false;
 			rigid.velocity = Vector3.zero;
 			float time = 1;

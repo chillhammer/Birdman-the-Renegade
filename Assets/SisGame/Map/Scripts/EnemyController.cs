@@ -108,6 +108,11 @@ namespace SIS.Map.Enemy {
 
 		public void StageStarted()
 		{
+			if (aliveEnemies.Count > 0)
+			{
+				Debug.LogWarning("Stage started but more than 0 alive enemies.");
+				aliveEnemies.Clear(); //Just to be safe
+			}
 			toBeSpawnedEnemies = stageListing.GetStageEnemiesReversed();
 			maxAlive = stageListing.GetStageMaxAlive();
 		}

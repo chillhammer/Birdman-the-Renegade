@@ -92,5 +92,13 @@ namespace SIS.GameControl
 			Cursor.visible = true;
 		}
 
+		public void ResetVariables()
+		{
+			lost = false;
+			lost2 = false;
+			timer = 0;
+			LostScale = 0;
+			LostAlpha = 0;
+		}
 	}
 }

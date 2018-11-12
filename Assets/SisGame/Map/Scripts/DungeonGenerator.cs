@@ -245,9 +245,15 @@ namespace SIS.Map
 
 			wallParent.AddComponent<CombineChildren>();
 
-			//Player
-			PlaceObject((int)(WIDTH * 0.5f) + 2, (int)(HEIGHT * 0.5f) + 2, player, 0.5f);
+			SpawnPlayer();
 
+		}
+
+		//Spawns Player. Useful for respawning from GameControl
+		public GameObject SpawnPlayer()
+		{
+			//Player
+			return PlaceObject((int)(WIDTH * 0.5f) + 2, (int)(HEIGHT * 0.5f) + 2, player, 0.5f);
 		}
 
 		private void SpawnWall(int c, int r, Transform parent)
