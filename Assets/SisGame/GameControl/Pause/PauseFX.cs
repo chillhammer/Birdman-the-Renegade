@@ -29,7 +29,7 @@ namespace SIS.GameControl
 		{
 			get { return pauseTransform.localScale.x; }
 			set {
-				pauseTransform.gameObject.SetActive(value > 0 ? true : false);
+				pauseTransform.gameObject.SetActive(value > 0.01f ? true : false);
 				pauseTransform.localScale = new Vector3(value, value, value);
 			}
 		}
@@ -41,7 +41,7 @@ namespace SIS.GameControl
 				Color color = backgroundImage.color;
 				color.a = value;
 				backgroundImage.color = color;
-				backgroundInstance.SetActive(value > 0 ? true : false);
+				backgroundInstance.SetActive(value > 0.05f ? true : false);
 			}
 		}
 
@@ -56,7 +56,7 @@ namespace SIS.GameControl
 		{
 			bool paused = isPaused.value;
 			PauseScale = Mathf.Lerp(PauseScale, paused ? 1 : 0, scaleSpeed * Time.unscaledDeltaTime);
-			if (PauseScale < 0.1f)
+			if (PauseScale < 0.01f)
 				PauseScale = 0;
 			if (paused)
 			{

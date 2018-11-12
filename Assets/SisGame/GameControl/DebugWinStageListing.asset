@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4490bd3ca20c39947b8e3e284436d932, type: 3}
+  m_Name: DebugWinStageListing
+  m_EditorClassIdentifier: 
+  stages:
+  - enemies:
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
+    maxAlive: 2
+  stageIndexVar: {fileID: 11400000, guid: 20b6fed3c94e9af48a43e730033c9a61, type: 2}
+  endlessModeDistribution:
+    enemies:
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
+    - {fileID: 1284060523504750, guid: f42c9d02174afdd4f92b728e4b3f33b3, type: 2}
+    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+    - {fileID: 1850488389299032, guid: 38b125d34ae75f64a84f23a4f90df859, type: 2}
+    - {fileID: 1098440364130272, guid: 9d3a15bacb6f05942a08dadc98cd3e03, type: 2}
+    maxAlive: 10

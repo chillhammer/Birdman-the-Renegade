@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 114464835033660512}
   - component: {fileID: 114895568406667444}
   - component: {fileID: 114387468523697714}
+  - component: {fileID: 114123655958696946}
   m_Layer: 0
   m_Name: Stage Text Actual
   m_TagString: Untagged
@@ -304,8 +305,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1489817462639616}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -392.48584, y: -211.30782, z: 33.485283}
-  m_LocalScale: {x: 1.0050251, y: 1.0050251, z: 1.0050251}
+  m_LocalPosition: {x: -556, y: -307, z: 33.485283}
+  m_LocalScale: {x: 1.4884087, y: 1.4884087, z: 1.4884087}
   m_Children:
   - {fileID: 224304821653149404}
   - {fileID: 224570428227664710}
@@ -341,6 +342,34 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114123655958696946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1464801379585512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a055b694402bd469a86915f1319e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 6ee7faa3f5007ca4a927ecefa042678c, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114464835033660512}
+        m_MethodName: EnterEndlessMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114273837877106168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -822,6 +851,8 @@ MonoBehaviour:
   moveAwaySpeed: 2
   firstStageSpeed: 0.75
   stageStart: {fileID: 11400000, guid: d7e5bbf36cb31d64fa3e39399fd86a2e, type: 2}
+  gameWon: {fileID: 11400000, guid: 45c51381cd86ab347ae7635d0d392712, type: 2}
+  stageListing: {fileID: 11400000, guid: 46f4c301495d99d4f83234c8631d224a, type: 2}
   targetIsMiddle: 0
 --- !u!114 &114482835875512608
 MonoBehaviour:

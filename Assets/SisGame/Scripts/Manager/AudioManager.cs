@@ -22,7 +22,7 @@ namespace SIS.Managers
 
 		[SerializeField] float musicVolume;
 		public float MusicVolume { get { return musicVolume; }
-			set { musicVolume = Mathf.Clamp01(value); soundGroup.audioMixer.SetFloat("MusicVol", ToVol(musicVolume)); } }
+			set { musicVolume = Mathf.Clamp01(value); musicGroup.audioMixer.SetFloat("MusicVol", ToVol(musicVolume)); } }
 
 		public void Init()
 		{

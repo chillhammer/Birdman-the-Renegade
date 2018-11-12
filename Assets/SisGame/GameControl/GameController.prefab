@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 114762750616257938}
   - component: {fileID: 114123136835388850}
   - component: {fileID: 114778446276687338}
+  - component: {fileID: 114156203910605490}
+  - component: {fileID: 114964148482646864}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -70,6 +72,34 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114156203910605490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752712232216998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a055b694402bd469a86915f1319e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 45c51381cd86ab347ae7635d0d392712, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114762750616257938}
+        m_MethodName: GameWon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114762750616257938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,6 +121,7 @@ MonoBehaviour:
     type: 2}
   isPaused: {fileID: 11400000, guid: 4e03397a42cc6644cae0c2caebff4d60, type: 2}
   inputPause: {fileID: 11400000, guid: 8584adbdde6af984d94d63bad23a22dd, type: 2}
+  inGame: {fileID: 11400000, guid: 3e26314346277c74697d8ed4d58af62d, type: 2}
   sis: {fileID: 11400000, guid: 7a5eaaf58a516004ead97e53823d534c, type: 2}
   gameState: 0
 --- !u!114 &114778446276687338
@@ -110,6 +141,34 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 114762750616257938}
         m_MethodName: StageEnded
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &114964148482646864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752712232216998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a055b694402bd469a86915f1319e61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 6ee7faa3f5007ca4a927ecefa042678c, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114762750616257938}
+        m_MethodName: EnterEndlessMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -92,7 +92,11 @@ namespace SIS.GameControl
 			}
 			else
 			{
-				if (InGame())
+				if (!InGame())
+				{
+					Cursor.lockState = CursorLockMode.None;
+					Cursor.visible = true;
+				} else
 				{
 					Cursor.lockState = CursorLockMode.Locked;
 					Cursor.visible = false;
@@ -102,12 +106,13 @@ namespace SIS.GameControl
 
 		public void TurnOffPaused()
 		{
+			Debug.Log("Turned off pause");
 			isPaused.value = false;
 			Time.timeScale = 1;
-			if (!InGame())
+			if (InGame())
 			{
-				Cursor.lockState = CursorLockMode.None;
-				Cursor.visible = true;
+				Cursor.lockState = CursorLockMode.Locked;
+				Cursor.visible = false;
 			}
 		}
 
@@ -123,6 +128,21 @@ namespace SIS.GameControl
 			gameState = State.InGame;
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
+		}
+
+		//Called by StageText HUD
+		public void GameWon()
+		{
+			gameState = State.Won;
+		}
+
+		public void EnterEndlessMode()
+		{
+			gameState = State.InGame;
+			stageIndexVar.value++;
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+			startStageEvent.Raise();
 		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SIS.GameControl
 {
@@ -8,17 +9,28 @@ namespace SIS.GameControl
 	{
 		[SerializeField] StageListingDetail[] stages;
 		public SO.IntVariable stageIndexVar;
+		public StageListingDetail endlessModeDistribution;
+
 
 		public bool IsLastStage()
 		{
 			return (stages.Length - 1 == stageIndexVar.value);
 		}
 
-		//First Enemy is At The End. Allows for them to be spawned in order
+		public bool IsEndlessMode()
+		{
+			return (stageIndexVar.value >= stages.Length);
+		}
+
+		//First Enemy is At The End. Allows for them to be spawned in order for optimization
 		public List<GameObject> GetStageEnemiesReversed()
 		{
 			if (stageIndexVar.value >= stages.Length || stageIndexVar.value < 0)
 			{
+				if (stageIndexVar.value >= stages.Length)
+				{
+					return endlessModeDistribution.enemies.OfType<GameObject>().ToList();
+				}
 				Debug.LogWarning("StageListing Trying to Access Out of Bounds!");
 				return null;
 			}
@@ -33,10 +45,11 @@ namespace SIS.GameControl
 
 		public int GetStageMaxAlive()
 		{
-			if (stageIndexVar.value >= stages.Length)
+			if (IsEndlessMode())
 			{
-				Debug.LogWarning("StageListing Trying to Access Out of Bounds!");
-				return 1;
+				//Debug.LogWarning("StageListing Trying to Access Out of Bounds!");
+				Debug.Log("Endless Mode!");
+				return endlessModeDistribution.maxAlive;
 			}
 			return stages[stageIndexVar.value].maxAlive;
 		}

@@ -7,6 +7,7 @@ using TMPro;
 
 namespace SIS.HUD
 {
+	//Also Manages Stage End and Win Condition
 	public class StageTextHUD : MonoBehaviour
 	{
 		public TextMeshProUGUI middleText;
@@ -18,6 +19,8 @@ namespace SIS.HUD
 		public float moveAwaySpeed = 2f;
 		public float firstStageSpeed = 2f;
 		public SO.GameEvent stageStart;
+		public SO.GameEvent gameWon;
+		public SIS.GameControl.StageListing stageListing;
 
 		TextMeshProUGUI text;
 		Vector3 targetPosition;
@@ -39,7 +42,14 @@ namespace SIS.HUD
 			text.rectTransform.position = Vector3.Lerp(text.rectTransform.position, targetPosition, moveSpeed * Time.deltaTime);
 			text.rectTransform.localScale = Vector3.Lerp(text.rectTransform.localScale, targetScale, moveSpeed * Time.deltaTime);
 
-			text.SetText("Stage " + (stageIndexVar.value + 1).ToString());
+			if (!stageListing.IsLastStage())
+			{
+				text.SetText("Stage " + (stageIndexVar.value + 1).ToString());
+				if (stageListing.IsEndlessMode())
+					text.SetText("Endless  Mode");
+			}
+			else
+				text.SetText("Final Stage");
 
 			if (targetIsMiddle)
 			{
@@ -65,15 +75,27 @@ namespace SIS.HUD
 			targetIsMiddle = false;
 		}
 
+		public void EnterEndlessMode()
+		{
+			//Increase stage index in game control
+		}
+
 		IEnumerator StageEndSequence()
 		{
 			yield return new WaitForSeconds(1.5f);
-			float additionalTime = (stageIndexVar.value == 0 ? 1f : 0f);
-			targetIsMiddle = true;
-			yield return new WaitForSeconds(2f + additionalTime * 2);
-			stageIndexVar.value++;
-			yield return new WaitForSeconds(2f + additionalTime);
-			stageStart.Raise();
+			if (stageListing.IsLastStage())
+			{
+				gameWon.Raise();
+			}
+			else
+			{
+				float additionalTime = (stageIndexVar.value == 0 ? 1f : 0f);
+				targetIsMiddle = true;
+				yield return new WaitForSeconds(2f + additionalTime * 2);
+				stageIndexVar.value++;
+				yield return new WaitForSeconds(2f + additionalTime);
+				stageStart.Raise();
+			}
 		}
 	}
 }

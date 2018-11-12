@@ -26,11 +26,12 @@ namespace SIS.Actions.Input
 		public SO.TransformVariable pivotTransform;
 		public Characters.Sis.SisVariable playerState;
 		public SO.BoolVariable isPaused;
+		public SO.BoolVariable inGame;
 
 
 		public override void Execute()
         {
-			if (isPaused.value)
+			if (isPaused.value || !inGame.value)
 				return; 
             moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal.value) + Math.Abs(vertical.value));
 

@@ -52,8 +52,16 @@ namespace SIS.Map.Enemy {
 				{
 					if (toBeSpawnedEnemies.Count > 0 && aliveEnemies.Count < maxAlive)
 					{
-						SpawnEnemy(toBeSpawnedEnemies[toBeSpawnedEnemies.Count - 1]);
-						toBeSpawnedEnemies.RemoveAt(toBeSpawnedEnemies.Count - 1);
+						if (!stageListing.IsEndlessMode())
+						{
+							//Regular Spawning
+							SpawnEnemy(toBeSpawnedEnemies[toBeSpawnedEnemies.Count - 1]);
+							toBeSpawnedEnemies.RemoveAt(toBeSpawnedEnemies.Count - 1);
+						} else
+						{
+							//Endless Spawning
+							SpawnEnemy(toBeSpawnedEnemies[Random.Range(0, toBeSpawnedEnemies.Count)]);
+						}
 					}
 				}
 			}
