@@ -20,3 +20,4 @@ MonoBehaviour:
   minClamp: -50
   maxClamp: 50
   targetAxis: 0
+  sensitivity: {fileID: 11400000, guid: 8ac75f32dc22cf04c855e89a68c27fc2, type: 2}

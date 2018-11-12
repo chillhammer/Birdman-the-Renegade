@@ -54,6 +54,7 @@ namespace SIS.Items.Weapons
 			audioSource = go.AddComponent<AudioSource>();
 			audioSource.spatialBlend = 1;
 			audioSource.clip = sound;
+			audioSource.outputAudioMixerGroup = Managers.GameManagers.AudioManager.SoundGroup;
 		}
 	}
 }

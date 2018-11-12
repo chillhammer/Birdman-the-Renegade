@@ -16,6 +16,7 @@ namespace SIS.Actions.Input
 		public float minClamp = -35;
 		public float maxClamp = 35;
 		public RotateAxis targetAxis;
+		public SO.FloatVariable sensitivity;
 
 		public enum RotateAxis { x, y, z }
 
@@ -24,7 +25,7 @@ namespace SIS.Actions.Input
 			//Modify Angle based on input
 			int neg = (negative ? -1 : 1);
 
-			angle += targetInput.value * speed * Time.deltaTime * neg;
+			angle += targetInput.value * speed * Time.deltaTime * neg * sensitivity.value;
 			if (clamp)
 				angle = Mathf.Clamp(angle, minClamp, maxClamp);
 			

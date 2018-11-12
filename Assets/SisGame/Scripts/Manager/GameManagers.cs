@@ -21,5 +21,20 @@ namespace SIS.Managers
 			}
 		}
 
+		//Access to Audio Groups
+		static AudioManager audioManager;
+		public static AudioManager AudioManager
+		{
+			get
+			{
+				if (audioManager == null)
+				{
+					audioManager = Resources.Load("AudioManager") as AudioManager;
+					audioManager.Init();
+				}
+				return audioManager;
+			}
+		}
+
 	}
 }
