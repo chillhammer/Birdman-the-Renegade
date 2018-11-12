@@ -9,7 +9,7 @@ namespace SIS.Characters.Sis
 	{
 		public override bool CheckCondition(Sis owner)
 		{
-			return owner.health == 0;
+			return owner.health <= 0;
 		}
 	}
 }

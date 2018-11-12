@@ -64,7 +64,7 @@ namespace SIS.Characters.Sis
 		public bool isReloading = false;
 		public bool doneReloading = false;
 		public bool reloadingDoOnce = true;
-		public bool isDead { get { return health == 0; } }
+		public bool isDead { get { return health <= 0; } }
 		public float switchWeaponAxis;
 		public int switchWeaponChange { get { return (switchWeaponAxis > 0) ? 1 : (switchWeaponAxis < 0) ? -1 : 0; } }
 
@@ -109,7 +109,7 @@ namespace SIS.Characters.Sis
 		//Allows for game controller to mark enemy as dead
 		public bool IsDead()
 		{
-			return health == 0;
+			return health <= 0;
 		}
 		public void PlaySound(AudioClip audio)
 		{

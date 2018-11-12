@@ -27,7 +27,7 @@ namespace SIS.Menu
 				panelImage = optionsPanel.GetComponent<Image>();
 			soundSlider.value = Managers.GameManagers.AudioManager.SoundVolume;
 			musicSlider.value = Managers.GameManagers.AudioManager.MusicVolume;
-			sensitivitySlider.value = sensitivityVariable.value;
+			sensitivitySlider.value = sensitivityVariable.value - 0.5f;
 		}
 
 		// Update is called once per frame

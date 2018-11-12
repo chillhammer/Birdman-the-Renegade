@@ -12,15 +12,23 @@ namespace SIS.GameControl
 		public Map.Enemy.EnemyController enemyController;
 		public SO.GameEvent endStageEvent;
 		public SO.GameEvent startStageEvent;
+		public SO.GameEvent lostGameEvent;
+		//public SO.GameEvent wonGameEvent;
 		public StageListing stageListing;
 		public StageDifficultyTuning stageDifficultyTuning;
 		public SO.BoolVariable isPaused;
 		public SO.BoolVariable inputPause;
+		public SO.BoolVariable inGame;
+		public Characters.Sis.SisVariable sis;
+
+		public enum State { InGame, Interlude, Won, Lost }
+		public State gameState;
 
 		private void Start()
 		{
 			stageIndexVar.value = 0;
 			isPaused.value = false;
+			gameState = State.InGame;
 			
 			StartCoroutine("StartTimer");
  		}
@@ -40,6 +48,18 @@ namespace SIS.GameControl
 			if (inputPause.value)
 			{
 				TogglePaused();
+			}
+
+			inGame.value = InGame();
+
+			//Transitioning States
+			if (sis.value != null)
+			{
+				if (sis.value.IsDead() && gameState != State.Lost)
+				{
+					gameState = State.Lost;
+					lostGameEvent.Raise();
+				}
 			}
 		}
 		//Called by EventListener
@@ -68,10 +88,15 @@ namespace SIS.GameControl
 			if (isPaused.value)
 			{
 				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
 			}
 			else
 			{
-				Cursor.lockState = CursorLockMode.Locked;
+				if (InGame())
+				{
+					Cursor.lockState = CursorLockMode.Locked;
+					Cursor.visible = false;
+				}
 			}
 		}
 
@@ -79,8 +104,18 @@ namespace SIS.GameControl
 		{
 			isPaused.value = false;
 			Time.timeScale = 1;
-			Cursor.lockState = CursorLockMode.None;
-			Cursor.visible = true;
+			if (!InGame())
+			{
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+			}
+		}
+
+		public bool InGame()
+		{
+			if (gameState == State.InGame || gameState == State.Interlude)
+				return true;
+			return false;
 		}
 	}
 }

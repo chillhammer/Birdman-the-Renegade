@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace SIS.Menu
 {
-	public class PlayButtonFunctionality : MonoBehaviour
+	public class ChangeSceneButtonFunctionality : MonoBehaviour
 	{
 		public string sceneName;
 		public UnityEngine.SceneManagement.Scene scene;

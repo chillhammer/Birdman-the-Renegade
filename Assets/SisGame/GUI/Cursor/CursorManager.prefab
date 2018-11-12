@@ -320,6 +320,8 @@ MonoBehaviour:
   mouseEmphasis: 15
   movementEmphasis: 30
   aimingEmphasisMultiplier: 0.4
+  isPaused: {fileID: 11400000, guid: 4e03397a42cc6644cae0c2caebff4d60, type: 2}
+  inGame: {fileID: 11400000, guid: 3e26314346277c74697d8ed4d58af62d, type: 2}
 --- !u!114 &114496553015159860
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -85,11 +85,14 @@ MonoBehaviour:
   enemyController: {fileID: 0}
   endStageEvent: {fileID: 11400000, guid: 33e70c5abc208b4408be56e89d92469b, type: 2}
   startStageEvent: {fileID: 11400000, guid: d7e5bbf36cb31d64fa3e39399fd86a2e, type: 2}
+  lostGameEvent: {fileID: 11400000, guid: bb5daac4d2cd2634fbc43ce2e7364d51, type: 2}
   stageListing: {fileID: 11400000, guid: fa9be48e3588a5446aa88820ca3b496f, type: 2}
   stageDifficultyTuning: {fileID: 11400000, guid: 49a9edfdc13e4ae499be66520ded5476,
     type: 2}
   isPaused: {fileID: 11400000, guid: 4e03397a42cc6644cae0c2caebff4d60, type: 2}
   inputPause: {fileID: 11400000, guid: 8584adbdde6af984d94d63bad23a22dd, type: 2}
+  sis: {fileID: 11400000, guid: 7a5eaaf58a516004ead97e53823d534c, type: 2}
+  gameState: 0
 --- !u!114 &114778446276687338
 MonoBehaviour:
   m_ObjectHideFlags: 1

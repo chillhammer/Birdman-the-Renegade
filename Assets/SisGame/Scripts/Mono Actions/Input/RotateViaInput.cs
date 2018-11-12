@@ -17,11 +17,14 @@ namespace SIS.Actions.Input
 		public float maxClamp = 35;
 		public RotateAxis targetAxis;
 		public SO.FloatVariable sensitivity;
+		public SO.BoolVariable inGame;
 
 		public enum RotateAxis { x, y, z }
 
 		public override void Execute()
 		{
+			if (inGame.value == false)
+				return;
 			//Modify Angle based on input
 			int neg = (negative ? -1 : 1);
 

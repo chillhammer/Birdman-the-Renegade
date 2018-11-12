@@ -26,6 +26,7 @@ namespace SIS.Managers
 		[Range(0, 1)]
 		[SerializeField] private float aimingEmphasisMultiplier;
 		[SerializeField] private SO.BoolVariable isPaused;
+		[SerializeField] private SO.BoolVariable inGame;
 
 
 		float currentSpread;
@@ -42,6 +43,8 @@ namespace SIS.Managers
 		// Update is called once per frame
 		void Update()
 		{
+			if (!inGame.value)
+				return;
 			HandleCrosshairSpread();
 
 			//Update Scriptable CrosshairSpread for Shooting
