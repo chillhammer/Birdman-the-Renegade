@@ -537,7 +537,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1098440364130272}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.958132, y: 3.3730807, z: 20.85942}
+  m_LocalPosition: {x: 0.5007496, y: 0.5793276, z: 27.545635}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4437472659778024}
@@ -1040,9 +1040,10 @@ MonoBehaviour:
   radius: {fileID: 11400000, guid: 6c0eec4c02df1d0439db042823843a98, type: 2}
   moveSpeed: {fileID: 11400000, guid: bb1451a62184d334cb63d3370fe22643, type: 2}
   fleeSpeed: {fileID: 11400000, guid: 28f64851abb91c74fa53c3247a96547e, type: 2}
-  FallSpeed: 1.5
-  RotSpeed: 20
+  FallSpeed: 5
+  RotSpeed: 60
   targetInstance: {fileID: 0}
+  ArmatureTransform: {fileID: 0}
   FinTransform: {fileID: 0}
   HammerBaseTransform: {fileID: 0}
   waypointNavigator: {fileID: 114584155385612530}

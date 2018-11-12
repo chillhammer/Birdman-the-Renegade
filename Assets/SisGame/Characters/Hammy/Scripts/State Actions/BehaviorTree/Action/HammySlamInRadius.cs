@@ -11,7 +11,7 @@ namespace SIS.Characters.Ham
 		public Sis.SisVariable sis;
 		public float force = 10f;
         public override AivoTreeStatus Act(float timeTick, Hammy owner) {
-			if (owner.HammerBaseTransform.position.y > 0.1) {
+			if (owner.HammerBaseTransform.position.y > 0.1 && owner.InAir()) {
 				return AivoTree.AivoTreeStatus.Running;
 			}
 			if (owner.targetInstance == null) return AivoTree.AivoTreeStatus.Failure;

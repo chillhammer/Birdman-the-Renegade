@@ -64,6 +64,8 @@ namespace SIS.Characters.Ham
 		public float FallSpeed = 1;
 		public float RotSpeed = 1;
 		[HideInInspector] public GameObject targetInstance;
+		[HideInInspector] public Transform ModelTransform;
+		[HideInInspector] public Transform TailTransform;
 		[HideInInspector] public Transform FinTransform;
 		[HideInInspector] public Transform HammerBaseTransform;
 		[HideInInspector] public Waypoints.WaypointNavigator waypointNavigator;
@@ -79,6 +81,8 @@ namespace SIS.Characters.Ham
 			waypointNavigator = GetComponent<Waypoints.WaypointNavigator>();
 			FinTransform = mTransform.FindDeepChild("Fin Reference");
 			HammerBaseTransform = mTransform.FindDeepChild("Hammer Base");
+			TailTransform = mTransform.FindDeepChild("tail_base");
+			ModelTransform = mTransform.FindDeepChild("Hammy Model");
 			health = maxHealth.value;
 			anim.speed = 1.5f;
 		}
@@ -135,31 +139,40 @@ namespace SIS.Characters.Ham
 
 		public void SpawnExplosionAtPos(Vector3 pos) {
 			Instantiate(Explosion, pos, Quaternion.Euler(-90, 0, 0));
-			StartCoroutine(CameraShake(2));
+			StartCoroutine(CameraShake(0.5f));
 		}
-
 		public bool InAir() {
-			return FinTransform.position.y > 0.1;
+			return (TailTransform.position.y > 1);
 		}
-
 		private IEnumerator Death() {
-			anim.SetBool("Slam", false);
+			anim.enabled = false;
 			rigid.velocity = Vector3.zero;
-			float time = 5;
+			float time = 1;
+			while (time > 0) {
+				time -= Time.deltaTime;
+				if (!InAir()) mTransform.position += Vector3.up * FallSpeed * Time.deltaTime * 0.3f;
+				ModelTransform.RotateAround(TailTransform.position, ModelTransform.forward, Time.deltaTime * RotSpeed);
+				yield return null;
+			}
+			time = 2;
 			while (time > 0) {
 				time -= Time.deltaTime;
 				mTransform.position += Vector3.down * FallSpeed * Time.deltaTime;
-				mTransform.rotation *= Quaternion.Euler(RotSpeed * Time.deltaTime, 0, RotSpeed * Time.deltaTime);
 				yield return null;
 			}
 			Destroy(gameObject);
 		}
 
 		public IEnumerator CameraShake(float time) {
-			// Vector3[] dir = new Vector3 {Vector3.up, Vector3.down, Vector3.left, Vector3.right};
+			Vector3[] dir = new Vector3[4];
+			dir[0] = Vector3.up;
+			dir[1] = Vector3.down;
+			dir[2] = Vector3.left;
+			dir[3] = Vector3.right;
 			while (time > 0) {
 				time -= Time.deltaTime;
-				// cameraTransform.value.position += Vector3.up;
+				int ind = Random.Range(0,4);
+				cameraTransform.value.position += dir[ind] * 0.1f;
 				yield return null;
 			}
 		}
