@@ -55,6 +55,9 @@ namespace SIS.Characters.Ham
 		public GameObject targetPrefab;
 		public SO.TransformVariable cameraTransform;
 		public AudioClip Slam;
+		public AudioClip Hurt;
+		public AudioClip Fall;
+		public AudioClip Unburrow;
 		[SerializeField] public SO.FloatVariable maxHealth;
 
 		[SerializeField] public SO.FloatVariable damage;
@@ -73,6 +76,7 @@ namespace SIS.Characters.Ham
 		[HideInInspector] public int patrolIndex = 0;
 		[HideInInspector] public bool sameRoomAsPlayer;
 		[HideInInspector] public bool wasHit;
+		[HideInInspector] public float waitTimer = 0; //Used in HammyWait
 		//Must atleast override since it is abstract
 		//Allows for initial setup, better to use InitActionBatch, but it's here if you don't want to make action
 		protected override void SetupComponents()
@@ -92,6 +96,7 @@ namespace SIS.Characters.Ham
 			wasHit = true;
 			health -= baseDamage;
 			rigid.AddForceAtPosition(dir, pos);
+			PlaySound(Hurt);
 
 			if (onHitDelegate != null)
 				onHitDelegate();
@@ -120,6 +125,11 @@ namespace SIS.Characters.Ham
 			audioSource.PlayOneShot(Slam, 0.2f);
 		}
 
+		public void PlayUnburrow()
+		{
+			audioSource.PlayOneShot(Unburrow, 0.1f);
+		}
+
 		public int GetNextPatrolRoomIndex()
 		{
 			patrolIndex++;
@@ -141,7 +151,7 @@ namespace SIS.Characters.Ham
 
 		public void SpawnExplosionAtPos(Vector3 pos) {
 			Instantiate(Explosion, pos, Quaternion.Euler(-90, 0, 0));
-			StartCoroutine(CameraShake(0.5f));
+			StartCoroutine(CameraShake(0.4f));
 		}
 		public bool InAir() {
 			return (TailTransform.position.y > 1);
@@ -149,20 +159,33 @@ namespace SIS.Characters.Ham
 		private IEnumerator Death() {
 			DestroyTarget();
 			anim.enabled = false;
+			float time = 0.5f;
 			rigid.velocity = Vector3.zero;
-			float time = 1;
+			yield return new WaitForSeconds(time);
+			/*
+			float time = 2;
 			while (time > 0) {
 				time -= Time.deltaTime;
 				if (!InAir()) mTransform.position += Vector3.up * FallSpeed * Time.deltaTime * 0.3f;
 				ModelTransform.RotateAround(TailTransform.position, ModelTransform.forward, Time.deltaTime * RotSpeed);
 				yield return null;
 			}
+			*/
+			PlaySound(Fall);
 			time = 2;
+			Vector3 newPos = mTransform.position;
+			newPos.y = -2f;
+			if (InAir())
+				newPos.y = -8f;
 			while (time > 0) {
 				time -= Time.deltaTime;
-				mTransform.position += Vector3.down * FallSpeed * Time.deltaTime;
+				//mTransform.position += Vector3.down * 2 * FallSpeed * Time.deltaTime;
+
+				mTransform.position = Vector3.Lerp(mTransform.position, newPos, 2f * Time.deltaTime);
+
 				yield return null;
 			}
+			
 			Destroy(gameObject);
 		}
 
@@ -174,7 +197,7 @@ namespace SIS.Characters.Ham
 			dir[3] = Vector3.right;
 			while (time > 0) {
 				time -= Time.deltaTime;
-				int ind = Random.Range(0,4);
+				int ind = Random.Range(0,3);
 				cameraTransform.value.position += dir[ind] * 0.1f;
 				yield return null;
 			}

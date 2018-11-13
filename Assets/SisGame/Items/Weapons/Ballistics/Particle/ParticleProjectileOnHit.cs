@@ -65,12 +65,17 @@ namespace SIS.Items.Weapons
 				if (isHittable == null)
 				{
 					//Not Enemy
+					ParticleSystem.MainModule mainModule = onHitParticleSystem.main;
+					mainModule.startLifetime = 0.03f;
 				}
 				else
 				{
 					//You hit enemy!
 					if (onHitParticleSystem != null)
 						onHitParticleSystem.transform.position = intersection + incomingDirection * 0.3f;
+					ParticleSystem.MainModule mainModule = onHitParticleSystem.main;
+					mainModule.startLifetime = 0.05f;
+
 					isHittable.OnHit(owner, baseDamage, incomingDirection, intersection);
 				}
 				if (onHitParticleSystem != null)

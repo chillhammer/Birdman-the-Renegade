@@ -521,8 +521,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272212300700802}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.39, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: -1.73, z: 0}
+  m_LocalScale: {x: 0.5482216, y: 0.6219574, z: 0.43647057}
   m_Children:
   - {fileID: 4591030675770136}
   - {fileID: 4570515958057872}
@@ -537,8 +537,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1098440364130272}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5007496, y: 0.5793276, z: 27.545635}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 17.080873, y: 8.501403, z: 30.381104}
+  m_LocalScale: {x: 0.87586, y: 0.87586, z: 0.87586}
   m_Children:
   - {fileID: 4437472659778024}
   m_Father: {fileID: 0}
@@ -703,7 +703,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 194
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1036,6 +1036,9 @@ MonoBehaviour:
     type: 2}
   cameraTransform: {fileID: 11400000, guid: 9d1babb12888d48458a6f457e3daec60, type: 2}
   Slam: {fileID: 8300000, guid: d490bb35fc0c6a647b8eef1cd0135c19, type: 3}
+  Hurt: {fileID: 8300000, guid: d572544ca7c3a464da0dc8e2f6c3400e, type: 3}
+  Fall: {fileID: 8300000, guid: 79e8aec808be9f34ea6db2878ff98ccf, type: 3}
+  Unburrow: {fileID: 8300000, guid: 89b0878af47eb3a488b0c906a36d292c, type: 3}
   maxHealth: {fileID: 11400000, guid: 211890f3eeda0e94db68518f19e1fb7e, type: 2}
   damage: {fileID: 11400000, guid: 45e24b0671291b14eb5bc73de43598c8, type: 2}
   radius: {fileID: 11400000, guid: 6c0eec4c02df1d0439db042823843a98, type: 2}
@@ -1044,7 +1047,8 @@ MonoBehaviour:
   FallSpeed: 5
   RotSpeed: 60
   targetInstance: {fileID: 0}
-  ArmatureTransform: {fileID: 0}
+  ModelTransform: {fileID: 0}
+  TailTransform: {fileID: 0}
   FinTransform: {fileID: 0}
   HammerBaseTransform: {fileID: 0}
   waypointNavigator: {fileID: 114584155385612530}
@@ -5884,7 +5888,7 @@ RectTransform:
   m_GameObject: {fileID: 1111895528381368}
   m_LocalRotation: {x: 0.50000006, y: 0.49999994, z: 0.49999994, w: 0.50000006}
   m_LocalPosition: {x: 0, y: 0, z: 5.58}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 2.5734, y: 2.5734, z: 2.5734}
   m_Children:
   - {fileID: 224275966630617234}
   m_Father: {fileID: 4328182688656526}

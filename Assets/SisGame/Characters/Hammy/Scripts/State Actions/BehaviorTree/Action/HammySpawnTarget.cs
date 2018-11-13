@@ -13,6 +13,7 @@ namespace SIS.Characters.Ham
             Vector3 position = owner.playerTransform.value.position;
 			position.y = 0;
 			owner.SpawnTargetAtPos(position);
+			owner.PlayUnburrow(); //unburrow sound
 			return AivoTree.AivoTreeStatus.Success;
         }
     }

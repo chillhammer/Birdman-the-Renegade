@@ -9,14 +9,14 @@ namespace SIS.Characters.Ham
 	public class HammyWait : HammyBTAction
 	{
 		public float SecondsToWait = 1f;
-		float timer = 0;
+		//float timer = 0;
 
 		public override AivoTree.AivoTreeStatus Act(float timeTick, Hammy owner)
 		{
-			timer += Time.deltaTime;
-			if (timer > SecondsToWait)
+			owner.waitTimer += Time.deltaTime;
+			if (owner.waitTimer > SecondsToWait)
 			{
-				timer = 0;
+				owner.waitTimer = 0;
 				return AivoTree.AivoTreeStatus.Success;
 			}
 			return AivoTree.AivoTreeStatus.Running;
