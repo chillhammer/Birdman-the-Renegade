@@ -17,6 +17,8 @@ namespace SIS.Characters.Ham
 			owner.patrolIndex = 0;
 			int roomAmount = owner.waypointNavigator.dungeon.RoomCount;
 			Vector3 playerPos = owner.playerTransform.value.position;
+			int startRoomIndex = owner.waypointNavigator.dungeon.GetRoomIndex((int)owner.mTransform.position.x, (int)owner.mTransform.position.z);
+			owner.patrolRoute.Add(startRoomIndex);
 			float max_dist = float.MinValue;
 			int max_ind = -1;
 			for (int i = 0; i < roomAmount; i++) {
