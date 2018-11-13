@@ -7572,11 +7572,11 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 411822102}
+      objectReference: {fileID: 1519496453}
     - target: {fileID: 114497487427574748, guid: c58b7079a93132c43a58b1ff260dcbe1,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: TurnOffPaused
+      value: GoToScene
       objectReference: {fileID: 0}
     - target: {fileID: 114497487427574748, guid: c58b7079a93132c43a58b1ff260dcbe1,
         type: 2}
@@ -7597,16 +7597,61 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 411822102}
+      objectReference: {fileID: 1519496453}
     - target: {fileID: 114750051020064782, guid: c58b7079a93132c43a58b1ff260dcbe1,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: TurnOffPaused
+      value: GoToScene
       objectReference: {fileID: 0}
     - target: {fileID: 114750051020064782, guid: c58b7079a93132c43a58b1ff260dcbe1,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114497487427574748, guid: c58b7079a93132c43a58b1ff260dcbe1,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 411822102}
+    - target: {fileID: 114497487427574748, guid: c58b7079a93132c43a58b1ff260dcbe1,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TurnOffPaused
+      objectReference: {fileID: 0}
+    - target: {fileID: 114750051020064782, guid: c58b7079a93132c43a58b1ff260dcbe1,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114750051020064782, guid: c58b7079a93132c43a58b1ff260dcbe1,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114750051020064782, guid: c58b7079a93132c43a58b1ff260dcbe1,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1519496453}
+    - target: {fileID: 114750051020064782, guid: c58b7079a93132c43a58b1ff260dcbe1,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: GoToScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 114750051020064782, guid: c58b7079a93132c43a58b1ff260dcbe1,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114750051020064782, guid: c58b7079a93132c43a58b1ff260dcbe1,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 411822102}
+    - target: {fileID: 114750051020064782, guid: c58b7079a93132c43a58b1ff260dcbe1,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TurnOffPaused
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c58b7079a93132c43a58b1ff260dcbe1, type: 2}
@@ -11134,8 +11179,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1519496453}
-        m_MethodName: GoToScene
+      - m_Target: {fileID: 411822102}
+        m_MethodName: TurnOffPaused
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11145,8 +11190,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 411822102}
-        m_MethodName: TurnOffPaused
+      - m_Target: {fileID: 1519496453}
+        m_MethodName: GoToScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

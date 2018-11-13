@@ -82,6 +82,7 @@ namespace SIS.GameControl
 
 		public void TogglePaused()
 		{
+			Debug.Log("Toggled pause");
 			isPaused.value = !isPaused.value;
 			Time.timeScale = (isPaused.value ? 0 : 1);
 			Cursor.visible = isPaused.value;
@@ -109,11 +110,15 @@ namespace SIS.GameControl
 			Debug.Log("Turned off pause");
 			isPaused.value = false;
 			Time.timeScale = 1;
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+			/*
 			if (InGame())
 			{
 				Cursor.lockState = CursorLockMode.Locked;
-				Cursor.visible = false;
+				Cursor.visible = true;
 			}
+			*/
 		}
 
 		public bool InGame()

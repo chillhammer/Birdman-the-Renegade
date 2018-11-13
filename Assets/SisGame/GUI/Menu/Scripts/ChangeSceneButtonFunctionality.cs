@@ -44,6 +44,8 @@ namespace SIS.Menu
 			timer = 0;
 			blackScreenImage = Instantiate(blackScreen, Vector3.zero, Quaternion.identity, transform.parent).GetComponent<RawImage>();
 			blackScreenImage.rectTransform.localPosition = Vector3.zero;
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
 		}
 	}
 }
