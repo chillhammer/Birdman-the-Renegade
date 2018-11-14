@@ -83,6 +83,9 @@ namespace SIS.Characters.Sis
 		public void OnStopReloading()
 		{
 			doneReloading = true;
+
+			//isReloading = false;
+			//reloadingDoOnce = true;
 		}
 		#endregion
 
@@ -115,6 +118,10 @@ namespace SIS.Characters.Sis
 		public bool IsDead()
 		{
 			return health <= 0;
+		}
+		public int GetScore()
+		{
+			return 0;
 		}
 		public void PlaySound(AudioClip audio)
 		{

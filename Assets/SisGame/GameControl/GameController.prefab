@@ -123,6 +123,7 @@ MonoBehaviour:
   inputPause: {fileID: 11400000, guid: 8584adbdde6af984d94d63bad23a22dd, type: 2}
   inGame: {fileID: 11400000, guid: 3e26314346277c74697d8ed4d58af62d, type: 2}
   sis: {fileID: 11400000, guid: 7a5eaaf58a516004ead97e53823d534c, type: 2}
+  endlessScore: {fileID: 11400000, guid: 35f2a167c6f16294e91ee0858a337b2a, type: 2}
   gameState: 0
 --- !u!114 &114778446276687338
 MonoBehaviour:

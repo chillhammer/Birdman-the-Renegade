@@ -33,7 +33,12 @@ namespace SIS.Actions.Input
 		public override void Execute()
         {
 			if (isPaused.value || !inGame.value)
-				return; 
+			{
+				playerState.value.movementValues.horizontal = 0;
+				playerState.value.movementValues.vertical = 0;
+				playerState.value.movementValues.moveAmount = 0;
+				return;
+			}
             moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal.value) + Math.Abs(vertical.value));
 
 			if (cameraTransform.value != null)

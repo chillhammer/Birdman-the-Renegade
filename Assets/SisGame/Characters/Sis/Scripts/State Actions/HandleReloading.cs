@@ -35,8 +35,21 @@ namespace SIS.Characters.Sis
 							if (runtime.currentBullets < bulletsNeeded)
 								bulletsNeeded = runtime.currentBullets;
 
+							//Hotfix for reloading while switching weapons
+							
+							if (weapon.name == "Blunderbuss")
+							{
+								owner.anim.SetInteger("GunIndex", 1);
+								
+							} else
+							{
+								owner.anim.SetInteger("GunIndex", 0);
+							}
+							
+
 							owner.anim.SetBool("Reload", true);
 							owner.anim.SetInteger("AmmoToLoad", bulletsNeeded);
+
 							owner.reloadingDoOnce = false;
 							owner.doneReloading = false;
 						}

@@ -14,6 +14,7 @@ namespace SIS.Map.Enemy {
 		public bool LastEnemyDied { get; private set; }
 		public AudioClip enemyKilledSound;
 		public SO.TransformVariable playerTransform;
+		public SO.IntVariable score;
 
 		List<IHittable> aliveEnemies;
 		List<GameObject> toBeSpawnedEnemies;
@@ -38,6 +39,10 @@ namespace SIS.Map.Enemy {
 				IHittable enemy = aliveEnemies[i];
 				if (enemy.IsDead())
 				{
+					if (stageListing.IsEndlessMode())
+					{
+						score.value += enemy.GetScore();
+					}
 					enemy.PlaySound(enemyKilledSound);
 					aliveEnemies.RemoveAt(i);
 					if (NoEnemiesToSpawn())

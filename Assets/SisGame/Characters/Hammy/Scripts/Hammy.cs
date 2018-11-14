@@ -116,6 +116,10 @@ namespace SIS.Characters.Ham
 		{
 			return health <= 0;
 		}
+		public int GetScore()
+		{
+			return 20;
+		}
 		public void PlaySound(AudioClip audio)
 		{
 			audioSource.PlayOneShot(audio, 0.5f);

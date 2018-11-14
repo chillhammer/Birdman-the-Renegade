@@ -16,6 +16,9 @@ namespace SIS.Characters.Sis
 			GameObject oldWeaponTip = owner.inventory.currentWeapon.runtime.weaponTip.gameObject;
 			if (owner.inventory.SpawnCurrentWeapon(owner.anim.GetBoneTransform(HumanBodyBones.RightHand)))
 			{
+				//owner.OnStopReloading();
+
+				//owner.anim.SetBool("Reload", false);
 				owner.PlaySound(owner.switchWeaponSound);
 				Destroy(oldWeaponModel);
 				Destroy(oldWeaponTip);

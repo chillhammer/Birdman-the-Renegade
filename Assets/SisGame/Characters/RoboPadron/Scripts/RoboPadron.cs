@@ -60,6 +60,7 @@ namespace SIS.Characters.Robo
 		[HideInInspector] public Waypoints.WaypointNavigator waypointNavigator;
 		[HideInInspector] public Vision vision;
 		[HideInInspector] public float visionTimer;
+		[HideInInspector] public float shootTimer;
 
 		#region Last Known Position
 		[System.Serializable]
@@ -119,6 +120,12 @@ namespace SIS.Characters.Robo
 		{
 			return health == 0;
 		}
+
+		public int GetScore()
+		{
+			return 30;
+		}
+
 		public void PlaySound(AudioClip audio)
 		{
 			audioSource.PlayOneShot(audio);

@@ -12,50 +12,72 @@ MonoBehaviour:
   m_Name: Stage Difficulty Tuning
   m_EditorClassIdentifier: 
   stages:
-  - roboFireRate: 4
-    roboChaseSpeed: 200
-    roboMaxHealth: 3
-    roboShootRange: 8
+  - roboFireRate: 1
+    roboChaseSpeed: 150
+    roboMaxHealth: 2
+    roboShootRange: 5
     roboShootRangeMax: 12
     hammySpeed: 2
     hammyTurnSpeed: 3
     hammyRadius: 2
-    hammyDamage: 10
-    hammyMaxHealth: 4
-    billAngrySpeed: 3
-  - roboFireRate: 9
-    roboChaseSpeed: 250
-    roboMaxHealth: 5
-    roboShootRange: 12
+    hammyDamage: 3
+    hammyMaxHealth: 2
+    billAngrySpeed: 1
+  - roboFireRate: 3
+    roboChaseSpeed: 175
+    roboMaxHealth: 3
+    roboShootRange: 5
     roboShootRangeMax: 24
-    hammySpeed: 4
-    hammyTurnSpeed: 2
+    hammySpeed: 2
+    hammyTurnSpeed: 3
     hammyRadius: 3
-    hammyDamage: 10
-    hammyMaxHealth: 5
-    billAngrySpeed: 5
-  - roboFireRate: 12
-    roboChaseSpeed: 290
-    roboMaxHealth: 7
-    roboShootRange: 20
-    roboShootRangeMax: 30
-    hammySpeed: 5
+    hammyDamage: 5
+    hammyMaxHealth: 3
+    billAngrySpeed: 3
+  - roboFireRate: 3
+    roboChaseSpeed: 200
+    roboMaxHealth: 3
+    roboShootRange: 10
+    roboShootRangeMax: 24
+    hammySpeed: 3
     hammyTurnSpeed: 3
     hammyRadius: 4
     hammyDamage: 10
-    hammyMaxHealth: 6
+    hammyMaxHealth: 4
     billAngrySpeed: 5
-  - roboFireRate: 12
-    roboChaseSpeed: 290
-    roboMaxHealth: 7
-    roboShootRange: 20
+  - roboFireRate: 5
+    roboChaseSpeed: 225
+    roboMaxHealth: 4
+    roboShootRange: 12
     roboShootRangeMax: 30
-    hammySpeed: 6
+    hammySpeed: 4
+    hammyTurnSpeed: 5
+    hammyRadius: 5
+    hammyDamage: 10
+    hammyMaxHealth: 4
+    billAngrySpeed: 5
+  - roboFireRate: 5
+    roboChaseSpeed: 250
+    roboMaxHealth: 4
+    roboShootRange: 16
+    roboShootRangeMax: 24
+    hammySpeed: 5
     hammyTurnSpeed: 5
     hammyRadius: 5
     hammyDamage: 10
     hammyMaxHealth: 6
-    billAngrySpeed: 7
+    billAngrySpeed: 5
+  - roboFireRate: 6
+    roboChaseSpeed: 260
+    roboMaxHealth: 4
+    roboShootRange: 20
+    roboShootRangeMax: 30
+    hammySpeed: 6
+    hammyTurnSpeed: 6
+    hammyRadius: 5
+    hammyDamage: 10
+    hammyMaxHealth: 4
+    billAngrySpeed: 6
   stageIndexVar: {fileID: 11400000, guid: 20b6fed3c94e9af48a43e730033c9a61, type: 2}
   roboFireRateVar: {fileID: 11400000, guid: 3c3bf47fd433c9f4cbf8cc895e3d46dc, type: 2}
   roboChaseSpeedVar: {fileID: 11400000, guid: 862697ee9ddaa454488d2c4697a26012, type: 2}

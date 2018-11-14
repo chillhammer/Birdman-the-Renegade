@@ -99,7 +99,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  fireAudio: {fileID: 8300000, guid: 1aaccbba9f1c27a439e31be8cb8ccd5e, type: 3}
-  reloadAudio: {fileID: 8300000, guid: 14b48e75bffb14044a39d654b43dc04c, type: 3}
+  fireAudio: {fileID: 8300000, guid: 6598ce3f8fab4ed409a901a9d10fbccf, type: 3}
+  reloadAudio: {fileID: 8300000, guid: 834c195eb3ec42845a95296583b66f57, type: 3}
   ballistics: {fileID: 11400000, guid: ec2cfa06c27fd234d9063a40f41a519b, type: 2}
   topHalfAnimatorLayerName: RevolverTopHalf

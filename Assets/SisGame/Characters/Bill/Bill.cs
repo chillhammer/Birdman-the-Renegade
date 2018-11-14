@@ -200,6 +200,11 @@ namespace SIS.Characters.Bill
             SetDead();
         }
 
+		public int GetScore()
+		{
+			return 10;
+		}
+
 		void SetDead()
 		{
 			if (!dead)

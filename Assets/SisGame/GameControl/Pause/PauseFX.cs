@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 namespace SIS.GameControl
 {
@@ -19,6 +20,9 @@ namespace SIS.GameControl
 		[SerializeField] GameObject backgroundInstance;
 
 		[SerializeField] float scaleSpeed = 7f;
+
+		[SerializeField] TextMeshProUGUI deathText;
+		[SerializeField] SO.IntVariable deaths;
 
 		RectTransform pauseTransform;
 		float timer = 0;
@@ -60,6 +64,7 @@ namespace SIS.GameControl
 				PauseScale = 0;
 			if (paused)
 			{
+				deathText.text = "Deaths: " + deaths.value;
 				if (backgroundInstance == null)
 				{
 					backgroundInstance = Instantiate(blackScreen);

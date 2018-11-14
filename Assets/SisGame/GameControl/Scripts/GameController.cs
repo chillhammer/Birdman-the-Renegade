@@ -20,6 +20,7 @@ namespace SIS.GameControl
 		public SO.BoolVariable inputPause;
 		public SO.BoolVariable inGame;
 		public Characters.Sis.SisVariable sis;
+		public SO.IntVariable endlessScore;
 
 		public enum State { InGame, Interlude, Won, Lost }
 		public State gameState;
@@ -35,7 +36,7 @@ namespace SIS.GameControl
 
 		private void Update()
 		{
-			if (enemyController.LastEnemyDied && !stageListing.IsLastStage())
+			if (enemyController.LastEnemyDied /*&& !stageListing.IsLastStage()*/)
 			{
 				endStageEvent.Raise();
 			}
@@ -130,6 +131,10 @@ namespace SIS.GameControl
 
 		public void StageReset()
 		{
+			if (stageListing.IsEndlessMode())
+			{
+				endlessScore.value = 0;
+			}
 			gameState = State.InGame;
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
@@ -143,6 +148,7 @@ namespace SIS.GameControl
 
 		public void EnterEndlessMode()
 		{
+			endlessScore.value = 0;
 			gameState = State.InGame;
 			stageIndexVar.value++;
 			Cursor.lockState = CursorLockMode.Locked;

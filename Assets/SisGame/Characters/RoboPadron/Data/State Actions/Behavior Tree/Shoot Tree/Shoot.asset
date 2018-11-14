@@ -11,10 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fea2afc1cc9ad154e9e01be7bd4f410d, type: 3}
   m_Name: Shoot
   m_EditorClassIdentifier: 
-  fireRate: 18
+  fireRate: 8
   overrideFireRate: {fileID: 11400000, guid: 3c3bf47fd433c9f4cbf8cc895e3d46dc, type: 2}
-  timer: 0.017338865
   gunShotSound: {fileID: 8300000, guid: 37474cf2b5524fb4283cc1e061e7a2e0, type: 3}
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 2359
+    m_Bits: 6455

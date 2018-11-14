@@ -53,7 +53,8 @@ namespace SIS.Items.Weapons
 			go.transform.parent = this.transform;
 			go.transform.localPosition = Vector3.zero;
 			audioSource = go.AddComponent<AudioSource>();
-			audioSource.spatialBlend = 1;
+			audioSource.spatialBlend = 0;
+			audioSource.volume = 0.1f;
 			audioSource.clip = sound;
 			audioSource.outputAudioMixerGroup = Managers.GameManagers.AudioManager.SoundGroup;
 		}

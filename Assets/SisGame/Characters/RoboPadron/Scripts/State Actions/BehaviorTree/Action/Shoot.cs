@@ -8,7 +8,7 @@ namespace SIS.Characters.Robo
 	{
 		public float fireRate = 3f;
 		public SO.FloatVariable overrideFireRate;
-		public float timer = 0;
+		//public float timer = 0;
 		public AudioClip gunShotSound;
 		public LayerMask ignoreLayers;
 		public override AivoTree.AivoTreeStatus Act(float timeTick, RoboPadron owner)
@@ -16,11 +16,11 @@ namespace SIS.Characters.Robo
 			if (overrideFireRate != null)
 				fireRate = overrideFireRate.value;
 
-			timer += owner.delta;
+			owner.shootTimer += owner.delta;
 
-			if (timer > 1 / fireRate)
+			if (owner.shootTimer > 1 / fireRate)
 			{
-				timer = 0;
+				owner.shootTimer = 0;
 				owner.projectileOnHit.UpdateOnHitSettings(owner, owner.bulletSystem.shape.rotation, ignoreLayers, 1);
 				owner.bulletSystem.Play();
 				owner.audioSource.PlayOneShot(gunShotSound, 0.1f);

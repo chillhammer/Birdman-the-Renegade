@@ -21,6 +21,8 @@ namespace SIS.HUD
 		public SO.GameEvent stageStart;
 		public SO.GameEvent gameWon;
 		public SIS.GameControl.StageListing stageListing;
+		public TextMeshProUGUI topRightText;
+		public SO.IntVariable score;
 
 		TextMeshProUGUI text;
 		Vector3 targetPosition;
@@ -60,6 +62,14 @@ namespace SIS.HUD
 			{
 				targetPosition = topLeftText.rectTransform.position;
 				targetScale = topLeftText.rectTransform.localScale;
+			}
+
+			if (stageListing.IsEndlessMode())
+			{
+				topRightText.text = "Score: " + score.value;
+			} else
+			{
+				topRightText.text = "";
 			}
 		}
 
