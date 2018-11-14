@@ -18,6 +18,8 @@ namespace SIS.GameControl
 		[SerializeField] GameObject lostButtonsParent;
 		[SerializeField] SO.IntVariable deaths;
 		[SerializeField] TMPro.TextMeshProUGUI deathText;
+		[SerializeField] TMPro.TextMeshProUGUI eliminations;
+		[SerializeField] Map.Enemy.EnemyController enemyController;
 
 
 		RectTransform lostTransform;
@@ -81,6 +83,12 @@ namespace SIS.GameControl
 						LostScale = Mathf.Lerp(LostScale, 1, scaleSpeed * Time.deltaTime);
 					}
 					deathText.text = "Deaths:  " + deaths.value;
+
+					if (eliminations != null)
+					{
+						eliminations.text = "Eliminations: " + enemyController.EnemiesKilled + 
+							(enemyController.stageListing.IsEndlessMode() ? "" : "/" + enemyController.stageListing.TotalEnemies);
+					}
 				}
 			}
 		}

@@ -10,6 +10,14 @@ namespace SIS.GameControl
 		[SerializeField] StageListingDetail[] stages;
 		public SO.IntVariable stageIndexVar;
 		public StageListingDetail endlessModeDistribution;
+		public int StagesLength { get { return stages.Length; } }
+		public int TotalEnemies {
+			get {
+				if (IsEndlessMode() || stageIndexVar.value < 0)
+					return 0;
+				return stages[stageIndexVar.value].enemies.Length;
+			}
+		}
 
 
 		public bool IsLastStage()

@@ -15,6 +15,14 @@ namespace SIS.Map.Enemy {
 		public AudioClip enemyKilledSound;
 		public SO.TransformVariable playerTransform;
 		public SO.IntVariable score;
+		int enemiesKilled = 0;
+		public int EnemiesKilled {
+			get
+			{
+				return enemiesKilled;
+				//return stageListing.TotalEnemies - toBeSpawnedEnemies.Count;
+			}
+		}
 
 		List<IHittable> aliveEnemies;
 		List<GameObject> toBeSpawnedEnemies;
@@ -39,6 +47,7 @@ namespace SIS.Map.Enemy {
 				IHittable enemy = aliveEnemies[i];
 				if (enemy.IsDead())
 				{
+					enemiesKilled++;
 					if (stageListing.IsEndlessMode())
 					{
 						score.value += enemy.GetScore();
@@ -126,6 +135,7 @@ namespace SIS.Map.Enemy {
 				Debug.LogWarning("Stage started but more than 0 alive enemies.");
 				aliveEnemies.Clear(); //Just to be safe
 			}
+			enemiesKilled = 0;
 			toBeSpawnedEnemies = stageListing.GetStageEnemiesReversed();
 			maxAlive = stageListing.GetStageMaxAlive();
 		}
