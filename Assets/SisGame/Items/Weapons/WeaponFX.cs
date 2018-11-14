@@ -51,6 +51,7 @@ namespace SIS.Items.Weapons
 			GameObject go = new GameObject();
 			go.name = "Audio Holder";
 			go.transform.parent = this.transform;
+			go.transform.localPosition = Vector3.zero;
 			audioSource = go.AddComponent<AudioSource>();
 			audioSource.spatialBlend = 1;
 			audioSource.clip = sound;

@@ -22,6 +22,7 @@ namespace SIS.Characters.Robo
 				owner.deathFallProgress.originalRotation = owner.mTransform.rotation;
 				owner.anim.SetFloat("Vertical", 0);
 				owner.PlaySound(deathFallSound);
+				owner.StartCoroutine("Die");
 			}
 
 			if (owner.deathFallProgress.timer < secondsToFall) {

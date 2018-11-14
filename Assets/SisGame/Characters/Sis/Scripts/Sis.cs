@@ -42,6 +42,8 @@ namespace SIS.Characters.Sis
 		public MovementValues movementValues;
 		public Inventory inventory;
 		public AudioClip hurtSound;
+		public AudioClip footstepSound;
+		public AudioClip switchWeaponSound;
 
 		#region MovementValues
 		[System.Serializable]
@@ -66,7 +68,9 @@ namespace SIS.Characters.Sis
 		public bool reloadingDoOnce = true;
 		public bool isDead { get { return health <= 0; } }
 		public float switchWeaponAxis;
-		public int switchWeaponChange { get { return (switchWeaponAxis > 0) ? 1 : (switchWeaponAxis < 0) ? -1 : 0; } }
+		public int switchWeaponChange { get { int change = (switchWeaponAxis > 0) ? 1 : (switchWeaponAxis < 0) ? -1 : 0; ;
+				switchWeaponAxis = 0;
+				return change; } }
 
 		public void ToggleCrouching()
 		{
@@ -115,6 +119,12 @@ namespace SIS.Characters.Sis
 		public void PlaySound(AudioClip audio)
 		{
 			audioSource.PlayOneShot(audio, 0.4f);
+		}
+
+		public void OnFootstep(string foot)
+		{
+			if (movementValues.moveAmount >= 0.3f)
+				audioSource.PlayOneShot(footstepSound, 0.005f * movementValues.moveAmount);
 		}
 	}
 }

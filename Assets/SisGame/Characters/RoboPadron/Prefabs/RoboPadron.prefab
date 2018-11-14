@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4080472596944734}
   - component: {fileID: 95373853173747974}
+  - component: {fileID: 114232682256585358}
   m_Layer: 0
   m_Name: RoboPadron Model
   m_TagString: Untagged
@@ -1303,6 +1304,17 @@ MonoBehaviour:
   shakeIntensity: 0.6
   shakeTime: 1
   healthLerpSpeed: 6
+--- !u!114 &114232682256585358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130046922423400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520948a23e38599408a3eb6747b2e470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114258515672266822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1408,12 +1420,14 @@ MonoBehaviour:
   bulletSystem: {fileID: 0}
   projectileOnHit: {fileID: 0}
   onHitSound: {fileID: 8300000, guid: 2309772fc08bfa34aacece5c300a6c5e, type: 3}
+  foostepSound: {fileID: 8300000, guid: dc4d43c449e05364c808789dc51fc91a, type: 3}
   maxHealth: {fileID: 11400000, guid: c7934b3fe774f1645b911bd57b9fe28e, type: 2}
   isAiming: 0
   canSeePlayer: 0
   transitionToWander: 0
   waypointNavigator: {fileID: 114258515672266822}
   vision: {fileID: 0}
+  visionTimer: 0
   playerLastKnownLocation:
     position: {x: 0, y: 0, z: 0}
     timeSeen: 0

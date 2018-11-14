@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 using SIS.Items;
+using UnityEngine.SceneManagement;
 
 namespace SIS.Managers
 {
@@ -24,8 +25,19 @@ namespace SIS.Managers
 		public float MusicVolume { get { return musicVolume; }
 			set { musicVolume = Mathf.Clamp01(value); musicGroup.audioMixer.SetFloat("MusicVol", ToVol(musicVolume)); } }
 
+		
+		[SerializeField] GameObject musicPlayer;
+		Music.MusicPlayer musicPlayerComponent;
+		public Music.MusicPlayer MusicPlayer { get { return musicPlayerComponent; } }
+
 		public void Init()
 		{
+			Debug.Log("Init audio manager");
+			soundGroup.audioMixer.SetFloat("SoundVol", ToVol(SoundVolume));
+			musicGroup.audioMixer.SetFloat("MusicVol", ToVol(musicVolume));
+			//Music
+			musicPlayerComponent = Instantiate(musicPlayer).GetComponent<Music.MusicPlayer>();
+
 		}
 
 		//Converts 0-1 value to deicibel volume
@@ -40,5 +52,7 @@ namespace SIS.Managers
 				return (1 - (nor / 0.5f)) * (1 - (nor / 0.5f)) * (1 - (nor / 0.5f)) * -80;
 			}
 		}
+
+		
 	}
 }

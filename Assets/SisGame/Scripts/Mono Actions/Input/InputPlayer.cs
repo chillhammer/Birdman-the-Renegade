@@ -18,6 +18,7 @@ namespace SIS.Actions.Input
 		public InputButton reloadButton;
 
 		public InputAxis switchWeaponsAxis;
+		public InputButton switchWeaponsButton;
 
 		public float moveAmount;
 		public Vector3 moveDirection;
@@ -73,9 +74,15 @@ namespace SIS.Actions.Input
 				}
 
 				playerState.value.switchWeaponAxis = switchWeaponsAxis.value;
+				if (switchWeaponsButton.isPressed)
+				{
+					playerState.value.switchWeaponAxis = 1;
+
+
+				}
 				//reloadButton.targetBoolVariable.value = playerState.value.isReloading;
 
-				
+
 
 			}
         }

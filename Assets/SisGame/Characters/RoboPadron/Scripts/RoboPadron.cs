@@ -51,6 +51,7 @@ namespace SIS.Characters.Robo
 		[HideInInspector] public ParticleSystem bulletSystem;
 		[HideInInspector] public ParticleProjectileOnHit projectileOnHit;
 		[SerializeField] AudioClip onHitSound;
+		[SerializeField] AudioClip foostepSound;
 		[SerializeField] SO.FloatVariable maxHealth;
 		public bool isAiming = false;
 		public bool canSeePlayer = false;
@@ -58,6 +59,7 @@ namespace SIS.Characters.Robo
 
 		[HideInInspector] public Waypoints.WaypointNavigator waypointNavigator;
 		[HideInInspector] public Vision vision;
+		[HideInInspector] public float visionTimer;
 
 		#region Last Known Position
 		[System.Serializable]
@@ -122,10 +124,35 @@ namespace SIS.Characters.Robo
 			audioSource.PlayOneShot(audio);
 		}
 
+		public void OnFootstep()
+		{
+			if (rigid.velocity.magnitude > 0.7f)
+				audioSource.PlayOneShot(foostepSound, 0.05f);
+
+		}
+
 
 		public void OnDrawGizmosSelected()
 		{
 			Gizmos.DrawWireSphere(playerLastKnownLocation.position, 0.3f);
+		}
+
+		//Called from DeathFall
+		IEnumerator Die()
+		{
+			yield return new WaitForSeconds(5f);
+
+			float time = 1f;
+			Vector3 targetPos = mTransform.position;
+			targetPos.y = mTransform.position.y - 1;
+			GetComponent<Collider>().enabled = false;
+			while (time > 0)
+			{
+				time -= delta;
+				mTransform.position = Vector3.Lerp(mTransform.position, targetPos, 0.5f * delta);
+				yield return null;
+			}
+			Destroy(gameObject);
 		}
 
 		

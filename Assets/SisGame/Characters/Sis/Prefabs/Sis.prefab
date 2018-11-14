@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 4772185826925480}
   - component: {fileID: 95787136944826026}
   - component: {fileID: 114335332078965662}
+  - component: {fileID: 114082069554798996}
   m_Layer: 9
   m_Name: SisModel
   m_TagString: Player
@@ -918,6 +919,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114082069554798996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403974809701064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65d07effdb518234eb68a689f48566a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sis: {fileID: 11400000, guid: 7a5eaaf58a516004ead97e53823d534c, type: 2}
 --- !u!114 &114220950706958684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -987,6 +1000,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e552dc2b146b26b47b5103b2e67ea404, type: 2}
     currentWeaponIndex: 0
   hurtSound: {fileID: 8300000, guid: 1c23c342b16d2db409b7e93633504008, type: 3}
+  footstepSound: {fileID: 8300000, guid: e510dd49229e33e4382d3068de2c6b32, type: 3}
+  switchWeaponSound: {fileID: 8300000, guid: 93e062a750cc0f144a30d7f70189e64e, type: 3}
   isAiming: 0
   isShooting: 0
   isGunReady: 0

@@ -15,5 +15,7 @@ MonoBehaviour:
     type: 2}
   musicGroup: {fileID: 243838032811411962, guid: e6bee7581ac99a44c8955561ad467563,
     type: 2}
-  soundVolume: 0
+  soundVolume: 1
   musicVolume: 0.46796402
+  musicPlayer: {fileID: 1127229349396678, guid: e7978bb763d058c45878cb53ef2b69c6,
+    type: 2}

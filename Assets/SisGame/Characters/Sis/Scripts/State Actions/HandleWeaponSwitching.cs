@@ -16,6 +16,7 @@ namespace SIS.Characters.Sis
 			GameObject oldWeaponTip = owner.inventory.currentWeapon.runtime.weaponTip.gameObject;
 			if (owner.inventory.SpawnCurrentWeapon(owner.anim.GetBoneTransform(HumanBodyBones.RightHand)))
 			{
+				owner.PlaySound(owner.switchWeaponSound);
 				Destroy(oldWeaponModel);
 				Destroy(oldWeaponTip);
 				//Update IK

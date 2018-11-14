@@ -13,7 +13,7 @@ namespace SIS.Characters.Robo
 		public SO.GameEvent onPlayerSightEvent;
 		public float lightSwitchSpeed = 5f;
 
-		float timer = 0;
+		//float timer = 0;
 		float originalMeshAlpha = -1;
 
 		public override void Execute(RoboPadron owner)
@@ -24,8 +24,8 @@ namespace SIS.Characters.Robo
 			UpdateMeshAlpha(owner);
 
 			//Update Timer
-			if (timer < frequencyInSeconds) {
-				timer += owner.delta;
+			if (owner.visionTimer < frequencyInSeconds) {
+				owner.visionTimer += owner.delta;
 				return;
 			}
 			if (owner.IsDead())
@@ -35,7 +35,7 @@ namespace SIS.Characters.Robo
 			if (owner.vision.MeshAlpha == 0)
 				return;
 			*/
-			timer = 0;
+			owner.visionTimer = 0;
 			if (playerTransform.value != null) {
 				Vector3 playerPos = playerTransform.value.position;
 				Vector3 headAngle = owner.headBone.forward;
