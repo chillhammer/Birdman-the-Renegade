@@ -45,7 +45,7 @@ MonoBehaviour:
     hammyDamage: 10
     hammyMaxHealth: 4
     billAngrySpeed: 5
-  - roboFireRate: 5
+  - roboFireRate: 4
     roboChaseSpeed: 225
     roboMaxHealth: 4
     roboShootRange: 12
@@ -56,7 +56,7 @@ MonoBehaviour:
     hammyDamage: 10
     hammyMaxHealth: 4
     billAngrySpeed: 5
-  - roboFireRate: 5
+  - roboFireRate: 4
     roboChaseSpeed: 250
     roboMaxHealth: 4
     roboShootRange: 16
