@@ -17,18 +17,18 @@ MonoBehaviour:
     roboMaxHealth: 2
     roboShootRange: 5
     roboShootRangeMax: 12
-    hammySpeed: 2
+    hammySpeed: 3
     hammyTurnSpeed: 3
     hammyRadius: 2
     hammyDamage: 3
     hammyMaxHealth: 2
-    billAngrySpeed: 1
+    billAngrySpeed: 2
   - roboFireRate: 3
     roboChaseSpeed: 175
     roboMaxHealth: 3
     roboShootRange: 5
     roboShootRangeMax: 24
-    hammySpeed: 2
+    hammySpeed: 3
     hammyTurnSpeed: 3
     hammyRadius: 3
     hammyDamage: 5
