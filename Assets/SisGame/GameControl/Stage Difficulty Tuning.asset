@@ -39,7 +39,7 @@ MonoBehaviour:
     roboMaxHealth: 3
     roboShootRange: 10
     roboShootRangeMax: 24
-    hammySpeed: 3
+    hammySpeed: 4
     hammyTurnSpeed: 3
     hammyRadius: 4
     hammyDamage: 10
