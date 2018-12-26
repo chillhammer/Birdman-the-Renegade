@@ -25,6 +25,7 @@ namespace SIS.Map.Enemy {
 		}
 
 		List<IHittable> aliveEnemies;
+
 		List<GameObject> toBeSpawnedEnemies;
 		int maxAlive = 1;
 
