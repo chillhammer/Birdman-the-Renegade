@@ -8,17 +8,27 @@ ModelImporter:
     100004: Cylinder
     100006: Head
     100008: NonHead
+    100010: Torus
     400000: Armature
     400002: //RootNode
     400004: Cylinder
     400006: Head
     400008: NonHead
+    400010: Torus
     2100000: Material_001
     2100002: HumanSkin
     2100004: Pigeon_Head
     2100006: Beak
     2100008: Eye
+    2100010: Material_004
+    2100012: Material_002
+    2100014: jacket
+    2100016: Dark_Jacket
+    2100018: Bling
+    2300000: Torus
+    3300000: Torus
     4300000: Cylinder
+    4300002: Torus
     7400000: Default Take
     9500000: //RootNode
     13700000: Cylinder

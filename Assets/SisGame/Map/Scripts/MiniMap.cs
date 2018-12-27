@@ -97,6 +97,14 @@ namespace SIS.Map
 				enemyTile.rectTransform.localPosition = new Vector3(enemy.position.x - dungeon.WIDTH * 0.5f,
 						enemy.position.z - dungeon.HEIGHT * 0.5f, 0);
 				enemyTiles[i] = enemyTile;
+
+				IHittable hittable = enemy.GetComponent<IHittable>();
+				if (hittable != null && hittable.IsDead())
+				{
+					Debug.Log("Dead!");
+					Color nothing = Color.white; nothing.a = 0;
+					enemyTile.color = nothing;
+				}
 			}
 
 			for (int i = enemiesParent.transform.childCount; i < enemyTiles.Count; ++i)
