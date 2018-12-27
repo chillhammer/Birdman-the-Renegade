@@ -1,14 +1,20 @@
 # Birdman the Renegade
 A third person shooter game featuring modular AI and a procedural dungeon generator.
-Pitched for Georgia Tech's Game Development Club, VGDev during the semester Fall 2018. Currently a Work-In-Progress.
+Pitched and lead team of 6 at Georgia Tech's Game Development Club, VGDev during the semester Fall 2018.
+
+Some notable features are:
+a Behavior Tree/Finite State Machine hybrid backend for the AI, 
+a procedurally-generated dungeon, 
+a Waypoint Navigation API powered by A*, 
+a Scriptable Object architecture. 
 
 
 ### Link to Google Docs tutorials for this code base: ###
 https://drive.google.com/open?id=1cMawCFnEpCxc6qB8e3u63QJLc3U567Kq
 
-![alt-text](https://i.imgur.com/LihAtBF.png)
+![alt-text](http://chillhammer.com/wp-content/gallery/birdman-the-renegade/birdman_screenshot6.PNG)
 
-![alt-text](https://i.imgur.com/7RnkAV0.jpg)
+![alt-text](https://i.imgur.com/LihAtBF.png)
 
 
 ### Licenses Used ###
