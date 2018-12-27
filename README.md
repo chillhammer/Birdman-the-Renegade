@@ -3,10 +3,10 @@ A third person shooter game featuring modular AI and a procedural dungeon genera
 Pitched and lead team of 6 at Georgia Tech's Game Development Club, VGDev during the semester Fall 2018.
 
 Some notable features are:
-a Behavior Tree/Finite State Machine hybrid backend for the AI, 
-a procedurally-generated dungeon, 
-a Waypoint Navigation API powered by A*, 
-a Scriptable Object architecture. 
+a Behavior Tree/Finite State Machine hybrid backend for the AI\ 
+a procedurally-generated dungeon\ 
+a Waypoint Navigation API powered by A*\ 
+a Scriptable Object architecture\ 
 
 
 ### Link to Google Docs tutorials for this code base: ###
